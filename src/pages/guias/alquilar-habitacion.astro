@@ -2,10 +2,26 @@
 // Ruta: src/pages/guias/alquilar-habitacion.astro
 import Guia from '../../components/Guia.astro';
 import AYUDAS from '../../data/ayudas.json';
-import { euros, miles } from '../../lib/calculos';
+import { euros, miles, porcentaje } from '../../lib/calculos';
+import { HABITACIONES, COMUNIDADES, provincia, municipio } from '../../lib/datos';
 
 const aj = AYUDAS.alquilerJoven;
 const ag = AYUDAS.alquilerGeneral;
+const fc = HABITACIONES.fotocasa;
+const id = HABITACIONES.idealista;
+const ccaa = Object.entries(fc.ccaa)
+  .map(([codigo, d]) => ({ nombre: COMUNIDADES.find((c) => c.codigo === codigo)!.nombre, ...d }))
+  .sort((a, b) => b.mes - a.mes);
+const ciudades = [
+  ...Object.values(fc.municipios).map((d) => ({ ...d, provincia: provincia(municipio(d.slug)!.provincia).nombre })),
+  ...fc.otros.map((d) => ({ ...d, slug: null as string | null })),
+].sort((a, b) => b.mes - a.mes);
+const idealista = Object.values(id.municipios).sort((a, b) => b.mes - a.mes);
+const signo = (v: number | null) => (v == null ? '—' : `${v > 0 ? '+' : ''}${porcentaje(v)}`);
+const caraCcaa = ccaa[0];
+const barataCcaa = ccaa[ccaa.length - 1];
+const caraCiudad = ciudades[0];
+const barataCiudad = ciudades[ciudades.length - 1];
 
 const preguntas = [
   {
@@ -22,7 +38,7 @@ const preguntas = [
   },
   {
     q: '¿Cuánto cuesta una habitación en mi ciudad?',
-    a: 'No existe una estadística oficial del precio de las habitaciones por municipio. Lo más fiable es mirar los anuncios de tu zona con tu presupuesto en los portales; en el buscador de ViviendaClara puedes abrirlos ya filtrados.',
+    a: `No hay una estadística oficial, pero los portales publican informes con lo que piden los anuncios. Según Fotocasa, una habitación costaba de media ${euros(fc.espana.mes)} al mes en España en ${fc.periodo}; según idealista, ${euros(id.espana.mes)} en el ${id.periodo}. Tienes la cifra de ${ciudades.length} ciudades en las tablas de esta guía y en la ficha de cada municipio.`,
   },
 ];
 ---
@@ -37,8 +53,77 @@ const preguntas = [
   <p>
     Decide primero cuánto puedes pagar al mes <strong>con los gastos incluidos</strong> (luz, agua, gas e internet) y
     busca con ese tope. En el <a href="/?op=habitacion">buscador de ViviendaClara</a> eliges «Habitación», tu ciudad
-    y tu presupuesto, y te abre las habitaciones disponibles en Idealista y Fotocasa ya filtradas por precio.
+    y tu presupuesto, y te abre las habitaciones disponibles en Idealista y Fotocasa ya filtradas por precio. Para saber si tu tope es
+    realista, compáralo con lo que piden de media en tu ciudad, que tienes justo debajo.
   </p>
+
+  <h2 id="precios">Cuánto cuesta una habitación en 2026</h2>
+  <p>
+    No hay una estadística oficial del precio de las habitaciones, pero los dos grandes portales publican informes con lo que
+    piden sus anuncios. Según el estudio <a href={fc.url} rel="noopener" target="_blank">«{fc.estudio}» de Fotocasa</a>, una
+    habitación costaba de media <strong>{euros(fc.espana.mes)} al mes</strong> en España en {fc.periodo}, un
+    {porcentaje(Math.abs(fc.espana.variacion))} menos que un año antes ({euros(fc.espana.anterior)}). El
+    <a href={id.url} rel="noopener" target="_blank">informe de idealista del {id.periodo}</a> la sitúa en
+    {euros(id.espana.mes)}, un {porcentaje(id.espana.variacion, 0)} más que un año antes.
+  </p>
+  <p>
+    Las cifras de los dos portales no coinciden porque cada uno mide sus propios anuncios. Y son precios de anuncio: lo
+    que se firma al final puede ser menos.
+  </p>
+
+  <h3>Por comunidad autónoma (Fotocasa, {fc.periodo})</h3>
+  <p>
+    La más cara es {caraCcaa.nombre}, con {euros(caraCcaa.mes)} al mes, y la más barata, {barataCcaa.nombre}, con
+    {euros(barataCcaa.mes)}.
+  </p>
+  <table>
+    <thead><tr><th>Comunidad</th><th>{fc.periodoAnterior}</th><th>{fc.periodo}</th><th>Variación</th></tr></thead>
+    <tbody>
+      {ccaa.map((c) => <tr><td>{c.nombre}</td><td>{euros(c.anterior)}</td><td><strong>{euros(c.mes)}</strong></td><td>{signo(c.variacion)}</td></tr>)}
+      <tr><td><strong>España</strong></td><td>{euros(fc.espana.anterior)}</td><td><strong>{euros(fc.espana.mes)}</strong></td><td>{signo(fc.espana.variacion)}</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Por ciudad (Fotocasa, {fc.periodo})</h3>
+  <p>
+    De las {ciudades.length} ciudades del informe, la más cara es {caraCiudad.nombre}, con {euros(caraCiudad.mes)} al mes, y la
+    más barata, {barataCiudad.nombre}, con {euros(barataCiudad.mes)}. Algunas ciudades no tienen dato del año anterior.
+  </p>
+  <table>
+    <thead><tr><th>#</th><th>Ciudad</th><th>€/mes</th><th>Variación anual</th></tr></thead>
+    <tbody>
+      {
+        ciudades.map((c, i) => (
+          <tr>
+            <td>{i + 1}</td>
+            <td>{c.slug ? <a href={`/vivienda/${c.slug}`}>{c.nombre}</a> : c.nombre} <span class="text-slate-500">({c.provincia})</span></td>
+            <td>{euros(c.mes)}</td>
+            <td>{signo(c.variacion)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h3>Por distrito en Madrid y Barcelona (Fotocasa, {fc.periodo})</h3>
+  <table>
+    <thead><tr><th>Distrito de Madrid</th><th>€/mes</th><th>Variación anual</th></tr></thead>
+    <tbody>
+      {[...fc.distritos.madrid].sort((a, b) => b.mes - a.mes).map((d) => <tr><td>{d.nombre}</td><td>{euros(d.mes)}</td><td>{signo(d.variacion)}</td></tr>)}
+    </tbody>
+  </table>
+  <table>
+    <thead><tr><th>Distrito de Barcelona</th><th>€/mes</th><th>Variación anual</th></tr></thead>
+    <tbody>
+      {[...fc.distritos.barcelona].sort((a, b) => b.mes - a.mes).map((d) => <tr><td>{d.nombre}</td><td>{euros(d.mes)}</td><td>{signo(d.variacion)}</td></tr>)}
+    </tbody>
+  </table>
+
+  <h3>Las ciudades que cita idealista ({id.periodo})</h3>
+  <p>El informe de idealista no publica una tabla completa; estas son las ciudades para las que da precio:</p>
+  <ul>
+    {idealista.map((c) => <li><a href={`/vivienda/${c.slug}`}>{c.nombre}</a>: {euros(c.mes)} al mes</li>)}
+  </ul>
 
   <h2>2. Antes de pagar: visita y pregunta</h2>
   <ul>

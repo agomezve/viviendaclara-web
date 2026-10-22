@@ -14,10 +14,10 @@ export interface GuiaMeta {
 export const GUIAS: GuiaMeta[] = [
   {
     slug: 'alquilar-habitacion',
-    titulo: 'Cómo alquilar una habitación sin llevarte sustos',
-    tituloSeo: 'Alquilar una habitación: qué mirar antes de pagar',
-    descripcion: 'Qué comprobar antes de alquilar una habitación en un piso compartido: contrato, fianza, gastos, empadronamiento, ayudas y señales de estafa.',
-    resumen: 'Contrato, fianza, gastos, empadronamiento y las ayudas que existen para habitaciones.',
+    titulo: 'Alquilar una habitación: precios por ciudad y qué mirar antes de pagar',
+    tituloSeo: 'Precio de una habitación en 2026 y cómo alquilarla',
+    descripcion: 'Cuánto cuesta una habitación en tu ciudad según Fotocasa e idealista, y qué comprobar antes de alquilarla: contrato, fianza, gastos y ayudas.',
+    resumen: 'Precio medio por ciudad y distrito, contrato, fianza, gastos y las ayudas que existen para habitaciones.',
     fecha: '2026-10-23',
   },
   {

@@ -91,10 +91,29 @@ function iniciar(raiz: HTMLElement) {
     cifra.parentElement!.hidden = false;
 
     if (f.operacion === 'habitacion') {
-      titulo.textContent = `Habitaciones en ${nombre}`;
-      cifra.parentElement!.hidden = true;
-      detalle.textContent = `No hay estadística oficial del precio de las habitaciones, así que aquí no te damos una cifra. Abre las habitaciones disponibles con tu presupuesto en Idealista y Fotocasa.${l.am ? ` Como referencia, un piso entero se alquila por una mediana de ${euros(l.am)} al mes.` : ''}`;
-      fuente.textContent = l.am ? 'Alquiler mediano de un piso: contratos de 2024 declarados a Hacienda (SERPAVI, Ministerio de Vivienda).' : '';
+      titulo.textContent = `Habitaciones en ${nombre}${max ? ` hasta ${euros(max)} al mes` : ''}`;
+      const ref = l.h[0];
+      const ccaa = ref && ref[2] === 0;
+      if (ref) {
+        cifra.textContent = euros(ref[1]);
+        cifraTexto.textContent = ccaa
+          ? `piden de media los anuncios de habitaciones en la comunidad, según ${ref[0]}`
+          : `piden de media los anuncios de habitaciones aquí, según ${ref[0]}`;
+      } else cifra.parentElement!.hidden = true;
+      const partes: string[] = [];
+      if (l.h.length > 1) partes.push(`Según ${l.h[1][0]}, ${euros(l.h[1][1])} al mes.`);
+      if (ccaa) partes.push(`No hay cifra propia para ${nombre}: es la media de toda la comunidad autónoma.`);
+      if (max && ref) {
+        if (max < ref[1] * 0.8) partes.push('Tu presupuesto está bastante por debajo de la media: busca en barrios más alejados o amplía el tope.');
+        else if (max < ref[1]) partes.push('Tu presupuesto está algo por debajo de la media: hay opciones, pero menos.');
+        else partes.push('Tu presupuesto llega a la media de los anuncios.');
+      }
+      if (l.am) partes.push(`Un piso entero se alquila por una mediana de ${euros(l.am)} al mes.`);
+      partes.push('Abre las habitaciones disponibles con tu presupuesto en Idealista y Fotocasa.');
+      detalle.textContent = partes.join(' ');
+      fuente.textContent = ref
+        ? `Habitaciones: informes de Fotocasa (julio de 2026) e idealista (2.º trimestre de 2026), con los precios que piden los anuncios.${l.am ? ' Piso entero: contratos de 2024 declarados a Hacienda (SERPAVI).' : ''}`
+        : 'Alquiler mediano de un piso: contratos de 2024 declarados a Hacienda (SERPAVI, Ministerio de Vivienda).';
     } else if (f.operacion === 'alquiler') {
       titulo.textContent = `Alquilar en ${nombre}${max ? ` con ${euros(max)} al mes` : ''}`;
       if (max && l.am2) {

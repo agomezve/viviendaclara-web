@@ -7,6 +7,7 @@ import fuentesJson from '../data/fuentes.json';
 import euriborJson from '../data/euribor.json';
 import portalesJson from '../data/portales.json';
 import impuestosJson from '../data/impuestos.json';
+import habitacionesJson from '../data/habitaciones.json';
 import type { ReglaITP } from './calculos';
 
 export interface Alquiler {
@@ -140,6 +141,7 @@ export function indiceBuscador() {
       r: m.rentaHogar,
       id: u.idealista,
       fc: u.fotocasa,
+      h: precioHabitacion(m.ine, m.ccaa).map((x) => [x.fuente, x.mes, x.ambito === 'municipio' ? 1 : 0] as [string, number, number]),
     };
   });
 }
@@ -163,8 +165,59 @@ export function indiceProvincias() {
       sup: p.alquiler?.superficie ?? null,
       id: u.idealista,
       fc: u.fotocasa,
+      h: precioHabitacion(null, p.ccaa).map((x) => [x.fuente, x.mes, 0] as [string, number, number]),
     };
   });
 }
 
 export type EntradaProvincia = ReturnType<typeof indiceProvincias>[number];
+
+// ─── Precio de las habitaciones (informes de los portales) ─────────────────
+
+export const HABITACIONES = habitacionesJson as unknown as {
+  revisado: string;
+  fotocasa: {
+    fuente: string;
+    estudio: string;
+    periodo: string;
+    periodoAnterior: string;
+    publicado: string;
+    url: string;
+    pdf: string;
+    nota: string;
+    espana: { mes: number; anterior: number; variacion: number };
+    ccaa: Record<string, { mes: number; anterior: number; variacion: number }>;
+    municipios: Record<string, { nombre: string; slug: string; mes: number; anterior: number | null; variacion: number | null }>;
+    otros: { nombre: string; provincia: string; mes: number; anterior: number | null; variacion: number | null }[];
+    distritos: Record<'madrid' | 'barcelona', { nombre: string; mes: number; anterior: number; variacion: number }[]>;
+  };
+  idealista: {
+    fuente: string;
+    periodo: string;
+    publicado: string;
+    url: string;
+    espana: { mes: number; variacion: number };
+    municipios: Record<string, { nombre: string; slug: string; mes: number }>;
+  };
+};
+
+export interface PrecioHabitacion {
+  fuente: 'Fotocasa' | 'idealista';
+  ambito: 'municipio' | 'comunidad';
+  mes: number;
+  periodo: string;
+  url: string;
+}
+
+/** Precio de una habitación según los informes: el del municipio si sale, si no el de la comunidad (solo Fotocasa lo da). */
+export function precioHabitacion(ine: string | null, ccaa: string): PrecioHabitacion[] {
+  const fc = HABITACIONES.fotocasa;
+  const id = HABITACIONES.idealista;
+  const r: PrecioHabitacion[] = [];
+  const fm = ine ? fc.municipios[ine] : undefined;
+  if (fm) r.push({ fuente: 'Fotocasa', ambito: 'municipio', mes: fm.mes, periodo: fc.periodo, url: fc.url });
+  const im = ine ? id.municipios[ine] : undefined;
+  if (im) r.push({ fuente: 'idealista', ambito: 'municipio', mes: im.mes, periodo: id.periodo, url: id.url });
+  if (!r.length && fc.ccaa[ccaa]) r.push({ fuente: 'Fotocasa', ambito: 'comunidad', mes: fc.ccaa[ccaa].mes, periodo: fc.periodo, url: fc.url });
+  return r;
+}

@@ -4,6 +4,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CabeceraPagina from '../../components/CabeceraPagina.astro';
 import BotonesPortales from '../../components/BotonesPortales.astro';
+import PrecioHabitaciones from '../../components/PrecioHabitaciones.astro';
 import Herramientas from '../../components/Herramientas.astro';
 import AdSlot from '../../components/AdSlot.astro';
 import Faq from '../../components/Faq.astro';
@@ -157,8 +158,10 @@ const preguntas = [
     <section class="tarjeta" aria-labelledby="titulo-habitaciones">
       <h2 id="titulo-habitaciones" class="text-xl font-bold text-slate-900">Habitaciones en alquiler en {m.nombre}</h2>
       <p class="mt-2 text-slate-600">
-        ¿Buscas una habitación en un piso compartido? Ábrelas ya filtradas por precio en los portales. Elige tu tope:
+        ¿Buscas una habitación en un piso compartido? Esto es lo que piden de media los anuncios, según los informes de los portales:
       </p>
+      <PrecioHabitaciones ccaa={m.ccaa} ine={m.ine} />
+      <p class="mt-5 text-slate-600">Ábrelas ya filtradas por precio en Idealista y Fotocasa. Elige tu tope:</p>
       <div class="mt-4 grid gap-5 sm:grid-cols-3">
         {[300, 400, 500].map((tope) => (
           <div>

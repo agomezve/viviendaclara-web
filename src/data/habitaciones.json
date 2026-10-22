@@ -1,0 +1,1040 @@
+{
+ "_nota": "Precios de habitaciones copiados de los informes publicados por los portales (no los calculamos nosotros). Revisar cuando salga uno nuevo.",
+ "revisado": "2026-10-23",
+ "fotocasa": {
+  "fuente": "Fotocasa",
+  "estudio": "Viviendas compartidas en España en 2026",
+  "periodo": "julio de 2026",
+  "periodoAnterior": "julio de 2025",
+  "publicado": "2026-09-03",
+  "url": "https://prensa.fotocasa.es/el-precio-de-una-habitacion-en-espana-cae-un-11-en-un-ano/",
+  "pdf": "https://s36360.pcdn.co/wp-content/uploads/2026/09/NdP-Espana-Pisos-Compartidos-2026.pdf",
+  "nota": "Precio medio que piden los anuncios de habitaciones del Índice Inmobiliario Fotocasa en julio.",
+  "espana": {
+   "nombre": "España",
+   "mes": 505,
+   "anterior": 510,
+   "variacion": -1.1
+  },
+  "ccaa": {
+   "04": {
+    "mes": 622,
+    "anterior": 558,
+    "variacion": 11.5
+   },
+   "06": {
+    "mes": 407,
+    "anterior": 366,
+    "variacion": 11.3
+   },
+   "02": {
+    "mes": 393,
+    "anterior": 360,
+    "variacion": 9.3
+   },
+   "05": {
+    "mes": 468,
+    "anterior": 432,
+    "variacion": 8.5
+   },
+   "14": {
+    "mes": 337,
+    "anterior": 314,
+    "variacion": 7.5
+   },
+   "08": {
+    "mes": 307,
+    "anterior": 289,
+    "variacion": 6.2
+   },
+   "03": {
+    "mes": 336,
+    "anterior": 323,
+    "variacion": 4.1
+   },
+   "07": {
+    "mes": 329,
+    "anterior": 318,
+    "variacion": 3.5
+   },
+   "11": {
+    "mes": 260,
+    "anterior": 251,
+    "variacion": 3.4
+   },
+   "13": {
+    "mes": 605,
+    "anterior": 585,
+    "variacion": 3.4
+   },
+   "15": {
+    "mes": 479,
+    "anterior": 467,
+    "variacion": 2.5
+   },
+   "10": {
+    "mes": 440,
+    "anterior": 430,
+    "variacion": 2.3
+   },
+   "12": {
+    "mes": 341,
+    "anterior": 335,
+    "variacion": 1.8
+   },
+   "09": {
+    "mes": 611,
+    "anterior": 618,
+    "variacion": -1.1
+   },
+   "17": {
+    "mes": 333,
+    "anterior": 338,
+    "variacion": -1.3
+   },
+   "16": {
+    "mes": 574,
+    "anterior": 583,
+    "variacion": -1.6
+   },
+   "01": {
+    "mes": 373,
+    "anterior": 384,
+    "variacion": -2.8
+   }
+  },
+  "municipios": {
+   "46190": {
+    "nombre": "Paterna",
+    "mes": 500,
+    "anterior": 420,
+    "variacion": 19.0,
+    "slug": "paterna"
+   },
+   "06015": {
+    "nombre": "Badajoz",
+    "mes": 291,
+    "anterior": 245,
+    "variacion": 18.5,
+    "slug": "badajoz"
+   },
+   "10037": {
+    "nombre": "Cáceres",
+    "mes": 283,
+    "anterior": 240,
+    "variacion": 17.9,
+    "slug": "caceres"
+   },
+   "28074": {
+    "nombre": "Leganés",
+    "mes": 537,
+    "anterior": 456,
+    "variacion": 17.9,
+    "slug": "leganes"
+   },
+   "03009": {
+    "nombre": "Alcoy",
+    "mes": 268,
+    "anterior": 231,
+    "variacion": 16.1,
+    "slug": "alcoy"
+   },
+   "07040": {
+    "nombre": "Palma",
+    "mes": 653,
+    "anterior": 574,
+    "variacion": 13.7,
+    "slug": "palma"
+   },
+   "28181": {
+    "nombre": "Villaviciosa de Odón",
+    "mes": 629,
+    "anterior": 556,
+    "variacion": 13.1,
+    "slug": "villaviciosa-de-odon"
+   },
+   "21041": {
+    "nombre": "Huelva",
+    "mes": 326,
+    "anterior": 290,
+    "variacion": 12.3,
+    "slug": "huelva"
+   },
+   "50297": {
+    "nombre": "Zaragoza",
+    "mes": 403,
+    "anterior": 362,
+    "variacion": 11.2,
+    "slug": "zaragoza"
+   },
+   "08187": {
+    "nombre": "Sabadell",
+    "mes": 474,
+    "anterior": 429,
+    "variacion": 10.5,
+    "slug": "sabadell"
+   },
+   "09059": {
+    "nombre": "Burgos",
+    "mes": 362,
+    "anterior": 330,
+    "variacion": 9.6,
+    "slug": "burgos"
+   },
+   "45168": {
+    "nombre": "Toledo",
+    "mes": 384,
+    "anterior": 351,
+    "variacion": 9.6,
+    "slug": "toledo"
+   },
+   "30030": {
+    "nombre": "Murcia",
+    "mes": 344,
+    "anterior": 315,
+    "variacion": 9.0,
+    "slug": "murcia"
+   },
+   "11020": {
+    "nombre": "Jerez de la Frontera",
+    "mes": 311,
+    "anterior": 289,
+    "variacion": 7.7,
+    "slug": "jerez-de-la-frontera"
+   },
+   "08279": {
+    "nombre": "Terrassa",
+    "mes": 456,
+    "anterior": 425,
+    "variacion": 7.4,
+    "slug": "terrassa"
+   },
+   "25120": {
+    "nombre": "Lleida",
+    "mes": 348,
+    "anterior": 326,
+    "variacion": 7.0,
+    "slug": "lleida"
+   },
+   "37274": {
+    "nombre": "Salamanca",
+    "mes": 321,
+    "anterior": 301,
+    "variacion": 6.9,
+    "slug": "salamanca"
+   },
+   "03065": {
+    "nombre": "Elche",
+    "mes": 311,
+    "anterior": 291,
+    "variacion": 6.7,
+    "slug": "elche"
+   },
+   "39075": {
+    "nombre": "Santander",
+    "mes": 400,
+    "anterior": 376,
+    "variacion": 6.6,
+    "slug": "santander"
+   },
+   "28006": {
+    "nombre": "Alcobendas",
+    "mes": 483,
+    "anterior": 453,
+    "variacion": 6.6,
+    "slug": "alcobendas"
+   },
+   "11012": {
+    "nombre": "Cádiz",
+    "mes": 476,
+    "anterior": 447,
+    "variacion": 6.5,
+    "slug": "cadiz"
+   },
+   "35016": {
+    "nombre": "Las Palmas de Gran Canaria",
+    "mes": 460,
+    "anterior": 432,
+    "variacion": 6.4,
+    "slug": "las-palmas-de-gran-canaria"
+   },
+   "33044": {
+    "nombre": "Oviedo",
+    "mes": 337,
+    "anterior": 317,
+    "variacion": 6.3,
+    "slug": "oviedo"
+   },
+   "02003": {
+    "nombre": "Albacete",
+    "mes": 312,
+    "anterior": 294,
+    "variacion": 6.2,
+    "slug": "albacete"
+   },
+   "38038": {
+    "nombre": "Santa Cruz de Tenerife",
+    "mes": 500,
+    "anterior": 472,
+    "variacion": 6.0,
+    "slug": "santa-cruz-de-tenerife"
+   },
+   "46244": {
+    "nombre": "Torrent",
+    "mes": 384,
+    "anterior": 363,
+    "variacion": 6.0,
+    "slug": "torrent"
+   },
+   "45165": {
+    "nombre": "Talavera de la Reina",
+    "mes": 283,
+    "anterior": 268,
+    "variacion": 5.8,
+    "slug": "talavera-de-la-reina"
+   },
+   "14021": {
+    "nombre": "Córdoba",
+    "mes": 291,
+    "anterior": 275,
+    "variacion": 5.8,
+    "slug": "cordoba"
+   },
+   "15030": {
+    "nombre": "A Coruña",
+    "mes": 355,
+    "anterior": 339,
+    "variacion": 4.6,
+    "slug": "a-coruna"
+   },
+   "28007": {
+    "nombre": "Alcorcón",
+    "mes": 437,
+    "anterior": 418,
+    "variacion": 4.4,
+    "slug": "alcorcon"
+   },
+   "47186": {
+    "nombre": "Valladolid",
+    "mes": 357,
+    "anterior": 342,
+    "variacion": 4.3,
+    "slug": "valladolid"
+   },
+   "28065": {
+    "nombre": "Getafe",
+    "mes": 523,
+    "anterior": 501,
+    "variacion": 4.3,
+    "slug": "getafe"
+   },
+   "16078": {
+    "nombre": "Cuenca",
+    "mes": 298,
+    "anterior": 286,
+    "variacion": 4.2,
+    "slug": "cuenca"
+   },
+   "28079": {
+    "nombre": "Madrid",
+    "mes": 629,
+    "anterior": 604,
+    "variacion": 4.1,
+    "slug": "madrid"
+   },
+   "43123": {
+    "nombre": "Reus",
+    "mes": 382,
+    "anterior": 368,
+    "variacion": 3.8,
+    "slug": "reus"
+   },
+   "08101": {
+    "nombre": "L'Hospitalet de Llobregat",
+    "mes": 575,
+    "anterior": 555,
+    "variacion": 3.5,
+    "slug": "l-hospitalet-de-llobregat"
+   },
+   "03014": {
+    "nombre": "Alicante",
+    "mes": 427,
+    "anterior": 413,
+    "variacion": 3.4,
+    "slug": "alicante"
+   },
+   "36057": {
+    "nombre": "Vigo",
+    "mes": 374,
+    "anterior": 362,
+    "variacion": 3.3,
+    "slug": "vigo"
+   },
+   "28058": {
+    "nombre": "Fuenlabrada",
+    "mes": 439,
+    "anterior": 427,
+    "variacion": 2.8,
+    "slug": "fuenlabrada"
+   },
+   "32054": {
+    "nombre": "Ourense",
+    "mes": 310,
+    "anterior": 302,
+    "variacion": 2.6,
+    "slug": "ourense"
+   },
+   "15078": {
+    "nombre": "Santiago de Compostela",
+    "mes": 353,
+    "anterior": 345,
+    "variacion": 2.2,
+    "slug": "santiago-de-compostela"
+   },
+   "46235": {
+    "nombre": "Sueca",
+    "mes": 398,
+    "anterior": 389,
+    "variacion": 2.2,
+    "slug": "sueca"
+   },
+   "05019": {
+    "nombre": "Ávila",
+    "mes": 332,
+    "anterior": 325,
+    "variacion": 2.1,
+    "slug": "avila"
+   },
+   "46250": {
+    "nombre": "Valencia",
+    "mes": 467,
+    "anterior": 458,
+    "variacion": 1.9,
+    "slug": "valencia"
+   },
+   "31201": {
+    "nombre": "Pamplona",
+    "mes": 494,
+    "anterior": 487,
+    "variacion": 1.6,
+    "slug": "pamplona"
+   },
+   "28092": {
+    "nombre": "Móstoles",
+    "mes": 442,
+    "anterior": 436,
+    "variacion": 1.6,
+    "slug": "mostoles"
+   },
+   "30016": {
+    "nombre": "Cartagena",
+    "mes": 326,
+    "anterior": 321,
+    "variacion": 1.6,
+    "slug": "cartagena"
+   },
+   "28005": {
+    "nombre": "Alcalá de Henares",
+    "mes": 403,
+    "anterior": 397,
+    "variacion": 1.4,
+    "slug": "alcala-de-henares"
+   },
+   "18087": {
+    "nombre": "Granada",
+    "mes": 343,
+    "anterior": 339,
+    "variacion": 1.3,
+    "slug": "granada"
+   },
+   "29067": {
+    "nombre": "Málaga",
+    "mes": 513,
+    "anterior": 507,
+    "variacion": 1.2,
+    "slug": "malaga"
+   },
+   "12040": {
+    "nombre": "Castellón de la Plana",
+    "mes": 312,
+    "anterior": 308,
+    "variacion": 1.1,
+    "slug": "castellon-de-la-plana"
+   },
+   "24089": {
+    "nombre": "León",
+    "mes": 308,
+    "anterior": 305,
+    "variacion": 0.9,
+    "slug": "leon"
+   },
+   "04013": {
+    "nombre": "Almería",
+    "mes": 324,
+    "anterior": 324,
+    "variacion": 0.0,
+    "slug": "almeria"
+   },
+   "08205": {
+    "nombre": "Sant Cugat del Vallès",
+    "mes": 706,
+    "anterior": 708,
+    "variacion": -0.3,
+    "slug": "sant-cugat-del-valles"
+   },
+   "08015": {
+    "nombre": "Badalona",
+    "mes": 463,
+    "anterior": 465,
+    "variacion": -0.3,
+    "slug": "badalona"
+   },
+   "26089": {
+    "nombre": "Logroño",
+    "mes": 339,
+    "anterior": 342,
+    "variacion": -0.7,
+    "slug": "logrono"
+   },
+   "46078": {
+    "nombre": "Burjassot",
+    "mes": 414,
+    "anterior": 419,
+    "variacion": -1.2,
+    "slug": "burjassot"
+   },
+   "08019": {
+    "nombre": "Barcelona",
+    "mes": 632,
+    "anterior": 643,
+    "variacion": -1.7,
+    "slug": "barcelona"
+   },
+   "08266": {
+    "nombre": "Cerdanyola del Vallès",
+    "mes": 503,
+    "anterior": 513,
+    "variacion": -1.8,
+    "slug": "cerdanyola-del-valles"
+   },
+   "01059": {
+    "nombre": "Vitoria-Gasteiz",
+    "mes": 408,
+    "anterior": 421,
+    "variacion": -3.3,
+    "slug": "vitoria-gasteiz"
+   },
+   "46220": {
+    "nombre": "Sagunto",
+    "mes": 414,
+    "anterior": 429,
+    "variacion": -3.6,
+    "slug": "sagunto"
+   },
+   "48020": {
+    "nombre": "Bilbao",
+    "mes": 617,
+    "anterior": 646,
+    "variacion": -4.6,
+    "slug": "bilbao"
+   },
+   "03122": {
+    "nombre": "San Vicente del Raspeig",
+    "mes": 382,
+    "anterior": 404,
+    "variacion": -5.5,
+    "slug": "san-vicente-del-raspeig"
+   },
+   "23050": {
+    "nombre": "Jaén",
+    "mes": 265,
+    "anterior": 281,
+    "variacion": -5.8,
+    "slug": "jaen"
+   },
+   "41091": {
+    "nombre": "Sevilla",
+    "mes": 431,
+    "anterior": 459,
+    "variacion": -5.9,
+    "slug": "sevilla"
+   },
+   "24115": {
+    "nombre": "Ponferrada",
+    "mes": 238,
+    "anterior": 260,
+    "variacion": -8.6,
+    "slug": "ponferrada"
+   },
+   "23055": {
+    "nombre": "Linares",
+    "mes": 255,
+    "anterior": null,
+    "variacion": null,
+    "slug": "linares"
+   },
+   "29069": {
+    "nombre": "Marbella",
+    "mes": 634,
+    "anterior": null,
+    "variacion": null,
+    "slug": "marbella"
+   },
+   "41038": {
+    "nombre": "Dos Hermanas",
+    "mes": 353,
+    "anterior": null,
+    "variacion": null,
+    "slug": "dos-hermanas"
+   },
+   "38023": {
+    "nombre": "San Cristóbal de La Laguna",
+    "mes": 436,
+    "anterior": null,
+    "variacion": null,
+    "slug": "san-cristobal-de-la-laguna"
+   },
+   "40194": {
+    "nombre": "Segovia",
+    "mes": 490,
+    "anterior": null,
+    "variacion": null,
+    "slug": "segovia"
+   },
+   "13034": {
+    "nombre": "Ciudad Real",
+    "mes": 309,
+    "anterior": null,
+    "variacion": null,
+    "slug": "ciudad-real"
+   },
+   "08169": {
+    "nombre": "El Prat de Llobregat",
+    "mes": 490,
+    "anterior": null,
+    "variacion": null,
+    "slug": "el-prat-de-llobregat"
+   },
+   "43148": {
+    "nombre": "Tarragona",
+    "mes": 371,
+    "anterior": null,
+    "variacion": null,
+    "slug": "tarragona"
+   },
+   "46131": {
+    "nombre": "Gandia",
+    "mes": 299,
+    "anterior": null,
+    "variacion": null,
+    "slug": "gandia"
+   },
+   "46169": {
+    "nombre": "Mislata",
+    "mes": 458,
+    "anterior": null,
+    "variacion": null,
+    "slug": "mislata"
+   },
+   "06083": {
+    "nombre": "Mérida",
+    "mes": 255,
+    "anterior": null,
+    "variacion": null,
+    "slug": "merida"
+   },
+   "10148": {
+    "nombre": "Plasencia",
+    "mes": 210,
+    "anterior": null,
+    "variacion": null,
+    "slug": "plasencia"
+   },
+   "15036": {
+    "nombre": "Ferrol",
+    "mes": 296,
+    "anterior": null,
+    "variacion": null,
+    "slug": "ferrol"
+   },
+   "27028": {
+    "nombre": "Lugo",
+    "mes": 328,
+    "anterior": null,
+    "variacion": null,
+    "slug": "lugo"
+   },
+   "36038": {
+    "nombre": "Pontevedra",
+    "mes": 327,
+    "anterior": null,
+    "variacion": null,
+    "slug": "pontevedra"
+   },
+   "28106": {
+    "nombre": "Parla",
+    "mes": 430,
+    "anterior": null,
+    "variacion": null,
+    "slug": "parla"
+   },
+   "28115": {
+    "nombre": "Pozuelo de Alarcón",
+    "mes": 587,
+    "anterior": null,
+    "variacion": null,
+    "slug": "pozuelo-de-alarcon"
+   },
+   "28134": {
+    "nombre": "San Sebastián de los Reyes",
+    "mes": 515,
+    "anterior": null,
+    "variacion": null,
+    "slug": "san-sebastian-de-los-reyes"
+   },
+   "28148": {
+    "nombre": "Torrejón de Ardoz",
+    "mes": 476,
+    "anterior": null,
+    "variacion": null,
+    "slug": "torrejon-de-ardoz"
+   },
+   "20069": {
+    "nombre": "Donostia",
+    "mes": 584,
+    "anterior": null,
+    "variacion": null,
+    "slug": "donostia"
+   }
+  },
+  "otros": [
+   {
+    "nombre": "Moncada",
+    "mes": 456,
+    "anterior": 435,
+    "variacion": 4.9,
+    "provincia": "Valencia"
+   },
+   {
+    "nombre": "Santa María de Guía de Gran Canaria",
+    "mes": 376,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Las Palmas"
+   },
+   {
+    "nombre": "Sant Joan d'Alacant",
+    "mes": 394,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Alicante"
+   },
+   {
+    "nombre": "Canals",
+    "mes": 354,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Valencia"
+   },
+   {
+    "nombre": "L'Alcúdia de Crespins",
+    "mes": 369,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Valencia"
+   },
+   {
+    "nombre": "Requena",
+    "mes": 374,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Valencia"
+   },
+   {
+    "nombre": "Villanueva de la Cañada",
+    "mes": 667,
+    "anterior": null,
+    "variacion": null,
+    "provincia": "Madrid"
+   }
+  ],
+  "distritos": {
+   "madrid": [
+    {
+     "nombre": "Villaverde",
+     "mes": 480,
+     "anterior": 420,
+     "variacion": 14.3
+    },
+    {
+     "nombre": "Hortaleza",
+     "mes": 617,
+     "anterior": 543,
+     "variacion": 13.5
+    },
+    {
+     "nombre": "Usera",
+     "mes": 520,
+     "anterior": 486,
+     "variacion": 7.0
+    },
+    {
+     "nombre": "Chamartín",
+     "mes": 714,
+     "anterior": 672,
+     "variacion": 6.2
+    },
+    {
+     "nombre": "Puente de Vallecas",
+     "mes": 493,
+     "anterior": 465,
+     "variacion": 6.0
+    },
+    {
+     "nombre": "Latina",
+     "mes": 567,
+     "anterior": 535,
+     "variacion": 6.0
+    },
+    {
+     "nombre": "Arganzuela",
+     "mes": 626,
+     "anterior": 592,
+     "variacion": 5.9
+    },
+    {
+     "nombre": "Chamberí",
+     "mes": 693,
+     "anterior": 658,
+     "variacion": 5.3
+    },
+    {
+     "nombre": "Salamanca",
+     "mes": 700,
+     "anterior": 670,
+     "variacion": 4.4
+    },
+    {
+     "nombre": "Centro",
+     "mes": 663,
+     "anterior": 651,
+     "variacion": 1.8
+    },
+    {
+     "nombre": "Moncloa-Aravaca",
+     "mes": 661,
+     "anterior": 650,
+     "variacion": 1.8
+    },
+    {
+     "nombre": "Retiro",
+     "mes": 677,
+     "anterior": 667,
+     "variacion": 1.4
+    },
+    {
+     "nombre": "Tetuán",
+     "mes": 660,
+     "anterior": 656,
+     "variacion": 0.6
+    },
+    {
+     "nombre": "Fuencarral-El Pardo",
+     "mes": 597,
+     "anterior": 595,
+     "variacion": 0.3
+    },
+    {
+     "nombre": "Villa de Vallecas",
+     "mes": 507,
+     "anterior": 506,
+     "variacion": 0.2
+    },
+    {
+     "nombre": "Carabanchel",
+     "mes": 506,
+     "anterior": 507,
+     "variacion": -0.2
+    },
+    {
+     "nombre": "Moratalaz",
+     "mes": 475,
+     "anterior": 478,
+     "variacion": -0.6
+    },
+    {
+     "nombre": "Ciudad Lineal",
+     "mes": 566,
+     "anterior": 570,
+     "variacion": -0.8
+    },
+    {
+     "nombre": "Vicálvaro",
+     "mes": 483,
+     "anterior": 490,
+     "variacion": -1.3
+    },
+    {
+     "nombre": "San Blas",
+     "mes": 499,
+     "anterior": 550,
+     "variacion": -9.4
+    }
+   ],
+   "barcelona": [
+    {
+     "nombre": "Ciutat Vella",
+     "mes": 611,
+     "anterior": 643,
+     "variacion": -5.0
+    },
+    {
+     "nombre": "Sants-Montjuïc",
+     "mes": 615,
+     "anterior": 635,
+     "variacion": -3.1
+    },
+    {
+     "nombre": "Horta-Guinardó",
+     "mes": 581,
+     "anterior": 593,
+     "variacion": -2.0
+    },
+    {
+     "nombre": "Sarrià-Sant Gervasi",
+     "mes": 675,
+     "anterior": 685,
+     "variacion": -1.4
+    },
+    {
+     "nombre": "Sant Martí",
+     "mes": 601,
+     "anterior": 609,
+     "variacion": -1.3
+    },
+    {
+     "nombre": "Les Corts",
+     "mes": 609,
+     "anterior": 614,
+     "variacion": -0.8
+    },
+    {
+     "nombre": "Gràcia",
+     "mes": 633,
+     "anterior": 637,
+     "variacion": -0.7
+    },
+    {
+     "nombre": "Eixample",
+     "mes": 658,
+     "anterior": 654,
+     "variacion": 0.6
+    },
+    {
+     "nombre": "Nou Barris",
+     "mes": 576,
+     "anterior": 556,
+     "variacion": 3.6
+    },
+    {
+     "nombre": "Sant Andreu",
+     "mes": 602,
+     "anterior": 571,
+     "variacion": 5.3
+    }
+   ]
+  }
+ },
+ "idealista": {
+  "fuente": "idealista",
+  "periodo": "2.º trimestre de 2026",
+  "publicado": "2026-08-24",
+  "url": "https://www.idealista.com/news/inmobiliario/vivienda/2026/08/24/910850-la-oferta-de-habitaciones-sigue-creciendo-entre-abril-y-junio-12-su-precio-apenas",
+  "espana": {
+   "mes": 425,
+   "variacion": 1
+  },
+  "municipios": {
+   "08019": {
+    "nombre": "Barcelona",
+    "mes": 600,
+    "slug": "barcelona"
+   },
+   "07040": {
+    "nombre": "Palma",
+    "mes": 550,
+    "slug": "palma"
+   },
+   "28079": {
+    "nombre": "Madrid",
+    "mes": 550,
+    "slug": "madrid"
+   },
+   "20069": {
+    "nombre": "Donostia",
+    "mes": 500,
+    "slug": "donostia"
+   },
+   "48020": {
+    "nombre": "Bilbao",
+    "mes": 450,
+    "slug": "bilbao"
+   },
+   "29067": {
+    "nombre": "Málaga",
+    "mes": 450,
+    "slug": "malaga"
+   },
+   "31201": {
+    "nombre": "Pamplona",
+    "mes": 440,
+    "slug": "pamplona"
+   },
+   "38038": {
+    "nombre": "Santa Cruz de Tenerife",
+    "mes": 430,
+    "slug": "santa-cruz-de-tenerife"
+   },
+   "01059": {
+    "nombre": "Vitoria-Gasteiz",
+    "mes": 420,
+    "slug": "vitoria-gasteiz"
+   },
+   "51001": {
+    "nombre": "Ceuta",
+    "mes": 415,
+    "slug": "ceuta"
+   },
+   "35016": {
+    "nombre": "Las Palmas de Gran Canaria",
+    "mes": 407,
+    "slug": "las-palmas-de-gran-canaria"
+   },
+   "17079": {
+    "nombre": "Girona",
+    "mes": 407,
+    "slug": "girona"
+   },
+   "10037": {
+    "nombre": "Cáceres",
+    "mes": 260,
+    "slug": "caceres"
+   },
+   "13034": {
+    "nombre": "Ciudad Real",
+    "mes": 270,
+    "slug": "ciudad-real"
+   },
+   "23050": {
+    "nombre": "Jaén",
+    "mes": 250,
+    "slug": "jaen"
+   },
+   "06015": {
+    "nombre": "Badajoz",
+    "mes": 250,
+    "slug": "badajoz"
+   }
+  }
+ }
+}
