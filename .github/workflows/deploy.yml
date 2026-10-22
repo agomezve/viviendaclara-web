@@ -1,0 +1,53 @@
+# Ruta: .github/workflows/deploy.yml
+name: Deploy ViviendaClara
+
+on:
+  push:
+    branches: [ main ]
+  # Reconstruye la web cada lunes con el último Euríbor (scripts/euribor.mjs se ejecuta en "prebuild").
+  # GitHub desactiva los cron si el repositorio pasa 60 días sin actividad: reactívalo en la pestaña Actions.
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install, build, and upload site
+        uses: withastro/action@v3
+        with:
+          # Astro 7 requiere Node 22.22 o superior (ver "engines" en package.json).
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      # Avisa a IndexNow (Bing y otros buscadores) con las URL del sitemap ya publicado.
+      # Solo en los push y los lanzamientos manuales, no en la reconstrucción semanal.
+      # Si falla, solo deja un aviso: nunca rompe el despliegue.
+      - name: Checkout repository (IndexNow)
+        if: github.event_name != 'schedule'
+        uses: actions/checkout@v4
+      - name: Notify IndexNow
+        if: github.event_name != 'schedule'
+        continue-on-error: true
+        run: node scripts/indexnow.mjs

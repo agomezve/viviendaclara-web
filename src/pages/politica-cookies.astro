@@ -1,0 +1,213 @@
+---
+// Ruta: src/pages/politica-cookies.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import { SITE, OWNER, LEGAL_UPDATED, GA4_ID, isAnalyticsEnabled } from '../config/site';
+
+const title = 'Política de cookies';
+const toc = [
+  { id: 'que-son', title: 'Qué son las cookies' },
+  { id: 'tipos', title: 'Tipos de cookies' },
+  { id: 'tecnicas', title: 'Cookies técnicas' },
+  { id: 'analiticas', title: 'Cookies analíticas' },
+  { id: 'publicitarias', title: 'Cookies publicitarias: Google AdSense' },
+  { id: 'consentimiento', title: 'Cómo das, cambias o retiras tu consentimiento' },
+  { id: 'navegador', title: 'Configurar o eliminar cookies en tu navegador' },
+  { id: 'actualizaciones', title: 'Actualizaciones y contacto' },
+];
+
+const cookiesTecnicas = [
+  { nombre: 'FCCDCF', titular: 'Google (CMP)', finalidad: 'Guardar tus preferencias de consentimiento', duracion: 'Hasta 13 meses' },
+  { nombre: 'FCNEC', titular: 'Google (CMP)', finalidad: 'Registrar el estado del mensaje de consentimiento', duracion: 'Hasta 1 año' },
+];
+
+// Solo se listan si GA4_ID está relleno en src/config/site.ts.
+const usaAnalitica = isAnalyticsEnabled();
+const cookiesAnalitica = [
+  { nombre: '_ga', titular: 'Google Analytics', finalidad: 'Distinguir visitantes de forma anónima', duracion: '2 años' },
+  { nombre: `_ga_${GA4_ID.trim().replace(/^G-/, '')}`, titular: 'Google Analytics', finalidad: 'Mantener el estado de la sesión', duracion: '2 años' },
+];
+
+const cookiesPublicidad = [
+  { nombre: '__gads', titular: 'Google', finalidad: 'Mostrar anuncios, limitar su frecuencia y medir su rendimiento', duracion: '13 meses' },
+  { nombre: '__gpi', titular: 'Google', finalidad: 'Mostrar y medir anuncios en este sitio', duracion: '13 meses' },
+  { nombre: '__eoi', titular: 'Google', finalidad: 'Seguridad y prevención del fraude publicitario', duracion: '6 meses' },
+  { nombre: 'IDE', titular: 'Google (doubleclick.net)', finalidad: 'Mostrar anuncios personalizados según tu navegación', duracion: '13 meses' },
+  { nombre: 'test_cookie', titular: 'Google (doubleclick.net)', finalidad: 'Comprobar si el navegador admite cookies', duracion: '15 minutos' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Qué cookies usa ${SITE.name}: técnicas, analíticas y publicitarias de Google AdSense, cómo revocar el consentimiento y cómo configurarlas en tu navegador.`}
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle
+    title={title}
+    lead="Qué cookies se usan en este sitio, para qué sirven y cómo puedes controlarlas."
+    updated={LEGAL_UPDATED}
+    toc={toc}
+  >
+    <p>
+      Esta política se ha elaborado conforme al artículo 22.2 de la Ley 34/2002, de 11 de julio, de
+      Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), el RGPD y la
+      <a href="https://www.aepd.es/guias/guia-cookies.pdf" rel="noopener" target="_blank">Guía sobre el uso de las cookies de la Agencia Española de Protección de Datos</a>.
+    </p>
+
+    <h2 id="que-son">1. Qué son las cookies</h2>
+    <p>
+      Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar
+      información sobre tu visita. Esta política también se aplica a tecnologías similares, como el
+      almacenamiento local del navegador, los píxeles o los identificadores de dispositivo.
+    </p>
+
+    <h2 id="tipos">2. Tipos de cookies</h2>
+    <ul>
+      <li>
+        <strong>Según quién las gestiona:</strong> <em>propias</em>, gestionadas por {SITE.name}, o
+        <em>de terceros</em>, gestionadas por otra entidad, como Google.
+      </li>
+      <li>
+        <strong>Según su duración:</strong> <em>de sesión</em>, que se borran al cerrar el navegador,
+        o <em>persistentes</em>, que se conservan durante un tiempo determinado.
+      </li>
+      <li>
+        <strong>Según su finalidad:</strong> <em>técnicas</em> (necesarias para el funcionamiento),
+        <em>analíticas</em> (miden el uso del sitio) y <em>publicitarias</em> (sirven, miden o
+        personalizan anuncios).
+      </li>
+    </ul>
+    <p>
+      Las cookies técnicas están exentas de consentimiento. Las analíticas y publicitarias solo se
+      instalan si lo aceptas.
+    </p>
+
+    <h2 id="tecnicas">3. Cookies técnicas</h2>
+    <p>
+      {SITE.name} no instala cookies propias. El buscador y las calculadoras funcionan íntegramente en tu
+      navegador sin guardar ningún dato. La única excepción es la lista de comprobación de la página
+      «Estafas en el alquiler», que guarda las casillas que marcas en el almacenamiento local de tu
+      navegador (<code>viviendaclara-lista-estafas</code>) para que no las pierdas; no se envía a ningún
+      sitio y puedes borrarla cuando quieras. La única cookie técnica es la que utiliza la plataforma de
+      gestión del consentimiento (CMP) de Google para recordar tu elección:
+    </p>
+    <div class="overflow-x-auto">
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Titular</th><th>Finalidad</th><th>Duración</th></tr>
+        </thead>
+        <tbody>
+          {cookiesTecnicas.map((c) => (
+            <tr><td><code>{c.nombre}</code></td><td>{c.titular}</td><td>{c.finalidad}</td><td>{c.duracion}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="analiticas">4. Cookies analíticas</h2>
+    {usaAnalitica ? (
+      <>
+        <p>
+          Usamos <strong>Google Analytics 4</strong> (Google Ireland Limited) para medir de forma
+          agregada el uso del sitio. Funciona con el modo de consentimiento de Google: mientras no
+          aceptes la medición en el mensaje de consentimiento, todo permanece «denegado» y no se
+          instalan estas cookies.
+        </p>
+        <div class="overflow-x-auto">
+          <table>
+            <thead>
+              <tr><th>Cookie</th><th>Titular</th><th>Finalidad</th><th>Duración</th></tr>
+            </thead>
+            <tbody>
+              {cookiesAnalitica.map((c) => (
+                <tr><td><code>{c.nombre}</code></td><td>{c.titular}</td><td>{c.finalidad}</td><td>{c.duracion}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ) : (
+      <p>
+        Actualmente <strong>no utilizamos cookies analíticas</strong> ni herramientas de medición de
+        audiencia como Google Analytics. Si en el futuro las incorporamos, actualizaremos esta política
+        y solo se activarán con tu consentimiento previo.
+      </p>
+    )}
+
+    <h2 id="publicitarias">5. Cookies publicitarias: Google AdSense</h2>
+    <p>
+      Para financiar el sitio mostramos anuncios de <strong>Google AdSense</strong>, servicio
+      prestado por Google Ireland Limited. Con tu consentimiento, Google y sus socios publicitarios
+      certificados pueden instalar cookies para mostrar anuncios, limitar cuántas veces ves el mismo,
+      medir su rendimiento, prevenir el fraude y personalizarlos según tus visitas a este y otros
+      sitios web. Entre las cookies que Google puede utilizar figuran estas:
+    </p>
+    <div class="overflow-x-auto">
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Titular</th><th>Finalidad</th><th>Duración</th></tr>
+        </thead>
+        <tbody>
+          {cookiesPublicidad.map((c) => (
+            <tr><td><code>{c.nombre}</code></td><td>{c.titular}</td><td>{c.finalidad}</td><td>{c.duracion}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Google modifica periódicamente los nombres y la duración de sus cookies. La relación oficial y
+      actualizada está en
+      <a href="https://policies.google.com/technologies/cookies?hl=es" rel="noopener" target="_blank">Cómo utiliza Google las cookies</a>
+      y <a href="https://policies.google.com/technologies/ads?hl=es" rel="noopener" target="_blank">Publicidad</a>.
+      La lista de socios publicitarios aparece en el mensaje de consentimiento.
+    </p>
+    <p>
+      Si rechazas las cookies publicitarias, podrás seguir usando el sitio con normalidad. Google
+      puede mostrarte anuncios no personalizados o limitados, que no usan tu historial de navegación.
+    </p>
+
+    <h2 id="consentimiento">6. Cómo das, cambias o retiras tu consentimiento</h2>
+    <p>
+      Cuando visitas el sitio desde el Espacio Económico Europeo, el Reino Unido o Suiza, se muestra
+      un mensaje de consentimiento gestionado por la <strong>CMP certificada de Google</strong>,
+      integrada en el Marco de Transparencia y Consentimiento (TCF) de IAB Europe. Desde ese mensaje
+      puedes:
+    </p>
+    <ul>
+      <li>Aceptar todas las finalidades.</li>
+      <li>Rechazar todas las cookies no necesarias con la misma facilidad.</li>
+      <li>Gestionar las opciones por finalidad y por proveedor.</li>
+    </ul>
+    <p>Para <strong>cambiar o retirar tu consentimiento</strong> en cualquier momento:</p>
+    <ol>
+      <li>Usa el enlace o botón de privacidad que muestra el mensaje de consentimiento en el sitio.</li>
+      <li>O elimina las cookies de este sitio desde tu navegador; en tu siguiente visita volverá a aparecer el mensaje.</li>
+      <li>
+        También puedes desactivar la personalización de anuncios en tu cuenta de Google desde
+        <a href="https://myadcenter.google.com/?hl=es" rel="noopener" target="_blank">Mi Centro de Anuncios</a>
+        y la de otros proveedores en
+        <a href="https://www.youronlinechoices.com/es/" rel="noopener" target="_blank">Your Online Choices</a>.
+      </li>
+    </ol>
+    <p>Retirar el consentimiento no afecta a la licitud del tratamiento realizado antes de retirarlo.</p>
+
+    <h2 id="navegador">7. Configurar o eliminar cookies en tu navegador</h2>
+    <p>
+      Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador. Si
+      bloqueas todas, algunas funciones de los sitios web pueden dejar de funcionar.
+    </p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647?hl=es" rel="noopener" target="_blank">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" rel="noopener" target="_blank">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" rel="noopener" target="_blank">Safari (macOS)</a> y <a href="https://support.apple.com/es-es/105082" rel="noopener" target="_blank">Safari (iPhone y iPad)</a></li>
+      <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="noopener" target="_blank">Microsoft Edge</a></li>
+    </ul>
+
+    <h2 id="actualizaciones">8. Actualizaciones y contacto</h2>
+    <p>
+      Revisaremos esta política cuando cambien las cookies utilizadas o la normativa aplicable. Para
+      cualquier duda, escríbenos a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>. Puedes
+      consultar cómo tratamos tus datos en la <a href="/politica-privacidad">política de privacidad</a>.
+    </p>
+  </LegalArticle>
+</BaseLayout>

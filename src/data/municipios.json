@@ -1,0 +1,7958 @@
+[
+ {
+  "ine": "01059",
+  "nombre": "Vitoria-Gasteiz",
+  "slug": "vitoria-gasteiz",
+  "provincia": "01",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2680.9,
+   "m2Nueva": 2808.4,
+   "m2Usada": 2671.6,
+   "tasaciones": 69
+  },
+  "alquiler": {
+   "m2": 9.21,
+   "m2P25": 7.93,
+   "m2P75": 10.72,
+   "mes": 721,
+   "mesP25": 624,
+   "mesP75": 813,
+   "superficie": 79,
+   "viviendas": 9321
+  },
+  "rentaHogar": 44228,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 19.6
+ },
+ {
+  "ine": "02003",
+  "nombre": "Albacete",
+  "slug": "albacete",
+  "provincia": "02",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1803.7,
+   "m2Nueva": 2299.8,
+   "m2Usada": 1788.0,
+   "tasaciones": 92
+  },
+  "alquiler": {
+   "m2": 5.98,
+   "m2P25": 4.79,
+   "m2P75": 7.47,
+   "mes": 533,
+   "mesP25": 450,
+   "mesP75": 638,
+   "superficie": 92,
+   "viviendas": 9655
+  },
+  "rentaHogar": 39614,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "02009",
+  "nombre": "Almansa",
+  "slug": "almansa",
+  "provincia": "02",
+  "ccaa": "08",
+  "compra": {
+   "m2": 802.7,
+   "m2Nueva": null,
+   "m2Usada": 802.2,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 4.21,
+   "m2P25": 3.36,
+   "m2P75": 5.39,
+   "mes": 400,
+   "mesP25": 330,
+   "mesP75": 458,
+   "superficie": 100,
+   "viviendas": 702
+  },
+  "rentaHogar": 33060,
+  "esfuerzoCompraAnios": 1.9,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "02037",
+  "nombre": "Hellín",
+  "slug": "hellin",
+  "provincia": "02",
+  "ccaa": "08",
+  "compra": {
+   "m2": 779.5,
+   "m2Nueva": null,
+   "m2Usada": 779.2,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 3.54,
+   "m2P25": 2.8,
+   "m2P75": 4.6,
+   "mes": 350,
+   "mesP25": 290,
+   "mesP75": 400,
+   "superficie": 104,
+   "viviendas": 780
+  },
+  "rentaHogar": 30398,
+  "esfuerzoCompraAnios": 2.1,
+  "esfuerzoAlquilerPct": 13.8
+ },
+ {
+  "ine": "02081",
+  "nombre": "Villarrobledo",
+  "slug": "villarrobledo",
+  "provincia": "02",
+  "ccaa": "08",
+  "compra": {
+   "m2": 665.5,
+   "m2Nueva": null,
+   "m2Usada": 664.7,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 3.4,
+   "m2P25": 2.72,
+   "m2P75": 4.32,
+   "mes": 350,
+   "mesP25": 300,
+   "mesP75": 400,
+   "superficie": 112,
+   "viviendas": 520
+  },
+  "rentaHogar": 33794,
+  "esfuerzoCompraAnios": 1.6,
+  "esfuerzoAlquilerPct": 12.4
+ },
+ {
+  "ine": "03009",
+  "nombre": "Alcoy",
+  "slug": "alcoy",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1131.6,
+   "m2Nueva": null,
+   "m2Usada": 1130.7,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 4.49,
+   "m2P25": 3.52,
+   "m2P75": 5.72,
+   "mes": 397,
+   "mesP25": 320,
+   "mesP75": 465,
+   "superficie": 88,
+   "viviendas": 3022
+  },
+  "rentaHogar": 33012,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 14.4
+ },
+ {
+  "ine": "03014",
+  "nombre": "Alicante",
+  "slug": "alicante",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2279.2,
+   "m2Nueva": 2569.8,
+   "m2Usada": 2272.1,
+   "tasaciones": 48
+  },
+  "alquiler": {
+   "m2": 7.11,
+   "m2P25": 5.44,
+   "m2P75": 9.48,
+   "mes": 608,
+   "mesP25": 479,
+   "mesP75": 782,
+   "superficie": 89,
+   "viviendas": 19641
+  },
+  "rentaHogar": 36891,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 19.8
+ },
+ {
+  "ine": "03031",
+  "nombre": "Benidorm",
+  "slug": "benidorm",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 3216.5,
+   "m2Nueva": null,
+   "m2Usada": 3213.0,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 8.45,
+   "m2P25": 6.63,
+   "m2P75": 10.62,
+   "mes": 550,
+   "mesP25": 458,
+   "mesP75": 671,
+   "superficie": 67,
+   "viviendas": 6187
+  },
+  "rentaHogar": 31128,
+  "esfuerzoCompraAnios": 8.3,
+  "esfuerzoAlquilerPct": 21.2
+ },
+ {
+  "ine": "03047",
+  "nombre": "Calp",
+  "slug": "calp",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 3268.5,
+   "m2Nueva": null,
+   "m2Usada": 3258.1,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 7.24,
+   "m2P25": 5.37,
+   "m2P75": 9.34,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 685,
+   "superficie": 77,
+   "viviendas": 1455
+  },
+  "rentaHogar": 32801,
+  "esfuerzoCompraAnios": 8.0,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "03059",
+  "nombre": "Crevillent",
+  "slug": "crevillent",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1044.4,
+   "m2Nueva": null,
+   "m2Usada": 1043.9,
+   "tasaciones": 1
+  },
+  "alquiler": {
+   "m2": 3.9,
+   "m2P25": 3.12,
+   "m2P75": 5.09,
+   "mes": 383,
+   "mesP25": 300,
+   "mesP75": 450,
+   "superficie": 101,
+   "viviendas": 540
+  },
+  "rentaHogar": 30139,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "03063",
+  "nombre": "Dénia",
+  "slug": "denia",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2984.9,
+   "m2Nueva": null,
+   "m2Usada": 2988.5,
+   "tasaciones": 20
+  },
+  "alquiler": {
+   "m2": 6.65,
+   "m2P25": 5.0,
+   "m2P75": 8.83,
+   "mes": 561,
+   "mesP25": 450,
+   "mesP75": 700,
+   "superficie": 90,
+   "viviendas": 2673
+  },
+  "rentaHogar": 35278,
+  "esfuerzoCompraAnios": 6.8,
+  "esfuerzoAlquilerPct": 19.1
+ },
+ {
+  "ine": "03050",
+  "nombre": "El Campello",
+  "slug": "el-campello",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2836.1,
+   "m2Nueva": null,
+   "m2Usada": 2824.1,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 8.57,
+   "m2P25": 6.57,
+   "m2P75": 11.29,
+   "mes": 654,
+   "mesP25": 538,
+   "mesP75": 823,
+   "superficie": 83,
+   "viviendas": 1619
+  },
+  "rentaHogar": 36871,
+  "esfuerzoCompraAnios": 6.2,
+  "esfuerzoAlquilerPct": 21.3
+ },
+ {
+  "ine": "03065",
+  "nombre": "Elche",
+  "slug": "elche",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1635.1,
+   "m2Nueva": 2060.2,
+   "m2Usada": 1626.2,
+   "tasaciones": 80
+  },
+  "alquiler": {
+   "m2": 5.45,
+   "m2P25": 4.21,
+   "m2P75": 7.1,
+   "mes": 482,
+   "mesP25": 400,
+   "mesP75": 598,
+   "superficie": 93,
+   "viviendas": 9481
+  },
+  "rentaHogar": 33516,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "03066",
+  "nombre": "Elda",
+  "slug": "elda",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1013.1,
+   "m2Nueva": null,
+   "m2Usada": 1009.9,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.5,
+   "m2P25": 3.54,
+   "m2P75": 5.64,
+   "mes": 401,
+   "mesP25": 342,
+   "mesP75": 487,
+   "superficie": 92,
+   "viviendas": 1421
+  },
+  "rentaHogar": 29342,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 16.4
+ },
+ {
+  "ine": "03082",
+  "nombre": "Jávea",
+  "slug": "javea",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 3507.2,
+   "m2Nueva": 3942.0,
+   "m2Usada": 3489.4,
+   "tasaciones": 21
+  },
+  "alquiler": {
+   "m2": 7.14,
+   "m2P25": 5.01,
+   "m2P75": 9.44,
+   "mes": 647,
+   "mesP25": 500,
+   "mesP75": 848,
+   "superficie": 98,
+   "viviendas": 1390
+  },
+  "rentaHogar": 35946,
+  "esfuerzoCompraAnios": 7.8,
+  "esfuerzoAlquilerPct": 21.6
+ },
+ {
+  "ine": "03093",
+  "nombre": "Novelda",
+  "slug": "novelda",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1015.4,
+   "m2Nueva": null,
+   "m2Usada": 1015.9,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 3.92,
+   "m2P25": 3.08,
+   "m2P75": 4.7,
+   "mes": 400,
+   "mesP25": 345,
+   "mesP75": 475,
+   "superficie": 109,
+   "viviendas": 600
+  },
+  "rentaHogar": 33188,
+  "esfuerzoCompraAnios": 2.4,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "03099",
+  "nombre": "Orihuela",
+  "slug": "orihuela",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2079.9,
+   "m2Nueva": 3088.6,
+   "m2Usada": 2015.1,
+   "tasaciones": 42
+  },
+  "alquiler": {
+   "m2": 4.89,
+   "m2P25": 3.7,
+   "m2P75": 6.93,
+   "mes": 450,
+   "mesP25": 365,
+   "mesP75": 550,
+   "superficie": 95,
+   "viviendas": 1339
+  },
+  "rentaHogar": 31444,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 17.2
+ },
+ {
+  "ine": "03104",
+  "nombre": "Petrer",
+  "slug": "petrer",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1113.1,
+   "m2Nueva": null,
+   "m2Usada": 1112.4,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.43,
+   "m2P25": 3.61,
+   "m2P75": 5.54,
+   "mes": 406,
+   "mesP25": 341,
+   "mesP75": 485,
+   "superficie": 96,
+   "viviendas": 586
+  },
+  "rentaHogar": 31393,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 15.5
+ },
+ {
+  "ine": "03122",
+  "nombre": "San Vicente del Raspeig",
+  "slug": "san-vicente-del-raspeig",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1974.2,
+   "m2Nueva": null,
+   "m2Usada": 1970.8,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 6.44,
+   "m2P25": 5.19,
+   "m2P75": 8.0,
+   "mes": 575,
+   "mesP25": 469,
+   "mesP75": 696,
+   "superficie": 92,
+   "viviendas": 2755
+  },
+  "rentaHogar": 37574,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 18.4
+ },
+ {
+  "ine": "03121",
+  "nombre": "Santa Pola",
+  "slug": "santa-pola",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2613.9,
+   "m2Nueva": null,
+   "m2Usada": 2604.1,
+   "tasaciones": 18
+  },
+  "alquiler": {
+   "m2": 6.82,
+   "m2P25": 5.06,
+   "m2P75": 8.67,
+   "mes": 500,
+   "mesP25": 406,
+   "mesP75": 601,
+   "superficie": 78,
+   "viviendas": 1184
+  },
+  "rentaHogar": 31204,
+  "esfuerzoCompraAnios": 6.7,
+  "esfuerzoAlquilerPct": 19.2
+ },
+ {
+  "ine": "03133",
+  "nombre": "Torrevieja",
+  "slug": "torrevieja",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2254.0,
+   "m2Nueva": 2762.7,
+   "m2Usada": 2241.1,
+   "tasaciones": 60
+  },
+  "alquiler": {
+   "m2": 6.6,
+   "m2P25": 5.22,
+   "m2P75": 8.47,
+   "mes": 430,
+   "mesP25": 350,
+   "mesP75": 548,
+   "superficie": 64,
+   "viviendas": 3813
+  },
+  "rentaHogar": 25633,
+  "esfuerzoCompraAnios": 7.0,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "03139",
+  "nombre": "Villajoyosa",
+  "slug": "villajoyosa",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2222.1,
+   "m2Nueva": 2402.8,
+   "m2Usada": 2216.1,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 6.68,
+   "m2P25": 4.65,
+   "m2P75": 8.75,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 609,
+   "superficie": 80,
+   "viviendas": 2775
+  },
+  "rentaHogar": 32729,
+  "esfuerzoCompraAnios": 5.4,
+  "esfuerzoAlquilerPct": 18.3
+ },
+ {
+  "ine": "03140",
+  "nombre": "Villena",
+  "slug": "villena",
+  "provincia": "03",
+  "ccaa": "10",
+  "compra": {
+   "m2": 994.4,
+   "m2Nueva": null,
+   "m2Usada": 994.4,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 3.87,
+   "m2P25": 3.09,
+   "m2P75": 4.67,
+   "mes": 393,
+   "mesP25": 325,
+   "mesP75": 450,
+   "superficie": 104,
+   "viviendas": 1024
+  },
+  "rentaHogar": 31843,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 14.8
+ },
+ {
+  "ine": "04013",
+  "nombre": "Almería",
+  "slug": "almeria",
+  "provincia": "04",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1796.4,
+   "m2Nueva": 2397.6,
+   "m2Usada": 1769.2,
+   "tasaciones": 88
+  },
+  "alquiler": {
+   "m2": 6.77,
+   "m2P25": 5.3,
+   "m2P75": 8.48,
+   "mes": 549,
+   "mesP25": 425,
+   "mesP75": 660,
+   "superficie": 83,
+   "viviendas": 8031
+  },
+  "rentaHogar": 37081,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.8
+ },
+ {
+  "ine": "04902",
+  "nombre": "El Ejido",
+  "slug": "el-ejido",
+  "provincia": "04",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1371.6,
+   "m2Nueva": null,
+   "m2Usada": 1360.8,
+   "tasaciones": 20
+  },
+  "alquiler": {
+   "m2": 5.26,
+   "m2P25": 3.94,
+   "m2P75": 6.75,
+   "mes": 400,
+   "mesP25": 350,
+   "mesP75": 490,
+   "superficie": 78,
+   "viviendas": 2083
+  },
+  "rentaHogar": 31505,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "04066",
+  "nombre": "Níjar",
+  "slug": "nijar",
+  "provincia": "04",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1328.7,
+   "m2Nueva": null,
+   "m2Usada": 1311.0,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 4.14,
+   "m2P25": 3.03,
+   "m2P75": 6.67,
+   "mes": 399,
+   "mesP25": 300,
+   "mesP75": 505,
+   "superficie": 102,
+   "viviendas": 163
+  },
+  "rentaHogar": 29583,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 16.2
+ },
+ {
+  "ine": "04079",
+  "nombre": "Roquetas de Mar",
+  "slug": "roquetas-de-mar",
+  "provincia": "04",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1706.1,
+   "m2Nueva": 1717.2,
+   "m2Usada": 1706.0,
+   "tasaciones": 40
+  },
+  "alquiler": {
+   "m2": 6.06,
+   "m2P25": 4.81,
+   "m2P75": 7.54,
+   "mes": 450,
+   "mesP25": 362,
+   "mesP75": 550,
+   "superficie": 77,
+   "viviendas": 5062
+  },
+  "rentaHogar": 33751,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 16.0
+ },
+ {
+  "ine": "05019",
+  "nombre": "Ávila",
+  "slug": "avila",
+  "provincia": "05",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1637.1,
+   "m2Nueva": 1711.5,
+   "m2Usada": 1635.9,
+   "tasaciones": 37
+  },
+  "alquiler": {
+   "m2": 5.92,
+   "m2P25": 4.7,
+   "m2P75": 7.37,
+   "mes": 475,
+   "mesP25": 400,
+   "mesP75": 561,
+   "superficie": 86,
+   "viviendas": 4330
+  },
+  "rentaHogar": 37346,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "06011",
+  "nombre": "Almendralejo",
+  "slug": "almendralejo",
+  "provincia": "06",
+  "ccaa": "11",
+  "compra": {
+   "m2": 933.4,
+   "m2Nueva": null,
+   "m2Usada": 932.4,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 3.71,
+   "m2P25": 2.99,
+   "m2P75": 4.83,
+   "mes": 350,
+   "mesP25": 300,
+   "mesP75": 400,
+   "superficie": 103,
+   "viviendas": 828
+  },
+  "rentaHogar": 30260,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 13.9
+ },
+ {
+  "ine": "06015",
+  "nombre": "Badajoz",
+  "slug": "badajoz",
+  "provincia": "06",
+  "ccaa": "11",
+  "compra": {
+   "m2": 1580.4,
+   "m2Nueva": 1983.6,
+   "m2Usada": 1565.4,
+   "tasaciones": 85
+  },
+  "alquiler": {
+   "m2": 5.89,
+   "m2P25": 4.77,
+   "m2P75": 7.18,
+   "mes": 499,
+   "mesP25": 410,
+   "mesP75": 586,
+   "superficie": 88,
+   "viviendas": 8184
+  },
+  "rentaHogar": 36916,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 16.2
+ },
+ {
+  "ine": "06044",
+  "nombre": "Don Benito",
+  "slug": "don-benito",
+  "provincia": "06",
+  "ccaa": "11",
+  "compra": {
+   "m2": 1029.3,
+   "m2Nueva": null,
+   "m2Usada": 1028.5,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 4.32,
+   "m2P25": 3.41,
+   "m2P75": 5.49,
+   "mes": 370,
+   "mesP25": 320,
+   "mesP75": 420,
+   "superficie": 91,
+   "viviendas": 1189
+  },
+  "rentaHogar": 33587,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 13.2
+ },
+ {
+  "ine": "06083",
+  "nombre": "Mérida",
+  "slug": "merida",
+  "provincia": "06",
+  "ccaa": "11",
+  "compra": {
+   "m2": 1129.7,
+   "m2Nueva": 1408.7,
+   "m2Usada": 1126.3,
+   "tasaciones": 31
+  },
+  "alquiler": {
+   "m2": 5.11,
+   "m2P25": 4.16,
+   "m2P75": 6.32,
+   "mes": 430,
+   "mesP25": 358,
+   "mesP75": 500,
+   "superficie": 87,
+   "viviendas": 2738
+  },
+  "rentaHogar": 34987,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 14.7
+ },
+ {
+  "ine": "06153",
+  "nombre": "Villanueva de la Serena",
+  "slug": "villanueva-de-la-serena",
+  "provincia": "06",
+  "ccaa": "11",
+  "compra": {
+   "m2": 801.9,
+   "m2Nueva": null,
+   "m2Usada": 798.7,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 3.78,
+   "m2P25": 3.02,
+   "m2P75": 4.87,
+   "mes": 345,
+   "mesP25": 280,
+   "mesP75": 400,
+   "superficie": 96,
+   "viviendas": 548
+  },
+  "rentaHogar": 32052,
+  "esfuerzoCompraAnios": 2.0,
+  "esfuerzoAlquilerPct": 12.9
+ },
+ {
+  "ine": "07011",
+  "nombre": "Calvià",
+  "slug": "calvia",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 5502.2,
+   "m2Nueva": 6605.6,
+   "m2Usada": 5452.8,
+   "tasaciones": 27
+  },
+  "alquiler": {
+   "m2": 12.72,
+   "m2P25": 9.82,
+   "m2P75": 16.43,
+   "mes": 762,
+   "mesP25": 600,
+   "mesP75": 1000,
+   "superficie": 65,
+   "viviendas": 3236
+  },
+  "rentaHogar": 46510,
+  "esfuerzoCompraAnios": 9.5,
+  "esfuerzoAlquilerPct": 19.7
+ },
+ {
+  "ine": "07015",
+  "nombre": "Ciutadella de Menorca",
+  "slug": "ciutadella-de-menorca",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 4074.3,
+   "m2Nueva": null,
+   "m2Usada": 4077.1,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 7.79,
+   "m2P25": 5.87,
+   "m2P75": 9.85,
+   "mes": 570,
+   "mesP25": 473,
+   "mesP75": 685,
+   "superficie": 78,
+   "viviendas": 1140
+  },
+  "rentaHogar": 43575,
+  "esfuerzoCompraAnios": 7.5,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "07026",
+  "nombre": "Eivissa",
+  "slug": "eivissa",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 5473.3,
+   "m2Nueva": 6290.7,
+   "m2Usada": 5435.0,
+   "tasaciones": 24
+  },
+  "alquiler": {
+   "m2": 12.67,
+   "m2P25": 9.72,
+   "m2P75": 16.15,
+   "mes": 915,
+   "mesP25": 707,
+   "mesP75": 1225,
+   "superficie": 80,
+   "viviendas": 5503
+  },
+  "rentaHogar": 54559,
+  "esfuerzoCompraAnios": 8.0,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "07027",
+  "nombre": "Inca",
+  "slug": "inca",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 2649.6,
+   "m2Nueva": null,
+   "m2Usada": 2648.8,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 7.0,
+   "m2P25": 5.38,
+   "m2P75": 9.09,
+   "mes": 648,
+   "mesP25": 500,
+   "mesP75": 750,
+   "superficie": 95,
+   "viviendas": 1723
+  },
+  "rentaHogar": 41257,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 18.8
+ },
+ {
+  "ine": "07031",
+  "nombre": "Llucmajor",
+  "slug": "llucmajor",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 3908.0,
+   "m2Nueva": null,
+   "m2Usada": 3900.3,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 10.09,
+   "m2P25": 7.73,
+   "m2P75": 12.94,
+   "mes": 744,
+   "mesP25": 607,
+   "mesP75": 900,
+   "superficie": 84,
+   "viviendas": 1808
+  },
+  "rentaHogar": 46365,
+  "esfuerzoCompraAnios": 6.7,
+  "esfuerzoAlquilerPct": 19.3
+ },
+ {
+  "ine": "07033",
+  "nombre": "Manacor",
+  "slug": "manacor",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 3030.6,
+   "m2Nueva": null,
+   "m2Usada": 3026.0,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 6.25,
+   "m2P25": 4.48,
+   "m2P75": 8.17,
+   "mes": 550,
+   "mesP25": 420,
+   "mesP75": 692,
+   "superficie": 93,
+   "viviendas": 1653
+  },
+  "rentaHogar": 41905,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "07036",
+  "nombre": "Marratxí",
+  "slug": "marratxi",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 3782.3,
+   "m2Nueva": null,
+   "m2Usada": 3767.8,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 9.09,
+   "m2P25": 7.24,
+   "m2P75": 11.23,
+   "mes": 800,
+   "mesP25": 668,
+   "mesP75": 950,
+   "superficie": 94,
+   "viviendas": 534
+  },
+  "rentaHogar": 58252,
+  "esfuerzoCompraAnios": 5.2,
+  "esfuerzoAlquilerPct": 16.5
+ },
+ {
+  "ine": "07032",
+  "nombre": "Maó-Mahón",
+  "slug": "mao-mahon",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 2990.7,
+   "m2Nueva": null,
+   "m2Usada": 2981.0,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 6.89,
+   "m2P25": 5.12,
+   "m2P75": 9.11,
+   "mes": 583,
+   "mesP25": 450,
+   "mesP75": 726,
+   "superficie": 87,
+   "viviendas": 2261
+  },
+  "rentaHogar": 45589,
+  "esfuerzoCompraAnios": 5.2,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "07040",
+  "nombre": "Palma",
+  "slug": "palma",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 3814.5,
+   "m2Nueva": 4410.9,
+   "m2Usada": 3791.6,
+   "tasaciones": 79
+  },
+  "alquiler": {
+   "m2": 9.84,
+   "m2P25": 7.49,
+   "m2P75": 12.84,
+   "mes": 800,
+   "mesP25": 641,
+   "mesP75": 995,
+   "superficie": 85,
+   "viviendas": 31529
+  },
+  "rentaHogar": 48884,
+  "esfuerzoCompraAnios": 6.2,
+  "esfuerzoAlquilerPct": 19.6
+ },
+ {
+  "ine": "07054",
+  "nombre": "Santa Eulalia del Río",
+  "slug": "santa-eulalia-del-rio",
+  "provincia": "07",
+  "ccaa": "04",
+  "compra": {
+   "m2": 6844.4,
+   "m2Nueva": 7590.5,
+   "m2Usada": 6799.9,
+   "tasaciones": 22
+  },
+  "alquiler": {
+   "m2": 12.9,
+   "m2P25": 9.9,
+   "m2P75": 16.89,
+   "mes": 893,
+   "mesP25": 700,
+   "mesP75": 1200,
+   "superficie": 77,
+   "viviendas": 2635
+  },
+  "rentaHogar": 52166,
+  "esfuerzoCompraAnios": 10.5,
+  "esfuerzoAlquilerPct": 20.5
+ },
+ {
+  "ine": "08015",
+  "nombre": "Badalona",
+  "slug": "badalona",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2824.2,
+   "m2Nueva": 3800.0,
+   "m2Usada": 2769.3,
+   "tasaciones": 99
+  },
+  "alquiler": {
+   "m2": 10.17,
+   "m2P25": 8.36,
+   "m2P75": 12.27,
+   "mes": 728,
+   "mesP25": 600,
+   "mesP75": 867,
+   "superficie": 72,
+   "viviendas": 11538
+  },
+  "rentaHogar": 40993,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 21.3
+ },
+ {
+  "ine": "08252",
+  "nombre": "Barberà del Vallès",
+  "slug": "barbera-del-valles",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2682.0,
+   "m2Nueva": 3055.1,
+   "m2Usada": 2668.8,
+   "tasaciones": 54
+  },
+  "alquiler": {
+   "m2": 9.18,
+   "m2P25": 7.81,
+   "m2P75": 10.76,
+   "mes": 722,
+   "mesP25": 627,
+   "mesP75": 825,
+   "superficie": 79,
+   "viviendas": 1371
+  },
+  "rentaHogar": 45600,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 19.0
+ },
+ {
+  "ine": "08019",
+  "nombre": "Barcelona",
+  "slug": "barcelona",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 4601.8,
+   "m2Nueva": 5109.8,
+   "m2Usada": 4594.6,
+   "tasaciones": 334
+  },
+  "alquiler": {
+   "m2": 13.68,
+   "m2P25": 11.11,
+   "m2P75": 16.77,
+   "mes": 900,
+   "mesP25": 736,
+   "mesP75": 1169,
+   "superficie": 68,
+   "viviendas": 140872
+  },
+  "rentaHogar": 49915,
+  "esfuerzoCompraAnios": 7.4,
+  "esfuerzoAlquilerPct": 21.6
+ },
+ {
+  "ine": "08056",
+  "nombre": "Castelldefels",
+  "slug": "castelldefels",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 4336.7,
+   "m2Nueva": null,
+   "m2Usada": 4326.6,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 12.8,
+   "m2P25": 10.58,
+   "m2P75": 15.46,
+   "mes": 907,
+   "mesP25": 771,
+   "mesP75": 1132,
+   "superficie": 74,
+   "viviendas": 4895
+  },
+  "rentaHogar": 54979,
+  "esfuerzoCompraAnios": 6.3,
+  "esfuerzoAlquilerPct": 19.8
+ },
+ {
+  "ine": "08266",
+  "nombre": "Cerdanyola del Vallès",
+  "slug": "cerdanyola-del-valles",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2964.5,
+   "m2Nueva": null,
+   "m2Usada": 2961.5,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 10.04,
+   "m2P25": 8.6,
+   "m2P75": 11.62,
+   "mes": 752,
+   "mesP25": 650,
+   "mesP75": 850,
+   "superficie": 77,
+   "viviendas": 3176
+  },
+  "rentaHogar": 49474,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 18.2
+ },
+ {
+  "ine": "08073",
+  "nombre": "Cornellà de Llobregat",
+  "slug": "cornella-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3142.1,
+   "m2Nueva": null,
+   "m2Usada": 3125.7,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 11.34,
+   "m2P25": 9.54,
+   "m2P75": 13.27,
+   "mes": 712,
+   "mesP25": 603,
+   "mesP75": 825,
+   "superficie": 62,
+   "viviendas": 6161
+  },
+  "rentaHogar": 41208,
+  "esfuerzoCompraAnios": 6.1,
+  "esfuerzoAlquilerPct": 20.7
+ },
+ {
+  "ine": "08169",
+  "nombre": "El Prat de Llobregat",
+  "slug": "el-prat-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3008.3,
+   "m2Nueva": null,
+   "m2Usada": 2995.9,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 10.94,
+   "m2P25": 9.0,
+   "m2P75": 13.02,
+   "mes": 768,
+   "mesP25": 640,
+   "mesP75": 867,
+   "superficie": 68,
+   "viviendas": 3102
+  },
+  "rentaHogar": 43157,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 21.4
+ },
+ {
+  "ine": "08077",
+  "nombre": "Esplugues de Llobregat",
+  "slug": "esplugues-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3722.1,
+   "m2Nueva": null,
+   "m2Usada": 3713.3,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 12.93,
+   "m2P25": 10.74,
+   "m2P75": 15.22,
+   "mes": 800,
+   "mesP25": 668,
+   "mesP75": 961,
+   "superficie": 62,
+   "viviendas": 2842
+  },
+  "rentaHogar": 50272,
+  "esfuerzoCompraAnios": 5.9,
+  "esfuerzoAlquilerPct": 19.1
+ },
+ {
+  "ine": "08089",
+  "nombre": "Gavà",
+  "slug": "gava",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3464.8,
+   "m2Nueva": null,
+   "m2Usada": 3454.9,
+   "tasaciones": 18
+  },
+  "alquiler": {
+   "m2": 10.46,
+   "m2P25": 8.58,
+   "m2P75": 13.06,
+   "mes": 833,
+   "mesP25": 700,
+   "mesP75": 1013,
+   "superficie": 84,
+   "viviendas": 2434
+  },
+  "rentaHogar": 48060,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 20.8
+ },
+ {
+  "ine": "08096",
+  "nombre": "Granollers",
+  "slug": "granollers",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2407.6,
+   "m2Nueva": null,
+   "m2Usada": 2387.8,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 8.73,
+   "m2P25": 7.12,
+   "m2P75": 10.58,
+   "mes": 695,
+   "mesP25": 575,
+   "mesP75": 801,
+   "superficie": 79,
+   "viviendas": 4409
+  },
+  "rentaHogar": 45246,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 18.4
+ },
+ {
+  "ine": "08102",
+  "nombre": "Igualada",
+  "slug": "igualada",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1827.9,
+   "m2Nueva": null,
+   "m2Usada": 1827.7,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 6.62,
+   "m2P25": 5.11,
+   "m2P75": 8.43,
+   "mes": 535,
+   "mesP25": 438,
+   "mesP75": 635,
+   "superficie": 83,
+   "viviendas": 2642
+  },
+  "rentaHogar": 42295,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "08101",
+  "nombre": "L'Hospitalet de Llobregat",
+  "slug": "l-hospitalet-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3094.1,
+   "m2Nueva": 3446.2,
+   "m2Usada": 3083.4,
+   "tasaciones": 45
+  },
+  "alquiler": {
+   "m2": 13.0,
+   "m2P25": 10.69,
+   "m2P75": 15.49,
+   "mes": 726,
+   "mesP25": 613,
+   "mesP75": 841,
+   "superficie": 56,
+   "viviendas": 20675
+  },
+  "rentaHogar": 38778,
+  "esfuerzoCompraAnios": 6.4,
+  "esfuerzoAlquilerPct": 22.5
+ },
+ {
+  "ine": "08113",
+  "nombre": "Manresa",
+  "slug": "manresa",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1530.6,
+   "m2Nueva": null,
+   "m2Usada": 1531.2,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 6.32,
+   "m2P25": 4.92,
+   "m2P75": 7.99,
+   "mes": 505,
+   "mesP25": 410,
+   "mesP75": 615,
+   "superficie": 84,
+   "viviendas": 5770
+  },
+  "rentaHogar": 38934,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.6
+ },
+ {
+  "ine": "08114",
+  "nombre": "Martorell",
+  "slug": "martorell",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2266.5,
+   "m2Nueva": null,
+   "m2Usada": 2256.9,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 7.94,
+   "m2P25": 6.28,
+   "m2P75": 9.86,
+   "mes": 650,
+   "mesP25": 530,
+   "mesP75": 758,
+   "superficie": 86,
+   "viviendas": 1406
+  },
+  "rentaHogar": 43739,
+  "esfuerzoCompraAnios": 4.1,
+  "esfuerzoAlquilerPct": 17.8
+ },
+ {
+  "ine": "08121",
+  "nombre": "Mataró",
+  "slug": "mataro",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2549.4,
+   "m2Nueva": null,
+   "m2Usada": 2511.8,
+   "tasaciones": 17
+  },
+  "alquiler": {
+   "m2": 8.93,
+   "m2P25": 7.2,
+   "m2P75": 11.11,
+   "mes": 669,
+   "mesP25": 551,
+   "mesP75": 794,
+   "superficie": 75,
+   "viviendas": 8383
+  },
+  "rentaHogar": 40464,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 19.8
+ },
+ {
+  "ine": "08124",
+  "nombre": "Mollet del Vallès",
+  "slug": "mollet-del-valles",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2524.6,
+   "m2Nueva": 3022.5,
+   "m2Usada": 2509.6,
+   "tasaciones": 31
+  },
+  "alquiler": {
+   "m2": 8.44,
+   "m2P25": 7.02,
+   "m2P75": 9.95,
+   "mes": 677,
+   "mesP25": 574,
+   "mesP75": 774,
+   "superficie": 79,
+   "viviendas": 3028
+  },
+  "rentaHogar": 42272,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 19.2
+ },
+ {
+  "ine": "08125",
+  "nombre": "Montcada i Reixac",
+  "slug": "montcada-i-reixac",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2504.6,
+   "m2Nueva": 2911.3,
+   "m2Usada": 2491.0,
+   "tasaciones": 57
+  },
+  "alquiler": {
+   "m2": 8.91,
+   "m2P25": 7.38,
+   "m2P75": 10.66,
+   "mes": 673,
+   "mesP25": 563,
+   "mesP75": 780,
+   "superficie": 74,
+   "viviendas": 1599
+  },
+  "rentaHogar": 41223,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 19.6
+ },
+ {
+  "ine": "08163",
+  "nombre": "Pineda de Mar",
+  "slug": "pineda-de-mar",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2240.3,
+   "m2Nueva": null,
+   "m2Usada": 2245.0,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 7.97,
+   "m2P25": 6.43,
+   "m2P75": 9.81,
+   "mes": 571,
+   "mesP25": 490,
+   "mesP75": 660,
+   "superficie": 74,
+   "viviendas": 2153
+  },
+  "rentaHogar": 36108,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 19.0
+ },
+ {
+  "ine": "08172",
+  "nombre": "Premià de Mar",
+  "slug": "premia-de-mar",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2814.3,
+   "m2Nueva": null,
+   "m2Usada": 2809.4,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 9.68,
+   "m2P25": 7.89,
+   "m2P75": 11.29,
+   "mes": 738,
+   "mesP25": 619,
+   "mesP75": 850,
+   "superficie": 76,
+   "viviendas": 2014
+  },
+  "rentaHogar": 44626,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 19.8
+ },
+ {
+  "ine": "08180",
+  "nombre": "Ripollet",
+  "slug": "ripollet",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2448.3,
+   "m2Nueva": null,
+   "m2Usada": 2445.9,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 9.38,
+   "m2P25": 7.89,
+   "m2P75": 10.98,
+   "mes": 667,
+   "mesP25": 560,
+   "mesP75": 776,
+   "superficie": 71,
+   "viviendas": 2018
+  },
+  "rentaHogar": 39907,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "08184",
+  "nombre": "Rubí",
+  "slug": "rubi",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2479.0,
+   "m2Nueva": 2787.4,
+   "m2Usada": 2471.5,
+   "tasaciones": 40
+  },
+  "alquiler": {
+   "m2": 9.18,
+   "m2P25": 7.56,
+   "m2P75": 11.04,
+   "mes": 700,
+   "mesP25": 592,
+   "mesP75": 799,
+   "superficie": 76,
+   "viviendas": 4190
+  },
+  "rentaHogar": 42994,
+  "esfuerzoCompraAnios": 4.6,
+  "esfuerzoAlquilerPct": 19.5
+ },
+ {
+  "ine": "08187",
+  "nombre": "Sabadell",
+  "slug": "sabadell",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2397.4,
+   "m2Nueva": 3062.3,
+   "m2Usada": 2368.6,
+   "tasaciones": 106
+  },
+  "alquiler": {
+   "m2": 8.57,
+   "m2P25": 6.99,
+   "m2P75": 10.46,
+   "mes": 700,
+   "mesP25": 591,
+   "mesP75": 833,
+   "superficie": 82,
+   "viviendas": 11570
+  },
+  "rentaHogar": 42573,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 19.7
+ },
+ {
+  "ine": "08194",
+  "nombre": "Sant Adrià de Besòs",
+  "slug": "sant-adria-de-besos",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2765.9,
+   "m2Nueva": null,
+   "m2Usada": 2733.9,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 11.0,
+   "m2P25": 8.75,
+   "m2P75": 13.21,
+   "mes": 737,
+   "mesP25": 600,
+   "mesP75": 875,
+   "superficie": 68,
+   "viviendas": 1577
+  },
+  "rentaHogar": 37887,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 23.3
+ },
+ {
+  "ine": "08196",
+  "nombre": "Sant Andreu de la Barca",
+  "slug": "sant-andreu-de-la-barca",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2619.4,
+   "m2Nueva": null,
+   "m2Usada": 2618.2,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 8.53,
+   "m2P25": 7.0,
+   "m2P75": 10.31,
+   "mes": 680,
+   "mesP25": 560,
+   "mesP75": 789,
+   "superficie": 81,
+   "viviendas": 1353
+  },
+  "rentaHogar": 44927,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 18.2
+ },
+ {
+  "ine": "08200",
+  "nombre": "Sant Boi de Llobregat",
+  "slug": "sant-boi-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2800.6,
+   "m2Nueva": 3094.0,
+   "m2Usada": 2791.8,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 10.87,
+   "m2P25": 9.02,
+   "m2P75": 12.74,
+   "mes": 712,
+   "mesP25": 612,
+   "mesP75": 816,
+   "superficie": 65,
+   "viviendas": 4271
+  },
+  "rentaHogar": 42439,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "08205",
+  "nombre": "Sant Cugat del Vallès",
+  "slug": "sant-cugat-del-valles",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 5016.7,
+   "m2Nueva": 5677.7,
+   "m2Usada": 4987.7,
+   "tasaciones": 34
+  },
+  "alquiler": {
+   "m2": 13.55,
+   "m2P25": 11.27,
+   "m2P75": 15.86,
+   "mes": 1100,
+   "mesP25": 860,
+   "mesP75": 1394,
+   "superficie": 85,
+   "viviendas": 5109
+  },
+  "rentaHogar": 78406,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 16.8
+ },
+ {
+  "ine": "08211",
+  "nombre": "Sant Feliu de Llobregat",
+  "slug": "sant-feliu-de-llobregat",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3330.5,
+   "m2Nueva": null,
+   "m2Usada": 3317.3,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 11.36,
+   "m2P25": 9.62,
+   "m2P75": 13.24,
+   "mes": 783,
+   "mesP25": 670,
+   "mesP75": 923,
+   "superficie": 69,
+   "viviendas": 2583
+  },
+  "rentaHogar": 48682,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 19.3
+ },
+ {
+  "ine": "08217",
+  "nombre": "Sant Joan Despí",
+  "slug": "sant-joan-despi",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3707.1,
+   "m2Nueva": null,
+   "m2Usada": 3688.9,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 11.58,
+   "m2P25": 9.79,
+   "m2P75": 13.64,
+   "mes": 804,
+   "mesP25": 670,
+   "mesP75": 1047,
+   "superficie": 72,
+   "viviendas": 1993
+  },
+  "rentaHogar": 51258,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 18.8
+ },
+ {
+  "ine": "08231",
+  "nombre": "Sant Pere de Ribes",
+  "slug": "sant-pere-de-ribes",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2673.3,
+   "m2Nueva": 3596.6,
+   "m2Usada": 2627.7,
+   "tasaciones": 44
+  },
+  "alquiler": {
+   "m2": 9.47,
+   "m2P25": 7.62,
+   "m2P75": 11.63,
+   "mes": 693,
+   "mesP25": 593,
+   "mesP75": 800,
+   "superficie": 78,
+   "viviendas": 1677
+  },
+  "rentaHogar": 44286,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 18.8
+ },
+ {
+  "ine": "08263",
+  "nombre": "Sant Vicenç dels Horts",
+  "slug": "sant-vicenc-dels-horts",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2450.3,
+   "m2Nueva": null,
+   "m2Usada": 2447.0,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 9.04,
+   "m2P25": 7.59,
+   "m2P75": 10.42,
+   "mes": 700,
+   "mesP25": 598,
+   "mesP75": 800,
+   "superficie": 74,
+   "viviendas": 882
+  },
+  "rentaHogar": 44662,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 18.8
+ },
+ {
+  "ine": "08245",
+  "nombre": "Santa Coloma de Gramenet",
+  "slug": "santa-coloma-de-gramenet",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2586.4,
+   "m2Nueva": null,
+   "m2Usada": 2583.7,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 9.92,
+   "m2P25": 8.27,
+   "m2P75": 11.64,
+   "mes": 650,
+   "mesP25": 550,
+   "mesP75": 750,
+   "superficie": 65,
+   "viviendas": 7126
+  },
+  "rentaHogar": 36465,
+  "esfuerzoCompraAnios": 5.7,
+  "esfuerzoAlquilerPct": 21.4
+ },
+ {
+  "ine": "08260",
+  "nombre": "Santa Perpètua de Mogoda",
+  "slug": "santa-perpetua-de-mogoda",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2392.6,
+   "m2Nueva": null,
+   "m2Usada": 2390.2,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 9.0,
+   "m2P25": 7.62,
+   "m2P75": 10.42,
+   "mes": 685,
+   "mesP25": 567,
+   "mesP75": 800,
+   "superficie": 76,
+   "viviendas": 991
+  },
+  "rentaHogar": 45224,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 18.2
+ },
+ {
+  "ine": "08270",
+  "nombre": "Sitges",
+  "slug": "sitges",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 4931.8,
+   "m2Nueva": null,
+   "m2Usada": 4924.2,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 13.37,
+   "m2P25": 10.71,
+   "m2P75": 16.46,
+   "mes": 918,
+   "mesP25": 746,
+   "mesP75": 1226,
+   "superficie": 74,
+   "viviendas": 2837
+  },
+  "rentaHogar": 54690,
+  "esfuerzoCompraAnios": 7.2,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "08279",
+  "nombre": "Terrassa",
+  "slug": "terrassa",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2272.5,
+   "m2Nueva": 2912.2,
+   "m2Usada": 2248.0,
+   "tasaciones": 104
+  },
+  "alquiler": {
+   "m2": 8.9,
+   "m2P25": 6.94,
+   "m2P75": 11.3,
+   "mes": 650,
+   "mesP25": 550,
+   "mesP75": 775,
+   "superficie": 77,
+   "viviendas": 13107
+  },
+  "rentaHogar": 41899,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 18.6
+ },
+ {
+  "ine": "08298",
+  "nombre": "Vic",
+  "slug": "vic",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1990.7,
+   "m2Nueva": null,
+   "m2Usada": 1978.2,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 7.07,
+   "m2P25": 5.58,
+   "m2P75": 8.59,
+   "mes": 580,
+   "mesP25": 480,
+   "mesP75": 690,
+   "superficie": 85,
+   "viviendas": 4361
+  },
+  "rentaHogar": 44972,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.5
+ },
+ {
+  "ine": "08301",
+  "nombre": "Viladecans",
+  "slug": "viladecans",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 3119.4,
+   "m2Nueva": 3227.1,
+   "m2Usada": 3112.6,
+   "tasaciones": 129
+  },
+  "alquiler": {
+   "m2": 10.27,
+   "m2P25": 8.57,
+   "m2P75": 11.94,
+   "mes": 752,
+   "mesP25": 650,
+   "mesP75": 886,
+   "superficie": 76,
+   "viviendas": 2907
+  },
+  "rentaHogar": 45224,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 20.0
+ },
+ {
+  "ine": "08305",
+  "nombre": "Vilafranca del Penedès",
+  "slug": "vilafranca-del-penedes",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2034.6,
+   "m2Nueva": 2409.6,
+   "m2Usada": 2015.7,
+   "tasaciones": 31
+  },
+  "alquiler": {
+   "m2": 7.44,
+   "m2P25": 5.87,
+   "m2P75": 8.97,
+   "mes": 614,
+   "mesP25": 501,
+   "mesP75": 717,
+   "superficie": 87,
+   "viviendas": 3097
+  },
+  "rentaHogar": 41547,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.7
+ },
+ {
+  "ine": "08307",
+  "nombre": "Vilanova i la Geltrú",
+  "slug": "vilanova-i-la-geltru",
+  "provincia": "08",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2737.6,
+   "m2Nueva": 3355.7,
+   "m2Usada": 2688.0,
+   "tasaciones": 40
+  },
+  "alquiler": {
+   "m2": 8.84,
+   "m2P25": 7.15,
+   "m2P75": 10.96,
+   "mes": 701,
+   "mesP25": 585,
+   "mesP75": 840,
+   "superficie": 82,
+   "viviendas": 4392
+  },
+  "rentaHogar": 42979,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 19.6
+ },
+ {
+  "ine": "09018",
+  "nombre": "Aranda de Duero",
+  "slug": "aranda-de-duero",
+  "provincia": "09",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1431.3,
+   "m2Nueva": null,
+   "m2Usada": 1427.6,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 6.2,
+   "m2P25": 5.09,
+   "m2P75": 7.5,
+   "mes": 480,
+   "mesP25": 401,
+   "mesP75": 550,
+   "superficie": 84,
+   "viviendas": 2048
+  },
+  "rentaHogar": 36720,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "09059",
+  "nombre": "Burgos",
+  "slug": "burgos",
+  "provincia": "09",
+  "ccaa": "07",
+  "compra": {
+   "m2": 2059.8,
+   "m2Nueva": 2380.0,
+   "m2Usada": 2045.7,
+   "tasaciones": 38
+  },
+  "alquiler": {
+   "m2": 7.09,
+   "m2P25": 5.81,
+   "m2P75": 8.7,
+   "mes": 525,
+   "mesP25": 450,
+   "mesP75": 614,
+   "superficie": 76,
+   "viviendas": 10969
+  },
+  "rentaHogar": 40839,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 15.4
+ },
+ {
+  "ine": "09219",
+  "nombre": "Miranda de Ebro",
+  "slug": "miranda-de-ebro",
+  "provincia": "09",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1440.6,
+   "m2Nueva": null,
+   "m2Usada": 1438.0,
+   "tasaciones": 1
+  },
+  "alquiler": {
+   "m2": 6.26,
+   "m2P25": 5.05,
+   "m2P75": 7.45,
+   "mes": 485,
+   "mesP25": 400,
+   "mesP75": 552,
+   "superficie": 81,
+   "viviendas": 1640
+  },
+  "rentaHogar": 37399,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.6
+ },
+ {
+  "ine": "10037",
+  "nombre": "Cáceres",
+  "slug": "caceres",
+  "provincia": "10",
+  "ccaa": "11",
+  "compra": {
+   "m2": 1542.8,
+   "m2Nueva": 1882.3,
+   "m2Usada": 1530.2,
+   "tasaciones": 54
+  },
+  "alquiler": {
+   "m2": 5.4,
+   "m2P25": 4.35,
+   "m2P75": 6.66,
+   "mes": 475,
+   "mesP25": 400,
+   "mesP75": 562,
+   "superficie": 92,
+   "viviendas": 5908
+  },
+  "rentaHogar": 37970,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 15.0
+ },
+ {
+  "ine": "10148",
+  "nombre": "Plasencia",
+  "slug": "plasencia",
+  "provincia": "10",
+  "ccaa": "11",
+  "compra": {
+   "m2": 1182.2,
+   "m2Nueva": null,
+   "m2Usada": 1180.4,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 4.45,
+   "m2P25": 3.61,
+   "m2P75": 5.52,
+   "mes": 400,
+   "mesP25": 338,
+   "mesP75": 476,
+   "superficie": 95,
+   "viviendas": 2005
+  },
+  "rentaHogar": 33539,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 14.3
+ },
+ {
+  "ine": "11004",
+  "nombre": "Algeciras",
+  "slug": "algeciras",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1595.3,
+   "m2Nueva": null,
+   "m2Usada": 1593.9,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 6.77,
+   "m2P25": 5.36,
+   "m2P75": 8.5,
+   "mes": 500,
+   "mesP25": 425,
+   "mesP75": 600,
+   "superficie": 81,
+   "viviendas": 2856
+  },
+  "rentaHogar": 35315,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 17.0
+ },
+ {
+  "ine": "11006",
+  "nombre": "Arcos de la Frontera",
+  "slug": "arcos-de-la-frontera",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1325.9,
+   "m2Nueva": null,
+   "m2Usada": 1322.5,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 4.19,
+   "m2P25": 3.33,
+   "m2P75": 5.14,
+   "mes": 321,
+   "mesP25": 271,
+   "mesP75": 397,
+   "superficie": 83,
+   "viviendas": 262
+  },
+  "rentaHogar": 28704,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 13.4
+ },
+ {
+  "ine": "11015",
+  "nombre": "Chiclana de la Frontera",
+  "slug": "chiclana-de-la-frontera",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2229.0,
+   "m2Nueva": 2779.5,
+   "m2Usada": 2218.8,
+   "tasaciones": 25
+  },
+  "alquiler": {
+   "m2": 6.71,
+   "m2P25": 5.36,
+   "m2P75": 8.21,
+   "mes": 464,
+   "mesP25": 400,
+   "mesP75": 550,
+   "superficie": 73,
+   "viviendas": 1079
+  },
+  "rentaHogar": 33357,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 16.7
+ },
+ {
+  "ine": "11012",
+  "nombre": "Cádiz",
+  "slug": "cadiz",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3021.1,
+   "m2Nueva": 3388.2,
+   "m2Usada": 3011.1,
+   "tasaciones": 36
+  },
+  "alquiler": {
+   "m2": 9.07,
+   "m2P25": 7.13,
+   "m2P75": 11.31,
+   "mes": 650,
+   "mesP25": 526,
+   "mesP75": 800,
+   "superficie": 72,
+   "viviendas": 5066
+  },
+  "rentaHogar": 39192,
+  "esfuerzoCompraAnios": 6.2,
+  "esfuerzoAlquilerPct": 19.9
+ },
+ {
+  "ine": "11027",
+  "nombre": "El Puerto de Santa María",
+  "slug": "el-puerto-de-santa-maria",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2559.3,
+   "m2Nueva": 2722.1,
+   "m2Usada": 2555.0,
+   "tasaciones": 26
+  },
+  "alquiler": {
+   "m2": 7.53,
+   "m2P25": 5.87,
+   "m2P75": 9.63,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 676,
+   "superficie": 77,
+   "viviendas": 2930
+  },
+  "rentaHogar": 37809,
+  "esfuerzoCompraAnios": 5.4,
+  "esfuerzoAlquilerPct": 17.5
+ },
+ {
+  "ine": "11020",
+  "nombre": "Jerez de la Frontera",
+  "slug": "jerez-de-la-frontera",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1815.0,
+   "m2Nueva": 2256.6,
+   "m2Usada": 1803.2,
+   "tasaciones": 79
+  },
+  "alquiler": {
+   "m2": 6.51,
+   "m2P25": 5.19,
+   "m2P75": 8.11,
+   "mes": 520,
+   "mesP25": 425,
+   "mesP75": 650,
+   "superficie": 83,
+   "viviendas": 5229
+  },
+  "rentaHogar": 33888,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 18.4
+ },
+ {
+  "ine": "11022",
+  "nombre": "La Línea de la Concepción",
+  "slug": "la-linea-de-la-concepcion",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1624.1,
+   "m2Nueva": null,
+   "m2Usada": 1622.5,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 7.79,
+   "m2P25": 6.2,
+   "m2P75": 9.62,
+   "mes": 596,
+   "mesP25": 499,
+   "mesP75": 702,
+   "superficie": 79,
+   "viviendas": 1121
+  },
+  "rentaHogar": 32540,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 22.0
+ },
+ {
+  "ine": "11028",
+  "nombre": "Puerto Real",
+  "slug": "puerto-real",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1934.2,
+   "m2Nueva": null,
+   "m2Usada": 1927.2,
+   "tasaciones": 17
+  },
+  "alquiler": {
+   "m2": 6.68,
+   "m2P25": 5.48,
+   "m2P75": 8.2,
+   "mes": 500,
+   "mesP25": 423,
+   "mesP75": 600,
+   "superficie": 82,
+   "viviendas": 873
+  },
+  "rentaHogar": 35599,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 16.9
+ },
+ {
+  "ine": "11030",
+  "nombre": "Rota",
+  "slug": "rota",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2877.5,
+   "m2Nueva": null,
+   "m2Usada": 2889.9,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 8.1,
+   "m2P25": 5.75,
+   "m2P75": 13.76,
+   "mes": 550,
+   "mesP25": 410,
+   "mesP75": 1200,
+   "superficie": 78,
+   "viviendas": 1623
+  },
+  "rentaHogar": 34534,
+  "esfuerzoCompraAnios": 6.7,
+  "esfuerzoAlquilerPct": 19.1
+ },
+ {
+  "ine": "11031",
+  "nombre": "San Fernando",
+  "slug": "san-fernando",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1962.5,
+   "m2Nueva": null,
+   "m2Usada": 1957.8,
+   "tasaciones": 18
+  },
+  "alquiler": {
+   "m2": 6.72,
+   "m2P25": 5.48,
+   "m2P75": 8.27,
+   "mes": 500,
+   "mesP25": 410,
+   "mesP75": 600,
+   "superficie": 77,
+   "viviendas": 2965
+  },
+  "rentaHogar": 35624,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 16.8
+ },
+ {
+  "ine": "11033",
+  "nombre": "San Roque",
+  "slug": "san-roque",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2568.8,
+   "m2Nueva": null,
+   "m2Usada": 2511.7,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 8.08,
+   "m2P25": 5.57,
+   "m2P75": 10.85,
+   "mes": 628,
+   "mesP25": 450,
+   "mesP75": 1110,
+   "superficie": 100,
+   "viviendas": 536
+  },
+  "rentaHogar": 40562,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 18.6
+ },
+ {
+  "ine": "11032",
+  "nombre": "Sanlúcar de Barrameda",
+  "slug": "sanlucar-de-barrameda",
+  "provincia": "11",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2064.6,
+   "m2Nueva": 2431.3,
+   "m2Usada": 2052.9,
+   "tasaciones": 21
+  },
+  "alquiler": {
+   "m2": 6.63,
+   "m2P25": 5.32,
+   "m2P75": 8.18,
+   "mes": 473,
+   "mesP25": 400,
+   "mesP75": 561,
+   "superficie": 78,
+   "viviendas": 944
+  },
+  "rentaHogar": 29757,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 19.1
+ },
+ {
+  "ine": "12009",
+  "nombre": "Almazora",
+  "slug": "almazora",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1192.9,
+   "m2Nueva": null,
+   "m2Usada": 1191.8,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 4.65,
+   "m2P25": 3.62,
+   "m2P75": 6.21,
+   "mes": 421,
+   "mesP25": 350,
+   "mesP75": 500,
+   "superficie": 97,
+   "viviendas": 1145
+  },
+  "rentaHogar": 34463,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 14.7
+ },
+ {
+  "ine": "12027",
+  "nombre": "Benicarló",
+  "slug": "benicarlo",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1403.0,
+   "m2Nueva": null,
+   "m2Usada": 1403.0,
+   "tasaciones": 0
+  },
+  "alquiler": {
+   "m2": 5.21,
+   "m2P25": 3.86,
+   "m2P75": 6.76,
+   "mes": 375,
+   "mesP25": 300,
+   "mesP75": 450,
+   "superficie": 74,
+   "viviendas": 2101
+  },
+  "rentaHogar": 33634,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 13.4
+ },
+ {
+  "ine": "12032",
+  "nombre": "Burriana",
+  "slug": "burriana",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1143.5,
+   "m2Nueva": null,
+   "m2Usada": 1142.6,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 4.48,
+   "m2P25": 3.53,
+   "m2P75": 5.88,
+   "mes": 450,
+   "mesP25": 350,
+   "mesP75": 515,
+   "superficie": 101,
+   "viviendas": 1323
+  },
+  "rentaHogar": 35142,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 15.4
+ },
+ {
+  "ine": "12040",
+  "nombre": "Castellón de la Plana",
+  "slug": "castellon-de-la-plana",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1516.1,
+   "m2Nueva": 1722.8,
+   "m2Usada": 1511.1,
+   "tasaciones": 56
+  },
+  "alquiler": {
+   "m2": 5.43,
+   "m2P25": 4.16,
+   "m2P75": 7.06,
+   "mes": 500,
+   "mesP25": 395,
+   "mesP75": 600,
+   "superficie": 94,
+   "viviendas": 11679
+  },
+  "rentaHogar": 38103,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "12126",
+  "nombre": "La Vall d'Uixó",
+  "slug": "la-vall-d-uixo",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 996.0,
+   "m2Nueva": null,
+   "m2Usada": 992.7,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 4.3,
+   "m2P25": 3.41,
+   "m2P75": 5.38,
+   "mes": 400,
+   "mesP25": 343,
+   "mesP75": 495,
+   "superficie": 100,
+   "viviendas": 853
+  },
+  "rentaHogar": 35424,
+  "esfuerzoCompraAnios": 2.2,
+  "esfuerzoAlquilerPct": 13.6
+ },
+ {
+  "ine": "12084",
+  "nombre": "Onda",
+  "slug": "onda",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1027.5,
+   "m2Nueva": null,
+   "m2Usada": 1027.4,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 4.55,
+   "m2P25": 3.46,
+   "m2P75": 6.14,
+   "mes": 399,
+   "mesP25": 324,
+   "mesP75": 453,
+   "superficie": 92,
+   "viviendas": 992
+  },
+  "rentaHogar": 36392,
+  "esfuerzoCompraAnios": 2.3,
+  "esfuerzoAlquilerPct": 13.2
+ },
+ {
+  "ine": "12135",
+  "nombre": "Vila-real",
+  "slug": "vila-real",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1200.7,
+   "m2Nueva": null,
+   "m2Usada": 1201.5,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 4.87,
+   "m2P25": 3.77,
+   "m2P75": 6.25,
+   "mes": 458,
+   "mesP25": 370,
+   "mesP75": 552,
+   "superficie": 101,
+   "viviendas": 1956
+  },
+  "rentaHogar": 38735,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 14.2
+ },
+ {
+  "ine": "12138",
+  "nombre": "Vinaròs",
+  "slug": "vinaros",
+  "provincia": "12",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1498.9,
+   "m2Nueva": null,
+   "m2Usada": 1497.0,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 5.24,
+   "m2P25": 4.14,
+   "m2P75": 6.62,
+   "mes": 415,
+   "mesP25": 350,
+   "mesP75": 500,
+   "superficie": 82,
+   "viviendas": 2068
+  },
+  "rentaHogar": 34083,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "13005",
+  "nombre": "Alcázar de San Juan",
+  "slug": "alcazar-de-san-juan",
+  "provincia": "13",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1044.0,
+   "m2Nueva": null,
+   "m2Usada": 1041.2,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 5.44,
+   "m2P25": 4.46,
+   "m2P75": 6.55,
+   "mes": 425,
+   "mesP25": 358,
+   "mesP75": 493,
+   "superficie": 90,
+   "viviendas": 1207
+  },
+  "rentaHogar": 37019,
+  "esfuerzoCompraAnios": 2.3,
+  "esfuerzoAlquilerPct": 13.8
+ },
+ {
+  "ine": "13034",
+  "nombre": "Ciudad Real",
+  "slug": "ciudad-real",
+  "provincia": "13",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1519.7,
+   "m2Nueva": null,
+   "m2Usada": 1512.7,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 5.79,
+   "m2P25": 4.69,
+   "m2P75": 7.12,
+   "mes": 449,
+   "mesP25": 370,
+   "mesP75": 522,
+   "superficie": 81,
+   "viviendas": 5161
+  },
+  "rentaHogar": 40520,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 13.3
+ },
+ {
+  "ine": "13071",
+  "nombre": "Puertollano",
+  "slug": "puertollano",
+  "provincia": "13",
+  "ccaa": "08",
+  "compra": {
+   "m2": 686.1,
+   "m2Nueva": null,
+   "m2Usada": 685.2,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.49,
+   "m2P25": 3.64,
+   "m2P75": 5.47,
+   "mes": 400,
+   "mesP25": 350,
+   "mesP75": 450,
+   "superficie": 91,
+   "viviendas": 926
+  },
+  "rentaHogar": 33279,
+  "esfuerzoCompraAnios": 1.6,
+  "esfuerzoAlquilerPct": 14.4
+ },
+ {
+  "ine": "13082",
+  "nombre": "Tomelloso",
+  "slug": "tomelloso",
+  "provincia": "13",
+  "ccaa": "08",
+  "compra": {
+   "m2": 766.7,
+   "m2Nueva": null,
+   "m2Usada": 765.7,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 4.51,
+   "m2P25": 3.49,
+   "m2P75": 5.66,
+   "mes": 349,
+   "mesP25": 300,
+   "mesP75": 399,
+   "superficie": 78,
+   "viviendas": 964
+  },
+  "rentaHogar": 31178,
+  "esfuerzoCompraAnios": 2.0,
+  "esfuerzoAlquilerPct": 13.4
+ },
+ {
+  "ine": "13087",
+  "nombre": "Valdepeñas",
+  "slug": "valdepenas",
+  "provincia": "13",
+  "ccaa": "08",
+  "compra": {
+   "m2": 864.5,
+   "m2Nueva": null,
+   "m2Usada": 862.0,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 5.0,
+   "m2P25": 4.03,
+   "m2P75": 6.16,
+   "mes": 364,
+   "mesP25": 320,
+   "mesP75": 420,
+   "superficie": 77,
+   "viviendas": 1369
+  },
+  "rentaHogar": 32722,
+  "esfuerzoCompraAnios": 2.1,
+  "esfuerzoAlquilerPct": 13.3
+ },
+ {
+  "ine": "14021",
+  "nombre": "Córdoba",
+  "slug": "cordoba",
+  "provincia": "14",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1783.8,
+   "m2Nueva": 2426.4,
+   "m2Usada": 1744.0,
+   "tasaciones": 117
+  },
+  "alquiler": {
+   "m2": 7.14,
+   "m2P25": 5.77,
+   "m2P75": 8.69,
+   "mes": 540,
+   "mesP25": 450,
+   "mesP75": 667,
+   "superficie": 79,
+   "viviendas": 12836
+  },
+  "rentaHogar": 37825,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 17.1
+ },
+ {
+  "ine": "14038",
+  "nombre": "Lucena",
+  "slug": "lucena",
+  "provincia": "14",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1094.4,
+   "m2Nueva": null,
+   "m2Usada": 1090.5,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 4.59,
+   "m2P25": 3.66,
+   "m2P75": 5.73,
+   "mes": 375,
+   "mesP25": 303,
+   "mesP75": 420,
+   "superficie": 86,
+   "viviendas": 1096
+  },
+  "rentaHogar": 30785,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "14056",
+  "nombre": "Puente Genil",
+  "slug": "puente-genil",
+  "provincia": "14",
+  "ccaa": "01",
+  "compra": {
+   "m2": 986.0,
+   "m2Nueva": null,
+   "m2Usada": 984.7,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.22,
+   "m2P25": 3.23,
+   "m2P75": 5.3,
+   "mes": 358,
+   "mesP25": 300,
+   "mesP75": 420,
+   "superficie": 88,
+   "viviendas": 409
+  },
+  "rentaHogar": 30574,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 14.1
+ },
+ {
+  "ine": "15030",
+  "nombre": "A Coruña",
+  "slug": "a-coruna",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 2774.8,
+   "m2Nueva": 3132.4,
+   "m2Usada": 2761.5,
+   "tasaciones": 40
+  },
+  "alquiler": {
+   "m2": 7.1,
+   "m2P25": 5.56,
+   "m2P75": 9.08,
+   "mes": 538,
+   "mesP25": 434,
+   "mesP75": 662,
+   "superficie": 79,
+   "viviendas": 24978
+  },
+  "rentaHogar": 41843,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 15.4
+ },
+ {
+  "ine": "15002",
+  "nombre": "Ames",
+  "slug": "ames",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1835.2,
+   "m2Nueva": null,
+   "m2Usada": 1832.9,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 5.6,
+   "m2P25": 4.63,
+   "m2P75": 6.79,
+   "mes": 412,
+   "mesP25": 357,
+   "mesP75": 480,
+   "superficie": 86,
+   "viviendas": 3256
+  },
+  "rentaHogar": 40521,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 12.2
+ },
+ {
+  "ine": "15005",
+  "nombre": "Arteixo",
+  "slug": "arteixo",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1650.5,
+   "m2Nueva": null,
+   "m2Usada": 1649.8,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 5.11,
+   "m2P25": 3.95,
+   "m2P75": 6.49,
+   "mes": 420,
+   "mesP25": 355,
+   "mesP75": 500,
+   "superficie": 94,
+   "viviendas": 2595
+  },
+  "rentaHogar": 36802,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 13.7
+ },
+ {
+  "ine": "15019",
+  "nombre": "Carballo",
+  "slug": "carballo",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1162.3,
+   "m2Nueva": null,
+   "m2Usada": 1156.4,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 3.64,
+   "m2P25": 2.74,
+   "m2P75": 4.64,
+   "mes": 340,
+   "mesP25": 277,
+   "mesP75": 400,
+   "superficie": 97,
+   "viviendas": 1437
+  },
+  "rentaHogar": 34647,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 11.8
+ },
+ {
+  "ine": "15031",
+  "nombre": "Culleredo",
+  "slug": "culleredo",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1907.0,
+   "m2Nueva": null,
+   "m2Usada": 1906.9,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 6.1,
+   "m2P25": 5.0,
+   "m2P75": 7.55,
+   "mes": 470,
+   "mesP25": 400,
+   "mesP75": 550,
+   "superficie": 86,
+   "viviendas": 2095
+  },
+  "rentaHogar": 38696,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "15036",
+  "nombre": "Ferrol",
+  "slug": "ferrol",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1212.5,
+   "m2Nueva": null,
+   "m2Usada": 1206.4,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 4.76,
+   "m2P25": 3.7,
+   "m2P75": 6.11,
+   "mes": 400,
+   "mesP25": 314,
+   "mesP75": 499,
+   "superficie": 86,
+   "viviendas": 3794
+  },
+  "rentaHogar": 34035,
+  "esfuerzoCompraAnios": 2.9,
+  "esfuerzoAlquilerPct": 14.1
+ },
+ {
+  "ine": "15054",
+  "nombre": "Narón",
+  "slug": "naron",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1206.9,
+   "m2Nueva": null,
+   "m2Usada": 1207.6,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 4.25,
+   "m2P25": 3.18,
+   "m2P75": 5.47,
+   "mes": 380,
+   "mesP25": 300,
+   "mesP75": 452,
+   "superficie": 101,
+   "viviendas": 1969
+  },
+  "rentaHogar": 34649,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 13.2
+ },
+ {
+  "ine": "15058",
+  "nombre": "Oleiros",
+  "slug": "oleiros",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 2304.5,
+   "m2Nueva": 2378.9,
+   "m2Usada": 2299.6,
+   "tasaciones": 30
+  },
+  "alquiler": {
+   "m2": 6.69,
+   "m2P25": 5.21,
+   "m2P75": 8.51,
+   "mes": 508,
+   "mesP25": 419,
+   "mesP75": 637,
+   "superficie": 91,
+   "viviendas": 1882
+  },
+  "rentaHogar": 54035,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 11.3
+ },
+ {
+  "ine": "15073",
+  "nombre": "Ribeira",
+  "slug": "ribeira",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1437.2,
+   "m2Nueva": null,
+   "m2Usada": 1431.3,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 4.71,
+   "m2P25": 3.42,
+   "m2P75": 6.04,
+   "mes": 350,
+   "mesP25": 300,
+   "mesP75": 418,
+   "superficie": 85,
+   "viviendas": 903
+  },
+  "rentaHogar": 36444,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 11.5
+ },
+ {
+  "ine": "15078",
+  "nombre": "Santiago de Compostela",
+  "slug": "santiago-de-compostela",
+  "provincia": "15",
+  "ccaa": "12",
+  "compra": {
+   "m2": 2338.9,
+   "m2Nueva": null,
+   "m2Usada": 2339.9,
+   "tasaciones": 17
+  },
+  "alquiler": {
+   "m2": 7.21,
+   "m2P25": 5.48,
+   "m2P75": 9.21,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 628,
+   "superficie": 79,
+   "viviendas": 10213
+  },
+  "rentaHogar": 43695,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 13.7
+ },
+ {
+  "ine": "16078",
+  "nombre": "Cuenca",
+  "slug": "cuenca",
+  "provincia": "16",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1583.0,
+   "m2Nueva": 1854.0,
+   "m2Usada": 1575.8,
+   "tasaciones": 25
+  },
+  "alquiler": {
+   "m2": 5.62,
+   "m2P25": 4.65,
+   "m2P75": 6.9,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 600,
+   "superficie": 98,
+   "viviendas": 2924
+  },
+  "rentaHogar": 37810,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 15.9
+ },
+ {
+  "ine": "17023",
+  "nombre": "Blanes",
+  "slug": "blanes",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2222.4,
+   "m2Nueva": null,
+   "m2Usada": 2223.4,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 7.94,
+   "m2P25": 6.26,
+   "m2P75": 9.78,
+   "mes": 547,
+   "mesP25": 451,
+   "mesP75": 634,
+   "superficie": 71,
+   "viviendas": 3122
+  },
+  "rentaHogar": 36587,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 17.9
+ },
+ {
+  "ine": "17066",
+  "nombre": "Figueres",
+  "slug": "figueres",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1391.4,
+   "m2Nueva": 1757.2,
+   "m2Usada": 1387.1,
+   "tasaciones": 27
+  },
+  "alquiler": {
+   "m2": 6.14,
+   "m2P25": 4.82,
+   "m2P75": 7.66,
+   "mes": 500,
+   "mesP25": 432,
+   "mesP75": 600,
+   "superficie": 86,
+   "viviendas": 3747
+  },
+  "rentaHogar": 36205,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 16.6
+ },
+ {
+  "ine": "17079",
+  "nombre": "Girona",
+  "slug": "girona",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2315.8,
+   "m2Nueva": 2958.0,
+   "m2Usada": 2295.0,
+   "tasaciones": 46
+  },
+  "alquiler": {
+   "m2": 9.13,
+   "m2P25": 7.33,
+   "m2P75": 11.23,
+   "mes": 685,
+   "mesP25": 568,
+   "mesP75": 809,
+   "superficie": 77,
+   "viviendas": 10384
+  },
+  "rentaHogar": 47264,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.4
+ },
+ {
+  "ine": "17095",
+  "nombre": "Lloret de Mar",
+  "slug": "lloret-de-mar",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2391.5,
+   "m2Nueva": null,
+   "m2Usada": 2392.9,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 8.68,
+   "m2P25": 6.84,
+   "m2P75": 10.75,
+   "mes": 517,
+   "mesP25": 435,
+   "mesP75": 640,
+   "superficie": 63,
+   "viviendas": 2819
+  },
+  "rentaHogar": 34263,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 18.1
+ },
+ {
+  "ine": "17114",
+  "nombre": "Olot",
+  "slug": "olot",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1639.0,
+   "m2Nueva": null,
+   "m2Usada": 1609.0,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 6.18,
+   "m2P25": 4.76,
+   "m2P75": 7.82,
+   "mes": 508,
+   "mesP25": 410,
+   "mesP75": 600,
+   "superficie": 83,
+   "viviendas": 2277
+  },
+  "rentaHogar": 43187,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 14.1
+ },
+ {
+  "ine": "17155",
+  "nombre": "Salt",
+  "slug": "salt",
+  "provincia": "17",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1313.8,
+   "m2Nueva": null,
+   "m2Usada": 1305.5,
+   "tasaciones": 1
+  },
+  "alquiler": {
+   "m2": 6.55,
+   "m2P25": 5.29,
+   "m2P75": 8.03,
+   "mes": 520,
+   "mesP25": 436,
+   "mesP75": 632,
+   "superficie": 81,
+   "viviendas": 1656
+  },
+  "rentaHogar": 37892,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 16.5
+ },
+ {
+  "ine": "18017",
+  "nombre": "Almuñécar",
+  "slug": "almunecar",
+  "provincia": "18",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3015.8,
+   "m2Nueva": null,
+   "m2Usada": 3020.7,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 6.78,
+   "m2P25": 5.38,
+   "m2P75": 8.72,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 628,
+   "superficie": 77,
+   "viviendas": 1070
+  },
+  "rentaHogar": 29240,
+  "esfuerzoCompraAnios": 8.3,
+  "esfuerzoAlquilerPct": 20.5
+ },
+ {
+  "ine": "18087",
+  "nombre": "Granada",
+  "slug": "granada",
+  "provincia": "18",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2446.5,
+   "m2Nueva": 3010.2,
+   "m2Usada": 2429.8,
+   "tasaciones": 63
+  },
+  "alquiler": {
+   "m2": 6.85,
+   "m2P25": 5.28,
+   "m2P75": 8.67,
+   "mes": 584,
+   "mesP25": 458,
+   "mesP75": 719,
+   "superficie": 89,
+   "viviendas": 17627
+  },
+  "rentaHogar": 38644,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 18.1
+ },
+ {
+  "ine": "18140",
+  "nombre": "Motril",
+  "slug": "motril",
+  "provincia": "18",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1623.1,
+   "m2Nueva": 2002.9,
+   "m2Usada": 1606.9,
+   "tasaciones": 25
+  },
+  "alquiler": {
+   "m2": 5.44,
+   "m2P25": 4.38,
+   "m2P75": 6.67,
+   "mes": 451,
+   "mesP25": 389,
+   "mesP75": 550,
+   "superficie": 86,
+   "viviendas": 1794
+  },
+  "rentaHogar": 32926,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 16.4
+ },
+ {
+  "ine": "19046",
+  "nombre": "Azuqueca de Henares",
+  "slug": "azuqueca-de-henares",
+  "provincia": "19",
+  "ccaa": "08",
+  "compra": {
+   "m2": 2116.7,
+   "m2Nueva": null,
+   "m2Usada": 2110.0,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 7.58,
+   "m2P25": 6.18,
+   "m2P75": 9.18,
+   "mes": 550,
+   "mesP25": 466,
+   "mesP75": 631,
+   "superficie": 78,
+   "viviendas": 2837
+  },
+  "rentaHogar": 40690,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 16.2
+ },
+ {
+  "ine": "19130",
+  "nombre": "Guadalajara",
+  "slug": "guadalajara",
+  "provincia": "19",
+  "ccaa": "08",
+  "compra": {
+   "m2": 2136.2,
+   "m2Nueva": 2243.7,
+   "m2Usada": 2130.3,
+   "tasaciones": 33
+  },
+  "alquiler": {
+   "m2": 7.25,
+   "m2P25": 5.85,
+   "m2P75": 8.9,
+   "mes": 600,
+   "mesP25": 500,
+   "mesP75": 700,
+   "superficie": 86,
+   "viviendas": 6406
+  },
+  "rentaHogar": 42201,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 17.1
+ },
+ {
+  "ine": "20069",
+  "nombre": "Donostia",
+  "slug": "donostia",
+  "provincia": "20",
+  "ccaa": "16",
+  "compra": {
+   "m2": 5208.3,
+   "m2Nueva": 6237.4,
+   "m2Usada": 5185.9,
+   "tasaciones": 58
+  },
+  "alquiler": {
+   "m2": 13.99,
+   "m2P25": 11.71,
+   "m2P75": 16.73,
+   "mes": 967,
+   "mesP25": 822,
+   "mesP75": 1200,
+   "superficie": 71,
+   "viviendas": 12727
+  },
+  "rentaHogar": 54959,
+  "esfuerzoCompraAnios": 7.6,
+  "esfuerzoAlquilerPct": 21.1
+ },
+ {
+  "ine": "20030",
+  "nombre": "Eibar",
+  "slug": "eibar",
+  "provincia": "20",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2046.9,
+   "m2Nueva": null,
+   "m2Usada": 2027.0,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 8.64,
+   "m2P25": 7.43,
+   "m2P75": 10.06,
+   "mes": 599,
+   "mesP25": 530,
+   "mesP75": 652,
+   "superficie": 66,
+   "viviendas": 1566
+  },
+  "rentaHogar": 45551,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 15.8
+ },
+ {
+  "ine": "20067",
+  "nombre": "Errenteria",
+  "slug": "errenteria",
+  "provincia": "20",
+  "ccaa": "16",
+  "compra": {
+   "m2": 3296.0,
+   "m2Nueva": null,
+   "m2Usada": 3283.1,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 10.83,
+   "m2P25": 9.44,
+   "m2P75": 12.61,
+   "mes": 705,
+   "mesP25": 640,
+   "mesP75": 799,
+   "superficie": 65,
+   "viviendas": 2202
+  },
+  "rentaHogar": 40827,
+  "esfuerzoCompraAnios": 6.5,
+  "esfuerzoAlquilerPct": 20.7
+ },
+ {
+  "ine": "20045",
+  "nombre": "Irun",
+  "slug": "irun",
+  "provincia": "20",
+  "ccaa": "16",
+  "compra": {
+   "m2": 3074.8,
+   "m2Nueva": null,
+   "m2Usada": 3052.2,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 9.88,
+   "m2P25": 8.59,
+   "m2P75": 11.51,
+   "mes": 721,
+   "mesP25": 650,
+   "mesP75": 804,
+   "superficie": 74,
+   "viviendas": 3902
+  },
+  "rentaHogar": 43370,
+  "esfuerzoCompraAnios": 5.7,
+  "esfuerzoAlquilerPct": 19.9
+ },
+ {
+  "ine": "21041",
+  "nombre": "Huelva",
+  "slug": "huelva",
+  "provincia": "21",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1658.1,
+   "m2Nueva": 2026.6,
+   "m2Usada": 1650.3,
+   "tasaciones": 38
+  },
+  "alquiler": {
+   "m2": 6.79,
+   "m2P25": 5.38,
+   "m2P75": 8.66,
+   "mes": 508,
+   "mesP25": 430,
+   "mesP75": 616,
+   "superficie": 78,
+   "viviendas": 5175
+  },
+  "rentaHogar": 35264,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "21044",
+  "nombre": "Lepe",
+  "slug": "lepe",
+  "provincia": "21",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1859.0,
+   "m2Nueva": null,
+   "m2Usada": 1857.9,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 5.09,
+   "m2P25": 3.9,
+   "m2P75": 6.96,
+   "mes": 400,
+   "mesP25": 336,
+   "mesP75": 487,
+   "superficie": 86,
+   "viviendas": 362
+  },
+  "rentaHogar": 31326,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "22125",
+  "nombre": "Huesca",
+  "slug": "huesca",
+  "provincia": "22",
+  "ccaa": "02",
+  "compra": {
+   "m2": 1809.5,
+   "m2Nueva": null,
+   "m2Usada": 1798.5,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 6.67,
+   "m2P25": 5.3,
+   "m2P75": 8.31,
+   "mes": 500,
+   "mesP25": 418,
+   "mesP75": 600,
+   "superficie": 78,
+   "viviendas": 4765
+  },
+  "rentaHogar": 39492,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "23005",
+  "nombre": "Andújar",
+  "slug": "andujar",
+  "provincia": "23",
+  "ccaa": "01",
+  "compra": {
+   "m2": 818.8,
+   "m2Nueva": null,
+   "m2Usada": 817.4,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 3.66,
+   "m2P25": 2.94,
+   "m2P75": 4.52,
+   "mes": 350,
+   "mesP25": 300,
+   "mesP75": 410,
+   "superficie": 101,
+   "viviendas": 757
+  },
+  "rentaHogar": 29500,
+  "esfuerzoCompraAnios": 2.2,
+  "esfuerzoAlquilerPct": 14.2
+ },
+ {
+  "ine": "23050",
+  "nombre": "Jaén",
+  "slug": "jaen",
+  "provincia": "23",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1469.1,
+   "m2Nueva": 1696.5,
+   "m2Usada": 1466.4,
+   "tasaciones": 43
+  },
+  "alquiler": {
+   "m2": 5.92,
+   "m2P25": 4.75,
+   "m2P75": 7.39,
+   "mes": 490,
+   "mesP25": 400,
+   "mesP75": 597,
+   "superficie": 86,
+   "viviendas": 4993
+  },
+  "rentaHogar": 39026,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 15.1
+ },
+ {
+  "ine": "23055",
+  "nombre": "Linares",
+  "slug": "linares",
+  "provincia": "23",
+  "ccaa": "01",
+  "compra": {
+   "m2": 888.6,
+   "m2Nueva": null,
+   "m2Usada": 888.4,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 4.17,
+   "m2P25": 3.33,
+   "m2P75": 5.31,
+   "mes": 380,
+   "mesP25": 320,
+   "mesP75": 450,
+   "superficie": 91,
+   "viviendas": 1617
+  },
+  "rentaHogar": 33106,
+  "esfuerzoCompraAnios": 2.1,
+  "esfuerzoAlquilerPct": 13.8
+ },
+ {
+  "ine": "23092",
+  "nombre": "Úbeda",
+  "slug": "ubeda",
+  "provincia": "23",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1013.1,
+   "m2Nueva": null,
+   "m2Usada": 1012.7,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 3.85,
+   "m2P25": 3.03,
+   "m2P75": 4.87,
+   "mes": 399,
+   "mesP25": 330,
+   "mesP75": 450,
+   "superficie": 104,
+   "viviendas": 1264
+  },
+  "rentaHogar": 34417,
+  "esfuerzoCompraAnios": 2.4,
+  "esfuerzoAlquilerPct": 13.9
+ },
+ {
+  "ine": "24089",
+  "nombre": "León",
+  "slug": "leon",
+  "provincia": "24",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1646.8,
+   "m2Nueva": 1767.2,
+   "m2Usada": 1643.6,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 5.63,
+   "m2P25": 4.37,
+   "m2P75": 7.23,
+   "mes": 491,
+   "mesP25": 395,
+   "mesP75": 600,
+   "superficie": 89,
+   "viviendas": 10183
+  },
+  "rentaHogar": 38314,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 15.4
+ },
+ {
+  "ine": "24115",
+  "nombre": "Ponferrada",
+  "slug": "ponferrada",
+  "provincia": "24",
+  "ccaa": "07",
+  "compra": {
+   "m2": 923.3,
+   "m2Nueva": null,
+   "m2Usada": 923.2,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 5.01,
+   "m2P25": 3.8,
+   "m2P75": 6.44,
+   "mes": 400,
+   "mesP25": 334,
+   "mesP75": 462,
+   "superficie": 89,
+   "viviendas": 3997
+  },
+  "rentaHogar": 34191,
+  "esfuerzoCompraAnios": 2.2,
+  "esfuerzoAlquilerPct": 14.0
+ },
+ {
+  "ine": "24142",
+  "nombre": "San Andrés del Rabanedo",
+  "slug": "san-andres-del-rabanedo",
+  "provincia": "24",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1277.0,
+   "m2Nueva": null,
+   "m2Usada": 1277.2,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 5.44,
+   "m2P25": 4.36,
+   "m2P75": 6.8,
+   "mes": 415,
+   "mesP25": 350,
+   "mesP75": 475,
+   "superficie": 84,
+   "viviendas": 1618
+  },
+  "rentaHogar": 34612,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 14.4
+ },
+ {
+  "ine": "25120",
+  "nombre": "Lleida",
+  "slug": "lleida",
+  "provincia": "25",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1369.4,
+   "m2Nueva": 1820.7,
+   "m2Usada": 1355.8,
+   "tasaciones": 44
+  },
+  "alquiler": {
+   "m2": 6.61,
+   "m2P25": 5.21,
+   "m2P75": 8.17,
+   "mes": 516,
+   "mesP25": 425,
+   "mesP75": 632,
+   "superficie": 82,
+   "viviendas": 11047
+  },
+  "rentaHogar": 41058,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 15.1
+ },
+ {
+  "ine": "26089",
+  "nombre": "Logroño",
+  "slug": "logrono",
+  "provincia": "26",
+  "ccaa": "17",
+  "compra": {
+   "m2": 1902.4,
+   "m2Nueva": 2101.8,
+   "m2Usada": 1896.0,
+   "tasaciones": 21
+  },
+  "alquiler": {
+   "m2": 6.44,
+   "m2P25": 5.11,
+   "m2P75": 7.92,
+   "mes": 513,
+   "mesP25": 420,
+   "mesP75": 610,
+   "superficie": 84,
+   "viviendas": 10342
+  },
+  "rentaHogar": 40508,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "27028",
+  "nombre": "Lugo",
+  "slug": "lugo",
+  "provincia": "27",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1404.5,
+   "m2Nueva": 1750.2,
+   "m2Usada": 1398.0,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 4.88,
+   "m2P25": 3.57,
+   "m2P75": 6.4,
+   "mes": 404,
+   "mesP25": 340,
+   "mesP75": 500,
+   "superficie": 95,
+   "viviendas": 7365
+  },
+  "rentaHogar": 36918,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 13.1
+ },
+ {
+  "ine": "28005",
+  "nombre": "Alcalá de Henares",
+  "slug": "alcala-de-henares",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2942.2,
+   "m2Nueva": 3580.8,
+   "m2Usada": 2897.9,
+   "tasaciones": 102
+  },
+  "alquiler": {
+   "m2": 9.42,
+   "m2P25": 7.9,
+   "m2P75": 11.21,
+   "mes": 698,
+   "mesP25": 600,
+   "mesP75": 800,
+   "superficie": 74,
+   "viviendas": 12836
+  },
+  "rentaHogar": 44319,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 18.9
+ },
+ {
+  "ine": "28006",
+  "nombre": "Alcobendas",
+  "slug": "alcobendas",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 4914.2,
+   "m2Nueva": 5522.8,
+   "m2Usada": 4882.9,
+   "tasaciones": 31
+  },
+  "alquiler": {
+   "m2": 11.84,
+   "m2P25": 9.68,
+   "m2P75": 14.42,
+   "mes": 834,
+   "mesP25": 688,
+   "mesP75": 1065,
+   "superficie": 79,
+   "viviendas": 6933
+  },
+  "rentaHogar": 70503,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 14.2
+ },
+ {
+  "ine": "28007",
+  "nombre": "Alcorcón",
+  "slug": "alcorcon",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3561.5,
+   "m2Nueva": null,
+   "m2Usada": 3562.9,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 10.19,
+   "m2P25": 8.77,
+   "m2P75": 11.85,
+   "mes": 740,
+   "mesP25": 625,
+   "mesP75": 850,
+   "superficie": 74,
+   "viviendas": 9323
+  },
+  "rentaHogar": 44058,
+  "esfuerzoCompraAnios": 6.5,
+  "esfuerzoAlquilerPct": 20.2
+ },
+ {
+  "ine": "28013",
+  "nombre": "Aranjuez",
+  "slug": "aranjuez",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2184.9,
+   "m2Nueva": null,
+   "m2Usada": 2183.3,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 7.9,
+   "m2P25": 6.2,
+   "m2P75": 10.2,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 655,
+   "superficie": 74,
+   "viviendas": 3995
+  },
+  "rentaHogar": 43077,
+  "esfuerzoCompraAnios": 4.1,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "28014",
+  "nombre": "Arganda del Rey",
+  "slug": "arganda-del-rey",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2704.0,
+   "m2Nueva": 3002.8,
+   "m2Usada": 2683.6,
+   "tasaciones": 22
+  },
+  "alquiler": {
+   "m2": 8.12,
+   "m2P25": 6.68,
+   "m2P75": 10.0,
+   "mes": 640,
+   "mesP25": 539,
+   "mesP75": 750,
+   "superficie": 82,
+   "viviendas": 3132
+  },
+  "rentaHogar": 42990,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 17.9
+ },
+ {
+  "ine": "28022",
+  "nombre": "Boadilla del Monte",
+  "slug": "boadilla-del-monte",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 4304.2,
+   "m2Nueva": 4050.5,
+   "m2Usada": 4347.2,
+   "tasaciones": 82
+  },
+  "alquiler": {
+   "m2": 12.64,
+   "m2P25": 10.87,
+   "m2P75": 14.64,
+   "mes": 1270,
+   "mesP25": 987,
+   "mesP75": 1489,
+   "superficie": 116,
+   "viviendas": 1822
+  },
+  "rentaHogar": 94762,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "28047",
+  "nombre": "Collado Villalba",
+  "slug": "collado-villalba",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2993.8,
+   "m2Nueva": null,
+   "m2Usada": 2997.1,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 9.49,
+   "m2P25": 7.8,
+   "m2P75": 11.76,
+   "mes": 683,
+   "mesP25": 575,
+   "mesP75": 797,
+   "superficie": 76,
+   "viviendas": 4829
+  },
+  "rentaHogar": 43680,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 18.8
+ },
+ {
+  "ine": "28045",
+  "nombre": "Colmenar Viejo",
+  "slug": "colmenar-viejo",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3114.6,
+   "m2Nueva": 3098.3,
+   "m2Usada": 3117.3,
+   "tasaciones": 52
+  },
+  "alquiler": {
+   "m2": 8.72,
+   "m2P25": 7.06,
+   "m2P75": 10.38,
+   "mes": 700,
+   "mesP25": 582,
+   "mesP75": 840,
+   "superficie": 86,
+   "viviendas": 3158
+  },
+  "rentaHogar": 55604,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 15.1
+ },
+ {
+  "ine": "28049",
+  "nombre": "Coslada",
+  "slug": "coslada",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3299.3,
+   "m2Nueva": null,
+   "m2Usada": 3277.1,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 9.79,
+   "m2P25": 8.33,
+   "m2P75": 11.61,
+   "mes": 730,
+   "mesP25": 625,
+   "mesP75": 840,
+   "superficie": 75,
+   "viviendas": 4118
+  },
+  "rentaHogar": 43762,
+  "esfuerzoCompraAnios": 6.0,
+  "esfuerzoAlquilerPct": 20.0
+ },
+ {
+  "ine": "28058",
+  "nombre": "Fuenlabrada",
+  "slug": "fuenlabrada",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2922.0,
+   "m2Nueva": 3076.6,
+   "m2Usada": 2919.6,
+   "tasaciones": 32
+  },
+  "alquiler": {
+   "m2": 9.04,
+   "m2P25": 7.67,
+   "m2P75": 10.65,
+   "mes": 683,
+   "mesP25": 600,
+   "mesP75": 780,
+   "superficie": 75,
+   "viviendas": 8651
+  },
+  "rentaHogar": 40350,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 20.3
+ },
+ {
+  "ine": "28061",
+  "nombre": "Galapagar",
+  "slug": "galapagar",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2850.0,
+   "m2Nueva": null,
+   "m2Usada": 2841.8,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 8.56,
+   "m2P25": 7.14,
+   "m2P75": 10.31,
+   "mes": 637,
+   "mesP25": 525,
+   "mesP75": 750,
+   "superficie": 78,
+   "viviendas": 2165
+  },
+  "rentaHogar": 52721,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "28065",
+  "nombre": "Getafe",
+  "slug": "getafe",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3272.2,
+   "m2Nueva": 3593.1,
+   "m2Usada": 3256.3,
+   "tasaciones": 43
+  },
+  "alquiler": {
+   "m2": 10.2,
+   "m2P25": 8.63,
+   "m2P75": 12.12,
+   "mes": 700,
+   "mesP25": 600,
+   "mesP75": 850,
+   "superficie": 66,
+   "viviendas": 12120
+  },
+  "rentaHogar": 44326,
+  "esfuerzoCompraAnios": 5.9,
+  "esfuerzoAlquilerPct": 19.0
+ },
+ {
+  "ine": "28127",
+  "nombre": "Las Rozas de Madrid",
+  "slug": "las-rozas-de-madrid",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 4486.0,
+   "m2Nueva": null,
+   "m2Usada": 4469.4,
+   "tasaciones": 20
+  },
+  "alquiler": {
+   "m2": 13.4,
+   "m2P25": 11.24,
+   "m2P75": 15.83,
+   "mes": 996,
+   "mesP25": 780,
+   "mesP75": 1275,
+   "superficie": 85,
+   "viviendas": 5645
+  },
+  "rentaHogar": 79636,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 15.0
+ },
+ {
+  "ine": "28074",
+  "nombre": "Leganés",
+  "slug": "leganes",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3253.9,
+   "m2Nueva": null,
+   "m2Usada": 3253.8,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 9.76,
+   "m2P25": 8.33,
+   "m2P75": 11.49,
+   "mes": 690,
+   "mesP25": 581,
+   "mesP75": 800,
+   "superficie": 69,
+   "viviendas": 10663
+  },
+  "rentaHogar": 40995,
+  "esfuerzoCompraAnios": 6.3,
+  "esfuerzoAlquilerPct": 20.2
+ },
+ {
+  "ine": "28079",
+  "nombre": "Madrid",
+  "slug": "madrid",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 5418.4,
+   "m2Nueva": 6205.3,
+   "m2Usada": 5395.0,
+   "tasaciones": 847
+  },
+  "alquiler": {
+   "m2": 13.97,
+   "m2P25": 11.03,
+   "m2P75": 17.92,
+   "mes": 869,
+   "mesP25": 700,
+   "mesP75": 1166,
+   "superficie": 66,
+   "viviendas": 300447
+  },
+  "rentaHogar": 53213,
+  "esfuerzoCompraAnios": 8.1,
+  "esfuerzoAlquilerPct": 19.6
+ },
+ {
+  "ine": "28080",
+  "nombre": "Majadahonda",
+  "slug": "majadahonda",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 5005.5,
+   "m2Nueva": 4783.7,
+   "m2Usada": 5013.9,
+   "tasaciones": 42
+  },
+  "alquiler": {
+   "m2": 13.21,
+   "m2P25": 11.07,
+   "m2P75": 15.8,
+   "mes": 1128,
+   "mesP25": 850,
+   "mesP75": 1443,
+   "superficie": 94,
+   "viviendas": 4231
+  },
+  "rentaHogar": 80332,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 16.9
+ },
+ {
+  "ine": "28092",
+  "nombre": "Móstoles",
+  "slug": "mostoles",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3074.5,
+   "m2Nueva": 3396.7,
+   "m2Usada": 3066.4,
+   "tasaciones": 46
+  },
+  "alquiler": {
+   "m2": 9.22,
+   "m2P25": 7.84,
+   "m2P75": 10.82,
+   "mes": 700,
+   "mesP25": 600,
+   "mesP75": 808,
+   "superficie": 77,
+   "viviendas": 9733
+  },
+  "rentaHogar": 40872,
+  "esfuerzoCompraAnios": 6.0,
+  "esfuerzoAlquilerPct": 20.6
+ },
+ {
+  "ine": "28096",
+  "nombre": "Navalcarnero",
+  "slug": "navalcarnero",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2487.2,
+   "m2Nueva": null,
+   "m2Usada": 2464.9,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 7.99,
+   "m2P25": 6.45,
+   "m2P75": 9.73,
+   "mes": 650,
+   "mesP25": 550,
+   "mesP75": 758,
+   "superficie": 89,
+   "viviendas": 1296
+  },
+  "rentaHogar": 45811,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 17.0
+ },
+ {
+  "ine": "28106",
+  "nombre": "Parla",
+  "slug": "parla",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2410.0,
+   "m2Nueva": null,
+   "m2Usada": 2408.9,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 8.21,
+   "m2P25": 6.96,
+   "m2P75": 9.7,
+   "mes": 650,
+   "mesP25": 550,
+   "mesP75": 750,
+   "superficie": 80,
+   "viviendas": 5902
+  },
+  "rentaHogar": 37572,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 20.8
+ },
+ {
+  "ine": "28113",
+  "nombre": "Pinto",
+  "slug": "pinto",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2951.6,
+   "m2Nueva": null,
+   "m2Usada": 2950.1,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 9.43,
+   "m2P25": 7.97,
+   "m2P75": 11.13,
+   "mes": 700,
+   "mesP25": 600,
+   "mesP75": 800,
+   "superficie": 83,
+   "viviendas": 3064
+  },
+  "rentaHogar": 45164,
+  "esfuerzoCompraAnios": 5.2,
+  "esfuerzoAlquilerPct": 18.6
+ },
+ {
+  "ine": "28115",
+  "nombre": "Pozuelo de Alarcón",
+  "slug": "pozuelo-de-alarcon",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 5206.2,
+   "m2Nueva": 5401.6,
+   "m2Usada": 5195.5,
+   "tasaciones": 58
+  },
+  "alquiler": {
+   "m2": 13.67,
+   "m2P25": 11.5,
+   "m2P75": 15.95,
+   "mes": 1246,
+   "mesP25": 850,
+   "mesP75": 1600,
+   "superficie": 96,
+   "viviendas": 3954
+  },
+  "rentaHogar": 102629,
+  "esfuerzoCompraAnios": 4.1,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "28123",
+  "nombre": "Rivas-Vaciamadrid",
+  "slug": "rivas-vaciamadrid",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3521.2,
+   "m2Nueva": null,
+   "m2Usada": 3511.6,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 9.16,
+   "m2P25": 7.97,
+   "m2P75": 10.53,
+   "mes": 867,
+   "mesP25": 757,
+   "mesP75": 995,
+   "superficie": 108,
+   "viviendas": 3160
+  },
+  "rentaHogar": 57904,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 18.0
+ },
+ {
+  "ine": "28130",
+  "nombre": "San Fernando de Henares",
+  "slug": "san-fernando-de-henares",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2928.6,
+   "m2Nueva": null,
+   "m2Usada": 2928.6,
+   "tasaciones": 1
+  },
+  "alquiler": {
+   "m2": 9.7,
+   "m2P25": 8.33,
+   "m2P75": 11.21,
+   "mes": 700,
+   "mesP25": 600,
+   "mesP75": 780,
+   "superficie": 75,
+   "viviendas": 1896
+  },
+  "rentaHogar": 42696,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 19.7
+ },
+ {
+  "ine": "28134",
+  "nombre": "San Sebastián de los Reyes",
+  "slug": "san-sebastian-de-los-reyes",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 4041.0,
+   "m2Nueva": null,
+   "m2Usada": 4035.9,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 11.48,
+   "m2P25": 9.66,
+   "m2P75": 13.72,
+   "mes": 825,
+   "mesP25": 700,
+   "mesP75": 993,
+   "superficie": 77,
+   "viviendas": 5619
+  },
+  "rentaHogar": 56170,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 17.6
+ },
+ {
+  "ine": "28148",
+  "nombre": "Torrejón de Ardoz",
+  "slug": "torrejon-de-ardoz",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3042.7,
+   "m2Nueva": 3518.7,
+   "m2Usada": 3006.3,
+   "tasaciones": 62
+  },
+  "alquiler": {
+   "m2": 9.21,
+   "m2P25": 7.72,
+   "m2P75": 11.01,
+   "mes": 710,
+   "mesP25": 600,
+   "mesP75": 820,
+   "superficie": 83,
+   "viviendas": 7467
+  },
+  "rentaHogar": 44015,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 19.4
+ },
+ {
+  "ine": "28903",
+  "nombre": "Tres Cantos",
+  "slug": "tres-cantos",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 4390.6,
+   "m2Nueva": 4362.3,
+   "m2Usada": 4395.5,
+   "tasaciones": 28
+  },
+  "alquiler": {
+   "m2": 11.5,
+   "m2P25": 9.64,
+   "m2P75": 13.47,
+   "mes": 950,
+   "mesP25": 824,
+   "mesP75": 1133,
+   "superficie": 95,
+   "viviendas": 2809
+  },
+  "rentaHogar": 71548,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 15.9
+ },
+ {
+  "ine": "28161",
+  "nombre": "Valdemoro",
+  "slug": "valdemoro",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 2681.1,
+   "m2Nueva": 3048.1,
+   "m2Usada": 2639.4,
+   "tasaciones": 63
+  },
+  "alquiler": {
+   "m2": 8.96,
+   "m2P25": 7.48,
+   "m2P75": 10.9,
+   "mes": 680,
+   "mesP25": 580,
+   "mesP75": 780,
+   "superficie": 84,
+   "viviendas": 3975
+  },
+  "rentaHogar": 47693,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 17.1
+ },
+ {
+  "ine": "28181",
+  "nombre": "Villaviciosa de Odón",
+  "slug": "villaviciosa-de-odon",
+  "provincia": "28",
+  "ccaa": "13",
+  "compra": {
+   "m2": 3523.7,
+   "m2Nueva": 4116.9,
+   "m2Usada": 3468.6,
+   "tasaciones": 28
+  },
+  "alquiler": {
+   "m2": 12.91,
+   "m2P25": 10.8,
+   "m2P75": 15.42,
+   "mes": 901,
+   "mesP25": 780,
+   "mesP75": 1132,
+   "superficie": 74,
+   "viviendas": 1020
+  },
+  "rentaHogar": 73270,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 14.8
+ },
+ {
+  "ine": "29007",
+  "nombre": "Alhaurín de la Torre",
+  "slug": "alhaurin-de-la-torre",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2753.0,
+   "m2Nueva": null,
+   "m2Usada": 2736.1,
+   "tasaciones": 17
+  },
+  "alquiler": {
+   "m2": 8.69,
+   "m2P25": 6.93,
+   "m2P75": 11.07,
+   "mes": 630,
+   "mesP25": 527,
+   "mesP75": 750,
+   "superficie": 85,
+   "viviendas": 616
+  },
+  "rentaHogar": 45558,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 16.6
+ },
+ {
+  "ine": "29015",
+  "nombre": "Antequera",
+  "slug": "antequera",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1532.1,
+   "m2Nueva": null,
+   "m2Usada": 1531.7,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 5.5,
+   "m2P25": 4.48,
+   "m2P75": 6.85,
+   "mes": 500,
+   "mesP25": 422,
+   "mesP75": 589,
+   "superficie": 95,
+   "viviendas": 982
+  },
+  "rentaHogar": 34871,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 17.2
+ },
+ {
+  "ine": "29025",
+  "nombre": "Benalmádena",
+  "slug": "benalmadena",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3782.7,
+   "m2Nueva": 3906.5,
+   "m2Usada": 3778.7,
+   "tasaciones": 39
+  },
+  "alquiler": {
+   "m2": 10.08,
+   "m2P25": 7.98,
+   "m2P75": 12.78,
+   "mes": 695,
+   "mesP25": 552,
+   "mesP75": 852,
+   "superficie": 81,
+   "viviendas": 3907
+  },
+  "rentaHogar": 35650,
+  "esfuerzoCompraAnios": 8.5,
+  "esfuerzoAlquilerPct": 23.4
+ },
+ {
+  "ine": "29051",
+  "nombre": "Estepona",
+  "slug": "estepona",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3518.4,
+   "m2Nueva": 4046.1,
+   "m2Usada": 3452.5,
+   "tasaciones": 105
+  },
+  "alquiler": {
+   "m2": 8.36,
+   "m2P25": 6.58,
+   "m2P75": 10.98,
+   "mes": 675,
+   "mesP25": 550,
+   "mesP75": 873,
+   "superficie": 90,
+   "viviendas": 2963
+  },
+  "rentaHogar": 36583,
+  "esfuerzoCompraAnios": 7.7,
+  "esfuerzoAlquilerPct": 22.1
+ },
+ {
+  "ine": "29054",
+  "nombre": "Fuengirola",
+  "slug": "fuengirola",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3758.0,
+   "m2Nueva": 4546.9,
+   "m2Usada": 3711.2,
+   "tasaciones": 163
+  },
+  "alquiler": {
+   "m2": 9.29,
+   "m2P25": 7.18,
+   "m2P75": 11.93,
+   "mes": 675,
+   "mesP25": 550,
+   "mesP75": 813,
+   "superficie": 80,
+   "viviendas": 4682
+  },
+  "rentaHogar": 34022,
+  "esfuerzoCompraAnios": 8.8,
+  "esfuerzoAlquilerPct": 23.8
+ },
+ {
+  "ine": "29069",
+  "nombre": "Marbella",
+  "slug": "marbella",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 4528.3,
+   "m2Nueva": 5954.8,
+   "m2Usada": 4476.5,
+   "tasaciones": 79
+  },
+  "alquiler": {
+   "m2": 9.63,
+   "m2P25": 7.53,
+   "m2P75": 12.7,
+   "mes": 800,
+   "mesP25": 625,
+   "mesP75": 1050,
+   "superficie": 89,
+   "viviendas": 6374
+  },
+  "rentaHogar": 39540,
+  "esfuerzoCompraAnios": 9.2,
+  "esfuerzoAlquilerPct": 24.3
+ },
+ {
+  "ine": "29070",
+  "nombre": "Mijas",
+  "slug": "mijas",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3365.1,
+   "m2Nueva": 3760.8,
+   "m2Usada": 3339.0,
+   "tasaciones": 147
+  },
+  "alquiler": {
+   "m2": 8.68,
+   "m2P25": 6.93,
+   "m2P75": 11.05,
+   "mes": 615,
+   "mesP25": 500,
+   "mesP75": 763,
+   "superficie": 81,
+   "viviendas": 3391
+  },
+  "rentaHogar": 33588,
+  "esfuerzoCompraAnios": 8.0,
+  "esfuerzoAlquilerPct": 22.0
+ },
+ {
+  "ine": "29067",
+  "nombre": "Málaga",
+  "slug": "malaga",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3320.5,
+   "m2Nueva": 4140.3,
+   "m2Usada": 3282.7,
+   "tasaciones": 218
+  },
+  "alquiler": {
+   "m2": 9.55,
+   "m2P25": 7.36,
+   "m2P75": 12.36,
+   "mes": 718,
+   "mesP25": 561,
+   "mesP75": 927,
+   "superficie": 80,
+   "viviendas": 25741
+  },
+  "rentaHogar": 38950,
+  "esfuerzoCompraAnios": 6.8,
+  "esfuerzoAlquilerPct": 22.1
+ },
+ {
+  "ine": "29082",
+  "nombre": "Rincón de la Victoria",
+  "slug": "rincon-de-la-victoria",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3506.2,
+   "m2Nueva": null,
+   "m2Usada": 3498.4,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 8.74,
+   "m2P25": 7.06,
+   "m2P75": 11.06,
+   "mes": 700,
+   "mesP25": 578,
+   "mesP75": 850,
+   "superficie": 93,
+   "viviendas": 2486
+  },
+  "rentaHogar": 39893,
+  "esfuerzoCompraAnios": 7.0,
+  "esfuerzoAlquilerPct": 21.1
+ },
+ {
+  "ine": "29084",
+  "nombre": "Ronda",
+  "slug": "ronda",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1742.8,
+   "m2Nueva": null,
+   "m2Usada": 1742.0,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 5.1,
+   "m2P25": 4.05,
+   "m2P75": 6.34,
+   "mes": 420,
+   "mesP25": 352,
+   "mesP75": 500,
+   "superficie": 89,
+   "viviendas": 1083
+  },
+  "rentaHogar": 34294,
+  "esfuerzoCompraAnios": 4.1,
+  "esfuerzoAlquilerPct": 14.7
+ },
+ {
+  "ine": "29901",
+  "nombre": "Torremolinos",
+  "slug": "torremolinos",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 3758.3,
+   "m2Nueva": 4247.5,
+   "m2Usada": 3735.5,
+   "tasaciones": 24
+  },
+  "alquiler": {
+   "m2": 10.17,
+   "m2P25": 7.78,
+   "m2P75": 13.24,
+   "mes": 660,
+   "mesP25": 509,
+   "mesP75": 850,
+   "superficie": 73,
+   "viviendas": 3969
+  },
+  "rentaHogar": 35686,
+  "esfuerzoCompraAnios": 8.4,
+  "esfuerzoAlquilerPct": 22.2
+ },
+ {
+  "ine": "29094",
+  "nombre": "Vélez-Málaga",
+  "slug": "velez-malaga",
+  "provincia": "29",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2788.4,
+   "m2Nueva": 3620.0,
+   "m2Usada": 2745.3,
+   "tasaciones": 21
+  },
+  "alquiler": {
+   "m2": 6.84,
+   "m2P25": 5.31,
+   "m2P75": 8.77,
+   "mes": 538,
+   "mesP25": 444,
+   "mesP75": 670,
+   "superficie": 88,
+   "viviendas": 2394
+  },
+  "rentaHogar": 33024,
+  "esfuerzoCompraAnios": 6.8,
+  "esfuerzoAlquilerPct": 19.5
+ },
+ {
+  "ine": "30005",
+  "nombre": "Alcantarilla",
+  "slug": "alcantarilla",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1070.2,
+   "m2Nueva": null,
+   "m2Usada": 1067.6,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.31,
+   "m2P25": 3.18,
+   "m2P75": 5.77,
+   "mes": 410,
+   "mesP25": 310,
+   "mesP75": 500,
+   "superficie": 100,
+   "viviendas": 1354
+  },
+  "rentaHogar": 34688,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 14.2
+ },
+ {
+  "ine": "30015",
+  "nombre": "Caravaca de la Cruz",
+  "slug": "caravaca-de-la-cruz",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 902.9,
+   "m2Nueva": null,
+   "m2Usada": 900.4,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 3.66,
+   "m2P25": 2.97,
+   "m2P75": 4.63,
+   "mes": 366,
+   "mesP25": 300,
+   "mesP75": 425,
+   "superficie": 113,
+   "viviendas": 532
+  },
+  "rentaHogar": 33974,
+  "esfuerzoCompraAnios": 2.1,
+  "esfuerzoAlquilerPct": 12.9
+ },
+ {
+  "ine": "30016",
+  "nombre": "Cartagena",
+  "slug": "cartagena",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1485.6,
+   "m2Nueva": 1871.3,
+   "m2Usada": 1479.4,
+   "tasaciones": 68
+  },
+  "alquiler": {
+   "m2": 5.42,
+   "m2P25": 4.2,
+   "m2P75": 6.8,
+   "mes": 500,
+   "mesP25": 399,
+   "mesP75": 606,
+   "superficie": 94,
+   "viviendas": 6741
+  },
+  "rentaHogar": 38362,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.6
+ },
+ {
+  "ine": "30019",
+  "nombre": "Cieza",
+  "slug": "cieza",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 953.9,
+   "m2Nueva": null,
+   "m2Usada": 952.2,
+   "tasaciones": 1
+  },
+  "alquiler": {
+   "m2": 3.88,
+   "m2P25": 3.0,
+   "m2P75": 4.8,
+   "mes": 350,
+   "mesP25": 267,
+   "mesP75": 425,
+   "superficie": 90,
+   "viviendas": 936
+  },
+  "rentaHogar": 34052,
+  "esfuerzoCompraAnios": 2.2,
+  "esfuerzoAlquilerPct": 12.3
+ },
+ {
+  "ine": "30022",
+  "nombre": "Jumilla",
+  "slug": "jumilla",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 829.1,
+   "m2Nueva": null,
+   "m2Usada": 826.4,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 3.57,
+   "m2P25": 2.94,
+   "m2P75": 4.41,
+   "mes": 360,
+   "mesP25": 300,
+   "mesP75": 410,
+   "superficie": 106,
+   "viviendas": 659
+  },
+  "rentaHogar": 32814,
+  "esfuerzoCompraAnios": 2.0,
+  "esfuerzoAlquilerPct": 13.2
+ },
+ {
+  "ine": "30024",
+  "nombre": "Lorca",
+  "slug": "lorca",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1170.2,
+   "m2Nueva": null,
+   "m2Usada": 1165.8,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 4.82,
+   "m2P25": 3.91,
+   "m2P75": 6.16,
+   "mes": 450,
+   "mesP25": 377,
+   "mesP75": 520,
+   "superficie": 102,
+   "viviendas": 3199
+  },
+  "rentaHogar": 37323,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "30026",
+  "nombre": "Mazarrón",
+  "slug": "mazarron",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1583.6,
+   "m2Nueva": null,
+   "m2Usada": 1580.9,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 4.93,
+   "m2P25": 3.72,
+   "m2P75": 6.25,
+   "mes": 358,
+   "mesP25": 302,
+   "mesP75": 430,
+   "superficie": 79,
+   "viviendas": 853
+  },
+  "rentaHogar": 29706,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "30027",
+  "nombre": "Molina de Segura",
+  "slug": "molina-de-segura",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1325.2,
+   "m2Nueva": 1741.5,
+   "m2Usada": 1316.8,
+   "tasaciones": 28
+  },
+  "alquiler": {
+   "m2": 5.27,
+   "m2P25": 4.21,
+   "m2P75": 6.44,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 600,
+   "superficie": 104,
+   "viviendas": 1820
+  },
+  "rentaHogar": 41727,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 14.4
+ },
+ {
+  "ine": "30030",
+  "nombre": "Murcia",
+  "slug": "murcia",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1579.6,
+   "m2Nueva": 2299.7,
+   "m2Usada": 1560.8,
+   "tasaciones": 227
+  },
+  "alquiler": {
+   "m2": 6.52,
+   "m2P25": 4.95,
+   "m2P75": 8.42,
+   "mes": 525,
+   "mesP25": 420,
+   "mesP75": 650,
+   "superficie": 92,
+   "viviendas": 19675
+  },
+  "rentaHogar": 40763,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.5
+ },
+ {
+  "ine": "30035",
+  "nombre": "San Javier",
+  "slug": "san-javier",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1952.8,
+   "m2Nueva": null,
+   "m2Usada": 1941.2,
+   "tasaciones": 16
+  },
+  "alquiler": {
+   "m2": 5.95,
+   "m2P25": 4.57,
+   "m2P75": 7.46,
+   "mes": 410,
+   "mesP25": 350,
+   "mesP75": 500,
+   "superficie": 80,
+   "viviendas": 1320
+  },
+  "rentaHogar": 35632,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 13.8
+ },
+ {
+  "ine": "30037",
+  "nombre": "Torre-Pacheco",
+  "slug": "torre-pacheco",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1378.4,
+   "m2Nueva": 1575.5,
+   "m2Usada": 1369.5,
+   "tasaciones": 29
+  },
+  "alquiler": {
+   "m2": 4.68,
+   "m2P25": 3.52,
+   "m2P75": 6.35,
+   "mes": 430,
+   "mesP25": 369,
+   "mesP75": 500,
+   "superficie": 111,
+   "viviendas": 805
+  },
+  "rentaHogar": 35329,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "30039",
+  "nombre": "Totana",
+  "slug": "totana",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 967.9,
+   "m2Nueva": null,
+   "m2Usada": 964.2,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 4.06,
+   "m2P25": 3.37,
+   "m2P75": 4.93,
+   "mes": 400,
+   "mesP25": 325,
+   "mesP75": 450,
+   "superficie": 102,
+   "viviendas": 799
+  },
+  "rentaHogar": 35250,
+  "esfuerzoCompraAnios": 2.2,
+  "esfuerzoAlquilerPct": 13.6
+ },
+ {
+  "ine": "30043",
+  "nombre": "Yecla",
+  "slug": "yecla",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 881.6,
+   "m2Nueva": null,
+   "m2Usada": 880.8,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 3.54,
+   "m2P25": 2.79,
+   "m2P75": 4.37,
+   "mes": 350,
+   "mesP25": 280,
+   "mesP75": 400,
+   "superficie": 105,
+   "viviendas": 1130
+  },
+  "rentaHogar": 33324,
+  "esfuerzoCompraAnios": 2.1,
+  "esfuerzoAlquilerPct": 12.6
+ },
+ {
+  "ine": "30003",
+  "nombre": "Águilas",
+  "slug": "aguilas",
+  "provincia": "30",
+  "ccaa": "14",
+  "compra": {
+   "m2": 1453.8,
+   "m2Nueva": null,
+   "m2Usada": 1448.0,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 4.88,
+   "m2P25": 3.76,
+   "m2P75": 6.34,
+   "mes": 416,
+   "mesP25": 350,
+   "mesP75": 500,
+   "superficie": 95,
+   "viviendas": 1130
+  },
+  "rentaHogar": 33107,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.1
+ },
+ {
+  "ine": "31201",
+  "nombre": "Pamplona",
+  "slug": "pamplona",
+  "provincia": "31",
+  "ccaa": "15",
+  "compra": {
+   "m2": 2695.0,
+   "m2Nueva": 2893.0,
+   "m2Usada": 2669.8,
+   "tasaciones": 22
+  },
+  "alquiler": {
+   "m2": 7.93,
+   "m2P25": 6.34,
+   "m2P75": 9.55,
+   "mes": 665,
+   "mesP25": 548,
+   "mesP75": 798,
+   "superficie": 85,
+   "viviendas": 11675
+  },
+  "rentaHogar": 45962,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 17.4
+ },
+ {
+  "ine": "31232",
+  "nombre": "Tudela",
+  "slug": "tudela",
+  "provincia": "31",
+  "ccaa": "15",
+  "compra": {
+   "m2": 1619.8,
+   "m2Nueva": null,
+   "m2Usada": 1582.0,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 6.01,
+   "m2P25": 4.7,
+   "m2P75": 7.5,
+   "mes": 536,
+   "mesP25": 415,
+   "mesP75": 623,
+   "superficie": 87,
+   "viviendas": 1506
+  },
+  "rentaHogar": 42157,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "32054",
+  "nombre": "Ourense",
+  "slug": "ourense",
+  "provincia": "32",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1445.2,
+   "m2Nueva": null,
+   "m2Usada": 1441.3,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 5.07,
+   "m2P25": 3.9,
+   "m2P75": 6.67,
+   "mes": 410,
+   "mesP25": 350,
+   "mesP75": 500,
+   "superficie": 88,
+   "viviendas": 9607
+  },
+  "rentaHogar": 36095,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 13.6
+ },
+ {
+  "ine": "33004",
+  "nombre": "Avilés",
+  "slug": "aviles",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 1553.0,
+   "m2Nueva": null,
+   "m2Usada": 1549.5,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 5.98,
+   "m2P25": 4.9,
+   "m2P75": 7.25,
+   "mes": 450,
+   "mesP25": 360,
+   "mesP75": 530,
+   "superficie": 75,
+   "viviendas": 4190
+  },
+  "rentaHogar": 36136,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 14.9
+ },
+ {
+  "ine": "33024",
+  "nombre": "Gijón",
+  "slug": "gijon",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 2343.3,
+   "m2Nueva": 2529.3,
+   "m2Usada": 2338.8,
+   "tasaciones": 69
+  },
+  "alquiler": {
+   "m2": 7.21,
+   "m2P25": 5.84,
+   "m2P75": 9.02,
+   "mes": 509,
+   "mesP25": 440,
+   "mesP75": 612,
+   "superficie": 76,
+   "viviendas": 19552
+  },
+  "rentaHogar": 37943,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "33031",
+  "nombre": "Langreo",
+  "slug": "langreo",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 1052.1,
+   "m2Nueva": null,
+   "m2Usada": 1051.4,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 4.9,
+   "m2P25": 3.85,
+   "m2P75": 6.21,
+   "mes": 360,
+   "mesP25": 300,
+   "mesP75": 420,
+   "superficie": 75,
+   "viviendas": 1302
+  },
+  "rentaHogar": 32099,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 13.5
+ },
+ {
+  "ine": "33037",
+  "nombre": "Mieres",
+  "slug": "mieres",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 1096.2,
+   "m2Nueva": null,
+   "m2Usada": 1096.3,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 5.0,
+   "m2P25": 3.9,
+   "m2P75": 6.33,
+   "mes": 360,
+   "mesP25": 300,
+   "mesP75": 433,
+   "superficie": 71,
+   "viviendas": 1273
+  },
+  "rentaHogar": 33541,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 12.9
+ },
+ {
+  "ine": "33044",
+  "nombre": "Oviedo",
+  "slug": "oviedo",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 2214.7,
+   "m2Nueva": 2546.0,
+   "m2Usada": 2205.8,
+   "tasaciones": 50
+  },
+  "alquiler": {
+   "m2": 7.32,
+   "m2P25": 5.86,
+   "m2P75": 9.15,
+   "mes": 500,
+   "mesP25": 406,
+   "mesP75": 600,
+   "superficie": 74,
+   "viviendas": 18172
+  },
+  "rentaHogar": 40121,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 15.0
+ },
+ {
+  "ine": "33066",
+  "nombre": "Siero",
+  "slug": "siero",
+  "provincia": "33",
+  "ccaa": "03",
+  "compra": {
+   "m2": 1564.2,
+   "m2Nueva": 1752.1,
+   "m2Usada": 1556.0,
+   "tasaciones": 21
+  },
+  "alquiler": {
+   "m2": 6.02,
+   "m2P25": 4.79,
+   "m2P75": 7.57,
+   "mes": 425,
+   "mesP25": 370,
+   "mesP75": 497,
+   "superficie": 77,
+   "viviendas": 2309
+  },
+  "rentaHogar": 39406,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 12.9
+ },
+ {
+  "ine": "34120",
+  "nombre": "Palencia",
+  "slug": "palencia",
+  "provincia": "34",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1471.1,
+   "m2Nueva": null,
+   "m2Usada": 1469.8,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 5.76,
+   "m2P25": 4.67,
+   "m2P75": 7.16,
+   "mes": 450,
+   "mesP25": 380,
+   "mesP75": 514,
+   "superficie": 82,
+   "viviendas": 4832
+  },
+  "rentaHogar": 37200,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "35002",
+  "nombre": "Agüimes",
+  "slug": "aguimes",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1865.2,
+   "m2Nueva": null,
+   "m2Usada": 1865.4,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 7.37,
+   "m2P25": 5.78,
+   "m2P75": 9.3,
+   "mes": 500,
+   "mesP25": 417,
+   "mesP75": 600,
+   "superficie": 76,
+   "viviendas": 1582
+  },
+  "rentaHogar": 38920,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 15.4
+ },
+ {
+  "ine": "35004",
+  "nombre": "Arrecife",
+  "slug": "arrecife",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2016.3,
+   "m2Nueva": 2257.4,
+   "m2Usada": 2011.1,
+   "tasaciones": 22
+  },
+  "alquiler": {
+   "m2": 7.1,
+   "m2P25": 5.62,
+   "m2P75": 8.89,
+   "mes": 500,
+   "mesP25": 420,
+   "mesP75": 603,
+   "superficie": 75,
+   "viviendas": 3944
+  },
+  "rentaHogar": 37952,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 15.8
+ },
+ {
+  "ine": "35006",
+  "nombre": "Arucas",
+  "slug": "arucas",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1629.3,
+   "m2Nueva": null,
+   "m2Usada": 1628.0,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 6.33,
+   "m2P25": 5.11,
+   "m2P75": 8.07,
+   "mes": 501,
+   "mesP25": 430,
+   "mesP75": 612,
+   "superficie": 88,
+   "viviendas": 1242
+  },
+  "rentaHogar": 39584,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "35011",
+  "nombre": "Ingenio",
+  "slug": "ingenio",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1419.7,
+   "m2Nueva": null,
+   "m2Usada": 1413.6,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 6.22,
+   "m2P25": 5.0,
+   "m2P75": 7.68,
+   "mes": 455,
+   "mesP25": 400,
+   "mesP75": 550,
+   "superficie": 81,
+   "viviendas": 1010
+  },
+  "rentaHogar": 37587,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "35014",
+  "nombre": "La Oliva",
+  "slug": "la-oliva",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 3299.6,
+   "m2Nueva": null,
+   "m2Usada": 3300.0,
+   "tasaciones": 17
+  },
+  "alquiler": {
+   "m2": 8.59,
+   "m2P25": 6.86,
+   "m2P75": 11.09,
+   "mes": 542,
+   "mesP25": 450,
+   "mesP75": 680,
+   "superficie": 65,
+   "viviendas": 913
+  },
+  "rentaHogar": 35520,
+  "esfuerzoCompraAnios": 7.4,
+  "esfuerzoAlquilerPct": 18.3
+ },
+ {
+  "ine": "35016",
+  "nombre": "Las Palmas de Gran Canaria",
+  "slug": "las-palmas-de-gran-canaria",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2337.4,
+   "m2Nueva": 3040.0,
+   "m2Usada": 2320.5,
+   "tasaciones": 144
+  },
+  "alquiler": {
+   "m2": 8.1,
+   "m2P25": 6.11,
+   "m2P75": 10.81,
+   "mes": 600,
+   "mesP25": 460,
+   "mesP75": 751,
+   "superficie": 77,
+   "viviendas": 21347
+  },
+  "rentaHogar": 41738,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "35017",
+  "nombre": "Puerto del Rosario",
+  "slug": "puerto-del-rosario",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1958.9,
+   "m2Nueva": null,
+   "m2Usada": 1958.0,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 6.82,
+   "m2P25": 5.6,
+   "m2P75": 8.33,
+   "mes": 481,
+   "mesP25": 400,
+   "mesP75": 567,
+   "superficie": 73,
+   "viviendas": 2949
+  },
+  "rentaHogar": 39508,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "35019",
+  "nombre": "San Bartolomé de Tirajana",
+  "slug": "san-bartolome-de-tirajana",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 3286.3,
+   "m2Nueva": null,
+   "m2Usada": 3289.1,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 8.93,
+   "m2P25": 6.94,
+   "m2P75": 12.04,
+   "mes": 600,
+   "mesP25": 500,
+   "mesP75": 750,
+   "superficie": 72,
+   "viviendas": 1992
+  },
+  "rentaHogar": 36625,
+  "esfuerzoCompraAnios": 7.2,
+  "esfuerzoAlquilerPct": 19.7
+ },
+ {
+  "ine": "35022",
+  "nombre": "Santa Lucía de Tirajana",
+  "slug": "santa-lucia-de-tirajana",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1761.4,
+   "m2Nueva": null,
+   "m2Usada": 1760.3,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 6.77,
+   "m2P25": 5.46,
+   "m2P75": 8.33,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 595,
+   "superficie": 80,
+   "viviendas": 3963
+  },
+  "rentaHogar": 35229,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 17.0
+ },
+ {
+  "ine": "35026",
+  "nombre": "Telde",
+  "slug": "telde",
+  "provincia": "35",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1796.0,
+   "m2Nueva": null,
+   "m2Usada": 1795.8,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 7.14,
+   "m2P25": 5.62,
+   "m2P75": 8.87,
+   "mes": 520,
+   "mesP25": 450,
+   "mesP75": 625,
+   "superficie": 78,
+   "viviendas": 3938
+  },
+  "rentaHogar": 36972,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 16.9
+ },
+ {
+  "ine": "36008",
+  "nombre": "Cangas",
+  "slug": "cangas",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1778.0,
+   "m2Nueva": null,
+   "m2Usada": 1775.4,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 5.63,
+   "m2P25": 4.43,
+   "m2P75": 6.87,
+   "mes": 429,
+   "mesP25": 375,
+   "mesP75": 500,
+   "superficie": 85,
+   "viviendas": 1031
+  },
+  "rentaHogar": 36952,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 13.9
+ },
+ {
+  "ine": "36026",
+  "nombre": "Marín",
+  "slug": "marin",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1473.4,
+   "m2Nueva": null,
+   "m2Usada": 1479.5,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 4.46,
+   "m2P25": 3.33,
+   "m2P75": 6.0,
+   "mes": 400,
+   "mesP25": 335,
+   "mesP75": 456,
+   "superficie": 98,
+   "viviendas": 737
+  },
+  "rentaHogar": 34548,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 13.9
+ },
+ {
+  "ine": "36038",
+  "nombre": "Pontevedra",
+  "slug": "pontevedra",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 2060.0,
+   "m2Nueva": 2617.4,
+   "m2Usada": 2026.9,
+   "tasaciones": 26
+  },
+  "alquiler": {
+   "m2": 6.32,
+   "m2P25": 4.88,
+   "m2P75": 7.98,
+   "mes": 513,
+   "mesP25": 428,
+   "mesP75": 625,
+   "superficie": 91,
+   "viviendas": 5471
+  },
+  "rentaHogar": 38999,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 15.8
+ },
+ {
+  "ine": "36045",
+  "nombre": "Redondela",
+  "slug": "redondela",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1377.9,
+   "m2Nueva": null,
+   "m2Usada": 1375.6,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 5.46,
+   "m2P25": 4.17,
+   "m2P75": 6.85,
+   "mes": 417,
+   "mesP25": 364,
+   "mesP75": 500,
+   "superficie": 90,
+   "viviendas": 793
+  },
+  "rentaHogar": 39787,
+  "esfuerzoCompraAnios": 2.8,
+  "esfuerzoAlquilerPct": 12.6
+ },
+ {
+  "ine": "36057",
+  "nombre": "Vigo",
+  "slug": "vigo",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 2346.3,
+   "m2Nueva": 3013.9,
+   "m2Usada": 2335.3,
+   "tasaciones": 64
+  },
+  "alquiler": {
+   "m2": 7.61,
+   "m2P25": 5.65,
+   "m2P75": 10.02,
+   "mes": 549,
+   "mesP25": 450,
+   "mesP75": 663,
+   "superficie": 82,
+   "viviendas": 21337
+  },
+  "rentaHogar": 40775,
+  "esfuerzoCompraAnios": 4.6,
+  "esfuerzoAlquilerPct": 16.2
+ },
+ {
+  "ine": "36060",
+  "nombre": "Vilagarcía de Arousa",
+  "slug": "vilagarcia-de-arousa",
+  "provincia": "36",
+  "ccaa": "12",
+  "compra": {
+   "m2": 1530.5,
+   "m2Nueva": null,
+   "m2Usada": 1525.4,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 5.1,
+   "m2P25": 3.94,
+   "m2P75": 6.56,
+   "mes": 440,
+   "mesP25": 360,
+   "mesP75": 520,
+   "superficie": 94,
+   "viviendas": 1655
+  },
+  "rentaHogar": 34495,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "37274",
+  "nombre": "Salamanca",
+  "slug": "salamanca",
+  "provincia": "37",
+  "ccaa": "07",
+  "compra": {
+   "m2": 2134.7,
+   "m2Nueva": null,
+   "m2Usada": 2134.4,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 6.38,
+   "m2P25": 5.12,
+   "m2P75": 7.96,
+   "mes": 515,
+   "mesP25": 429,
+   "mesP75": 630,
+   "superficie": 85,
+   "viviendas": 13798
+  },
+  "rentaHogar": 35126,
+  "esfuerzoCompraAnios": 4.9,
+  "esfuerzoAlquilerPct": 17.6
+ },
+ {
+  "ine": "38001",
+  "nombre": "Adeje",
+  "slug": "adeje",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 3775.9,
+   "m2Nueva": null,
+   "m2Usada": 3773.8,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 10.0,
+   "m2P25": 7.97,
+   "m2P75": 12.51,
+   "mes": 633,
+   "mesP25": 500,
+   "mesP75": 800,
+   "superficie": 69,
+   "viviendas": 2025
+  },
+  "rentaHogar": 36472,
+  "esfuerzoCompraAnios": 8.3,
+  "esfuerzoAlquilerPct": 20.8
+ },
+ {
+  "ine": "38006",
+  "nombre": "Arona",
+  "slug": "arona",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2945.8,
+   "m2Nueva": 2972.0,
+   "m2Usada": 2945.2,
+   "tasaciones": 35
+  },
+  "alquiler": {
+   "m2": 9.15,
+   "m2P25": 7.14,
+   "m2P75": 11.74,
+   "mes": 558,
+   "mesP25": 450,
+   "mesP75": 700,
+   "superficie": 62,
+   "viviendas": 4949
+  },
+  "rentaHogar": 32424,
+  "esfuerzoCompraAnios": 7.3,
+  "esfuerzoAlquilerPct": 20.7
+ },
+ {
+  "ine": "38011",
+  "nombre": "Candelaria",
+  "slug": "candelaria",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2734.7,
+   "m2Nueva": null,
+   "m2Usada": 2730.6,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 9.37,
+   "m2P25": 7.53,
+   "m2P75": 11.63,
+   "mes": 600,
+   "mesP25": 500,
+   "mesP75": 702,
+   "superficie": 66,
+   "viviendas": 1855
+  },
+  "rentaHogar": 40991,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 17.6
+ },
+ {
+  "ine": "38017",
+  "nombre": "Granadilla de Abona",
+  "slug": "granadilla-de-abona",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2501.8,
+   "m2Nueva": null,
+   "m2Usada": 2479.5,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 8.47,
+   "m2P25": 6.67,
+   "m2P75": 10.7,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 680,
+   "superficie": 70,
+   "viviendas": 2884
+  },
+  "rentaHogar": 35744,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 18.5
+ },
+ {
+  "ine": "38026",
+  "nombre": "La Orotava",
+  "slug": "la-orotava",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1728.8,
+   "m2Nueva": null,
+   "m2Usada": 1726.4,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 5.95,
+   "m2P25": 4.57,
+   "m2P75": 7.52,
+   "mes": 500,
+   "mesP25": 408,
+   "mesP75": 611,
+   "superficie": 94,
+   "viviendas": 782
+  },
+  "rentaHogar": 37180,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "38031",
+  "nombre": "Los Realejos",
+  "slug": "los-realejos",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 1905.9,
+   "m2Nueva": null,
+   "m2Usada": 1906.2,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 5.97,
+   "m2P25": 4.67,
+   "m2P75": 7.86,
+   "mes": 497,
+   "mesP25": 400,
+   "mesP75": 600,
+   "superficie": 89,
+   "viviendas": 1015
+  },
+  "rentaHogar": 34924,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 17.1
+ },
+ {
+  "ine": "38028",
+  "nombre": "Puerto de la Cruz",
+  "slug": "puerto-de-la-cruz",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 3091.6,
+   "m2Nueva": null,
+   "m2Usada": 3089.6,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 10.21,
+   "m2P25": 7.6,
+   "m2P75": 13.54,
+   "mes": 580,
+   "mesP25": 462,
+   "mesP75": 715,
+   "superficie": 58,
+   "viviendas": 2171
+  },
+  "rentaHogar": 33883,
+  "esfuerzoCompraAnios": 7.3,
+  "esfuerzoAlquilerPct": 20.5
+ },
+ {
+  "ine": "38023",
+  "nombre": "San Cristóbal de La Laguna",
+  "slug": "san-cristobal-de-la-laguna",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2041.9,
+   "m2Nueva": 2160.2,
+   "m2Usada": 2040.9,
+   "tasaciones": 25
+  },
+  "alquiler": {
+   "m2": 7.31,
+   "m2P25": 5.66,
+   "m2P75": 9.3,
+   "mes": 538,
+   "mesP25": 430,
+   "mesP75": 661,
+   "superficie": 79,
+   "viviendas": 9571
+  },
+  "rentaHogar": 38864,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 16.6
+ },
+ {
+  "ine": "38038",
+  "nombre": "Santa Cruz de Tenerife",
+  "slug": "santa-cruz-de-tenerife",
+  "provincia": "38",
+  "ccaa": "05",
+  "compra": {
+   "m2": 2330.0,
+   "m2Nueva": 2653.3,
+   "m2Usada": 2326.2,
+   "tasaciones": 54
+  },
+  "alquiler": {
+   "m2": 7.8,
+   "m2P25": 6.02,
+   "m2P75": 10.13,
+   "mes": 599,
+   "mesP25": 470,
+   "mesP75": 749,
+   "superficie": 78,
+   "viviendas": 12308
+  },
+  "rentaHogar": 41493,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "39016",
+  "nombre": "Camargo",
+  "slug": "camargo",
+  "provincia": "39",
+  "ccaa": "06",
+  "compra": {
+   "m2": 2127.1,
+   "m2Nueva": null,
+   "m2Usada": 2132.6,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 6.78,
+   "m2P25": 5.8,
+   "m2P75": 8.09,
+   "mes": 515,
+   "mesP25": 450,
+   "mesP75": 600,
+   "superficie": 82,
+   "viviendas": 1165
+  },
+  "rentaHogar": 40550,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 15.2
+ },
+ {
+  "ine": "39020",
+  "nombre": "Castro-Urdiales",
+  "slug": "castro-urdiales",
+  "provincia": "39",
+  "ccaa": "06",
+  "compra": {
+   "m2": 2813.6,
+   "m2Nueva": null,
+   "m2Usada": 2811.7,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 8.2,
+   "m2P25": 6.63,
+   "m2P75": 9.81,
+   "mes": 608,
+   "mesP25": 519,
+   "mesP75": 706,
+   "superficie": 76,
+   "viviendas": 1297
+  },
+  "rentaHogar": 39103,
+  "esfuerzoCompraAnios": 5.8,
+  "esfuerzoAlquilerPct": 18.7
+ },
+ {
+  "ine": "39075",
+  "nombre": "Santander",
+  "slug": "santander",
+  "provincia": "39",
+  "ccaa": "06",
+  "compra": {
+   "m2": 2662.3,
+   "m2Nueva": 2897.1,
+   "m2Usada": 2656.2,
+   "tasaciones": 39
+  },
+  "alquiler": {
+   "m2": 8.28,
+   "m2P25": 6.69,
+   "m2P75": 10.18,
+   "mes": 595,
+   "mesP25": 490,
+   "mesP75": 719,
+   "superficie": 72,
+   "viviendas": 12703
+  },
+  "rentaHogar": 41317,
+  "esfuerzoCompraAnios": 5.2,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "39087",
+  "nombre": "Torrelavega",
+  "slug": "torrelavega",
+  "provincia": "39",
+  "ccaa": "06",
+  "compra": {
+   "m2": 1701.9,
+   "m2Nueva": null,
+   "m2Usada": 1702.0,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 6.27,
+   "m2P25": 5.09,
+   "m2P75": 7.69,
+   "mes": 472,
+   "mesP25": 400,
+   "mesP75": 553,
+   "superficie": 78,
+   "viviendas": 2482
+  },
+  "rentaHogar": 33949,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 16.7
+ },
+ {
+  "ine": "40194",
+  "nombre": "Segovia",
+  "slug": "segovia",
+  "provincia": "40",
+  "ccaa": "07",
+  "compra": {
+   "m2": 2179.1,
+   "m2Nueva": null,
+   "m2Usada": 2179.8,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 6.86,
+   "m2P25": 5.42,
+   "m2P75": 8.67,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 678,
+   "superficie": 82,
+   "viviendas": 4290
+  },
+  "rentaHogar": 39910,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 16.5
+ },
+ {
+  "ine": "41004",
+  "nombre": "Alcalá de Guadaíra",
+  "slug": "alcala-de-guadaira",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1701.3,
+   "m2Nueva": 1779.3,
+   "m2Usada": 1698.8,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 6.29,
+   "m2P25": 5.09,
+   "m2P75": 7.89,
+   "mes": 500,
+   "mesP25": 420,
+   "mesP75": 570,
+   "superficie": 83,
+   "viviendas": 1359
+  },
+  "rentaHogar": 35902,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 16.7
+ },
+ {
+  "ine": "41021",
+  "nombre": "Camas",
+  "slug": "camas",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1768.7,
+   "m2Nueva": null,
+   "m2Usada": 1724.9,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 7.45,
+   "m2P25": 5.97,
+   "m2P75": 9.41,
+   "mes": 532,
+   "mesP25": 450,
+   "mesP75": 636,
+   "superficie": 75,
+   "viviendas": 1245
+  },
+  "rentaHogar": 31659,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 20.2
+ },
+ {
+  "ine": "41024",
+  "nombre": "Carmona",
+  "slug": "carmona",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1426.3,
+   "m2Nueva": null,
+   "m2Usada": 1433.8,
+   "tasaciones": 12
+  },
+  "alquiler": {
+   "m2": 5.56,
+   "m2P25": 4.45,
+   "m2P75": 6.74,
+   "mes": 430,
+   "mesP25": 366,
+   "mesP75": 501,
+   "superficie": 84,
+   "viviendas": 256
+  },
+  "rentaHogar": 33260,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 15.5
+ },
+ {
+  "ine": "41034",
+  "nombre": "Coria del Río",
+  "slug": "coria-del-rio",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1405.0,
+   "m2Nueva": null,
+   "m2Usada": 1404.1,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 5.94,
+   "m2P25": 4.83,
+   "m2P75": 7.46,
+   "mes": 450,
+   "mesP25": 385,
+   "mesP75": 516,
+   "superficie": 80,
+   "viviendas": 430
+  },
+  "rentaHogar": 30516,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 17.7
+ },
+ {
+  "ine": "41038",
+  "nombre": "Dos Hermanas",
+  "slug": "dos-hermanas",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1992.9,
+   "m2Nueva": 2554.3,
+   "m2Usada": 1920.6,
+   "tasaciones": 129
+  },
+  "alquiler": {
+   "m2": 7.45,
+   "m2P25": 6.1,
+   "m2P75": 9.09,
+   "mes": 556,
+   "mesP25": 470,
+   "mesP75": 693,
+   "superficie": 82,
+   "viviendas": 3261
+  },
+  "rentaHogar": 39796,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 16.8
+ },
+ {
+  "ine": "41081",
+  "nombre": "La Rinconada",
+  "slug": "la-rinconada",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1672.8,
+   "m2Nueva": 2139.4,
+   "m2Usada": 1629.9,
+   "tasaciones": 61
+  },
+  "alquiler": {
+   "m2": 6.25,
+   "m2P25": 5.16,
+   "m2P75": 7.4,
+   "mes": 500,
+   "mesP25": 442,
+   "mesP75": 600,
+   "superficie": 82,
+   "viviendas": 548
+  },
+  "rentaHogar": 34668,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "41053",
+  "nombre": "Lebrija",
+  "slug": "lebrija",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1117.9,
+   "m2Nueva": null,
+   "m2Usada": 1114.9,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.17,
+   "m2P25": 3.29,
+   "m2P75": 5.46,
+   "mes": 370,
+   "mesP25": 319,
+   "mesP75": 417,
+   "superficie": 91,
+   "viviendas": 138
+  },
+  "rentaHogar": 30644,
+  "esfuerzoCompraAnios": 2.9,
+  "esfuerzoAlquilerPct": 14.5
+ },
+ {
+  "ine": "41069",
+  "nombre": "Los Palacios y Villafranca",
+  "slug": "los-palacios-y-villafranca",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1311.6,
+   "m2Nueva": null,
+   "m2Usada": 1313.2,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 4.79,
+   "m2P25": 3.76,
+   "m2P75": 6.01,
+   "mes": 400,
+   "mesP25": 344,
+   "mesP75": 463,
+   "superficie": 88,
+   "viviendas": 205
+  },
+  "rentaHogar": 30609,
+  "esfuerzoCompraAnios": 3.4,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "41059",
+  "nombre": "Mairena del Aljarafe",
+  "slug": "mairena-del-aljarafe",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2136.5,
+   "m2Nueva": null,
+   "m2Usada": 2128.9,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 8.44,
+   "m2P25": 7.13,
+   "m2P75": 9.85,
+   "mes": 670,
+   "mesP25": 550,
+   "mesP75": 799,
+   "superficie": 81,
+   "viviendas": 2041
+  },
+  "rentaHogar": 45497,
+  "esfuerzoCompraAnios": 3.8,
+  "esfuerzoAlquilerPct": 17.7
+ },
+ {
+  "ine": "41065",
+  "nombre": "Morón de la Frontera",
+  "slug": "moron-de-la-frontera",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1062.3,
+   "m2Nueva": null,
+   "m2Usada": 1065.6,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 4.58,
+   "m2P25": 3.72,
+   "m2P75": 5.86,
+   "mes": 376,
+   "mesP25": 315,
+   "mesP75": 425,
+   "superficie": 79,
+   "viviendas": 291
+  },
+  "rentaHogar": 30913,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 14.6
+ },
+ {
+  "ine": "41091",
+  "nombre": "Sevilla",
+  "slug": "sevilla",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 2652.3,
+   "m2Nueva": 2995.3,
+   "m2Usada": 2640.6,
+   "tasaciones": 234
+  },
+  "alquiler": {
+   "m2": 9.17,
+   "m2P25": 7.32,
+   "m2P75": 11.34,
+   "mes": 668,
+   "mesP25": 550,
+   "mesP75": 825,
+   "superficie": 75,
+   "viviendas": 34668
+  },
+  "rentaHogar": 40115,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 20.0
+ },
+ {
+  "ine": "41095",
+  "nombre": "Utrera",
+  "slug": "utrera",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1510.6,
+   "m2Nueva": null,
+   "m2Usada": 1509.8,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 5.43,
+   "m2P25": 4.3,
+   "m2P75": 6.9,
+   "mes": 450,
+   "mesP25": 388,
+   "mesP75": 530,
+   "superficie": 92,
+   "viviendas": 752
+  },
+  "rentaHogar": 32574,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 16.6
+ },
+ {
+  "ine": "41039",
+  "nombre": "Écija",
+  "slug": "ecija",
+  "provincia": "41",
+  "ccaa": "01",
+  "compra": {
+   "m2": 1231.5,
+   "m2Nueva": null,
+   "m2Usada": 1231.4,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 3.89,
+   "m2P25": 3.0,
+   "m2P75": 5.07,
+   "mes": 328,
+   "mesP25": 250,
+   "mesP75": 404,
+   "superficie": 81,
+   "viviendas": 995
+  },
+  "rentaHogar": 31279,
+  "esfuerzoCompraAnios": 3.1,
+  "esfuerzoAlquilerPct": 12.6
+ },
+ {
+  "ine": "42173",
+  "nombre": "Soria",
+  "slug": "soria",
+  "provincia": "42",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1735.1,
+   "m2Nueva": null,
+   "m2Usada": 1728.4,
+   "tasaciones": 14
+  },
+  "alquiler": {
+   "m2": 6.75,
+   "m2P25": 5.31,
+   "m2P75": 8.33,
+   "mes": 536,
+   "mesP25": 438,
+   "mesP75": 646,
+   "superficie": 84,
+   "viviendas": 3018
+  },
+  "rentaHogar": 39774,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 16.2
+ },
+ {
+  "ine": "43038",
+  "nombre": "Cambrils",
+  "slug": "cambrils",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2426.0,
+   "m2Nueva": null,
+   "m2Usada": 2412.9,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 8.0,
+   "m2P25": 6.35,
+   "m2P75": 10.23,
+   "mes": 550,
+   "mesP25": 456,
+   "mesP75": 671,
+   "superficie": 73,
+   "viviendas": 2250
+  },
+  "rentaHogar": 41074,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "43163",
+  "nombre": "El Vendrell",
+  "slug": "el-vendrell",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2002.6,
+   "m2Nueva": null,
+   "m2Usada": 2002.0,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 7.0,
+   "m2P25": 5.57,
+   "m2P75": 8.62,
+   "mes": 530,
+   "mesP25": 450,
+   "mesP75": 617,
+   "superficie": 79,
+   "viviendas": 2818
+  },
+  "rentaHogar": 36615,
+  "esfuerzoCompraAnios": 4.4,
+  "esfuerzoAlquilerPct": 17.4
+ },
+ {
+  "ine": "43123",
+  "nombre": "Reus",
+  "slug": "reus",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1592.5,
+   "m2Nueva": null,
+   "m2Usada": 1582.5,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 6.44,
+   "m2P25": 5.15,
+   "m2P75": 8.14,
+   "mes": 509,
+   "mesP25": 420,
+   "mesP75": 617,
+   "superficie": 81,
+   "viviendas": 6607
+  },
+  "rentaHogar": 39280,
+  "esfuerzoCompraAnios": 3.2,
+  "esfuerzoAlquilerPct": 15.5
+ },
+ {
+  "ine": "43905",
+  "nombre": "Salou",
+  "slug": "salou",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 2568.9,
+   "m2Nueva": 3243.9,
+   "m2Usada": 2554.1,
+   "tasaciones": 27
+  },
+  "alquiler": {
+   "m2": 8.22,
+   "m2P25": 6.71,
+   "m2P75": 10.09,
+   "mes": 536,
+   "mesP25": 440,
+   "mesP75": 650,
+   "superficie": 66,
+   "viviendas": 2904
+  },
+  "rentaHogar": 37676,
+  "esfuerzoCompraAnios": 5.5,
+  "esfuerzoAlquilerPct": 17.1
+ },
+ {
+  "ine": "43148",
+  "nombre": "Tarragona",
+  "slug": "tarragona",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1851.4,
+   "m2Nueva": 2399.8,
+   "m2Usada": 1842.5,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 7.5,
+   "m2P25": 5.98,
+   "m2P75": 9.38,
+   "mes": 572,
+   "mesP25": 456,
+   "mesP75": 700,
+   "superficie": 78,
+   "viviendas": 9987
+  },
+  "rentaHogar": 41878,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 16.4
+ },
+ {
+  "ine": "43155",
+  "nombre": "Tortosa",
+  "slug": "tortosa",
+  "provincia": "43",
+  "ccaa": "09",
+  "compra": {
+   "m2": 1109.7,
+   "m2Nueva": null,
+   "m2Usada": 1108.8,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 5.13,
+   "m2P25": 3.98,
+   "m2P75": 6.56,
+   "mes": 417,
+   "mesP25": 343,
+   "mesP75": 501,
+   "superficie": 88,
+   "viviendas": 2020
+  },
+  "rentaHogar": 38355,
+  "esfuerzoCompraAnios": 2.3,
+  "esfuerzoAlquilerPct": 13.0
+ },
+ {
+  "ine": "44216",
+  "nombre": "Teruel",
+  "slug": "teruel",
+  "provincia": "44",
+  "ccaa": "02",
+  "compra": {
+   "m2": 1806.7,
+   "m2Nueva": null,
+   "m2Usada": 1801.3,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 5.82,
+   "m2P25": 4.49,
+   "m2P75": 7.28,
+   "mes": 465,
+   "mesP25": 393,
+   "mesP75": 564,
+   "superficie": 92,
+   "viviendas": 2725
+  },
+  "rentaHogar": 41638,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 13.4
+ },
+ {
+  "ine": "45081",
+  "nombre": "Illescas",
+  "slug": "illescas",
+  "provincia": "45",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1825.8,
+   "m2Nueva": 1756.7,
+   "m2Usada": 1833.5,
+   "tasaciones": 24
+  },
+  "alquiler": {
+   "m2": 6.88,
+   "m2P25": 5.69,
+   "m2P75": 8.33,
+   "mes": 600,
+   "mesP25": 510,
+   "mesP75": 700,
+   "superficie": 94,
+   "viviendas": 1233
+  },
+  "rentaHogar": 41697,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 17.3
+ },
+ {
+  "ine": "45165",
+  "nombre": "Talavera de la Reina",
+  "slug": "talavera-de-la-reina",
+  "provincia": "45",
+  "ccaa": "08",
+  "compra": {
+   "m2": 1241.1,
+   "m2Nueva": null,
+   "m2Usada": 1239.0,
+   "tasaciones": 13
+  },
+  "alquiler": {
+   "m2": 5.16,
+   "m2P25": 4.03,
+   "m2P75": 6.66,
+   "mes": 427,
+   "mesP25": 350,
+   "mesP75": 505,
+   "superficie": 82,
+   "viviendas": 4585
+  },
+  "rentaHogar": 32668,
+  "esfuerzoCompraAnios": 3.0,
+  "esfuerzoAlquilerPct": 15.7
+ },
+ {
+  "ine": "45168",
+  "nombre": "Toledo",
+  "slug": "toledo",
+  "provincia": "45",
+  "ccaa": "08",
+  "compra": {
+   "m2": 2113.5,
+   "m2Nueva": 2413.7,
+   "m2Usada": 2102.9,
+   "tasaciones": 41
+  },
+  "alquiler": {
+   "m2": 7.33,
+   "m2P25": 5.88,
+   "m2P75": 9.09,
+   "mes": 582,
+   "mesP25": 483,
+   "mesP75": 700,
+   "superficie": 84,
+   "viviendas": 5916
+  },
+  "rentaHogar": 45499,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 15.3
+ },
+ {
+  "ine": "46005",
+  "nombre": "Alaquàs",
+  "slug": "alaquas",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1679.2,
+   "m2Nueva": null,
+   "m2Usada": 1679.8,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 6.15,
+   "m2P25": 5.0,
+   "m2P75": 7.8,
+   "mes": 506,
+   "mesP25": 420,
+   "mesP75": 601,
+   "superficie": 83,
+   "viviendas": 1414
+  },
+  "rentaHogar": 34447,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 17.6
+ },
+ {
+  "ine": "46021",
+  "nombre": "Aldaia",
+  "slug": "aldaia",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1645.1,
+   "m2Nueva": null,
+   "m2Usada": 1638.2,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 5.95,
+   "m2P25": 4.72,
+   "m2P75": 7.63,
+   "mes": 515,
+   "mesP25": 407,
+   "mesP75": 629,
+   "superficie": 89,
+   "viviendas": 1602
+  },
+  "rentaHogar": 35848,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 17.2
+ },
+ {
+  "ine": "46029",
+  "nombre": "Algemesí",
+  "slug": "algemesi",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1070.1,
+   "m2Nueva": null,
+   "m2Usada": 1069.8,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 4.0,
+   "m2P25": 3.2,
+   "m2P75": 5.06,
+   "mes": 400,
+   "mesP25": 330,
+   "mesP75": 470,
+   "superficie": 103,
+   "viviendas": 797
+  },
+  "rentaHogar": 34859,
+  "esfuerzoCompraAnios": 2.5,
+  "esfuerzoAlquilerPct": 13.8
+ },
+ {
+  "ine": "46017",
+  "nombre": "Alzira",
+  "slug": "alzira",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1220.9,
+   "m2Nueva": null,
+   "m2Usada": 1220.1,
+   "tasaciones": 10
+  },
+  "alquiler": {
+   "m2": 4.64,
+   "m2P25": 3.69,
+   "m2P75": 5.88,
+   "mes": 450,
+   "mesP25": 379,
+   "mesP75": 550,
+   "superficie": 100,
+   "viviendas": 1569
+  },
+  "rentaHogar": 36571,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 14.8
+ },
+ {
+  "ine": "46078",
+  "nombre": "Burjassot",
+  "slug": "burjassot",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1978.5,
+   "m2Nueva": null,
+   "m2Usada": 1977.2,
+   "tasaciones": 4
+  },
+  "alquiler": {
+   "m2": 6.33,
+   "m2P25": 4.93,
+   "m2P75": 8.15,
+   "mes": 550,
+   "mesP25": 438,
+   "mesP75": 685,
+   "superficie": 88,
+   "viviendas": 2529
+  },
+  "rentaHogar": 33846,
+  "esfuerzoCompraAnios": 4.7,
+  "esfuerzoAlquilerPct": 19.5
+ },
+ {
+  "ine": "46094",
+  "nombre": "Catarroja",
+  "slug": "catarroja",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1667.7,
+   "m2Nueva": null,
+   "m2Usada": 1667.0,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 5.71,
+   "m2P25": 4.49,
+   "m2P75": 7.15,
+   "mes": 533,
+   "mesP25": 422,
+   "mesP75": 650,
+   "superficie": 97,
+   "viviendas": 1441
+  },
+  "rentaHogar": 37950,
+  "esfuerzoCompraAnios": 3.5,
+  "esfuerzoAlquilerPct": 16.9
+ },
+ {
+  "ine": "46131",
+  "nombre": "Gandia",
+  "slug": "gandia",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1757.0,
+   "m2Nueva": 1709.9,
+   "m2Usada": 1757.6,
+   "tasaciones": 30
+  },
+  "alquiler": {
+   "m2": 5.22,
+   "m2P25": 3.98,
+   "m2P75": 6.88,
+   "mes": 480,
+   "mesP25": 400,
+   "mesP75": 575,
+   "superficie": 96,
+   "viviendas": 4279
+  },
+  "rentaHogar": 33910,
+  "esfuerzoCompraAnios": 4.1,
+  "esfuerzoAlquilerPct": 17.0
+ },
+ {
+  "ine": "46159",
+  "nombre": "Manises",
+  "slug": "manises",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1865.8,
+   "m2Nueva": null,
+   "m2Usada": 1866.3,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 6.4,
+   "m2P25": 5.09,
+   "m2P75": 8.23,
+   "mes": 510,
+   "mesP25": 400,
+   "mesP75": 646,
+   "superficie": 82,
+   "viviendas": 1453
+  },
+  "rentaHogar": 35213,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 17.4
+ },
+ {
+  "ine": "46169",
+  "nombre": "Mislata",
+  "slug": "mislata",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2313.5,
+   "m2Nueva": null,
+   "m2Usada": 2290.9,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 6.62,
+   "m2P25": 5.18,
+   "m2P75": 8.61,
+   "mes": 558,
+   "mesP25": 450,
+   "mesP75": 703,
+   "superficie": 85,
+   "viviendas": 2714
+  },
+  "rentaHogar": 36961,
+  "esfuerzoCompraAnios": 5.0,
+  "esfuerzoAlquilerPct": 18.1
+ },
+ {
+  "ine": "46181",
+  "nombre": "Oliva",
+  "slug": "oliva",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1503.5,
+   "m2Nueva": null,
+   "m2Usada": 1478.9,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.39,
+   "m2P25": 3.31,
+   "m2P75": 5.88,
+   "mes": 434,
+   "mesP25": 350,
+   "mesP75": 523,
+   "superficie": 105,
+   "viviendas": 893
+  },
+  "rentaHogar": 32781,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 15.9
+ },
+ {
+  "ine": "46184",
+  "nombre": "Ontinyent",
+  "slug": "ontinyent",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1138.1,
+   "m2Nueva": null,
+   "m2Usada": 1138.1,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 4.12,
+   "m2P25": 3.29,
+   "m2P75": 5.08,
+   "mes": 400,
+   "mesP25": 301,
+   "mesP75": 460,
+   "superficie": 104,
+   "viviendas": 1337
+  },
+  "rentaHogar": 35354,
+  "esfuerzoCompraAnios": 2.6,
+  "esfuerzoAlquilerPct": 13.6
+ },
+ {
+  "ine": "46190",
+  "nombre": "Paterna",
+  "slug": "paterna",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2294.8,
+   "m2Nueva": null,
+   "m2Usada": 2292.9,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 6.62,
+   "m2P25": 5.24,
+   "m2P75": 8.42,
+   "mes": 600,
+   "mesP25": 477,
+   "mesP75": 750,
+   "superficie": 97,
+   "viviendas": 3328
+  },
+  "rentaHogar": 40918,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 17.6
+ },
+ {
+  "ine": "46102",
+  "nombre": "Quart de Poblet",
+  "slug": "quart-de-poblet",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1924.5,
+   "m2Nueva": 2292.0,
+   "m2Usada": 1910.4,
+   "tasaciones": 26
+  },
+  "alquiler": {
+   "m2": 6.15,
+   "m2P25": 4.92,
+   "m2P75": 7.86,
+   "mes": 490,
+   "mesP25": 397,
+   "mesP75": 600,
+   "superficie": 75,
+   "viviendas": 1316
+  },
+  "rentaHogar": 34122,
+  "esfuerzoCompraAnios": 4.5,
+  "esfuerzoAlquilerPct": 17.2
+ },
+ {
+  "ine": "46220",
+  "nombre": "Sagunto",
+  "slug": "sagunto",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1628.6,
+   "m2Nueva": 2176.1,
+   "m2Usada": 1612.3,
+   "tasaciones": 41
+  },
+  "alquiler": {
+   "m2": 5.97,
+   "m2P25": 4.6,
+   "m2P75": 7.76,
+   "mes": 512,
+   "mesP25": 420,
+   "mesP75": 650,
+   "superficie": 94,
+   "viviendas": 2955
+  },
+  "rentaHogar": 36332,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 16.9
+ },
+ {
+  "ine": "46235",
+  "nombre": "Sueca",
+  "slug": "sueca",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1461.7,
+   "m2Nueva": null,
+   "m2Usada": 1462.0,
+   "tasaciones": 5
+  },
+  "alquiler": {
+   "m2": 4.42,
+   "m2P25": 3.54,
+   "m2P75": 5.75,
+   "mes": 400,
+   "mesP25": 340,
+   "mesP75": 500,
+   "superficie": 93,
+   "viviendas": 957
+  },
+  "rentaHogar": 35096,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 13.7
+ },
+ {
+  "ine": "46244",
+  "nombre": "Torrent",
+  "slug": "torrent",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1903.8,
+   "m2Nueva": null,
+   "m2Usada": 1894.5,
+   "tasaciones": 15
+  },
+  "alquiler": {
+   "m2": 6.28,
+   "m2P25": 4.88,
+   "m2P75": 8.15,
+   "mes": 550,
+   "mesP25": 443,
+   "mesP75": 675,
+   "superficie": 92,
+   "viviendas": 4243
+  },
+  "rentaHogar": 38021,
+  "esfuerzoCompraAnios": 4.0,
+  "esfuerzoAlquilerPct": 17.4
+ },
+ {
+  "ine": "46250",
+  "nombre": "Valencia",
+  "slug": "valencia",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 2972.8,
+   "m2Nueva": 3464.9,
+   "m2Usada": 2957.4,
+   "tasaciones": 303
+  },
+  "alquiler": {
+   "m2": 8.18,
+   "m2P25": 6.14,
+   "m2P75": 10.85,
+   "mes": 681,
+   "mesP25": 515,
+   "mesP75": 899,
+   "superficie": 85,
+   "viviendas": 65742
+  },
+  "rentaHogar": 42374,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 19.3
+ },
+ {
+  "ine": "46110",
+  "nombre": "Xirivella",
+  "slug": "xirivella",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1789.5,
+   "m2Nueva": null,
+   "m2Usada": 1790.3,
+   "tasaciones": 3
+  },
+  "alquiler": {
+   "m2": 6.06,
+   "m2P25": 4.76,
+   "m2P75": 7.67,
+   "mes": 500,
+   "mesP25": 400,
+   "mesP75": 625,
+   "superficie": 82,
+   "viviendas": 1602
+  },
+  "rentaHogar": 33441,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 17.9
+ },
+ {
+  "ine": "46145",
+  "nombre": "Xàtiva",
+  "slug": "xativa",
+  "provincia": "46",
+  "ccaa": "10",
+  "compra": {
+   "m2": 1209.2,
+   "m2Nueva": null,
+   "m2Usada": 1203.0,
+   "tasaciones": 9
+  },
+  "alquiler": {
+   "m2": 4.66,
+   "m2P25": 3.68,
+   "m2P75": 5.73,
+   "mes": 438,
+   "mesP25": 350,
+   "mesP75": 510,
+   "superficie": 98,
+   "viviendas": 1389
+  },
+  "rentaHogar": 35829,
+  "esfuerzoCompraAnios": 2.7,
+  "esfuerzoAlquilerPct": 14.7
+ },
+ {
+  "ine": "47186",
+  "nombre": "Valladolid",
+  "slug": "valladolid",
+  "provincia": "47",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1946.5,
+   "m2Nueva": 2505.1,
+   "m2Usada": 1925.6,
+   "tasaciones": 149
+  },
+  "alquiler": {
+   "m2": 6.76,
+   "m2P25": 5.54,
+   "m2P75": 8.23,
+   "mes": 531,
+   "mesP25": 450,
+   "mesP75": 630,
+   "superficie": 81,
+   "viviendas": 21101
+  },
+  "rentaHogar": 39685,
+  "esfuerzoCompraAnios": 3.9,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "48013",
+  "nombre": "Barakaldo",
+  "slug": "barakaldo",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2875.4,
+   "m2Nueva": 3496.8,
+   "m2Usada": 2852.5,
+   "tasaciones": 41
+  },
+  "alquiler": {
+   "m2": 10.47,
+   "m2P25": 9.23,
+   "m2P75": 11.89,
+   "mes": 706,
+   "mesP25": 650,
+   "mesP75": 788,
+   "superficie": 67,
+   "viviendas": 3259
+  },
+  "rentaHogar": 40857,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 20.7
+ },
+ {
+  "ine": "48015",
+  "nombre": "Basauri",
+  "slug": "basauri",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2789.4,
+   "m2Nueva": null,
+   "m2Usada": 2788.4,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 9.65,
+   "m2P25": 8.43,
+   "m2P75": 10.97,
+   "mes": 670,
+   "mesP25": 610,
+   "mesP75": 734,
+   "superficie": 69,
+   "viviendas": 1223
+  },
+  "rentaHogar": 39254,
+  "esfuerzoCompraAnios": 5.7,
+  "esfuerzoAlquilerPct": 20.5
+ },
+ {
+  "ine": "48020",
+  "nombre": "Bilbao",
+  "slug": "bilbao",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 3529.3,
+   "m2Nueva": 3869.8,
+   "m2Usada": 3523.6,
+   "tasaciones": 64
+  },
+  "alquiler": {
+   "m2": 11.51,
+   "m2P25": 9.89,
+   "m2P75": 13.52,
+   "mes": 800,
+   "mesP25": 700,
+   "mesP75": 950,
+   "superficie": 70,
+   "viviendas": 13729
+  },
+  "rentaHogar": 47550,
+  "esfuerzoCompraAnios": 5.9,
+  "esfuerzoAlquilerPct": 20.2
+ },
+ {
+  "ine": "48027",
+  "nombre": "Durango",
+  "slug": "durango",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2638.6,
+   "m2Nueva": 3097.5,
+   "m2Usada": 2609.7,
+   "tasaciones": 23
+  },
+  "alquiler": {
+   "m2": 8.71,
+   "m2P25": 7.26,
+   "m2P75": 10.38,
+   "mes": 680,
+   "mesP25": 602,
+   "mesP75": 752,
+   "superficie": 79,
+   "viviendas": 1081
+  },
+  "rentaHogar": 50658,
+  "esfuerzoCompraAnios": 4.2,
+  "esfuerzoAlquilerPct": 16.1
+ },
+ {
+  "ine": "48036",
+  "nombre": "Galdakao",
+  "slug": "galdakao",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2860.9,
+   "m2Nueva": null,
+   "m2Usada": 2861.1,
+   "tasaciones": 2
+  },
+  "alquiler": {
+   "m2": 8.59,
+   "m2P25": 7.57,
+   "m2P75": 10.0,
+   "mes": 702,
+   "mesP25": 627,
+   "mesP75": 772,
+   "superficie": 80,
+   "viviendas": 802
+  },
+  "rentaHogar": 47523,
+  "esfuerzoCompraAnios": 4.8,
+  "esfuerzoAlquilerPct": 17.7
+ },
+ {
+  "ine": "48044",
+  "nombre": "Getxo",
+  "slug": "getxo",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 4137.5,
+   "m2Nueva": null,
+   "m2Usada": 4124.9,
+   "tasaciones": 19
+  },
+  "alquiler": {
+   "m2": 11.34,
+   "m2P25": 9.75,
+   "m2P75": 13.37,
+   "mes": 900,
+   "mesP25": 800,
+   "mesP75": 1080,
+   "superficie": 82,
+   "viviendas": 2604
+  },
+  "rentaHogar": 65399,
+  "esfuerzoCompraAnios": 5.1,
+  "esfuerzoAlquilerPct": 16.5
+ },
+ {
+  "ine": "48054",
+  "nombre": "Leioa",
+  "slug": "leioa",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 3616.3,
+   "m2Nueva": null,
+   "m2Usada": 3598.5,
+   "tasaciones": 18
+  },
+  "alquiler": {
+   "m2": 10.65,
+   "m2P25": 9.43,
+   "m2P75": 12.18,
+   "mes": 826,
+   "mesP25": 737,
+   "mesP75": 950,
+   "superficie": 79,
+   "viviendas": 961
+  },
+  "rentaHogar": 51263,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 19.3
+ },
+ {
+  "ine": "48078",
+  "nombre": "Portugalete",
+  "slug": "portugalete",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2894.3,
+   "m2Nueva": null,
+   "m2Usada": 2894.2,
+   "tasaciones": 8
+  },
+  "alquiler": {
+   "m2": 10.16,
+   "m2P25": 8.79,
+   "m2P75": 11.57,
+   "mes": 696,
+   "mesP25": 618,
+   "mesP75": 764,
+   "superficie": 67,
+   "viviendas": 1148
+  },
+  "rentaHogar": 41515,
+  "esfuerzoCompraAnios": 5.6,
+  "esfuerzoAlquilerPct": 20.1
+ },
+ {
+  "ine": "48082",
+  "nombre": "Santurtzi",
+  "slug": "santurtzi",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2777.2,
+   "m2Nueva": null,
+   "m2Usada": 2793.6,
+   "tasaciones": 20
+  },
+  "alquiler": {
+   "m2": 10.05,
+   "m2P25": 8.68,
+   "m2P75": 11.77,
+   "mes": 695,
+   "mesP25": 619,
+   "mesP75": 758,
+   "superficie": 69,
+   "viviendas": 1309
+  },
+  "rentaHogar": 40800,
+  "esfuerzoCompraAnios": 5.4,
+  "esfuerzoAlquilerPct": 20.4
+ },
+ {
+  "ine": "48084",
+  "nombre": "Sestao",
+  "slug": "sestao",
+  "provincia": "48",
+  "ccaa": "16",
+  "compra": {
+   "m2": 2389.1,
+   "m2Nueva": null,
+   "m2Usada": 2387.9,
+   "tasaciones": 11
+  },
+  "alquiler": {
+   "m2": 9.75,
+   "m2P25": 8.53,
+   "m2P75": 11.05,
+   "mes": 650,
+   "mesP25": 600,
+   "mesP75": 702,
+   "superficie": 65,
+   "viviendas": 874
+  },
+  "rentaHogar": 35967,
+  "esfuerzoCompraAnios": 5.3,
+  "esfuerzoAlquilerPct": 21.7
+ },
+ {
+  "ine": "49275",
+  "nombre": "Zamora",
+  "slug": "zamora",
+  "provincia": "49",
+  "ccaa": "07",
+  "compra": {
+   "m2": 1436.4,
+   "m2Nueva": null,
+   "m2Usada": 1436.3,
+   "tasaciones": 6
+  },
+  "alquiler": {
+   "m2": 4.91,
+   "m2P25": 3.91,
+   "m2P75": 6.23,
+   "mes": 410,
+   "mesP25": 350,
+   "mesP75": 490,
+   "superficie": 91,
+   "viviendas": 3865
+  },
+  "rentaHogar": 34781,
+  "esfuerzoCompraAnios": 3.3,
+  "esfuerzoAlquilerPct": 14.1
+ },
+ {
+  "ine": "50297",
+  "nombre": "Zaragoza",
+  "slug": "zaragoza",
+  "provincia": "50",
+  "ccaa": "02",
+  "compra": {
+   "m2": 2240.3,
+   "m2Nueva": 2552.2,
+   "m2Usada": 2230.9,
+   "tasaciones": 164
+  },
+  "alquiler": {
+   "m2": 7.72,
+   "m2P25": 6.35,
+   "m2P75": 9.35,
+   "mes": 550,
+   "mesP25": 450,
+   "mesP75": 650,
+   "superficie": 71,
+   "viviendas": 53437
+  },
+  "rentaHogar": 41707,
+  "esfuerzoCompraAnios": 4.3,
+  "esfuerzoAlquilerPct": 15.8
+ },
+ {
+  "ine": "51001",
+  "nombre": "Ceuta",
+  "slug": "ceuta",
+  "provincia": "51",
+  "ccaa": "18",
+  "compra": {
+   "m2": 2214.9,
+   "m2Nueva": null,
+   "m2Usada": 2209.5,
+   "tasaciones": 7
+  },
+  "alquiler": {
+   "m2": 9.45,
+   "m2P25": 7.59,
+   "m2P75": 11.96,
+   "mes": 675,
+   "mesP25": 550,
+   "mesP75": 808,
+   "superficie": 73,
+   "viviendas": 2230
+  },
+  "rentaHogar": 47632,
+  "esfuerzoCompraAnios": 3.7,
+  "esfuerzoAlquilerPct": 17.0
+ },
+ {
+  "ine": "52001",
+  "nombre": "Melilla",
+  "slug": "melilla",
+  "provincia": "52",
+  "ccaa": "19",
+  "compra": {
+   "m2": 2164.5,
+   "m2Nueva": 2573.7,
+   "m2Usada": 2142.1,
+   "tasaciones": 34
+  },
+  "alquiler": {
+   "m2": 9.1,
+   "m2P25": 7.35,
+   "m2P75": 11.18,
+   "mes": 600,
+   "mesP25": 505,
+   "mesP75": 736,
+   "superficie": 69,
+   "viviendas": 2621
+  },
+  "rentaHogar": 47850,
+  "esfuerzoCompraAnios": 3.6,
+  "esfuerzoAlquilerPct": 15.0
+ }
+]

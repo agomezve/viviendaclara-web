@@ -1,0 +1,61 @@
+---
+// Ruta: src/pages/afiliados.astro
+// Transparencia sobre enlaces comerciales (LSSI-CE art. 20: comunicaciones comerciales identificables).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import { SITE, OWNER, LEGAL_UPDATED } from '../config/site';
+
+const title = 'Enlaces de afiliado';
+const toc = [
+  { id: 'que-son', title: 'Qué es un enlace de afiliado' },
+  { id: 'portales', title: 'Los enlaces a Idealista y Fotocasa' },
+  { id: 'publicidad', title: 'Publicidad' },
+  { id: 'independencia', title: 'Independencia de los datos' },
+  { id: 'contacto', title: 'Dudas' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Qué enlaces comerciales hay en ${SITE.name}, por qué los enlaces a Idealista y Fotocasa no son de afiliado y cómo se identifica la publicidad.`}
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle title={title} lead="Transparencia sobre los enlaces y la publicidad de esta web." updated={LEGAL_UPDATED} toc={toc}>
+    <p>
+      En cumplimiento del artículo 20 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico
+      (LSSI-CE), las comunicaciones comerciales de este sitio se identifican claramente como tales e indican en nombre de quién se realizan.
+    </p>
+
+    <h2 id="que-son">1. Qué es un enlace de afiliado</h2>
+    <p>
+      Es un enlace a la web de una empresa que le indica que has llegado desde otra web, para que esa empresa le pague una comisión si
+      contratas algo. <strong>Ahora mismo {SITE.name} no tiene ningún enlace de afiliado.</strong> Si algún día lo tiene, aparecerá aquí,
+      identificado en la propia página y con el atributo <code>rel="sponsored"</code>.
+    </p>
+
+    <h2 id="portales">2. Los enlaces a Idealista y Fotocasa</h2>
+    <p>
+      El buscador abre la búsqueda de Idealista y Fotocasa con tus filtros ya puestos. Son enlaces normales: no tengo ningún acuerdo con
+      esos portales, no me pagan por ellos y no hay ningún anuncio patrocinado. Llevan el atributo <code>rel="nofollow"</code> y se abren
+      en una pestaña nueva.
+    </p>
+
+    <h2 id="publicidad">3. Publicidad</h2>
+    <p>
+      El sitio puede mostrar anuncios de Google AdSense, identificados como «Publicidad». Puedes ver cómo funcionan en la
+      <a href="/politica-privacidad">política de privacidad</a> y en la <a href="/politica-cookies">política de cookies</a>.
+    </p>
+
+    <h2 id="independencia">4. Independencia de los datos</h2>
+    <p>
+      Los precios, impuestos, ayudas y cálculos salen de fuentes oficiales (Ministerio de Vivienda, INE, Ministerio de Hacienda, Banco
+      Central Europeo, BOE e ICO). Ninguna empresa paga por aparecer ni por cambiar un resultado.
+    </p>
+
+    <h2 id="contacto">5. Dudas</h2>
+    <p>
+      Si tienes cualquier duda, escríbeme a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> o desde la página de
+      <a href="/contacto">contacto</a>.
+    </p>
+  </LegalArticle>
+</BaseLayout>

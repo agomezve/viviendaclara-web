@@ -1,0 +1,92 @@
+---
+// Ruta: src/layouts/BaseLayout.astro
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import SEO, { type ArticleMeta, type SchemaType } from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdSenseScript from '../components/AdSenseScript.astro';
+import Analytics from '../components/Analytics.astro';
+import type { Crumb } from '../components/Breadcrumbs.astro';
+import { SITE, absoluteUrl, stripBase } from '../config/site';
+
+export interface Props {
+  title: string;
+  /** Titular visible (H1) si difiere del título SEO. */
+  heading?: string;
+  description: string;
+  /** URL canónica. Por defecto, la URL de la página actual sin ".html" ni barra final. */
+  canonicalURL?: URL | string;
+  /** Tipo de Schema.org de la página. Por defecto, WebPage. */
+  schemaType?: SchemaType;
+  breadcrumbs?: Crumb[];
+  /** Metadatos de artículo (solo con schemaType="Article"). */
+  article?: ArticleMeta;
+  /** Fecha de los datos de la página (precios), para dateModified en el JSON-LD. */
+  modified?: Date;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  heading,
+  description,
+  canonicalURL,
+  schemaType = 'WebPage',
+  breadcrumbs = [],
+  article,
+  modified,
+  noindex = false,
+} = Astro.props;
+
+// trailingSlash 'never' + build.format 'file': /ruta, nunca /ruta/ ni /ruta.html
+const currentPath = stripBase(Astro.url.pathname).replace(/\.html$/, '').replace(/\/index$/, '') || '/';
+// canonicalURL puede ser una URL absoluta o una ruta interna ('/contacto').
+const canonicalInput = canonicalURL ? String(canonicalURL) : currentPath;
+const canonical = new URL(/^https?:\/\//.test(canonicalInput) ? canonicalInput : absoluteUrl(canonicalInput));
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {SITE.googleSiteVerification && <meta name="google-site-verification" content={SITE.googleSiteVerification} />}
+
+    <SEO
+      title={title}
+      heading={heading}
+      description={description}
+      canonicalURL={canonical}
+      schemaType={schemaType}
+      breadcrumbs={breadcrumbs}
+      article={article}
+      modified={modified}
+      noindex={noindex}
+    />
+
+    <!-- Google Analytics 4 con Consent Mode v2 (solo si GA4_ID está relleno en src/config/site.ts). -->
+    <Analytics />
+
+    <!--
+      Google AdSense
+      El script se inserta automáticamente cuando rellenas ADSENSE.clientId
+      ("ca-pub-XXXXXXXXXXXXXXXX") en src/config/site.ts. Mientras esté vacío, no se carga nada.
+      El consentimiento (RGPD) lo gestiona la CMP certificada de Google:
+      AdSense > Privacidad y mensajes > Mensaje de consentimiento.
+    -->
+    <AdSenseScript />
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main id="contenido" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

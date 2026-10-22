@@ -1,0 +1,49 @@
+---
+// Ruta: src/components/NewsletterBox.astro
+// Suscripción a la newsletter. No se muestra mientras NEWSLETTER.formAction esté vacío.
+import { NEWSLETTER, isNewsletterEnabled } from '../config/site';
+
+interface Props {
+  /** Clases extra del contenedor (márgenes). */
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const id = 'newsletter';
+---
+
+{
+  isNewsletterEnabled() && (
+    <section
+      class:list={['rounded-2xl border border-teal-200 bg-teal-50 p-5 sm:p-6', className]}
+      aria-labelledby={`${id}-titulo`}
+    >
+      <h2 id={`${id}-titulo`} class="text-lg font-semibold text-slate-900">
+        {NEWSLETTER.title}
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">{NEWSLETTER.text}</p>
+      <form action={NEWSLETTER.formAction} method="post" target="_blank" class="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <label for={`${id}-email`} class="sr-only">Tu correo electrónico</label>
+        <input
+          id={`${id}-email`}
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          placeholder="tu@correo.es"
+          class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-base text-slate-900 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20"
+        />
+        <button type="submit" class="rounded-lg bg-teal-700 px-5 py-2.5 font-semibold text-white hover:bg-teal-600">
+          Suscribirme
+        </button>
+        <label class="flex w-full items-start gap-2 text-xs leading-relaxed text-slate-600">
+          <input type="checkbox" required class="mt-0.5" />
+          <span>
+            Acepto recibir la newsletter y la <a href="/politica-privacidad" class="underline">política de privacidad</a>.
+            {NEWSLETTER.provider && <> Los correos se envían con {NEWSLETTER.provider}.</>}
+          </span>
+        </label>
+      </form>
+    </section>
+  )
+}

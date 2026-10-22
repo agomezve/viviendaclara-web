@@ -1,0 +1,207 @@
+---
+// Ruta: src/pages/vivienda/[slug].astro
+// Una página por municipio: precio de compra y alquiler, esfuerzo, impuestos y búsqueda en los portales.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CabeceraPagina from '../../components/CabeceraPagina.astro';
+import BotonesPortales from '../../components/BotonesPortales.astro';
+import Herramientas from '../../components/Herramientas.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import Faq from '../../components/Faq.astro';
+import Autor from '../../components/Autor.astro';
+import {
+  MUNICIPIOS,
+  FUENTES,
+  IMPUESTOS,
+  SUPERFICIE_REFERENCIA,
+  provincia,
+  comunidad,
+  municipiosDe,
+  ubicacionesPortales,
+  type Municipio,
+} from '../../lib/datos';
+import AYUDAS from '../../data/ayudas.json';
+import { euros, decimal1, decimal2, porcentaje, miles, cuotaITP, describeITP, pctCorto } from '../../lib/calculos';
+
+export function getStaticPaths() {
+  return MUNICIPIOS.map((m) => ({ params: { slug: m.slug }, props: { m } }));
+}
+
+const { m } = Astro.props as { m: Municipio };
+const prov = provincia(m.provincia);
+const ccaa = comunidad(m.ccaa);
+const nacional = FUENTES.compra.nacional;
+const portales = ubicacionesPortales(m, m.provincia);
+const a = m.alquiler;
+const m2 = m.compra.m2!;
+const piso = m2 * SUPERFICIE_REFERENCIA;
+const imp = IMPUESTOS.comunidades[m.ccaa];
+const itp = imp.itp ? cuotaITP(piso, imp.itp) : null;
+const vsNacional = ((m2 - nacional.m2) / nacional.m2) * 100;
+const vsProvincia = prov.compra.m2 ? ((m2 - prov.compra.m2) / prov.compra.m2) * 100 : null;
+const limiteJoven = AYUDAS.alquilerJoven.rentaMax.vivienda;
+const vecinos = municipiosDe(m.provincia).filter((x) => x.slug !== m.slug);
+const ranking = [...MUNICIPIOS].filter((x) => x.esfuerzoCompraAnios != null).sort((x, y) => y.esfuerzoCompraAnios! - x.esfuerzoCompraAnios!);
+const puesto = ranking.findIndex((x) => x.slug === m.slug) + 1;
+const comparacion = (pct: number) => (Math.abs(pct) < 0.5 ? 'casi igual que' : `un ${porcentaje(Math.abs(pct))} ${pct > 0 ? 'más caro que' : 'más barato que'}`);
+
+const titulo = `Precio de la vivienda en ${m.nombre}: comprar y alquilar en 2026`;
+const breadcrumbs = [
+  { name: 'Precios', href: '/precios' },
+  { name: `Provincia de ${prov.nombre}`, href: `/provincia/${prov.slug}` },
+  { name: m.nombre },
+];
+const descripcion = `En ${m.nombre}, el metro cuadrado se tasa a ${euros(m2)} y el alquiler mediano de un piso es de ${euros(a?.mes)} al mes. Datos oficiales, esfuerzo y búsqueda con tu presupuesto.`;
+// Meta description: la frase más completa que quepa en 155 caracteres.
+const baseMeta = `En ${m.nombre}, el m² se tasa a ${euros(m2)} y el alquiler mediano de un piso es de ${euros(a?.mes)} al mes.`;
+const metaDescripcion = [descripcion, ...[' Datos oficiales, esfuerzo y búsqueda con tu presupuesto.', ' Datos oficiales y pisos con tu presupuesto.', ' Datos oficiales.', ''].map((t) => baseMeta + t)].find((d) => d.length <= 155)!;
+const tituloSeo = [`Precio vivienda ${m.nombre} 2026: alquiler y compra`, `Precio vivienda ${m.nombre} 2026`].find((t) => t.length <= 60) ?? `Vivienda en ${m.nombre}`;
+
+const preguntas = [
+  {
+    q: `¿Cuánto cuesta un piso en ${m.nombre}?`,
+    a: `El valor tasado medio de la vivienda libre en ${m.nombre} es de ${euros(m2)} por m² (${FUENTES.compra.periodo}). Un piso de ${SUPERFICIE_REFERENCIA} m² sale de media por unos ${euros(piso)}.${m.compra.m2Nueva && m.compra.m2Usada ? ` La vivienda nueva se tasa a ${euros(m.compra.m2Nueva)}/m² y la usada a ${euros(m.compra.m2Usada)}/m².` : ''}`,
+  },
+  ...(a
+    ? [
+        {
+          q: `¿Cuánto cuesta alquilar un piso en ${m.nombre}?`,
+          a: `La mitad de los contratos de alquiler de pisos de ${FUENTES.alquiler.periodo} en ${m.nombre} fueron por menos de ${euros(a.mes)} al mes (${decimal2(a.m2)} €/m²)${a.mesP25 && a.mesP75 ? `. El 25 % más barato pagó menos de ${euros(a.mesP25)} y el 25 % más caro, más de ${euros(a.mesP75)}` : ''}.`,
+        },
+      ]
+    : []),
+  {
+    q: `¿Cuánto sueldo hace falta para vivir en ${m.nombre}?`,
+    a: `La renta neta media por hogar en ${m.nombre} es de ${euros(m.rentaHogar)} al año (INE, ${FUENTES.renta.periodo}). Un piso de ${SUPERFICIE_REFERENCIA} m² equivale a ${decimal1(m.esfuerzoCompraAnios)} años de esa renta${m.esfuerzoAlquilerPct != null ? ` y el alquiler mediano se lleva el ${porcentaje(m.esfuerzoAlquilerPct)}` : ''}.`,
+  },
+  {
+    q: `¿Qué impuestos se pagan al comprar en ${m.nombre}?`,
+    a: imp.itp
+      ? `Al estar en ${ccaa.nombre}, un piso de segunda mano paga un ITP de ${describeITP(imp.itp)}${itp != null ? `: unos ${euros(itp)} para un piso de ${euros(piso)}` : ''}. Uno nuevo paga IVA del ${IMPUESTOS.ivaViviendaNueva} % y un ${pctCorto(imp.ajd!)} de actos jurídicos documentados.`
+      : `${imp.foral} Usa nuestra calculadora de gastos para el resto.`,
+  },
+];
+---
+
+<BaseLayout
+  title={tituloSeo}
+  heading={titulo}
+  description={metaDescripcion}
+  breadcrumbs={breadcrumbs}
+  modified={new Date(FUENTES.actualizado)}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta={`${prov.nombre} · ${ccaa.nombre}`}>
+    <p>{descripcion}</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <section aria-labelledby="titulo-datos" class="grid gap-6 lg:grid-cols-2">
+      <div class="tarjeta">
+        <h2 id="titulo-datos" class="text-xl font-bold text-slate-900">Comprar en {m.nombre}</h2>
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <p class="dato"><span class="dato-nombre">Valor tasado medio</span><span class="dato-valor">{euros(m2)}/m²</span></p>
+          <p class="dato"><span class="dato-nombre">Piso de {SUPERFICIE_REFERENCIA} m²</span><span class="dato-valor">{euros(piso)}</span></p>
+          {m.compra.m2Nueva && <p class="dato"><span class="dato-nombre">Vivienda nueva</span><span class="dato-valor text-xl">{euros(m.compra.m2Nueva)}/m²</span></p>}
+          {m.compra.m2Usada && <p class="dato"><span class="dato-nombre">Vivienda usada</span><span class="dato-valor text-xl">{euros(m.compra.m2Usada)}/m²</span></p>}
+        </div>
+        <ul class="mt-4 space-y-1 text-sm text-slate-600">
+          <li>Es {comparacion(vsNacional)} la media de España ({euros(nacional.m2)}/m²).</li>
+          {vsProvincia != null && <li>Es {comparacion(vsProvincia)} la media de la provincia ({euros(prov.compra.m2)}/m²).</li>}
+          {imp.itp && itp != null && <li>Impuesto de transmisiones de un piso usado de {euros(piso)}: {euros(itp)} ({describeITP(imp.itp)}).</li>}
+        </ul>
+        <div class="mt-5">
+          <p class="mb-2 text-sm font-semibold text-slate-800">Pisos en venta hasta {euros(piso)}</p>
+          <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="compra" max={Math.round(piso / 1000) * 1000} />
+        </div>
+        <p class="fuente mt-4">
+          {FUENTES.compra.fuente}, {FUENTES.compra.periodo}{m.compra.tasaciones ? `, ${miles(m.compra.tasaciones)} tasaciones` : ''}. <a href={FUENTES.compra.url} rel="noopener" target="_blank">Ver fuente</a>.
+        </p>
+      </div>
+
+      <div class="tarjeta">
+        <h2 class="text-xl font-bold text-slate-900">Alquilar en {m.nombre}</h2>
+        {
+          a ? (
+            <>
+              <div class="mt-4 grid grid-cols-2 gap-3">
+                <p class="dato"><span class="dato-nombre">Alquiler mediano</span><span class="dato-valor">{euros(a.mes)}/mes</span></p>
+                <p class="dato"><span class="dato-nombre">Por metro cuadrado</span><span class="dato-valor">{decimal2(a.m2)} €</span></p>
+                {a.mesP25 && <p class="dato"><span class="dato-nombre">El 25 % más barato, menos de</span><span class="dato-valor text-xl">{euros(a.mesP25)}</span></p>}
+                {a.mesP75 && <p class="dato"><span class="dato-nombre">El 25 % más caro, más de</span><span class="dato-valor text-xl">{euros(a.mesP75)}</span></p>}
+              </div>
+              <ul class="mt-4 space-y-1 text-sm text-slate-600">
+                {a.superficie && <li>Superficie mediana de los pisos alquilados: {miles(a.superficie)} m².</li>}
+                {a.mes && (
+                  <li>
+                    {a.mes <= limiteJoven
+                      ? `El alquiler mediano está dentro del límite de ${euros(limiteJoven)} de la ayuda al alquiler para jóvenes.`
+                      : `El alquiler mediano pasa del límite de ${euros(limiteJoven)} de la ayuda al alquiler para jóvenes (tu comunidad puede haberlo subido).`}{' '}
+                    <a href="/ayudas" class="font-semibold text-teal-700 hover:underline">Ver ayudas</a>
+                  </li>
+                )}
+              </ul>
+              <div class="mt-5">
+                <p class="mb-2 text-sm font-semibold text-slate-800">Pisos en alquiler hasta {euros(a.mes)} al mes</p>
+                <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="alquiler" max={a.mes ?? undefined} />
+              </div>
+              <p class="fuente mt-4">
+                Contratos de alquiler de pisos de {FUENTES.alquiler.periodo}{a.viviendas ? ` (${miles(a.viviendas)} viviendas)` : ''} declarados a Hacienda. <a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI</a>.
+              </p>
+            </>
+          ) : (
+            <p class="mt-4 text-slate-600">No hay datos oficiales de alquiler para este municipio.</p>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="rounded-3xl bg-teal-800 p-6 text-white sm:p-8">
+      <h2 class="text-2xl font-bold">¿Tienes otro presupuesto?</h2>
+      <p class="mt-2 max-w-2xl text-teal-50">Pon lo que puedes pagar y te decimos para qué te da en {m.nombre}, con los pisos que encajan en Idealista y Fotocasa.</p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a href={`/?op=alquiler&lugar=m:${m.slug}`} class="rounded-xl bg-white px-5 py-3 font-semibold text-teal-800 hover:bg-teal-50">Buscar para alquilar</a>
+        <a href={`/?op=compra&lugar=m:${m.slug}`} class="rounded-xl border border-white/60 px-5 py-3 font-semibold text-white hover:bg-white/10">Buscar para comprar</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-esfuerzo">
+      <h2 id="titulo-esfuerzo" class="text-2xl font-bold tracking-tight text-slate-900">¿Cuánto esfuerzo cuesta vivir en {m.nombre}?</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <p class="tarjeta"><span class="dato-nombre">Renta neta media por hogar</span><span class="dato-valor">{euros(m.rentaHogar)}</span><span class="text-xs text-slate-500">al año (INE, {FUENTES.renta.periodo})</span></p>
+        <p class="tarjeta"><span class="dato-nombre">Comprar un piso de {SUPERFICIE_REFERENCIA} m²</span><span class="dato-valor">{decimal1(m.esfuerzoCompraAnios)} años</span><span class="text-xs text-slate-500">de renta. Puesto {puesto} de {ranking.length} (1 = el más difícil)</span></p>
+        <p class="tarjeta"><span class="dato-nombre">El alquiler mediano se lleva</span><span class="dato-valor">{porcentaje(m.esfuerzoAlquilerPct)}</span><span class="text-xs text-slate-500">de la renta media de un hogar</span></p>
+      </div>
+      <a href="/esfuerzo" class="mt-4 inline-block text-sm font-semibold text-teal-700 hover:underline">Ver el ranking completo →</a>
+    </section>
+
+    <AdSlot format="horizontal" />
+
+    <Faq preguntas={preguntas} titulo={`Preguntas sobre vivir en ${m.nombre}`} />
+
+    {
+      vecinos.length > 0 && (
+        <section aria-labelledby="titulo-vecinos">
+          <h2 id="titulo-vecinos" class="text-2xl font-bold tracking-tight text-slate-900">Otros municipios de la provincia de {prov.nombre}</h2>
+          <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table class="tabla">
+              <thead>
+                <tr><th scope="col">Municipio</th><th scope="col" class="text-right">Compra (€/m²)</th><th scope="col" class="text-right">Alquiler mediano</th></tr>
+              </thead>
+              <tbody>
+                {[...vecinos].sort((x, y) => (y.compra.m2 ?? 0) - (x.compra.m2 ?? 0)).map((v) => (
+                  <tr>
+                    <td><a href={`/vivienda/${v.slug}`} class="font-semibold text-slate-900 hover:text-teal-700">{v.nombre}</a></td>
+                    <td class="text-right">{euros(v.compra.m2)}</td>
+                    <td class="text-right">{v.alquiler ? `${euros(v.alquiler.mes)}/mes` : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )
+    }
+
+    <Herramientas titulo="Herramientas para tu búsqueda" />
+    <Autor />
+  </div>
+</BaseLayout>

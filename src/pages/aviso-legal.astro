@@ -1,0 +1,155 @@
+---
+// Ruta: src/pages/aviso-legal.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import PendingNotice from '../components/PendingNotice.astro';
+import { SITE, OWNER, LEGAL_UPDATED, pending, isPending } from '../config/site';
+
+const title = 'Aviso legal';
+const missing = isPending(OWNER.name);
+const toc = [
+  { id: 'titular', title: 'Datos identificativos del titular' },
+  { id: 'objeto', title: 'Objeto y aceptación' },
+  { id: 'uso', title: 'Condiciones de uso' },
+  { id: 'exencion', title: 'Exención de responsabilidad sobre los datos y los cálculos' },
+  { id: 'responsabilidad', title: 'Responsabilidad sobre el sitio y los enlaces' },
+  { id: 'propiedad', title: 'Propiedad intelectual e industrial' },
+  { id: 'publicidad', title: 'Publicidad' },
+  { id: 'datos', title: 'Protección de datos y cookies' },
+  { id: 'legislacion', title: 'Legislación aplicable y jurisdicción' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Aviso legal de ${SITE.name} conforme a la LSSI-CE: titular, condiciones de uso, propiedad intelectual y responsabilidad sobre datos y cálculos.`}
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle title={title} updated={LEGAL_UPDATED} toc={toc}>
+    {missing && (
+      <div slot="before" class="mt-6">
+        <PendingNotice message="Faltan datos del titular. Complétalos en src/config/site.ts antes de publicar." />
+      </div>
+    )}
+
+    <h2 id="titular">1. Datos identificativos del titular</h2>
+    <p>
+      En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad
+      de la Información y de Comercio Electrónico (<strong>LSSI-CE</strong>), se informa de los datos
+      del titular de este sitio web:
+    </p>
+    <ul>
+      <li><strong>Titular:</strong> {pending(OWNER.name, 'nombre y apellidos o razón social')}</li>
+      <li><strong>Correo electrónico:</strong> <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a></li>
+      <li><strong>Sitio web:</strong> {SITE.url} (en adelante, «el sitio» o «{SITE.name}»)</li>
+    </ul>
+
+    <h2 id="objeto">2. Objeto y aceptación</h2>
+    <p>
+      {SITE.name} es un sitio web informativo y gratuito que, sin necesidad de registro, muestra datos
+      oficiales sobre el precio de la vivienda en España, ofrece calculadoras orientativas (capacidad de
+      pago, hipoteca, impuestos de compra, alquilar o comprar, ayudas) y enlaza a la búsqueda de portales
+      inmobiliarios de terceros con los filtros que elige el usuario. Los datos que el usuario introduce en
+      las calculadoras se procesan en su navegador y no se envían al titular.
+      El acceso y la navegación por el sitio atribuyen la condición de usuario e implican la
+      aceptación de este aviso legal, de la <a href="/politica-privacidad">política de privacidad</a>
+      y de la <a href="/politica-cookies">política de cookies</a> vigentes en cada momento.
+    </p>
+
+    <h2 id="uso">3. Condiciones de uso</h2>
+    <p>El usuario se compromete a utilizar el sitio de conformidad con la ley, la buena fe y el orden público, y en particular a no:</p>
+    <ul>
+      <li>Utilizar el sitio o sus contenidos con fines ilícitos o lesivos para terceros.</li>
+      <li>Dañar, sobrecargar o impedir el normal funcionamiento del sitio, ni introducir virus o código malicioso.</li>
+      <li>Extraer contenidos de forma masiva o automatizada, salvo la indexación por buscadores.</li>
+      <li>Hacer clic de forma artificial en los anuncios o generar impresiones fraudulentas.</li>
+    </ul>
+
+    <h2 id="exencion">4. Exención de responsabilidad sobre los datos y los cálculos</h2>
+    <div class="not-prose my-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-950">
+      <p class="font-semibold">Cláusula expresa</p>
+      <p class="mt-2">
+        Los precios, impuestos, ayudas e índices que muestra {SITE.name} proceden de fuentes oficiales
+        (Ministerio de Vivienda y Agenda Urbana, INE, Ministerio de Hacienda, Banco Central Europeo, BOE e
+        ICO) y tienen carácter <strong>exclusivamente informativo</strong>. Los resultados de las
+        calculadoras son estimaciones y no constituyen asesoramiento financiero, fiscal ni jurídico.
+      </p>
+    </div>
+    <p>En particular, el usuario reconoce y acepta que:</p>
+    <ul>
+      <li>
+        <strong>No vendemos ni alquilamos viviendas.</strong> El titular no es una inmobiliaria, un
+        portal ni un intermediario, y no cobra a los portales ni a los anunciantes de viviendas. Los
+        anuncios a los que enlaza el buscador son responsabilidad de esos portales y de sus anunciantes.
+      </li>
+      <li>
+        <strong>Los datos tienen fecha.</strong> Cada página indica el periodo de los datos. Los precios
+        de los anuncios actuales pueden ser distintos de los datos oficiales.
+      </li>
+      <li>
+        <strong>Los impuestos y las ayudas pueden cambiar.</strong> Se usan los tipos generales de cada
+        comunidad y los requisitos básicos de la normativa estatal; cada comunidad puede tener
+        reducciones, requisitos o convocatorias propias.
+      </li>
+      <li>
+        <strong>La decisión es tuya.</strong> Antes de firmar un contrato, una hipoteca o pedir una ayuda,
+        comprueba las condiciones con la entidad, el organismo o un profesional.
+      </li>
+    </ul>
+
+    <h2 id="responsabilidad">5. Responsabilidad sobre el sitio y los enlaces</h2>
+    <p>
+      El titular procura que el sitio esté disponible y libre de errores, pero no garantiza la
+      ausencia de interrupciones, fallos técnicos o elementos dañinos ajenos a su control, y podrá
+      modificar, suspender o retirar contenidos sin previo aviso.
+    </p>
+    <p>
+      El sitio incluye enlaces a webs de terceros, como organismos oficiales y portales inmobiliarios, con fines informativos.
+      Conforme al artículo 17 de la LSSI-CE, el titular no responde de sus contenidos salvo que tenga
+      conocimiento efectivo de su ilicitud y no actúe con diligencia para suprimir el enlace. Si
+      detectas un enlace a un contenido ilícito, comunícanoslo en <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>.
+    </p>
+
+    <h2 id="propiedad">6. Propiedad intelectual e industrial</h2>
+    <p>
+      Los textos, diseños, gráficos, código fuente, la marca {SITE.name} y demás
+      elementos del sitio son titularidad del titular o se utilizan con la debida autorización, y
+      están protegidos por el Real Decreto Legislativo 1/1996, de 12 de abril, por el que se aprueba
+      el texto refundido de la Ley de Propiedad Intelectual, y por la normativa de propiedad
+      industrial.
+    </p>
+    <p>
+      Queda prohibida la reproducción, distribución, comunicación pública o transformación, total o
+      parcial, de los contenidos con fines comerciales sin autorización previa y por escrito. Se
+      permite citar fragmentos breves con fines informativos o educativos, indicando la fuente y
+      enlazando a la página original. Las marcas y nombres de terceros citados pertenecen a sus
+      respectivos titulares.
+    </p>
+    <p>
+      Los textos normativos y los datos de organismos públicos que se citan no están sujetos a
+      propiedad intelectual (art. 13 de la Ley de Propiedad Intelectual) y pertenecen a sus fuentes.
+    </p>
+
+    <h2 id="publicidad">7. Publicidad</h2>
+    <p>
+      El sitio se financia mediante anuncios servidos por Google AdSense, identificados como
+      «Publicidad». El contenido de los anuncios es responsabilidad de los anunciantes y su
+      presencia no implica recomendación por parte del titular. El contenido editorial es
+      independiente de la publicidad.
+    </p>
+
+    <h2 id="datos">8. Protección de datos y cookies</h2>
+    <p>
+      El tratamiento de datos personales se rige por la <a href="/politica-privacidad">política de privacidad</a>,
+      y el uso de cookies por la <a href="/politica-cookies">política de cookies</a>.
+    </p>
+
+    <h2 id="legislacion">9. Legislación aplicable y jurisdicción</h2>
+    <p>
+      Este aviso legal se rige por la legislación española. Para la resolución de cualquier
+      controversia, las partes se someterán a los juzgados y tribunales que correspondan conforme a
+      la normativa aplicable. Si el usuario tiene la condición de consumidor, serán competentes los
+      juzgados de su domicilio.
+    </p>
+  </LegalArticle>
+</BaseLayout>

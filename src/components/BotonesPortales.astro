@@ -1,0 +1,21 @@
+---
+// Ruta: src/components/BotonesPortales.astro
+// Enlaces a la búsqueda de Idealista y Fotocasa con precio máximo ya puesto.
+import Icono from './Icono.astro';
+import { urlIdealista, urlFotocasa, type Operacion } from '../lib/calculos';
+
+interface Props {
+  idealista: string;
+  fotocasa: string | null;
+  operacion: Operacion;
+  max?: number;
+}
+const { idealista, fotocasa, operacion, max } = Astro.props;
+const f = { operacion, max };
+const fc = fotocasa ? urlFotocasa(fotocasa, f) : null;
+---
+
+<div class="flex flex-col gap-2 sm:flex-row">
+  <a href={urlIdealista(idealista, f)} class="boton text-sm" target="_blank" rel="nofollow noopener">Idealista <Icono nombre="externo" class="h-4 w-4" /></a>
+  {fc && <a href={fc} class="boton-secundario text-sm" target="_blank" rel="nofollow noopener">Fotocasa <Icono nombre="externo" class="h-4 w-4" /></a>}
+</div>

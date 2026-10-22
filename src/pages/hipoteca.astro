@@ -1,0 +1,239 @@
+---
+// Ruta: src/pages/hipoteca.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { EURIBOR, mesLegible } from '../lib/datos';
+import { porcentaje, decimal2 } from '../lib/calculos';
+
+const titulo = 'Calculadora de hipoteca con el Euríbor de hoy';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: 'Hipoteca' }];
+
+// Gráfica del Euríbor de los últimos 13 meses
+const serie = EURIBOR.serie;
+const vals = serie.map((s) => s.valor);
+const minV = Math.min(...vals) - 0.2;
+const maxV = Math.max(...vals) + 0.2;
+const W = 600;
+const H = 180;
+const x = (i: number) => 30 + (i * (W - 50)) / (serie.length - 1);
+const y = (v: number) => 15 + ((maxV - v) / (maxV - minV)) * (H - 45);
+const linea = serie.map((s, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(s.valor).toFixed(1)}`).join(' ');
+const primero = serie[0];
+const MESES_CORTOS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const mesCorto = (m: string) => `${MESES_CORTOS[Number(m.slice(5)) - 1]} ${m.slice(2, 4)}`;
+
+const preguntas = [
+  {
+    q: '¿Qué es el Euríbor?',
+    a: `Es el tipo de interés al que se prestan dinero los bancos europeos. La mayoría de las hipotecas variables en España se revisan con el Euríbor a 12 meses más un diferencial fijo. En ${mesLegible(EURIBOR.mes)} fue del ${porcentaje(EURIBOR.valor, 3)}, según el Banco Central Europeo.`,
+  },
+  {
+    q: '¿Qué es el diferencial?',
+    a: 'Es lo que el banco suma al Euríbor y no cambia en toda la vida de la hipoteca. Depende de cada banco y de tu perfil, así que ponlo tú: aparece en la oferta vinculante que te den.',
+  },
+  {
+    q: '¿Fija, variable o mixta?',
+    a: 'Con la fija pagas siempre lo mismo. Con la variable la cuota cambia en cada revisión (normalmente cada 6 o 12 meses) según el Euríbor. La mixta es fija unos años y luego variable. Compara las ofertas con esta calculadora usando el tipo de cada una.',
+  },
+  {
+    q: '¿Esta calculadora sirve para la cuota real?',
+    a: 'Sirve para la cuota de un préstamo francés (cuota constante), que es el que usan casi todas las hipotecas. En una variable, la cuota solo vale hasta la próxima revisión. Seguros, comisiones y productos vinculados no están incluidos.',
+  },
+];
+---
+
+<BaseLayout
+  title="Calculadora de hipoteca 2026 con el Euríbor actual"
+  heading={titulo}
+  description={`Calcula la cuota de tu hipoteca fija o variable con el Euríbor de ${mesLegible(EURIBOR.mes)} (${porcentaje(EURIBOR.valor, 3)}): cuota mensual, intereses totales y tabla de amortización.`}
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Calculadora">
+    <p>Cuota al mes, intereses que pagarás en total y cómo baja la deuda año a año. Con el Euríbor oficial del Banco Central Europeo.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-hipoteca>
+    <div class="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
+      <form class="tarjeta space-y-5" novalidate>
+        <div>
+          <label for="capital" class="etiqueta">Dinero que pides al banco</label>
+          <div class="con-sufijo">
+            <input id="capital" name="capital" type="number" min="0" step="any" inputmode="numeric" class="entrada" placeholder="Ej.: 160000" />
+            <span class="sufijo">€</span>
+          </div>
+        </div>
+        <div>
+          <label for="plazo" class="etiqueta">Plazo</label>
+          <div class="con-sufijo">
+            <input id="plazo" name="plazo" type="number" min="1" max="40" step="1" inputmode="numeric" class="entrada" value="30" />
+            <span class="sufijo">años</span>
+          </div>
+        </div>
+        <fieldset>
+          <legend class="etiqueta">Tipo de hipoteca</legend>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="pastilla"><input type="radio" name="modo" value="variable" class="sr-only" checked />Variable</label>
+            <label class="pastilla"><input type="radio" name="modo" value="fija" class="sr-only" />Fija</label>
+          </div>
+        </fieldset>
+        <div data-variable class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="euribor" class="etiqueta">Euríbor</label>
+            <div class="con-sufijo">
+              <input id="euribor" name="euribor" type="number" step="0.001" inputmode="decimal" class="entrada" value={EURIBOR.valor} />
+              <span class="sufijo">%</span>
+            </div>
+            <span class="ayuda">{mesLegible(EURIBOR.mes)}, fuente BCE.</span>
+          </div>
+          <div>
+            <label for="diferencial" class="etiqueta">Diferencial del banco</label>
+            <div class="con-sufijo">
+              <input id="diferencial" name="diferencial" type="number" min="0" step="0.01" inputmode="decimal" class="entrada" placeholder="Ej.: 0,8" />
+              <span class="sufijo">%</span>
+            </div>
+            <span class="ayuda">El que aparece en tu oferta.</span>
+          </div>
+        </div>
+        <div data-fija hidden>
+          <label for="fijo" class="etiqueta">Tipo de interés fijo (TIN)</label>
+          <div class="con-sufijo">
+            <input id="fijo" name="fijo" type="number" min="0" step="0.01" inputmode="decimal" class="entrada" placeholder="El de tu oferta" />
+            <span class="sufijo">%</span>
+          </div>
+        </div>
+      </form>
+
+      <div aria-live="polite">
+        <div data-vacio class="tarjeta text-slate-600">Pon cuánto pides al banco para ver la cuota.</div>
+        <section data-res hidden class="tarjeta">
+          <p class="rounded-2xl bg-teal-50 p-5">
+            <span class="block text-sm text-teal-900">Cuota al mes</span>
+            <span data-cuota class="block text-4xl font-extrabold tracking-tight text-teal-800 tabular-nums"></span>
+            <span data-tipo class="mt-1 block text-sm text-teal-900"></span>
+          </p>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <p class="dato"><span class="dato-nombre">Intereses en total</span><span data-intereses class="dato-valor text-xl"></span></p>
+            <p class="dato"><span class="dato-nombre">Pagas en total</span><span data-total class="dato-valor text-xl"></span></p>
+          </div>
+          <div class="mt-4">
+            <p class="text-sm text-slate-600">Qué parte de lo que pagas son intereses</p>
+            <div class="mt-2 flex h-3 overflow-hidden rounded-full bg-teal-200">
+              <div data-barra-int class="bg-amber-400"></div>
+            </div>
+            <p class="mt-1 flex justify-between text-xs text-slate-500"><span>Intereses</span><span>Capital</span></p>
+          </div>
+          <p data-subida class="mt-4 text-sm text-slate-600"></p>
+        </section>
+      </div>
+    </div>
+
+    <section data-tabla-sec hidden aria-labelledby="titulo-amort">
+      <h2 id="titulo-amort" class="text-2xl font-bold tracking-tight text-slate-900">Tabla de amortización por años</h2>
+      <div class="mt-4 max-h-[28rem] overflow-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr><th scope="col">Año</th><th scope="col" class="text-right">Intereses</th><th scope="col" class="text-right">Capital devuelto</th><th scope="col" class="text-right">Te queda por pagar</th></tr>
+          </thead>
+          <tbody data-tabla></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-euribor" class="tarjeta">
+      <h2 id="titulo-euribor" class="text-xl font-bold text-slate-900">El Euríbor en el último año</h2>
+      <p class="mt-1 text-sm text-slate-600">
+        De {porcentaje(primero.valor, 3)} en {mesLegible(primero.mes)} a {porcentaje(EURIBOR.valor, 3)} en {mesLegible(EURIBOR.mes)}. Media mensual del Euríbor a 12 meses.
+      </p>
+      <svg viewBox={`0 0 ${W} ${H}`} class="mt-4 w-full" role="img" aria-label="Gráfica del Euríbor de los últimos 13 meses">
+        {[minV + 0.2, (minV + maxV) / 2, maxV - 0.2].map((v) => (
+          <g>
+            <line x1="30" x2={W - 20} y1={y(v)} y2={y(v)} stroke="#e2e8f0" />
+            <text x="0" y={y(v) + 4} font-size="11" fill="#64748b">{decimal2(v)}</text>
+          </g>
+        ))}
+        <path d={linea} fill="none" stroke="#0f766e" stroke-width="3" stroke-linejoin="round" />
+        {serie.map((s, i) => (
+          <g>
+            <circle cx={x(i)} cy={y(s.valor)} r="3.5" fill="#0f766e"><title>{mesLegible(s.mes)}: {porcentaje(s.valor, 3)}</title></circle>
+            {i % 2 === 0 && <text x={x(i)} y={H - 5} font-size="11" fill="#64748b" text-anchor="middle">{mesCorto(s.mes)}</text>}
+          </g>
+        ))}
+      </svg>
+      <p class="fuente mt-2">Fuente: <a href={EURIBOR.url} rel="noopener" target="_blank">{EURIBOR.fuente}</a>.</p>
+    </section>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+</BaseLayout>
+
+<script>
+  import { euros, cuotaHipoteca, tablaAmortizacion, porcentaje } from '../lib/calculos';
+  import { numero } from '../scripts/lugar';
+
+  const raiz = document.querySelector<HTMLElement>('[data-hipoteca]')!;
+  const form = raiz.querySelector('form')!;
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+  const val = (n: string) => numero(form.querySelector(`[name="${n}"]`));
+
+  const q = new URLSearchParams(location.search);
+  if (q.get('capital')) form.querySelector<HTMLInputElement>('[name="capital"]')!.value = q.get('capital')!;
+
+  function calcula() {
+    const variable = form.querySelector<HTMLInputElement>('[name="modo"]:checked')!.value === 'variable';
+    $('[data-variable]').hidden = !variable;
+    $('[data-fija]').hidden = variable;
+    const capital = val('capital');
+    const plazo = val('plazo') || 30;
+    const euribor = val('euribor') || 0;
+    const diferencial = val('diferencial') || 0;
+    const tipo = variable ? euribor + diferencial : val('fijo') || 0;
+    const hay = Number.isFinite(capital) && capital > 0;
+    $('[data-vacio]').hidden = hay;
+    $('[data-res]').hidden = !hay;
+    $('[data-tabla-sec]').hidden = !hay;
+    if (!hay) return;
+
+    const cuota = cuotaHipoteca(capital, tipo, plazo);
+    const total = cuota * Math.round(plazo * 12);
+    const intereses = total - capital;
+    $('[data-cuota]').textContent = euros(cuota);
+    $('[data-tipo]').textContent = variable
+      ? `Con un interés del ${porcentaje(tipo, 2)} (Euríbor ${porcentaje(euribor, 3)} + diferencial ${porcentaje(diferencial, 2)}), durante ${plazo} años.`
+      : `Con un interés fijo del ${porcentaje(tipo, 2)} durante ${plazo} años.`;
+    $('[data-intereses]').textContent = euros(intereses);
+    $('[data-total]').textContent = euros(total);
+    $('[data-barra-int]').style.width = `${total ? (intereses / total) * 100 : 0}%`;
+    const subida = variable ? cuotaHipoteca(capital, tipo + 1, plazo) - cuota : 0;
+    $('[data-subida]').textContent = variable
+      ? `Si el Euríbor sube 1 punto, tu cuota subiría unos ${euros(subida)} al mes (calculado sobre la deuda de hoy).`
+      : '';
+
+    const filas = tablaAmortizacion(capital, tipo, plazo).map((f) => {
+      const tr = document.createElement('tr');
+      for (const [v, clase] of [
+        [String(f.anio), ''],
+        [euros(f.intereses), 'text-right'],
+        [euros(f.amortizado), 'text-right'],
+        [euros(f.pendiente), 'text-right'],
+      ]) {
+        const td = document.createElement('td');
+        td.textContent = v;
+        if (clase) td.className = clase;
+        tr.append(td);
+      }
+      return tr;
+    });
+    $('[data-tabla]').replaceChildren(...filas);
+  }
+
+  form.addEventListener('input', calcula);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  calcula();
+</script>

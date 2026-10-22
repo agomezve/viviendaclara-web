@@ -1,0 +1,258 @@
+{
+ "_nota": "Tipos generales de 2026 copiados del Ministerio de Hacienda, «Tributación Autonómica. Medidas 2026», capítulos I y IV (actualizado a 23-sep-2026). Revisar cada año.",
+ "revisado": "2026-10-22",
+ "fuente": {
+  "nombre": "Ministerio de Hacienda · Tributación Autonómica. Medidas 2026",
+  "url": "https://www.hacienda.gob.es/sgfal/financiacionterritorial/autonomica/capitulo-iv-tributacion-autonomica-2026.pdf"
+ },
+ "ivaViviendaNueva": 10,
+ "comunidades": {
+  "01": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 7
+   },
+   "ajd": 1.2
+  },
+  "02": {
+   "itp": {
+    "tipo": "progresivo",
+    "tramos": [
+     [
+      0,
+      8
+     ],
+     [
+      400000,
+      8.5
+     ],
+     [
+      450000,
+      9
+     ],
+     [
+      500000,
+      9.5
+     ],
+     [
+      750000,
+      10
+     ]
+    ]
+   },
+   "ajd": 1.5
+  },
+  "03": {
+   "itp": {
+    "tipo": "total",
+    "tramos": [
+     [
+      0,
+      8
+     ],
+     [
+      300000,
+      9
+     ],
+     [
+      500000,
+      10
+     ]
+    ]
+   },
+   "ajd": 1.2
+  },
+  "04": {
+   "itp": {
+    "tipo": "progresivo",
+    "tramos": [
+     [
+      0,
+      8
+     ],
+     [
+      400000,
+      9
+     ],
+     [
+      600000,
+      10
+     ],
+     [
+      1000000,
+      12
+     ],
+     [
+      2000000,
+      13
+     ]
+    ]
+   },
+   "ajd": 1.5
+  },
+  "05": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 6.5
+   },
+   "ajd": 0.75,
+   "nuevaSinIva": "En Canarias la vivienda nueva no paga IVA, sino IGIC. Consulta el tipo en la Agencia Tributaria Canaria.",
+   "nuevaEnlace": "https://www3.gobiernodecanarias.org/tributos/atc/"
+  },
+  "06": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 9
+   },
+   "ajd": 1.5
+  },
+  "07": {
+   "itp": {
+    "tipo": "progresivo",
+    "tramos": [
+     [
+      0,
+      8
+     ],
+     [
+      250000,
+      10
+     ]
+    ]
+   },
+   "ajd": 1.5
+  },
+  "08": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 9
+   },
+   "ajd": 1.5
+  },
+  "09": {
+   "itp": {
+    "tipo": "progresivo",
+    "tramos": [
+     [
+      0,
+      10
+     ],
+     [
+      600000,
+      11
+     ],
+     [
+      900000,
+      12
+     ],
+     [
+      1500000,
+      13
+     ]
+    ]
+   },
+   "ajd": 1.5
+  },
+  "10": {
+   "itp": {
+    "tipo": "umbral",
+    "pct": 9,
+    "umbral": 1000000,
+    "pctAlto": 11
+   },
+   "ajd": 1.4
+  },
+  "11": {
+   "itp": {
+    "tipo": "progresivo",
+    "tramos": [
+     [
+      0,
+      8
+     ],
+     [
+      360000,
+      10
+     ],
+     [
+      600000,
+      11
+     ]
+    ]
+   },
+   "ajd": 1.5
+  },
+  "12": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 8
+   },
+   "ajd": 1.5
+  },
+  "13": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 6
+   },
+   "ajd": 0.75
+  },
+  "14": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 7.75
+   },
+   "ajd": 1.5
+  },
+  "15": {
+   "foral": "Navarra tiene su propia Hacienda. Consulta el tipo en la Hacienda Foral de Navarra.",
+   "enlaces": [
+    [
+     "Hacienda Foral de Navarra",
+     "https://www.navarra.es/es/hacienda"
+    ]
+   ]
+  },
+  "16": {
+   "foral": "El País Vasco tiene sus propias Haciendas forales. Consulta el tipo en la de tu provincia.",
+   "enlaces": [
+    [
+     "Hacienda de Álava",
+     "https://web.araba.eus/es/hacienda"
+    ],
+    [
+     "Hacienda de Bizkaia",
+     "https://www.bizkaia.eus/ogasuna"
+    ],
+    [
+     "Hacienda de Gipuzkoa",
+     "https://www.gipuzkoa.eus/es/web/ogasuna"
+    ]
+   ]
+  },
+  "17": {
+   "itp": {
+    "tipo": "fijo",
+    "pct": 7
+   },
+   "ajd": 1
+  },
+  "18": {
+   "foral": "Ceuta aplica la normativa estatal con bonificaciones propias. Consulta el tipo en la Agencia Tributaria.",
+   "enlaces": [
+    [
+     "Agencia Tributaria",
+     "https://sede.agenciatributaria.gob.es/"
+    ]
+   ]
+  },
+  "19": {
+   "foral": "Melilla aplica la normativa estatal con bonificaciones propias. Consulta el tipo en la Agencia Tributaria.",
+   "enlaces": [
+    [
+     "Agencia Tributaria",
+     "https://sede.agenciatributaria.gob.es/"
+    ]
+   ]
+  }
+ }
+}

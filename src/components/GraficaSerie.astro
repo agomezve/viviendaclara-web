@@ -1,0 +1,59 @@
+---
+// Ruta: src/components/GraficaSerie.astro
+// Gráfica de línea (SVG, sin JavaScript) de la serie trimestral del valor tasado.
+import { euros, miles } from '../lib/calculos';
+
+interface Props {
+  serie: Record<string, number | null>;
+  /** Texto alternativo de la gráfica. */
+  descripcion: string;
+}
+const { serie, descripcion } = Astro.props;
+const puntos = Object.entries(serie).filter((e): e is [string, number] => e[1] != null);
+const vals = puntos.map((p) => p[1]);
+const margen = (Math.max(...vals) - Math.min(...vals)) * 0.15 || 50;
+const minV = Math.min(...vals) - margen;
+const maxV = Math.max(...vals) + margen;
+const W = 640;
+const H = 220;
+const x = (i: number) => 50 + (i * (W - 70)) / Math.max(1, puntos.length - 1);
+const y = (v: number) => 12 + ((maxV - v) / (maxV - minV)) * (H - 42);
+const linea = puntos.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+const area = `${linea} L${x(puntos.length - 1).toFixed(1)},${H - 30} L${x(0).toFixed(1)},${H - 30} Z`;
+const guias = [0, 0.5, 1].map((t) => minV + margen + t * (maxV - minV - 2 * margen));
+const etiqueta = (t: string) => {
+  const [a, q] = t.split('-T');
+  return `T${q} ${a.slice(2)}`;
+};
+---
+
+<svg viewBox={`0 0 ${W} ${H}`} class="w-full" role="img" aria-label={descripcion}>
+  <defs>
+    <linearGradient id="relleno-serie" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.25"></stop>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"></stop>
+    </linearGradient>
+  </defs>
+  {
+    guias.map((v) => (
+      <g>
+        <line x1="50" x2={W - 20} y1={y(v)} y2={y(v)} stroke="#e2e8f0" />
+        <text x="0" y={y(v) + 4} font-size="11" fill="#64748b">{miles(v)}</text>
+      </g>
+    ))
+  }
+  <path d={area} fill="url(#relleno-serie)" />
+  <path d={linea} fill="none" stroke="#0f766e" stroke-width="3" stroke-linejoin="round" />
+  {
+    puntos.map(([t, v], i) => (
+      <g>
+        <circle cx={x(i)} cy={y(v)} r="3.5" fill="#0f766e">
+          <title>{etiqueta(t)}: {euros(v)}/m²</title>
+        </circle>
+        {(i % 2 === puntos.length % 2 || i === puntos.length - 1) && (
+          <text x={x(i)} y={H - 10} font-size="11" fill="#64748b" text-anchor="middle">{etiqueta(t)}</text>
+        )}
+      </g>
+    ))
+  }
+</svg>

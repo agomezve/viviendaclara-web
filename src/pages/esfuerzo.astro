@@ -1,0 +1,162 @@
+---
+// Ruta: src/pages/esfuerzo.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import SelectorComunidad from '../components/SelectorComunidad.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { FUENTES, MUNICIPIOS, SUPERFICIE_REFERENCIA, provincia } from '../lib/datos';
+import { euros, decimal1, porcentaje } from '../lib/calculos';
+
+const titulo = 'Ranking de esfuerzo: cuántos años de sueldo cuesta un piso';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: 'Ranking de esfuerzo' }];
+const filas = MUNICIPIOS.filter((m) => m.esfuerzoCompraAnios != null).sort((a, b) => b.esfuerzoCompraAnios! - a.esfuerzoCompraAnios!);
+const peor = filas[0];
+const mejor = filas[filas.length - 1];
+const peorAlq = [...MUNICIPIOS].filter((m) => m.esfuerzoAlquilerPct != null).sort((a, b) => b.esfuerzoAlquilerPct! - a.esfuerzoAlquilerPct!)[0];
+
+const preguntas = [
+  {
+    q: '¿Cómo se calcula el esfuerzo?',
+    a: `Para comprar: precio de un piso de ${SUPERFICIE_REFERENCIA} m² (valor tasado medio del ${FUENTES.compra.periodo}) dividido entre la renta neta media por hogar del municipio (INE, ${FUENTES.renta.periodo}). Para alquilar: el alquiler mediano de un año (SERPAVI ${FUENTES.alquiler.periodo}) entre esa misma renta.`,
+  },
+  {
+    q: '¿Dónde cuesta más esfuerzo comprar?',
+    a: `En ${peor.nombre}: un piso de ${SUPERFICIE_REFERENCIA} m² equivale a ${decimal1(peor.esfuerzoCompraAnios)} años de la renta media de sus hogares. Donde menos, ${mejor.nombre}, con ${decimal1(mejor.esfuerzoCompraAnios)} años.`,
+  },
+  {
+    q: '¿Dónde se va más sueldo en el alquiler?',
+    a: `En ${peorAlq.nombre}, el alquiler mediano se lleva el ${porcentaje(peorAlq.esfuerzoAlquilerPct)} de la renta media de un hogar.`,
+  },
+  {
+    q: '¿Por qué son años de renta y no de sueldo?',
+    a: 'Porque el INE publica la renta neta por hogar, que suma todos los ingresos de la casa (sueldos, pensiones, prestaciones) después de impuestos. Es el dato oficial más completo por municipio.',
+  },
+];
+---
+
+<BaseLayout
+  title="Ranking de esfuerzo para comprar o alquilar vivienda"
+  heading={titulo}
+  description={`Años de renta que cuesta un piso de ${SUPERFICIE_REFERENCIA} m² y parte del sueldo que se va en el alquiler en ${filas.length} municipios de España, con datos oficiales.`}
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Datos oficiales">
+    <p>
+      En {peor.nombre} un piso de {SUPERFICIE_REFERENCIA} m² cuesta {decimal1(peor.esfuerzoCompraAnios)} años de la renta media de un hogar. En {mejor.nombre}, {decimal1(mejor.esfuerzoCompraAnios)}. Mira el tuyo y ordena la tabla como quieras.
+    </p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-ranking>
+    <section>
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end">
+        <div class="sm:w-72">
+          <label for="ccaa" class="etiqueta">Filtrar por comunidad</label>
+          <SelectorComunidad todas valor="" />
+        </div>
+        <div class="sm:w-72">
+          <label for="buscar" class="etiqueta">Buscar municipio</label>
+          <input id="buscar" type="search" class="entrada" placeholder="Ej.: Málaga" data-buscar />
+        </div>
+      </div>
+      <div class="mt-4 max-h-[40rem] overflow-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"><button type="button" data-orden="nombre" class="font-semibold hover:text-teal-700">Municipio</button></th>
+              <th scope="col" class="text-right"><button type="button" data-orden="renta" class="font-semibold hover:text-teal-700">Renta por hogar</button></th>
+              <th scope="col" class="text-right"><button type="button" data-orden="precio" class="font-semibold hover:text-teal-700">Piso de {SUPERFICIE_REFERENCIA} m²</button></th>
+              <th scope="col" class="text-right" aria-sort="descending"><button type="button" data-orden="anios" class="font-semibold text-teal-700">Años de renta ↓</button></th>
+              <th scope="col" class="text-right"><button type="button" data-orden="alquiler" class="font-semibold hover:text-teal-700">Alquiler / renta</button></th>
+            </tr>
+          </thead>
+          <tbody data-cuerpo>
+            {
+              filas.map((m, i) => (
+                <tr
+                  data-ccaa={m.ccaa}
+                  data-nombre={m.nombre}
+                  data-renta={m.rentaHogar}
+                  data-precio={m.compra.m2! * SUPERFICIE_REFERENCIA}
+                  data-anios={m.esfuerzoCompraAnios}
+                  data-alquiler={m.esfuerzoAlquilerPct ?? -1}
+                >
+                  <td class="text-slate-400" data-pos>{i + 1}</td>
+                  <td>
+                    <a href={`/vivienda/${m.slug}`} class="font-semibold text-slate-900 hover:text-teal-700">{m.nombre}</a>
+                    <span class="block text-xs text-slate-500">{provincia(m.provincia).nombre}</span>
+                  </td>
+                  <td class="text-right">{euros(m.rentaHogar)}</td>
+                  <td class="text-right">{euros(m.compra.m2! * SUPERFICIE_REFERENCIA)}</td>
+                  <td class="text-right font-bold text-slate-900">{decimal1(m.esfuerzoCompraAnios)}</td>
+                  <td class="text-right">{porcentaje(m.esfuerzoAlquilerPct)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente mt-3">
+        Renta neta media por hogar: <a href={FUENTES.renta.url} rel="noopener" target="_blank">INE</a>, {FUENTES.renta.periodo}. Precio: valor tasado medio del {FUENTES.compra.periodo} (<a href={FUENTES.compra.url} rel="noopener" target="_blank">Ministerio de Vivienda</a>). Alquiler: mediana anual de los contratos de {FUENTES.alquiler.periodo} (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI</a>). Los datos son de años distintos: tómalo como una comparación entre municipios.
+      </p>
+    </section>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+</BaseLayout>
+
+<script>
+  import { normaliza } from '../lib/calculos';
+
+  const raiz = document.querySelector<HTMLElement>('[data-ranking]')!;
+  const cuerpo = raiz.querySelector<HTMLElement>('[data-cuerpo]')!;
+  const filas = [...cuerpo.querySelectorAll<HTMLTableRowElement>('tr')];
+  const selCcaa = raiz.querySelector<HTMLSelectElement>('[name="ccaa"]')!;
+  const buscar = raiz.querySelector<HTMLInputElement>('[data-buscar]')!;
+  const botones = [...raiz.querySelectorAll<HTMLButtonElement>('[data-orden]')];
+  const textos = new Map(botones.map((b) => [b, b.textContent!.replace(/ [↓↑]$/, '')]));
+  let orden = 'anios';
+  let desc = true;
+
+  function pinta() {
+    const ccaa = selCcaa.value;
+    const q = normaliza(buscar.value);
+    const ordenadas = [...filas].sort((a, b) => {
+      if (orden === 'nombre') return (desc ? -1 : 1) * a.dataset.nombre!.localeCompare(b.dataset.nombre!, 'es');
+      return (desc ? -1 : 1) * (Number(a.dataset[orden]) - Number(b.dataset[orden]));
+    });
+    let pos = 0;
+    for (const f of ordenadas) {
+      const visible = (!ccaa || f.dataset.ccaa === ccaa) && (!q || normaliza(f.dataset.nombre!).includes(q));
+      f.hidden = !visible;
+      if (visible) f.querySelector('[data-pos]')!.textContent = String(++pos);
+    }
+    cuerpo.replaceChildren(...ordenadas);
+    for (const b of botones) {
+      const activo = b.dataset.orden === orden;
+      b.textContent = `${textos.get(b)}${activo ? (desc ? ' ↓' : ' ↑') : ''}`;
+      b.classList.toggle('text-teal-700', activo);
+      if (activo) b.parentElement!.setAttribute('aria-sort', desc ? 'descending' : 'ascending');
+      else b.parentElement!.removeAttribute('aria-sort');
+    }
+  }
+
+  for (const b of botones)
+    b.addEventListener('click', () => {
+      if (orden === b.dataset.orden) desc = !desc;
+      else {
+        orden = b.dataset.orden!;
+        desc = orden !== 'nombre';
+      }
+      pinta();
+    });
+  selCcaa.addEventListener('change', pinta);
+  buscar.addEventListener('input', pinta);
+</script>

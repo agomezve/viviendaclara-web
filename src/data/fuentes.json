@@ -1,0 +1,40 @@
+{
+ "actualizado": "2026-10-22",
+ "compra": {
+  "fuente": "Ministerio de Vivienda y Agenda Urbana · Valor tasado medio de vivienda libre",
+  "periodo": "2.º trimestre de 2026",
+  "ultimoTrimestre": "2026-T2",
+  "nacional": {
+   "m2": 2355.0,
+   "variacionAnual": 12.5,
+   "serie": {
+    "2023-T1": 1788.4,
+    "2023-T2": 1793.2,
+    "2023-T3": 1812.4,
+    "2023-T4": 1842.3,
+    "2024-T1": 1865.8,
+    "2024-T2": 1895.6,
+    "2024-T3": 1921.0,
+    "2024-T4": 1972.1,
+    "2025-T1": 2033.4,
+    "2025-T2": 2093.5,
+    "2025-T3": 2153.4,
+    "2025-T4": 2230.0,
+    "2026-T1": 2315.7,
+    "2026-T2": 2355.0
+   }
+  },
+  "url": "https://apps.fomento.gob.es/BoletinOnline2/?nivel=2&orden=35000000"
+ },
+ "alquiler": {
+  "fuente": "Ministerio de Vivienda y Agenda Urbana · Sistema Estatal de Referencia del Precio del Alquiler de Vivienda (SERPAVI)",
+  "periodo": "2024",
+  "url": "https://www.mivau.gob.es/vivienda/alquila-bien-es-tu-derecho/serpavi",
+  "nota": "Mediana de los contratos de alquiler de pisos (vivienda colectiva) declarados a Hacienda."
+ },
+ "renta": {
+  "fuente": "INE · Atlas de Distribución de Renta de los Hogares",
+  "periodo": "2024",
+  "url": "https://www.ine.es/dynt3/inebase/index.htm?padre=12385"
+ }
+}

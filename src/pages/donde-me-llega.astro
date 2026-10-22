@@ -1,0 +1,172 @@
+---
+// Ruta: src/pages/donde-me-llega.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import SelectorComunidad from '../components/SelectorComunidad.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { FUENTES, MUNICIPIOS, indiceBuscador } from '../lib/datos';
+
+const titulo = '¿Dónde me llega el dinero para vivir?';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: '¿Dónde me llega?' }];
+const datos = indiceBuscador();
+
+const preguntas = [
+  {
+    q: '¿Cómo se calcula si me llega?',
+    a: 'Multiplicamos los metros que necesitas por el precio mediano del metro cuadrado de cada municipio: el de los contratos de alquiler declarados a Hacienda o el valor tasado medio si quieres comprar. Si el resultado es igual o menor que tu presupuesto, el municipio aparece en la lista.',
+  },
+  {
+    q: '¿Significa que encontraré piso a ese precio?',
+    a: 'Significa que tu presupuesto da para un piso normal de esos metros en ese municipio. Dentro de cada ciudad hay barrios mucho más caros y más baratos, y los anuncios de hoy pueden estar por encima de los datos oficiales.',
+  },
+  {
+    q: '¿Por qué no sale mi pueblo?',
+    a: `Tenemos ${MUNICIPIOS.length} municipios: todas las capitales y los municipios con más población, que son los que tienen datos oficiales de compra fiables. En la portada puedes buscar en la provincia entera.`,
+  },
+];
+---
+
+<BaseLayout
+  title="¿Dónde me llega? Municipios según tu presupuesto"
+  heading={titulo}
+  description={`Pon tu presupuesto y los metros que necesitas: te decimos en cuáles de ${MUNICIPIOS.length} municipios de España te llega para alquilar o comprar, con datos oficiales.`}
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Herramienta">
+    <p>Dinos cuánto puedes pagar y cuántos metros necesitas. Te mostramos los municipios donde te da para un piso así, ordenados de más a menos parecido a tu presupuesto.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-donde>
+    <div class="space-y-6">
+      <form class="tarjeta grid gap-4 md:grid-cols-[auto_1fr_1fr_1.2fr]" novalidate>
+        <fieldset>
+          <legend class="etiqueta">Quiero</legend>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="pastilla"><input type="radio" name="op" value="alquiler" class="sr-only" checked />Alquilar</label>
+            <label class="pastilla"><input type="radio" name="op" value="compra" class="sr-only" />Comprar</label>
+          </div>
+        </fieldset>
+        <div>
+          <label for="max" class="etiqueta">Presupuesto máximo</label>
+          <div class="con-sufijo">
+            <input id="max" name="max" type="number" min="0" step="any" inputmode="numeric" class="entrada" placeholder="Ej.: 800" />
+            <span class="sufijo" data-sufijo>€/mes</span>
+          </div>
+        </div>
+        <div>
+          <label for="m2" class="etiqueta">Metros que necesitas</label>
+          <div class="con-sufijo">
+            <input id="m2" name="m2" type="number" min="20" max="300" step="1" inputmode="numeric" class="entrada" value="70" />
+            <span class="sufijo">m²</span>
+          </div>
+        </div>
+        <div>
+          <label for="ccaa" class="etiqueta">Dónde</label>
+          <SelectorComunidad todas valor="" />
+        </div>
+      </form>
+
+      <div aria-live="polite">
+        <p data-vacio class="tarjeta text-slate-600">Pon tu presupuesto para ver la lista.</p>
+        <div data-res hidden>
+          <p data-resumen class="text-lg font-semibold text-slate-900"></p>
+          <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th scope="col">Municipio</th>
+                  <th scope="col" class="text-right">Precio estimado</th>
+                  <th scope="col" class="text-right">Te sobra</th>
+                  <th scope="col"><span class="sr-only">Buscar</span></th>
+                </tr>
+              </thead>
+              <tbody data-filas></tbody>
+            </table>
+          </div>
+          <button type="button" data-mas hidden class="boton-secundario mt-4">Ver más municipios</button>
+        </div>
+      </div>
+      <p class="fuente">
+        Alquiler: mediana del €/m² de los contratos de pisos de {FUENTES.alquiler.periodo} (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI</a>). Compra: valor tasado medio del {FUENTES.compra.periodo} (<a href={FUENTES.compra.url} rel="noopener" target="_blank">Ministerio de Vivienda</a>). Precio estimado = metros × precio mediano del m².
+      </p>
+    </div>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+  <script type="application/json" id="datos-donde" set:html={JSON.stringify(datos)} />
+</BaseLayout>
+
+<script>
+  import { euros, urlIdealista } from '../lib/calculos';
+  import { leeDatos, numero } from '../scripts/lugar';
+  import type { EntradaBuscador } from '../lib/datos';
+
+  const raiz = document.querySelector<HTMLElement>('[data-donde]')!;
+  const form = raiz.querySelector('form')!;
+  const lista = leeDatos<EntradaBuscador[]>('datos-donde');
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+  const POR_PAGINA = 40;
+  let mostrados = POR_PAGINA;
+
+  const q = new URLSearchParams(location.search);
+  if (q.get('op') === 'compra') form.querySelector<HTMLInputElement>('[value="compra"]')!.checked = true;
+  if (q.get('max')) form.querySelector<HTMLInputElement>('[name="max"]')!.value = q.get('max')!;
+
+  function calcula() {
+    const op = form.querySelector<HTMLInputElement>('[name="op"]:checked')!.value as 'alquiler' | 'compra';
+    $('[data-sufijo]').textContent = op === 'compra' ? '€' : '€/mes';
+    const max = numero(form.querySelector('[name="max"]'));
+    const m2 = numero(form.querySelector('[name="m2"]')) || 70;
+    const ccaa = (form.querySelector('[name="ccaa"]') as HTMLSelectElement).value;
+    const hay = Number.isFinite(max) && max > 0;
+    $('[data-vacio]').hidden = hay;
+    $('[data-res]').hidden = !hay;
+    if (!hay) return;
+
+    const candidatos = lista
+      .filter((m) => !ccaa || m.c === ccaa)
+      .map((m) => ({ m, precio: (op === 'compra' ? m.cm2 : m.am2) != null ? (op === 'compra' ? m.cm2! : m.am2!) * m2 : null }))
+      .filter((x): x is { m: EntradaBuscador; precio: number } => x.precio != null);
+    const llegan = candidatos.filter((x) => x.precio <= max).sort((a, b) => b.precio - a.precio);
+    const total = candidatos.length;
+
+    const sufijo = op === 'compra' ? '' : '/mes';
+    $('[data-resumen]').textContent = llegan.length
+      ? `Te llega en ${llegan.length} de ${total} municipios para ${op === 'compra' ? 'comprar' : 'alquilar'} un piso de ${m2} m².`
+      : `Con ${euros(max)}${sufijo} no llega para ${m2} m² en ninguno de los ${total} municipios. Prueba con menos metros o más presupuesto.`;
+
+    const filas = llegan.slice(0, mostrados).map(({ m, precio }) => {
+      const tr = document.createElement('tr');
+      const url = urlIdealista(m.id, { operacion: op, max });
+      tr.innerHTML = `<td><a class="font-semibold text-slate-900 hover:text-teal-700"></a><span class="block text-xs text-slate-500"></span></td>
+        <td class="text-right">${euros(precio)}${sufijo}</td>
+        <td class="text-right text-teal-700">${euros(max - precio)}${sufijo}</td>
+        <td class="text-right"><a class="text-sm font-semibold text-teal-700 hover:underline whitespace-nowrap" target="_blank" rel="nofollow noopener">Ver pisos ↗</a></td>`;
+      const enlaces = tr.querySelectorAll('a');
+      enlaces[0].href = `/vivienda/${m.s}`;
+      enlaces[0].textContent = m.n;
+      tr.querySelector('span')!.textContent = m.p;
+      enlaces[1].href = url;
+      return tr;
+    });
+    $('[data-filas]').replaceChildren(...filas);
+    $('[data-mas]').hidden = llegan.length <= mostrados;
+  }
+
+  form.addEventListener('input', () => {
+    mostrados = POR_PAGINA;
+    calcula();
+  });
+  form.addEventListener('submit', (e) => e.preventDefault());
+  $('[data-mas]').addEventListener('click', () => {
+    mostrados += POR_PAGINA;
+    calcula();
+  });
+  calcula();
+</script>

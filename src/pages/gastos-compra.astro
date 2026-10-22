@@ -1,0 +1,254 @@
+---
+// Ruta: src/pages/gastos-compra.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import SelectorComunidad from '../components/SelectorComunidad.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { COMUNIDADES, IMPUESTOS } from '../lib/datos';
+import { describeITP, pctCorto } from '../lib/calculos';
+
+const titulo = 'Gastos de comprar un piso en 2026: impuestos por comunidad';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: 'Gastos de compra' }];
+const datos = { impuestos: IMPUESTOS.comunidades, iva: IMPUESTOS.ivaViviendaNueva };
+const filas = [...COMUNIDADES]
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
+  .map((c) => ({ c, imp: IMPUESTOS.comunidades[c.codigo] }));
+const [anioR, mesR, diaR] = IMPUESTOS.revisado.split('-');
+
+const preguntas = [
+  {
+    q: '¿Qué impuesto se paga al comprar un piso de segunda mano?',
+    a: 'El Impuesto de Transmisiones Patrimoniales (ITP). Lo cobra cada comunidad autónoma y el tipo general va del 6 % de Madrid al 10 % (o más en los tramos altos) de otras comunidades. Se paga sobre el precio de la escritura o sobre el valor de referencia de Catastro si es mayor.',
+  },
+  {
+    q: '¿Y si el piso es nuevo?',
+    a: `Si se lo compras al promotor pagas IVA (${IMPUESTOS.ivaViviendaNueva} %) y además el impuesto de Actos Jurídicos Documentados (AJD) por la escritura, que fija cada comunidad. En Canarias, en lugar de IVA se paga IGIC.`,
+  },
+  {
+    q: '¿Quién paga los gastos de la hipoteca?',
+    a: 'Desde finales de 2018 el banco paga el impuesto de la escritura de la hipoteca, y desde 2019 la Ley de Crédito Inmobiliario le obliga también a pagar la notaría de esa escritura, su registro y la gestoría. Tú pagas la tasación y las copias que pidas.',
+  },
+  {
+    q: '¿Hay rebajas del ITP para jóvenes?',
+    a: 'Muchas comunidades tienen tipos reducidos para jóvenes, familias numerosas, personas con discapacidad o viviendas baratas. Cada una tiene sus requisitos y aquí usamos el tipo general. Consulta el documento de Hacienda de la fuente o la web de tu comunidad.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gastos de comprar vivienda 2026: ITP, IVA y AJD"
+  heading={titulo}
+  description="Calcula los impuestos de comprar un piso en tu comunidad (ITP, IVA y AJD de 2026) y el dinero ahorrado que necesitas de verdad además de la entrada."
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Calculadora">
+    <p>El precio del piso no es lo único que pagas. Calcula los impuestos de tu comunidad y cuánto dinero tienes que tener ahorrado de verdad.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-gastos>
+    <div class="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+      <form class="tarjeta space-y-5" novalidate>
+        <div>
+          <label for="precio" class="etiqueta">Precio del piso</label>
+          <div class="con-sufijo">
+            <input id="precio" name="precio" type="number" min="0" step="any" inputmode="numeric" class="entrada" placeholder="Ej.: 200000" />
+            <span class="sufijo">€</span>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="ccaa" class="etiqueta">Comunidad autónoma</label>
+            <SelectorComunidad />
+          </div>
+          <div>
+            <span class="etiqueta">Vivienda</span>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="pastilla"><input type="radio" name="tipo" value="usada" class="sr-only" checked />Usada</label>
+              <label class="pastilla"><input type="radio" name="tipo" value="nueva" class="sr-only" />Nueva</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="financiacion" class="etiqueta">Lo que te presta el banco: <output data-fin-txt>80 %</output></label>
+          <input id="financiacion" name="financiacion" type="range" min="0" max="100" step="5" value="80" class="w-full accent-teal-700" />
+          <span class="ayuda">Lo normal es el 80 %. Con el aval del ICO puede llegar al 100 %.</span>
+        </div>
+        <fieldset class="border-t border-slate-200 pt-5">
+          <legend class="text-base font-bold text-slate-900">Otros gastos (opcional)</legend>
+          <p class="ayuda mb-3">Dependen del precio y de cada profesional. Pide presupuesto y ponlo aquí; si lo dejas vacío no se suma.</p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              [
+                ['notaria', 'Notaría'],
+                ['registro', 'Registro de la Propiedad'],
+                ['gestoria', 'Gestoría'],
+                ['tasacion', 'Tasación'],
+              ].map(([n, t]) => (
+                <div>
+                  <label for={n} class="etiqueta">{t}</label>
+                  <div class="con-sufijo">
+                    <input id={n} name={n} data-otro type="number" min="0" step="any" inputmode="numeric" class="entrada" placeholder="0" />
+                    <span class="sufijo">€</span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="space-y-4" aria-live="polite">
+        <div data-vacio class="tarjeta text-slate-600">Pon el precio del piso para ver los gastos.</div>
+        <section data-res hidden class="tarjeta">
+          <p class="rounded-2xl bg-teal-50 p-5">
+            <span class="block text-sm text-teal-900">Ahorros que necesitas</span>
+            <span data-total class="block text-4xl font-extrabold tracking-tight text-teal-800 tabular-nums"></span>
+            <span data-total-txt class="mt-1 block text-sm text-teal-900"></span>
+          </p>
+          <dl class="mt-4 divide-y divide-slate-100 text-sm" data-desglose></dl>
+          <div data-aviso hidden class="nota mt-4"></div>
+          <p class="fuente mt-4">
+            Tipos generales de 2026, sin reducciones personales. Si el valor de referencia de Catastro es mayor que el precio, el ITP se calcula sobre ese valor.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <AdSlot format="horizontal" />
+
+    <section aria-labelledby="titulo-tabla">
+      <h2 id="titulo-tabla" class="text-2xl font-bold tracking-tight text-slate-900">Impuestos de la compra por comunidad autónoma (2026)</h2>
+      <p class="mt-2 max-w-3xl text-slate-600">Tipos generales. Vivienda usada: ITP. Vivienda nueva: IVA del {IMPUESTOS.ivaViviendaNueva} % más AJD.</p>
+      <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">Comunidad</th>
+              <th scope="col">ITP (usada)</th>
+              <th scope="col">AJD (nueva)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              filas.map(({ c, imp }) => (
+                <tr>
+                  <td class="font-medium text-slate-900">{c.nombre}</td>
+                  {imp.itp ? (
+                    <>
+                      <td>{describeITP(imp.itp)}</td>
+                      <td>{imp.ajd != null ? pctCorto(imp.ajd) : '—'}</td>
+                    </>
+                  ) : (
+                    <td colspan="2" class="text-slate-500">
+                      Tiene su propia normativa:{' '}
+                      {imp.enlaces?.map(([t, u], i) => (
+                        <>
+                          {i > 0 && ', '}
+                          <a href={u} rel="noopener" target="_blank" class="text-teal-700 underline">{t}</a>
+                        </>
+                      ))}
+                    </td>
+                  )}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente mt-3">
+        Fuente: <a href={IMPUESTOS.fuente.url} rel="noopener" target="_blank">{IMPUESTOS.fuente.nombre}</a>. Revisado el {Number(diaR)}/{Number(mesR)}/{anioR}.
+      </p>
+    </section>
+
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+  <script type="application/json" id="datos-gastos" set:html={JSON.stringify(datos)} />
+</BaseLayout>
+
+<script>
+  import { euros, impuestosCompra, describeITP, pctCorto, type ImpuestosComunidad } from '../lib/calculos';
+  import { leeDatos, numero } from '../scripts/lugar';
+
+  const raiz = document.querySelector<HTMLElement>('[data-gastos]')!;
+  const form = raiz.querySelector('form')!;
+  const d = leeDatos<{ impuestos: Record<string, ImpuestosComunidad>; iva: number }>('datos-gastos');
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+
+  const q = new URLSearchParams(location.search);
+  if (q.get('precio')) form.querySelector<HTMLInputElement>('[name="precio"]')!.value = q.get('precio')!;
+  if (q.get('ccaa')) (form.querySelector('[name="ccaa"]') as HTMLSelectElement).value = q.get('ccaa')!;
+
+  function fila(nombre: string, valor: string, fuerte = false) {
+    const div = document.createElement('div');
+    div.className = 'flex justify-between gap-4 py-2';
+    const dt = document.createElement('dt');
+    dt.className = fuerte ? 'font-semibold text-slate-900' : 'text-slate-600';
+    dt.textContent = nombre;
+    const dd = document.createElement('dd');
+    dd.className = `${fuerte ? 'font-bold' : 'font-semibold'} tabular-nums whitespace-nowrap`;
+    dd.textContent = valor;
+    div.append(dt, dd);
+    return div;
+  }
+
+  function calcula() {
+    const fin = Number(form.querySelector<HTMLInputElement>('[name="financiacion"]')!.value);
+    $('[data-fin-txt]').textContent = `${fin} %`;
+    const precio = numero(form.querySelector('[name="precio"]'));
+    const hay = Number.isFinite(precio) && precio > 0;
+    $('[data-vacio]').hidden = hay;
+    $('[data-res]').hidden = !hay;
+    if (!hay) return;
+
+    const nueva = form.querySelector<HTMLInputElement>('[name="tipo"]:checked')!.value === 'nueva';
+    const c = d.impuestos[(form.querySelector('[name="ccaa"]') as HTMLSelectElement).value];
+    const imp = impuestosCompra(precio, c, nueva, d.iva);
+    const otros = [...form.querySelectorAll<HTMLInputElement>('[data-otro]')].map((i) => ({
+      nombre: form.querySelector(`label[for="${i.id}"]`)!.textContent!,
+      valor: numero(i),
+    }));
+    const sumaOtros = otros.reduce((s, o) => s + (Number.isFinite(o.valor) ? o.valor : 0), 0);
+    const entrada = precio * (1 - fin / 100);
+
+    const filas = [fila(`Entrada (${100 - fin} % del precio)`, euros(entrada))];
+    if (imp.desconocido) filas.push(fila('Impuestos', 'Sin calcular'));
+    else if (nueva) {
+      filas.push(fila(`IVA (${d.iva} %)`, euros(imp.iva)));
+      filas.push(fila(`Actos jurídicos documentados (${pctCorto(c.ajd!)})`, euros(imp.ajd)));
+    } else filas.push(fila(`Transmisiones patrimoniales (${describeITP(c.itp!)})`, euros(imp.itp)));
+    for (const o of otros) if (Number.isFinite(o.valor) && o.valor > 0) filas.push(fila(o.nombre, euros(o.valor)));
+    const total = entrada + imp.total + sumaOtros;
+    filas.push(fila('Total que pagas tú', euros(total), true));
+    $('[data-desglose]').replaceChildren(...filas);
+
+    $('[data-total]').textContent = euros(total);
+    $('[data-total-txt]').textContent = `Impuestos: ${imp.desconocido ? 'sin calcular' : euros(imp.total)} (${imp.desconocido ? '—' : `${((imp.total / precio) * 100).toFixed(1).replace('.', ',')} % del precio`}). Hipoteca: ${euros(precio - entrada)}.`;
+
+    const aviso = $('[data-aviso]');
+    aviso.hidden = !imp.desconocido;
+    if (imp.desconocido) {
+      aviso.replaceChildren();
+      aviso.append(`${nueva && c.nuevaSinIva ? c.nuevaSinIva : c.foral ?? ''} `);
+      const enlaces: [string, string][] = nueva && c.nuevaEnlace ? [['Agencia Tributaria Canaria', c.nuevaEnlace]] : c.enlaces ?? [];
+      enlaces.forEach(([t, u], i) => {
+        const a = document.createElement('a');
+        a.href = u;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'font-semibold underline';
+        a.textContent = t;
+        if (i) aviso.append(' · ');
+        aviso.append(a);
+      });
+    }
+  }
+
+  form.addEventListener('input', calcula);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  calcula();
+</script>

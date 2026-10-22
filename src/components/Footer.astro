@@ -1,0 +1,90 @@
+---
+// Ruta: src/components/Footer.astro
+import { SITE, CURRENT_PROJECT, HERRAMIENTAS, LEGAL_LINKS, PROJECTS, SITE_LINKS } from '../config/site';
+import { MUNICIPIOS } from '../lib/datos';
+
+const year = new Date().getFullYear();
+const otherProjects = PROJECTS.filter((p) => p.id !== CURRENT_PROJECT);
+const CIUDADES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'zaragoza', 'malaga', 'murcia', 'palma', 'bilbao', 'alicante'];
+const top = CIUDADES.map((s) => MUNICIPIOS.find((m) => m.slug === s)).filter((m) => m !== undefined);
+---
+
+<footer class="mt-16 bg-slate-900 text-slate-300">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:grid-cols-2 lg:grid-cols-5">
+    <div>
+      <p class="text-lg font-bold text-slate-50">Vivienda<span class="text-teal-400">Clara</span></p>
+      <p class="mt-2 text-sm leading-relaxed">{SITE.tagline}.</p>
+      <p class="mt-4 text-xs leading-relaxed text-slate-400">
+        Datos: Ministerio de Vivienda y Agenda Urbana, INE, Ministerio de Hacienda y Banco Central Europeo. No somos una
+        inmobiliaria ni cobramos a los portales: los enlaces te llevan a sus búsquedas.
+      </p>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-50">Precios por ciudad</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          top.map((m) => (
+            <li>
+              <a href={`/vivienda/${m.slug}`} class="hover:text-teal-400">
+                Vivienda en {m.nombre}
+              </a>
+            </li>
+          ))
+        }
+        <li><a href="/precios" class="font-semibold text-teal-400 hover:underline">Ver las {MUNICIPIOS.length} ciudades →</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-50">Herramientas</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          HERRAMIENTAS.map((h) => (
+            <li>
+              <a href={h.href} class="hover:text-teal-400">{h.titulo}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-50">Información</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          [...SITE_LINKS, ...LEGAL_LINKS].map((link) => (
+            <li>
+              <a href={link.href} class="hover:text-teal-400">
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <p class="text-sm font-semibold text-slate-50">Otros proyectos</p>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          otherProjects.map((project) => (
+            <li>
+              <a href={project.url} class="hover:text-teal-400">
+                {project.name}
+              </a>
+              <span class="block text-xs text-slate-400">{project.description}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-slate-800">
+    <p class="mx-auto max-w-6xl px-4 py-6 text-xs text-slate-400 sm:px-6">
+      © {year} {SITE.name}. Proyecto independiente. La información es orientativa: confirma siempre las condiciones con
+      el banco, la Administración o el anunciante antes de firmar o pagar.
+    </p>
+  </div>
+</footer>

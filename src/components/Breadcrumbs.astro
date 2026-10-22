@@ -1,0 +1,48 @@
+---
+// Ruta: src/components/Breadcrumbs.astro
+// Migas de pan visibles. "Inicio" se añade siempre al principio.
+// Un nivel sin `href` (p. ej. "Calculadoras" o "Categorías", que no tienen página índice)
+// se muestra como texto sin enlace. El último nivel es la página actual.
+
+export interface Crumb {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const crumbs: Crumb[] = [{ name: 'Inicio', href: '/' }, ...items];
+---
+
+<nav aria-label="Migas de pan" class="text-sm text-slate-500">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {
+      crumbs.map((crumb, index) => {
+        const isLast = index === crumbs.length - 1;
+        return (
+          <li class="flex items-center gap-2">
+            {index > 0 && (
+              <span aria-hidden="true" class="text-slate-300">
+                /
+              </span>
+            )}
+            {isLast ? (
+              <span aria-current="page" class="font-medium text-slate-700">
+                {crumb.name}
+              </span>
+            ) : crumb.href ? (
+              <a href={crumb.href} class="hover:text-teal-700 hover:underline">
+                {crumb.name}
+              </a>
+            ) : (
+              <span>{crumb.name}</span>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

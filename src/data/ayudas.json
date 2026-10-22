@@ -1,0 +1,30 @@
+{
+ "_nota": "Copiado del Real Decreto 326/2026 (Plan Estatal de Vivienda 2026-2030, BOE 23-abr-2026) y de la web del ICO. Revisado el 22-oct-2026.",
+ "revisado": "2026-10-22",
+ "iprem": { "mensual": 600, "anual14": 8400, "anio": 2026 },
+ "plan": {
+  "nombre": "Real Decreto 326/2026, de 22 de abril, Plan Estatal de Vivienda",
+  "url": "https://www.boe.es/boe/dias/2026/04/23/pdfs/BOE-A-2026-8872.pdf"
+ },
+ "alquilerJoven": {
+  "edadMax": 35, "vecesIprem": 5,
+  "rentaMax": { "vivienda": 1000, "habitacion": 600 },
+  "rentaMaxPequeno": { "vivienda": 500, "habitacion": 250 },
+  "ayudaMax": { "vivienda": 300, "habitacion": 200 }, "pctMax": 60, "anios": 2
+ },
+ "alquilerGeneral": {
+  "vecesIprem": 5,
+  "rentaMax": { "vivienda": 1000, "habitacion": 600 },
+  "ayudaMax": { "vivienda": 250, "habitacion": 150 }, "pctMax": 40, "anios": 2
+ },
+ "compraJoven": {
+  "edadMax": 35, "vecesIprem": 5, "ayudaMax": 15000, "pctMax": 20, "habitantesMax": 10000,
+  "precioMax": { "01": 225000, "02": 275000, "03": 250000, "04": 275000, "05": 250000, "06": 250000, "07": 250000, "08": 250000, "09": 300000, "10": 250000, "11": 200000, "12": 250000, "13": 325000, "14": 250000, "15": 300000, "16": 300000, "17": 250000, "18": 250000, "19": 250000 }
+ },
+ "ico": {
+  "url": "https://www.ico.es/linea-avales-hipoteca-primera-vivienda",
+  "telefono": "900 121 121",
+  "edadMax": 35,
+  "patrimonioMax": 150000
+ }
+}

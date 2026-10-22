@@ -1,0 +1,317 @@
+---
+// Ruta: src/pages/ayudas.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import SelectorComunidad from '../components/SelectorComunidad.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import AYUDAS from '../data/ayudas.json';
+import { euros, miles } from '../lib/calculos';
+
+const titulo = 'Ayudas a la vivienda 2026: ¿a cuáles puedes optar?';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: 'Ayudas' }];
+const limite = AYUDAS.iprem.anual14 * AYUDAS.alquilerJoven.vecesIprem;
+const aj = AYUDAS.alquilerJoven;
+const ag = AYUDAS.alquilerGeneral;
+const cj = AYUDAS.compraJoven;
+
+const preguntas = [
+  {
+    q: '¿Dónde se piden las ayudas del Plan Estatal?',
+    a: 'En tu comunidad autónoma (o en Ceuta y Melilla). El Estado pone el dinero y las reglas mínimas, pero cada comunidad abre sus convocatorias, puede pedir requisitos extra y decide los plazos. Busca «ayudas alquiler» en la web de vivienda de tu comunidad.',
+  },
+  {
+    q: '¿Puedo cobrar a la vez la ayuda joven y la general?',
+    a: 'No. Las ayudas al alquiler del Plan no se pueden juntar entre sí ni con otras ayudas públicas para pagar el alquiler, salvo casos de especial vulnerabilidad que regula cada comunidad.',
+  },
+  {
+    q: '¿Qué es el IPREM?',
+    a: `Es el indicador que se usa para fijar los límites de ingresos de las ayudas. En ${AYUDAS.iprem.anio} es de ${euros(AYUDAS.iprem.mensual)} al mes, es decir, ${euros(AYUDAS.iprem.anual14)} al año en 14 pagas. Cinco veces el IPREM son ${euros(limite)} al año.`,
+  },
+  {
+    q: '¿Esta comprobación me garantiza la ayuda?',
+    a: 'No. Solo comprueba los requisitos básicos del Real Decreto. La convocatoria de tu comunidad puede tener más requisitos (empadronamiento, ingresos mínimos, plazos) y las ayudas dependen del dinero disponible.',
+  },
+];
+---
+
+<BaseLayout
+  title="Ayudas a la vivienda 2026: alquiler joven, compra y aval ICO"
+  heading={titulo}
+  description={`Comprueba en un minuto si te tocan la ayuda al alquiler para jóvenes (hasta ${aj.ayudaMax.vivienda} €/mes), la general, la de compra en pueblos y el aval del ICO.`}
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Comprobador">
+    <p>Contesta unas preguntas y te decimos a qué ayudas estatales podrías optar y cuánto podrías cobrar, según el Plan Estatal de Vivienda 2026-2030 y la línea de avales del ICO.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-ayudas>
+    <div class="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
+      <form class="tarjeta space-y-5" novalidate>
+        <fieldset>
+          <legend class="etiqueta">¿Qué quieres hacer?</legend>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="pastilla"><input type="radio" name="que" value="vivienda" class="sr-only" checked />Alquilar piso</label>
+            <label class="pastilla"><input type="radio" name="que" value="habitacion" class="sr-only" />Alquilar habitación</label>
+            <label class="pastilla"><input type="radio" name="que" value="compra" class="sr-only" />Comprar</label>
+          </div>
+        </fieldset>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="edad" class="etiqueta">Tu edad</label>
+            <div class="con-sufijo"><input id="edad" name="edad" type="number" min="18" max="100" step="1" class="entrada" placeholder="Ej.: 29" /><span class="sufijo">años</span></div>
+          </div>
+          <div>
+            <label for="precio" class="etiqueta" data-precio-txt>Alquiler al mes</label>
+            <div class="con-sufijo"><input id="precio" name="precio" type="number" min="0" step="any" class="entrada" placeholder="Ej.: 700" /><span class="sufijo" data-precio-suf>€/mes</span></div>
+          </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="ingresos" class="etiqueta">Tus ingresos al año</label>
+            <div class="con-sufijo"><input id="ingresos" name="ingresos" type="number" min="0" step="any" class="entrada" placeholder="Ej.: 22000" /><span class="sufijo">€/año</span></div>
+            <span class="ayuda">Los de tu declaración de la renta.</span>
+          </div>
+          <div>
+            <label for="hogar" class="etiqueta">Ingresos de todos en casa</label>
+            <div class="con-sufijo"><input id="hogar" name="hogar" type="number" min="0" step="any" class="entrada" placeholder="Si vives solo, lo mismo" /><span class="sufijo">€/año</span></div>
+          </div>
+        </div>
+        <div>
+          <label for="ccaa" class="etiqueta">Comunidad autónoma</label>
+          <SelectorComunidad />
+        </div>
+        <div class="space-y-2 text-sm text-slate-700">
+          <label class="flex items-start gap-3"><input type="checkbox" name="pequeno" class="mt-0.5 h-4 w-4 accent-teal-700" />El municipio tiene {miles(cj.habitantesMax)} habitantes o menos</label>
+          <label class="flex items-start gap-3"><input type="checkbox" name="hijos" class="mt-0.5 h-4 w-4 accent-teal-700" />Tengo hijos menores a mi cargo</label>
+          <label class="flex items-start gap-3"><input type="checkbox" name="propietario" class="mt-0.5 h-4 w-4 accent-teal-700" />Ya tengo una vivienda en propiedad</label>
+          <label class="flex items-start gap-3"><input type="checkbox" name="familiar" class="mt-0.5 h-4 w-4 accent-teal-700" />El casero es mi familiar (padres, hermanos, abuelos, suegros…)</label>
+        </div>
+      </form>
+
+      <div class="space-y-4" aria-live="polite">
+        <div data-vacio class="tarjeta text-slate-600">Pon tu edad, tus ingresos y el precio para ver el resultado.</div>
+        <div data-lista hidden class="space-y-4"></div>
+        <p class="fuente">
+          Requisitos básicos del <a href={AYUDAS.plan.url} rel="noopener" target="_blank">{AYUDAS.plan.nombre}</a> y de la <a href={AYUDAS.ico.url} rel="noopener" target="_blank">línea de avales del ICO</a>. Con discapacidad, familia numerosa u otras situaciones los límites son más altos. Revisado el 22/10/2026.
+        </p>
+      </div>
+    </div>
+
+    <AdSlot format="horizontal" />
+
+    <section class="texto max-w-3xl">
+      <h2>Las ayudas, una a una</h2>
+      <h3>Ayuda al alquiler para jóvenes</h3>
+      <ul>
+        <li>Para quien tenga {aj.edadMax} años o menos y unos ingresos de hasta {aj.vecesIprem} veces el IPREM ({euros(limite)} al año).</li>
+        <li>El alquiler no puede pasar de {euros(aj.rentaMax.vivienda)} al mes (piso) o {euros(aj.rentaMax.habitacion)} (habitación). En municipios de {miles(cj.habitantesMax)} habitantes o menos, {euros(aj.rentaMaxPequeno.vivienda)} y {euros(aj.rentaMaxPequeno.habitacion)}. Las comunidades pueden subir estos límites.</li>
+        <li>Hasta {euros(aj.ayudaMax.vivienda)} al mes por un piso o {euros(aj.ayudaMax.habitacion)} por una habitación, sin pasar del {aj.pctMax} % del alquiler, durante {aj.anios} años (prorrogables).</li>
+      </ul>
+      <h3>Ayuda al alquiler general</h3>
+      <ul>
+        <li>Para hogares con ingresos de todos los que viven en la casa de hasta {ag.vecesIprem} veces el IPREM ({euros(limite)} al año). En habitación cuentan solo tus ingresos.</li>
+        <li>Mismo límite de alquiler: {euros(ag.rentaMax.vivienda)} al mes por piso y {euros(ag.rentaMax.habitacion)} por habitación.</li>
+        <li>Hasta {euros(ag.ayudaMax.vivienda)} al mes por piso o {euros(ag.ayudaMax.habitacion)} por habitación. Con personas a tu cargo o discapacidad puede subir hasta el {ag.pctMax} % del alquiler. Durante {ag.anios} años (prorrogables).</li>
+      </ul>
+      <h3>Ayuda a la compra para jóvenes en municipios pequeños</h3>
+      <ul>
+        <li>Para quien tenga {cj.edadMax} años o menos e ingresos de hasta {cj.vecesIprem} veces el IPREM, que compre su vivienda habitual en un municipio de {miles(cj.habitantesMax)} habitantes o menos.</li>
+        <li>Hasta {euros(cj.ayudaMax)}, sin pasar del {cj.pctMax} % del precio. El precio tiene un máximo por comunidad (de {euros(Math.min(...Object.values(cj.precioMax)))} a {euros(Math.max(...Object.values(cj.precioMax)))}).</li>
+        <li>Tienes que vivir en ella al menos 5 años.</li>
+      </ul>
+      <h3 id="aval-ico">Aval del ICO para la primera vivienda</h3>
+      <ul>
+        <li>Para jóvenes de {AYUDAS.ico.edadMax} años o menos y familias con menores a su cargo (sin límite de edad) que compran su primera vivienda.</li>
+        <li>El Estado avala una parte del préstamo para que el banco pueda prestar hasta el 100 % del precio (o de la tasación, el menor). Así no necesitas ahorrar el 20 % de entrada, aunque sí los impuestos y gastos.</li>
+        <li>Patrimonio de hasta {euros(AYUDAS.ico.patrimonioMax)} por persona, un límite de ingresos que depende de la provincia y un precio máximo por comunidad. Se pide en el banco, no en el ICO.</li>
+        <li>Toda la información y los límites, en la <a href={AYUDAS.ico.url} rel="noopener" target="_blank">web del ICO</a> o en el teléfono {AYUDAS.ico.telefono}.</li>
+      </ul>
+    </section>
+
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+  <script type="application/json" id="datos-ayudas" set:html={JSON.stringify(AYUDAS)} />
+</BaseLayout>
+
+<script>
+  import { euros } from '../lib/calculos';
+  import { leeDatos, numero } from '../scripts/lugar';
+  import type AYUDAS_T from '../data/ayudas.json';
+
+  type Ayudas = typeof AYUDAS_T;
+  const raiz = document.querySelector<HTMLElement>('[data-ayudas]')!;
+  const form = raiz.querySelector('form')!;
+  const A = leeDatos<Ayudas>('datos-ayudas');
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+  const marcado = (n: string) => form.querySelector<HTMLInputElement>(`[name="${n}"]`)!.checked;
+
+  interface Resultado {
+    titulo: string;
+    estado: 'si' | 'no' | 'revisa';
+    cifra?: string;
+    motivos: string[];
+    enlace?: [string, string];
+  }
+
+  function tarjeta(r: Resultado) {
+    const colores = {
+      si: ['border-teal-300 bg-teal-50', 'bg-teal-700 text-white', 'Cumples los requisitos básicos'],
+      revisa: ['border-amber-300 bg-amber-50', 'bg-amber-500 text-white', 'Podrías cumplir: revisa los detalles'],
+      no: ['border-slate-200 bg-white', 'bg-slate-200 text-slate-700', 'No cumples algún requisito'],
+    }[r.estado];
+    const sec = document.createElement('section');
+    sec.className = `rounded-2xl border p-5 ${colores[0]}`;
+    const cab = document.createElement('div');
+    cab.className = 'flex flex-wrap items-center justify-between gap-2';
+    const h = document.createElement('h2');
+    h.className = 'text-lg font-bold text-slate-900';
+    h.textContent = r.titulo;
+    const chip = document.createElement('span');
+    chip.className = `rounded-full px-3 py-1 text-xs font-bold ${colores[1]}`;
+    chip.textContent = colores[2];
+    cab.append(h, chip);
+    sec.append(cab);
+    if (r.cifra) {
+      const p = document.createElement('p');
+      p.className = 'mt-3 text-2xl font-extrabold tracking-tight text-teal-800';
+      p.textContent = r.cifra;
+      sec.append(p);
+    }
+    const ul = document.createElement('ul');
+    ul.className = 'mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700';
+    for (const m of r.motivos) {
+      const li = document.createElement('li');
+      li.textContent = m;
+      ul.append(li);
+    }
+    sec.append(ul);
+    if (r.enlace) {
+      const a = document.createElement('a');
+      a.href = r.enlace[1];
+      a.className = 'mt-3 inline-block text-sm font-semibold text-teal-700 hover:underline';
+      a.textContent = r.enlace[0];
+      if (/^https?:/.test(r.enlace[1])) {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      }
+      sec.append(a);
+    }
+    return sec;
+  }
+
+  function calcula() {
+    const que = form.querySelector<HTMLInputElement>('[name="que"]:checked')!.value as 'vivienda' | 'habitacion' | 'compra';
+    const compra = que === 'compra';
+    $('[data-precio-txt]').textContent = compra ? 'Precio de la vivienda' : que === 'habitacion' ? 'Alquiler de la habitación' : 'Alquiler al mes';
+    $('[data-precio-suf]').textContent = compra ? '€' : '€/mes';
+    const edad = numero(form.querySelector('[name="edad"]'));
+    const ingresos = numero(form.querySelector('[name="ingresos"]'));
+    const hogarIn = numero(form.querySelector('[name="hogar"]'));
+    const hogar = Number.isFinite(hogarIn) ? hogarIn : ingresos;
+    const precio = numero(form.querySelector('[name="precio"]'));
+    const ccaa = (form.querySelector('[name="ccaa"]') as HTMLSelectElement).value;
+    const pequeno = marcado('pequeno');
+    const hijos = marcado('hijos');
+    const propietario = marcado('propietario');
+    const familiar = marcado('familiar');
+
+    const hay = edad > 0 && ingresos >= 0 && Number.isFinite(ingresos) && precio > 0;
+    $('[data-vacio]').hidden = hay;
+    $('[data-lista]').hidden = !hay;
+    if (!hay) return;
+
+    const limite = (veces: number) => A.iprem.anual14 * veces;
+    const res: Resultado[] = [];
+
+    if (!compra) {
+      const tipo = que;
+      // Jóvenes
+      const aj = A.alquilerJoven;
+      const rentaMaxJ = (pequeno ? aj.rentaMaxPequeno : aj.rentaMax)[tipo];
+      const noJ: string[] = [];
+      if (edad > aj.edadMax) noJ.push(`Hay que tener ${aj.edadMax} años o menos.`);
+      if (ingresos > limite(aj.vecesIprem)) noJ.push(`Tus ingresos pasan de ${euros(limite(aj.vecesIprem))} al año.`);
+      if (precio > rentaMaxJ) noJ.push(`El alquiler pasa de ${euros(rentaMaxJ)} al mes (tu comunidad puede haber subido este límite).`);
+      if (propietario) noJ.push('No puedes tener una vivienda en propiedad (salvo excepciones como separación o herencia parcial).');
+      if (familiar) noJ.push('El casero no puede ser familiar tuyo de primer o segundo grado.');
+      const ayudaJ = Math.min(aj.ayudaMax[tipo], (precio * aj.pctMax) / 100);
+      res.push({
+        titulo: 'Ayuda al alquiler para jóvenes',
+        estado: noJ.length ? (noJ.length === 1 && precio > rentaMaxJ ? 'revisa' : 'no') : 'si',
+        cifra: noJ.length ? undefined : `Hasta ${euros(ayudaJ)} al mes`,
+        motivos: noJ.length
+          ? noJ
+          : [`Hasta ${euros(aj.ayudaMax[tipo])} al mes con el límite del ${aj.pctMax} % del alquiler, durante ${aj.anios} años.`, 'Se pide en tu comunidad autónoma cuando abre la convocatoria.'],
+      });
+
+      // General
+      const ag = A.alquilerGeneral;
+      const ingresosG = tipo === 'habitacion' ? ingresos : hogar;
+      const noG: string[] = [];
+      if (ingresosG > limite(ag.vecesIprem))
+        noG.push(`${tipo === 'habitacion' ? 'Tus ingresos pasan' : 'Los ingresos de todos los de casa pasan'} de ${euros(limite(ag.vecesIprem))} al año.`);
+      if (precio > ag.rentaMax[tipo]) noG.push(`El alquiler pasa de ${euros(ag.rentaMax[tipo])} al mes (tu comunidad puede haber subido este límite).`);
+      if (propietario) noG.push('Nadie en casa puede tener una vivienda en propiedad (salvo excepciones).');
+      if (familiar) noG.push('El casero no puede ser familiar de primer o segundo grado.');
+      const ayudaG = Math.min(ag.ayudaMax[tipo], precio);
+      res.push({
+        titulo: 'Ayuda al alquiler general',
+        estado: noG.length ? (noG.length === 1 && precio > ag.rentaMax[tipo] ? 'revisa' : 'no') : 'si',
+        cifra: noG.length ? undefined : `Hasta ${euros(ayudaG)} al mes`,
+        motivos: noG.length
+          ? noG
+          : [
+              `Hasta ${euros(ag.ayudaMax[tipo])} al mes; con personas a cargo puede subir hasta el ${ag.pctMax} % del alquiler.`,
+              'No se puede cobrar a la vez que la ayuda para jóvenes: si cumples las dos, la de jóvenes suele dar más.',
+            ],
+      });
+    } else {
+      // Compra en municipios pequeños
+      const cj = A.compraJoven;
+      const precioMax = (cj.precioMax as Record<string, number>)[ccaa];
+      const noC: string[] = [];
+      if (!pequeno) noC.push(`Solo para municipios de ${cj.habitantesMax.toLocaleString('es-ES')} habitantes o menos.`);
+      if (edad > cj.edadMax) noC.push(`Hay que tener ${cj.edadMax} años o menos.`);
+      if (ingresos > limite(cj.vecesIprem)) noC.push(`Tus ingresos pasan de ${euros(limite(cj.vecesIprem))} al año.`);
+      if (precioMax && precio > precioMax) noC.push(`El precio pasa del máximo de tu comunidad: ${euros(precioMax)}.`);
+      if (propietario) noC.push('No puedes tener otra vivienda en propiedad (salvo excepciones).');
+      res.push({
+        titulo: 'Ayuda a la compra en municipios pequeños',
+        estado: noC.length ? 'no' : 'si',
+        cifra: noC.length ? undefined : `Hasta ${euros(Math.min(cj.ayudaMax, (precio * cj.pctMax) / 100))}`,
+        motivos: noC.length
+          ? noC
+          : [`Hasta ${euros(cj.ayudaMax)}, con el límite del ${cj.pctMax} % del precio. Tienes que vivir en ella al menos 5 años.`, 'Se pide en tu comunidad autónoma.'],
+      });
+
+      // Aval ICO
+      const ico = A.ico;
+      const noI: string[] = [];
+      if (edad > ico.edadMax && !hijos) noI.push(`Hay que tener ${ico.edadMax} años o menos, o hijos menores a tu cargo.`);
+      if (propietario) noI.push('Tiene que ser tu primera vivienda (salvo excepciones).');
+      res.push({
+        titulo: 'Aval del ICO para la primera vivienda',
+        estado: noI.length ? 'no' : 'revisa',
+        cifra: noI.length ? undefined : `Hipoteca de hasta ${euros(precio)} (el 100 %)`,
+        motivos: noI.length
+          ? noI
+          : [
+              'El límite de ingresos depende de tu provincia y hay un precio máximo por comunidad: compruébalos en la web del ICO.',
+              `Patrimonio de hasta ${euros(ico.patrimonioMax)} por persona. Se pide en el banco que te dé la hipoteca.`,
+            ],
+        enlace: ['Ver requisitos en la web del ICO', ico.url],
+      });
+    }
+
+    $('[data-lista]').replaceChildren(...res.map(tarjeta));
+  }
+
+  form.addEventListener('input', calcula);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  calcula();
+</script>

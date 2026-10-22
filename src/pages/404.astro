@@ -1,0 +1,19 @@
+---
+// Ruta: src/pages/404.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { MUNICIPIOS } from '../lib/datos';
+
+const top = [...MUNICIPIOS].sort((a, b) => (b.alquiler?.viviendas ?? 0) - (a.alquiler?.viviendas ?? 0)).slice(0, 8);
+---
+
+<BaseLayout title="Página no encontrada" description="La página que buscas no existe o ha cambiado de dirección." noindex>
+  <section class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:py-24">
+    <p class="text-sm font-semibold text-teal-700">Error 404</p>
+    <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Esta casa no existe</h1>
+    <p class="mt-4 text-lg text-slate-600">La dirección no existe o ha cambiado. Busca piso con tu presupuesto desde la portada.</p>
+    <a href="/" class="boton mt-6">Ir al buscador</a>
+    <ul class="mt-10 flex flex-wrap justify-center gap-2 text-sm">
+      {top.map((m) => <li><a href={`/vivienda/${m.slug}`} class="rounded-full border border-slate-200 bg-white px-3 py-1.5 hover:border-teal-300">{m.nombre}</a></li>)}
+    </ul>
+  </section>
+</BaseLayout>

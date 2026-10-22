@@ -1,0 +1,261 @@
+---
+// Ruta: src/pages/index.astro
+// Portada: buscador por presupuesto conectado con Idealista y Fotocasa, y las herramientas.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
+import NewsletterBox from '../components/NewsletterBox.astro';
+import Herramientas from '../components/Herramientas.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import Icono from '../components/Icono.astro';
+import { SITE } from '../config/site';
+import { FUENTES, MUNICIPIOS, EURIBOR, SUPERFICIE_REFERENCIA, indiceBuscador, indiceProvincias, provincia, mesLegible } from '../lib/datos';
+import { euros, porcentaje, miles } from '../lib/calculos';
+
+const datos = { municipios: indiceBuscador(), provincias: indiceProvincias(), superficie: SUPERFICIE_REFERENCIA };
+const nacional = FUENTES.compra.nacional;
+
+// Las ciudades con más contratos de alquiler declarados
+const grandes = [...MUNICIPIOS].sort((a, b) => (b.alquiler?.viviendas ?? 0) - (a.alquiler?.viviendas ?? 0)).slice(0, 12);
+
+const preguntas = [
+  {
+    q: '¿De dónde salen los precios?',
+    a: `Del Ministerio de Vivienda: el precio de compra es el valor tasado medio de la vivienda libre (${FUENTES.compra.periodo}) y el de alquiler, la mediana de los contratos declarados a Hacienda en ${FUENTES.alquiler.periodo} (SERPAVI). La renta de los hogares es del INE.`,
+  },
+  {
+    q: '¿Los pisos los vendéis o alquiláis vosotros?',
+    a: 'No. ViviendaClara no tiene anuncios propios: calcula para qué te da tu presupuesto y te lleva a la búsqueda de Idealista o Fotocasa con tus filtros ya puestos.',
+  },
+  {
+    q: '¿Por qué los anuncios son más caros que vuestros datos?',
+    a: 'Porque son cosas distintas. Los anuncios son lo que pide el propietario hoy; nuestros datos son lo que se firmó en los contratos (alquiler) o lo que tasaron los bancos (compra). Te sirven para saber si un precio es normal en tu zona.',
+  },
+  {
+    q: '¿Cuesta algo usar la web?',
+    a: 'No. Todas las herramientas son gratis y no hace falta registrarse. Lo que escribes en las calculadoras no sale de tu navegador.',
+  },
+];
+---
+
+<BaseLayout title={SITE.homeTitle} description={SITE.description}>
+  <section class="relative overflow-hidden bg-gradient-to-br from-teal-800 via-teal-700 to-emerald-700 text-white" data-buscador>
+    <div aria-hidden="true" class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-white/10 blur-3xl"></div>
+    <div class="relative mx-auto max-w-6xl px-4 pb-12 pt-10 sm:px-6 lg:pb-16 lg:pt-14">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-wider text-teal-100">Datos oficiales · Gratis · Sin registrarte</p>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">Busca piso con lo que de verdad puedes pagar</h1>
+        <p class="mt-4 text-lg leading-relaxed text-teal-50">
+          Pon tu presupuesto y tu ciudad. Te decimos para qué te da según los precios oficiales y abrimos los pisos que encajan en
+          Idealista y Fotocasa, con los filtros ya puestos.
+        </p>
+      </div>
+
+      <form class="mt-8 rounded-3xl bg-white p-5 text-slate-900 shadow-2xl shadow-teal-950/30 sm:p-7" autocomplete="off" novalidate>
+        <fieldset>
+          <legend class="etiqueta">¿Qué buscas?</legend>
+          <div class="grid grid-cols-3 gap-2 sm:inline-grid sm:grid-cols-[auto_auto_auto]">
+            <label class="pastilla"><input type="radio" name="operacion" value="alquiler" class="sr-only" checked />Alquilar</label>
+            <label class="pastilla"><input type="radio" name="operacion" value="compra" class="sr-only" />Comprar</label>
+            <label class="pastilla"><input type="radio" name="operacion" value="habitacion" class="sr-only" />Habitación</label>
+          </div>
+        </fieldset>
+
+        <div class="mt-5 grid gap-4 md:grid-cols-[2fr_1.3fr_1fr]">
+          <div class="relative">
+            <label for="lugar" class="etiqueta">¿Dónde?</label>
+            <input id="lugar" data-lugar type="text" class="entrada" placeholder="Escribe tu ciudad o provincia" spellcheck="false" />
+            <ul data-sugerencias hidden class="absolute inset-x-0 top-full z-30 mt-2 max-h-80 overflow-auto rounded-xl border border-slate-200 bg-white shadow-xl"></ul>
+          </div>
+          <div>
+            <label for="max" class="etiqueta">Presupuesto máximo</label>
+            <div class="con-sufijo">
+              <input id="max" name="max" type="number" inputmode="numeric" min="0" step="any" class="entrada" placeholder="Ej.: 900" />
+              <span class="sufijo" data-sufijo>€/mes</span>
+            </div>
+          </div>
+          <div data-solo-vivienda>
+            <label for="dormitorios" class="etiqueta">Dormitorios</label>
+            <select id="dormitorios" name="dormitorios" class="entrada">
+              <option value="0">Da igual</option>
+              <option value="1">1 o más</option>
+              <option value="2">2 o más</option>
+              <option value="3">3 o más</option>
+              <option value="4">4 o más</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <fieldset data-solo-vivienda class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-700">
+            <legend class="sr-only">Extras</legend>
+            <label class="flex items-center gap-2"><input type="checkbox" name="ascensor" class="h-4 w-4 accent-teal-700" />Ascensor</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="garaje" class="h-4 w-4 accent-teal-700" />Garaje</label>
+            <label class="flex items-center gap-2"><input type="checkbox" name="terraza" class="h-4 w-4 accent-teal-700" />Terraza</label>
+          </fieldset>
+          <button type="submit" class="boton w-full sm:w-auto">
+            <Icono nombre="buscar" class="h-5 w-5" /> Ver para qué me da
+          </button>
+        </div>
+
+        <p data-aviso class="mt-5 rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-600">
+          Elige una ciudad de la lista o una provincia entera para ver el resultado.
+        </p>
+
+        <div data-resultado hidden class="mt-6 border-t border-slate-200 pt-6" aria-live="polite">
+          <h2 data-r-titulo class="text-xl font-bold tracking-tight"></h2>
+          <div class="mt-4 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              <p class="rounded-2xl bg-teal-50 p-5">
+                <span data-r-cifra class="block text-4xl font-extrabold tracking-tight text-teal-800 tabular-nums"></span>
+                <span data-r-cifra-texto class="mt-1 block text-sm text-teal-900"></span>
+              </p>
+              <div data-r-barra hidden class="mt-5">
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Dónde queda tu presupuesto</p>
+                <div class="relative mt-6 h-3 rounded-full bg-slate-200">
+                  <div data-b-rango class="absolute inset-y-0 rounded-full bg-teal-200"></div>
+                  <div data-b-mediana class="absolute -top-1 h-5 w-0.5 -translate-x-1/2 bg-teal-700"></div>
+                  <div data-b-tu class="absolute -top-6 -translate-x-1/2 text-center">
+                    <span class="block rounded bg-slate-900 px-1.5 py-0.5 text-[11px] font-bold text-white">Tú</span>
+                    <span class="mx-auto block h-4 w-0.5 bg-slate-900"></span>
+                  </div>
+                </div>
+                <div class="mt-2 grid grid-cols-3 text-xs text-slate-600">
+                  <span>25 % pagan menos de <b data-b-p25 class="text-slate-900"></b></span>
+                  <span class="text-center">Mediana <b data-b-p50 class="text-slate-900"></b></span>
+                  <span class="text-right">25 % pagan más de <b data-b-p75 class="text-slate-900"></b></span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p data-r-detalle class="leading-relaxed text-slate-700"></p>
+              <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+                <a data-r-idealista class="boton" href="#" target="_blank" rel="nofollow noopener">
+                  Ver pisos en Idealista <Icono nombre="externo" class="h-4 w-4" />
+                </a>
+                <a data-r-fotocasa class="boton-secundario" href="#" target="_blank" rel="nofollow noopener">
+                  Ver pisos en Fotocasa <Icono nombre="externo" class="h-4 w-4" />
+                </a>
+              </div>
+              <p data-r-extras hidden class="mt-2 text-xs text-slate-500">Fotocasa no deja poner ascensor, garaje ni terraza desde un enlace: márcalos allí.</p>
+              <a data-r-ficha href="#" class="mt-4 inline-block text-sm font-semibold text-teal-700 hover:underline"></a>
+              <p data-r-fuente class="fuente mt-4"></p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script type="application/json" id="datos-buscador" set:html={JSON.stringify(datos)} />
+  </section>
+
+  <div class="mx-auto max-w-6xl space-y-16 px-4 py-14 sm:px-6">
+    <section aria-labelledby="titulo-cifras">
+      <h2 id="titulo-cifras" class="text-2xl font-bold tracking-tight text-slate-900">La vivienda en España, en 3 cifras oficiales</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-3">
+        <p class="tarjeta">
+          <span class="dato-nombre">Valor tasado medio ({FUENTES.compra.periodo})</span>
+          <span class="dato-valor">{euros(nacional.m2)}/m²</span>
+          <span class="mt-1 block text-sm text-slate-600">{porcentaje(nacional.variacionAnual)} más que hace un año. Un piso de {SUPERFICIE_REFERENCIA} m²: {euros(nacional.m2 * SUPERFICIE_REFERENCIA)}.</span>
+        </p>
+        <p class="tarjeta">
+          <span class="dato-nombre">Euríbor a 12 meses ({mesLegible(EURIBOR.mes)})</span>
+          <span class="dato-valor">{porcentaje(EURIBOR.valor, 2)}</span>
+          <span class="mt-1 block text-sm text-slate-600">El índice al que se ligan casi todas las hipotecas variables. <a href="/hipoteca" class="font-semibold text-teal-700 hover:underline">Calcula tu cuota</a>.</span>
+        </p>
+        <p class="tarjeta">
+          <span class="dato-nombre">Municipios con datos</span>
+          <span class="dato-valor">{miles(MUNICIPIOS.length)}</span>
+          <span class="mt-1 block text-sm text-slate-600">Todas las capitales y las ciudades grandes, con precio de compra, de alquiler y renta de los hogares.</span>
+        </p>
+      </div>
+    </section>
+
+    <Herramientas titulo="Todo lo que necesitas para buscar casa" />
+
+    <AdSlot format="horizontal" />
+
+    <section aria-labelledby="titulo-ciudades">
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <h2 id="titulo-ciudades" class="text-2xl font-bold tracking-tight text-slate-900">Precios en las ciudades con más alquileres</h2>
+        <a href="/precios" class="text-sm font-semibold text-teal-700 hover:underline">Ver las {MUNICIPIOS.length} ciudades →</a>
+      </div>
+      <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">Ciudad</th>
+              <th scope="col" class="text-right">Alquiler mediano</th>
+              <th scope="col" class="text-right">Compra (€/m²)</th>
+              <th scope="col" class="text-right">Piso de {SUPERFICIE_REFERENCIA} m²</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              grandes.map((m) => (
+                <tr>
+                  <td>
+                    <a href={`/vivienda/${m.slug}`} class="font-semibold text-slate-900 hover:text-teal-700">{m.nombre}</a>
+                    <span class="block text-xs text-slate-500">{provincia(m.provincia).nombre}</span>
+                  </td>
+                  <td class="text-right">{euros(m.alquiler?.mes)}/mes</td>
+                  <td class="text-right">{euros(m.compra.m2)}</td>
+                  <td class="text-right">{euros(m.compra.m2 ? m.compra.m2 * SUPERFICIE_REFERENCIA : null)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente mt-3">
+        Alquiler: mediana de los contratos de pisos de {FUENTES.alquiler.periodo} (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI</a>).
+        Compra: valor tasado medio del {FUENTES.compra.periodo} (<a href={FUENTES.compra.url} rel="noopener" target="_blank">Ministerio de Vivienda</a>).
+      </p>
+    </section>
+
+    <section aria-labelledby="titulo-como" class="grid gap-8 lg:grid-cols-2">
+      <div>
+        <h2 id="titulo-como" class="text-2xl font-bold tracking-tight text-slate-900">Cómo funciona</h2>
+        <ol class="mt-6 space-y-5">
+          {
+            [
+              ['Pon lo que puedes pagar', 'Si no lo sabes, la calculadora «¿Cuánto puedo pagar?» lo saca con tu sueldo y tus ahorros.'],
+              ['Mira para qué te da', 'Con los precios oficiales de tu ciudad: cuántos metros pagas y si tu presupuesto es bajo, normal o alto.'],
+              ['Abre los pisos que encajan', 'Te llevamos a Idealista y Fotocasa con el precio máximo y los dormitorios ya filtrados.'],
+            ].map(([t, d], i) => (
+              <li class="flex gap-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-teal-700 font-bold text-white">{i + 1}</span>
+                <span>
+                  <span class="block font-semibold text-slate-900">{t}</span>
+                  <span class="mt-1 block text-slate-600">{d}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+      <div class="tarjeta">
+        <h2 class="text-lg font-bold text-slate-900">De dónde salen los datos</h2>
+        <ul class="mt-4 space-y-3 text-sm text-slate-700">
+          <li><b>Compra:</b> {FUENTES.compra.fuente}, {FUENTES.compra.periodo}.</li>
+          <li><b>Alquiler:</b> {FUENTES.alquiler.fuente}, contratos de {FUENTES.alquiler.periodo}.</li>
+          <li><b>Renta de los hogares:</b> {FUENTES.renta.fuente}, {FUENTES.renta.periodo}.</li>
+          <li><b>Euríbor:</b> Banco Central Europeo, {mesLegible(EURIBOR.mes)}.</li>
+          <li><b>Impuestos:</b> Ministerio de Hacienda, tipos de 2026 de cada comunidad.</li>
+        </ul>
+        <p class="mt-4 text-sm text-slate-600">
+          Los enlaces a Idealista y Fotocasa son normales: no cobramos por ellos. <a href="/como-hacemos-este-contenido" class="font-semibold text-teal-700 hover:underline">Cómo hacemos esta web</a>.
+        </p>
+      </div>
+    </section>
+
+    <NewsletterBox />
+
+    <Faq preguntas={preguntas} />
+
+    <Autor />
+  </div>
+</BaseLayout>
+
+<script>
+  import '../scripts/buscador';
+</script>

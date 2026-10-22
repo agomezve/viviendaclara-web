@@ -1,0 +1,27 @@
+---
+// Ruta: src/pages/herramientas.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Autor from '../components/Autor.astro';
+
+const titulo = 'Herramientas gratis para buscar casa';
+const breadcrumbs = [{ name: 'Herramientas' }];
+---
+
+<BaseLayout
+  title={titulo}
+  description="Buscador por presupuesto, cuánto puedes pagar, dónde te llega, gastos de compra, hipoteca, alquilar o comprar, ayudas y más. Gratis y con datos oficiales."
+  schemaType="CollectionPage"
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs}>
+    <p>Diez herramientas para alquilar o comprar sabiendo lo que haces. Son gratis, no piden registro y lo que escribes no sale de tu navegador.</p>
+  </CabeceraPagina>
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-12 sm:px-6">
+    <Herramientas titulo="Elige una" excluir={['/herramientas']} />
+    <AdSlot format="horizontal" />
+    <Autor />
+  </div>
+</BaseLayout>

@@ -1,0 +1,40 @@
+---
+// Ruta: src/components/Autor.astro
+// Bloque de autor, transparencia sobre la IA y enlaces a mis otras webs y al canal.
+import { AI_NOTE, AUTHOR, CHANNEL, CHANNEL_NOTE, CONTENT_PROCESS, CONTEXT_LINKS, getProject } from '../config/site';
+---
+
+<section class="max-w-3xl space-y-6">
+  <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5">
+    <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-teal-700 font-bold text-white" aria-hidden="true">
+      {AUTHOR.initials}
+    </span>
+    <div>
+      <p class="font-semibold text-slate-900">
+        <a href={AUTHOR.href} class="hover:text-teal-700">{AUTHOR.name}</a>
+      </p>
+      <p class="text-sm text-slate-500">{AUTHOR.jobTitle}</p>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">{AUTHOR.bio}</p>
+      <p class="mt-3 text-xs italic leading-relaxed text-slate-500">
+        {AI_NOTE} <a href={CONTENT_PROCESS.href} class="underline hover:text-slate-700">Cómo lo hago</a>.
+      </p>
+      <a href={CHANNEL.url} rel="noopener" target="_blank" class="mt-3 inline-block text-sm font-semibold text-teal-700 hover:underline">
+        {CHANNEL_NOTE} <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+  <ul class="space-y-2 text-sm text-slate-600">
+    {
+      CONTEXT_LINKS.map((link) => {
+        const p = getProject(link.project);
+        return (
+          <li>
+            <a href={`${p.url}${link.path === '/' ? '' : link.path}`} rel="noopener" class="hover:text-teal-700 hover:underline">
+              {link.text}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>

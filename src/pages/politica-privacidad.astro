@@ -1,0 +1,297 @@
+---
+// Ruta: src/pages/politica-privacidad.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import PendingNotice from '../components/PendingNotice.astro';
+import {
+  SITE,
+  OWNER,
+  CONTACT,
+  LEGAL_UPDATED,
+  NEWSLETTER,
+  isAnalyticsEnabled,
+  isNewsletterEnabled,
+  pending,
+  isPending,
+} from '../config/site';
+
+const title = 'Política de privacidad';
+const missing = isPending(OWNER.name);
+const usaServicioFormulario = CONTACT.formEndpoint.trim() !== '';
+// Servicios opcionales: solo se mencionan si están activos en src/config/site.ts.
+const usaAnalitica = isAnalyticsEnabled();
+const usaNewsletter = isNewsletterEnabled();
+const proveedorNewsletter = NEWSLETTER.provider.trim() || 'el proveedor de envío de la newsletter';
+// Numeración de los apartados 3.x opcionales.
+let apartado = 4;
+const num = () => `3.${++apartado}`;
+const nAnalitica = usaAnalitica ? num() : '';
+const nNewsletter = usaNewsletter ? num() : '';
+const nNoHacemos = num();
+const toc = [
+  { id: 'responsable', title: 'Responsable del tratamiento' },
+  { id: 'principios', title: 'Principios que aplicamos' },
+  { id: 'tratamientos', title: 'Qué datos tratamos, para qué y con qué base legal' },
+  { id: 'adsense', title: 'Publicidad: Google AdSense y cookies de terceros' },
+  { id: 'personalizacion', title: 'Cómo gestionar la personalización de anuncios' },
+  { id: 'destinatarios', title: 'Destinatarios y encargados del tratamiento' },
+  { id: 'transferencias', title: 'Transferencias internacionales' },
+  { id: 'conservacion', title: 'Plazos de conservación' },
+  { id: 'derechos', title: 'Tus derechos' },
+  { id: 'seguridad', title: 'Seguridad y menores' },
+  { id: 'cambios', title: 'Cambios en esta política' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Política de privacidad de ${SITE.name} conforme al RGPD y la LOPDGDD: responsable, finalidades, Google AdSense, cookies publicitarias y derechos.`}
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle
+    title={title}
+    lead="Cómo tratamos tus datos personales y cómo puedes controlar el uso que se hace de ellos."
+    updated={LEGAL_UPDATED}
+    toc={toc}
+  >
+    {missing && (
+      <div slot="before" class="mt-6">
+        <PendingNotice message="Faltan datos del responsable del tratamiento. Complétalos en src/config/site.ts antes de publicar." />
+      </div>
+    )}
+
+    <p>
+      Esta política de privacidad describe cómo se tratan los datos personales de las personas que
+      visitan {SITE.url}, de acuerdo con el Reglamento (UE) 2016/679 del Parlamento Europeo y del
+      Consejo, de 27 de abril de 2016, General de Protección de Datos (<strong>RGPD</strong>), y la
+      Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los
+      derechos digitales (<strong>LOPDGDD</strong>).
+    </p>
+
+    <h2 id="responsable">1. Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Identidad:</strong> {pending(OWNER.name, 'nombre y apellidos o razón social')}</li>
+      <li><strong>Correo electrónico:</strong> <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a></li>
+      <li><strong>Sitio web:</strong> {SITE.url}</li>
+    </ul>
+    <p>
+      Por el volumen y la naturaleza de los datos tratados, el responsable no está obligado a
+      designar un Delegado de Protección de Datos. Para cualquier cuestión sobre privacidad puedes
+      escribir al correo indicado.
+    </p>
+
+    <h2 id="principios">2. Principios que aplicamos</h2>
+    <p>
+      Tratamos los datos de forma lícita, leal y transparente; solo para fines determinados y
+      legítimos; limitándonos a los datos necesarios (minimización); manteniéndolos exactos y
+      actualizados; conservándolos el tiempo imprescindible, y aplicando medidas de seguridad
+      adecuadas (art. 5 RGPD).
+    </p>
+
+    <h2 id="tratamientos">3. Qué datos tratamos, para qué y con qué base legal</h2>
+
+    <h3>3.1. Lo que escribes en el buscador y en las calculadoras</h3>
+    <p>
+      El presupuesto, la ciudad, los ingresos, los ahorros y el resto de datos que escribes en el buscador
+      y en las calculadoras <strong>se usan solo en tu navegador</strong> para hacer los cálculos: no se
+      envían a nuestros servidores, no se guardan y no podemos verlos. El buscador puede añadir tu
+      presupuesto y tu ciudad a la dirección de la página para que puedas compartirla; nunca añade datos
+      personales. La lista de comprobación contra estafas guarda las casillas que marcas en el
+      almacenamiento local de tu navegador (<code>localStorage</code>) para que no las pierdas; puedes
+      borrarla con el botón «Empezar de nuevo» o desde la configuración de tu navegador.
+    </p>
+    <p>
+      Si pulsas un enlace a Idealista o Fotocasa, sales de {SITE.name} y esa web recibe la búsqueda
+      (municipio, precio máximo y filtros), sin ningún dato personal, y aplica su propia política de
+      privacidad y de cookies.
+    </p>
+
+    <h3>3.2. Formulario de contacto y correo electrónico</h3>
+    <ul>
+      <li><strong>Datos:</strong> nombre, dirección de correo electrónico, asunto y el contenido de tu mensaje.</li>
+      <li><strong>Finalidad:</strong> responder a tu consulta, atender sugerencias o correcciones y gestionar el ejercicio de tus derechos.</li>
+      <li><strong>Base legal:</strong> tu consentimiento, que prestas al marcar la casilla de aceptación y enviar el mensaje (art. 6.1.a RGPD). Puedes retirarlo en cualquier momento.</li>
+      <li>
+        <strong>Cómo se envía:</strong>
+        {
+          usaServicioFormulario
+            ? 'el formulario se envía a través de un proveedor externo de formularios que actúa como encargado del tratamiento.'
+            : 'el formulario abre tu propio programa de correo con el mensaje preparado; los datos solo nos llegan si decides enviar ese correo.'
+        }
+      </li>
+    </ul>
+
+    <h3>3.3. Publicidad</h3>
+    <p>
+      Mostramos anuncios de Google AdSense. Google puede tratar datos de navegación, identificadores
+      de cookies o del dispositivo y la dirección IP para servir, medir y, si lo consientes,
+      personalizar los anuncios. <strong>Base legal:</strong> tu consentimiento, recogido mediante la
+      plataforma de gestión del consentimiento (CMP) certificada de Google (art. 6.1.a RGPD y art.
+      22.2 de la Ley 34/2002, LSSI-CE). Lo explicamos en detalle en los apartados 4 y 5.
+    </p>
+
+    <h3>3.4. Registros técnicos y seguridad</h3>
+    <p>
+      El proveedor de alojamiento web puede registrar de forma automática datos técnicos de cada
+      visita, como la dirección IP, la fecha y hora, la página solicitada y el tipo de navegador, para
+      garantizar el funcionamiento y la seguridad del sitio y prevenir abusos.
+      <strong>Base legal:</strong> interés legítimo en mantener un servicio seguro (art. 6.1.f RGPD).
+    </p>
+
+    {usaAnalitica && (
+      <>
+        <h3>{nAnalitica}. Analítica web: Google Analytics 4</h3>
+        <p>
+          Si lo aceptas en el mensaje de consentimiento, usamos Google Analytics 4 para saber de forma
+          agregada qué páginas se visitan y cómo se llega a ellas. Google trata identificadores de
+          cookies o del dispositivo, la dirección IP (que GA4 no almacena) y datos de navegación.
+          Mientras no aceptes, Analytics funciona con el modo de consentimiento de Google en estado
+          «denegado» y no instala cookies. <strong>Base legal:</strong> tu consentimiento (art. 6.1.a
+          RGPD y art. 22.2 LSSI-CE).
+        </p>
+      </>
+    )}
+
+    {usaNewsletter && (
+      <>
+        <h3>{nNewsletter}. Newsletter</h3>
+        <ul>
+          <li><strong>Datos:</strong> tu dirección de correo electrónico.</li>
+          <li><strong>Finalidad:</strong> enviarte la newsletter de {SITE.name}.</li>
+          <li><strong>Base legal:</strong> tu consentimiento, que prestas al marcar la casilla y suscribirte (art. 6.1.a RGPD). Puedes darte de baja en cualquier momento desde el enlace de cada correo.</li>
+          <li><strong>Proveedor:</strong> los envíos se gestionan con {proveedorNewsletter}, que actúa como encargado del tratamiento.</li>
+        </ul>
+      </>
+    )}
+
+    <h3>{nNoHacemos}. Lo que no hacemos</h3>
+    <p>
+      No pedimos registro, no vendemos datos personales, no elaboramos perfiles propios y no tomamos
+      decisiones automatizadas con efectos jurídicos sobre ti.
+    </p>
+
+    <h2 id="adsense">4. Publicidad: Google AdSense y cookies de terceros</h2>
+    <p>
+      Este sitio utiliza <strong>Google AdSense</strong>, un servicio de publicidad prestado en el
+      Espacio Económico Europeo por <strong>Google Ireland Limited</strong> (Gordon House, Barrow
+      Street, Dublín 4, Irlanda), con la participación de Google LLC. En relación con los anuncios:
+    </p>
+    <ul>
+      <li>
+        Los proveedores externos, incluido Google, utilizan cookies para mostrar anuncios basados en
+        las visitas anteriores del usuario a este sitio web o a otros sitios web.
+      </li>
+      <li>
+        Las cookies de publicidad de Google, entre ellas la <strong>cookie de DoubleClick</strong>
+        (conocida históricamente como cookie DART), permiten a Google y a sus socios mostrar anuncios
+        a los usuarios en función de sus visitas a este y otros sitios de Internet. Hoy Google utiliza
+        cookies como <code>IDE</code> (en el dominio doubleclick.net), <code>__gads</code> y
+        <code>__gpi</code> para estos fines.
+      </li>
+      <li>
+        Otros proveedores o redes publicitarias certificados por Google pueden también utilizar
+        cookies para servir anuncios en este sitio. Puedes consultar la lista de proveedores en el
+        mensaje de consentimiento.
+      </li>
+      <li>
+        Si no das tu consentimiento para anuncios personalizados, Google puede mostrar anuncios no
+        personalizados o limitados, que usan cookies o identificadores solo para fines como la
+        limitación de frecuencia, la medición agregada y la prevención del fraude, según sus
+        políticas.
+      </li>
+    </ul>
+    <p>
+      Google trata estos datos como responsable según su propia política. Puedes consultar
+      <a href="https://policies.google.com/technologies/partner-sites?hl=es" rel="noopener" target="_blank">cómo utiliza Google la información de los sitios web que usan sus servicios</a>,
+      <a href="https://policies.google.com/technologies/ads?hl=es" rel="noopener" target="_blank">cómo utiliza Google las cookies en la publicidad</a>
+      y la <a href="https://policies.google.com/privacy?hl=es" rel="noopener" target="_blank">política de privacidad de Google</a>.
+      La lista detallada de cookies figura en nuestra <a href="/politica-cookies">política de cookies</a>.
+    </p>
+
+    <h2 id="personalizacion">5. Cómo gestionar la personalización de anuncios</h2>
+    <ul>
+      <li>
+        <strong>En este sitio:</strong> en tu primera visita desde el EEE, el Reino Unido o Suiza
+        verás el mensaje de consentimiento de Google, donde puedes aceptar, rechazar o elegir
+        finalidades y proveedores. Puedes cambiar tu decisión en cualquier momento desde el enlace de
+        privacidad que muestra ese mensaje o borrando las cookies de este sitio.
+      </li>
+      <li>
+        <strong>En tu cuenta de Google:</strong> desactiva la personalización en
+        <a href="https://myadcenter.google.com/?hl=es" rel="noopener" target="_blank">Mi Centro de Anuncios</a>
+        (antes, <a href="https://adssettings.google.com" rel="noopener" target="_blank">Configuración de anuncios</a>).
+      </li>
+      <li>
+        <strong>Otros proveedores:</strong> puedes inhabilitar la publicidad personalizada de muchos
+        proveedores externos en
+        <a href="https://www.youronlinechoices.com/es/" rel="noopener" target="_blank">Your Online Choices</a>
+        o en <a href="https://optout.aboutads.info/" rel="noopener" target="_blank">aboutads.info</a>.
+      </li>
+      <li>
+        <strong>En tu navegador:</strong> bloquea o elimina las cookies de terceros, como se explica
+        en la <a href="/politica-cookies">política de cookies</a>.
+      </li>
+    </ul>
+
+    <h2 id="destinatarios">6. Destinatarios y encargados del tratamiento</h2>
+    <p>No cedemos datos personales a terceros salvo obligación legal. Pueden acceder a datos:</p>
+    <ul>
+      <li><strong>Google Ireland Limited y Google LLC</strong>, como responsables independientes de la publicidad que sirven{usaAnalitica && ' y como encargados del tratamiento para la analítica web (Google Analytics 4)'}.</li>
+      {usaNewsletter && <li><strong>{NEWSLETTER.provider.trim() || 'El proveedor de envío de la newsletter'}</strong>, como encargado del tratamiento para los envíos de la newsletter.</li>}
+      <li><strong>El proveedor de alojamiento web</strong>, como encargado del tratamiento para los registros técnicos.</li>
+      <li><strong>El proveedor de correo electrónico</strong> del responsable, como encargado del tratamiento para los mensajes recibidos.</li>
+      {usaServicioFormulario && <li><strong>El proveedor del servicio de formularios</strong>, como encargado del tratamiento para los mensajes enviados desde el formulario.</li>}
+      <li><strong>Administraciones públicas, jueces y tribunales</strong>, cuando exista una obligación legal.</li>
+    </ul>
+
+    <h2 id="transferencias">7. Transferencias internacionales</h2>
+    <p>
+      Algunos proveedores, como Google LLC, pueden tratar datos en Estados Unidos. Google LLC está
+      adherida al Marco de Privacidad de Datos UE-EE. UU. (EU-U.S. Data Privacy Framework), sobre el
+      que la Comisión Europea adoptó una decisión de adecuación en julio de 2023, y utiliza además
+      cláusulas contractuales tipo aprobadas por la Comisión Europea (art. 46 RGPD).
+    </p>
+
+    <h2 id="conservacion">8. Plazos de conservación</h2>
+    <ul>
+      {usaNewsletter && <li><strong>Suscripción a la newsletter:</strong> hasta que te des de baja.</li>}
+      <li><strong>Mensajes de contacto:</strong> el tiempo necesario para responder y, después, hasta un máximo de 12 meses, salvo que sea necesario conservarlos para atender posibles responsabilidades legales.</li>
+      <li><strong>Solicitudes de ejercicio de derechos:</strong> durante los plazos de prescripción de las responsabilidades derivadas (con carácter general, 3 años).</li>
+      <li><strong>Cookies:</strong> según la duración indicada en la política de cookies.</li>
+      <li><strong>Registros técnicos:</strong> según la política del proveedor de alojamiento.</li>
+    </ul>
+
+    <h2 id="derechos">9. Tus derechos</h2>
+    <p>Puedes ejercer en cualquier momento los siguientes derechos (arts. 15 a 22 RGPD):</p>
+    <ul>
+      <li><strong>Acceso</strong>: saber si tratamos tus datos y obtener una copia.</li>
+      <li><strong>Rectificación</strong>: corregir datos inexactos o incompletos.</li>
+      <li><strong>Supresión</strong>: pedir que borremos tus datos cuando ya no sean necesarios.</li>
+      <li><strong>Oposición</strong>: oponerte a tratamientos basados en interés legítimo.</li>
+      <li><strong>Limitación</strong>: pedir que suspendamos el tratamiento en determinados casos.</li>
+      <li><strong>Portabilidad</strong>: recibir tus datos en un formato estructurado.</li>
+      <li><strong>Retirar tu consentimiento</strong>, sin que afecte a la licitud del tratamiento anterior.</li>
+    </ul>
+    <p>
+      Escribe a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> indicando el derecho que quieres
+      ejercer. Responderemos en el plazo de un mes, prorrogable en los casos previstos en el RGPD. Si
+      consideras que no hemos atendido correctamente tu solicitud, puedes presentar una reclamación
+      ante la <a href="https://www.aepd.es" rel="noopener" target="_blank">Agencia Española de Protección de Datos</a>
+      (C/ Jorge Juan, 6, 28001 Madrid).
+    </p>
+
+    <h2 id="seguridad">10. Seguridad y menores</h2>
+    <p>
+      Aplicamos medidas técnicas y organizativas adecuadas al riesgo, como la conexión cifrada
+      (HTTPS) en todo el sitio y el acceso restringido al correo de contacto. Este sitio no está
+      dirigido a menores de 14 años y no recogemos conscientemente sus datos (art. 7 LOPDGDD); si
+      detectamos que los hemos recibido, los eliminaremos.
+    </p>
+
+    <h2 id="cambios">11. Cambios en esta política</h2>
+    <p>
+      Podemos actualizar esta política para adaptarla a cambios legales, técnicos o en los servicios
+      que usamos. Publicaremos la versión vigente en esta página con su fecha de actualización.
+    </p>
+  </LegalArticle>
+</BaseLayout>

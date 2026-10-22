@@ -1,0 +1,130 @@
+---
+// Ruta: src/pages/sobre-mi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import { SITE, OWNER, LEGAL_UPDATED, CHANNEL, CHANNEL_NOTE, CURRENT_PROJECT, PROJECTS, HERRAMIENTAS } from '../config/site';
+import { FUENTES, EURIBOR, IMPUESTOS, MUNICIPIOS, PROVINCIAS } from '../lib/datos';
+
+const title = 'Cómo funciona y sobre mí';
+const otherSites = PROJECTS.filter((p) => p.id !== CURRENT_PROJECT && p.id !== 'canal');
+const toc = [
+  { id: 'que-es', title: `Qué es ${SITE.name}` },
+  { id: 'datos', title: 'De dónde salen los datos' },
+  { id: 'calculos', title: 'Cómo hacemos los cálculos' },
+  { id: 'limites', title: 'Lo que la web no sabe' },
+  { id: 'quien', title: 'Quién está detrás' },
+  { id: 'ia', title: 'Hecha con inteligencia artificial' },
+  { id: 'independencia', title: 'Independencia y financiación' },
+  { id: 'errores', title: 'Correcciones y contacto' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Cómo funciona ${SITE.name}: datos oficiales del Ministerio de Vivienda, Hacienda y el INE, cómo hacemos los cálculos y quién está detrás.`}
+  schemaType="AboutPage"
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle
+    title={title}
+    lead="Te ayudamos a saber qué casa te puedes permitir, dónde y cuánto cuesta de verdad, con datos oficiales y en un lenguaje que se entiende."
+    updated={LEGAL_UPDATED}
+    toc={toc}
+  >
+    <h2 id="que-es">Qué es {SITE.name}</h2>
+    <p>
+      Una web gratuita y sin registro con {HERRAMIENTAS.length} herramientas para alquilar o comprar
+      vivienda en España. La principal es el buscador: pones lo que puedes pagar y dónde, y te dice qué casa
+      te da para ese dinero según los precios oficiales y te abre los pisos que encajan en Idealista y
+      Fotocasa con los filtros ya puestos. Además tiene calculadoras de hipoteca, gastos de compra, ayudas y
+      alquilar o comprar, y fichas de precios de {MUNICIPIOS.length} municipios y {PROVINCIAS.length} provincias.
+    </p>
+
+    <h2 id="datos">De dónde salen los datos</h2>
+    <ul>
+      <li>
+        <strong>Precio de compra:</strong> {FUENTES.compra.fuente}, {FUENTES.compra.periodo}
+        (<a href={FUENTES.compra.url} rel="noopener" target="_blank">fuente</a>). Es el valor que dan las
+        tasaciones hechas para conceder hipotecas.
+      </li>
+      <li>
+        <strong>Precio del alquiler:</strong> {FUENTES.alquiler.fuente}, año {FUENTES.alquiler.periodo}
+        (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">fuente</a>). {FUENTES.alquiler.nota}
+      </li>
+      <li>
+        <strong>Renta de los hogares:</strong> {FUENTES.renta.fuente}, {FUENTES.renta.periodo}
+        (<a href={FUENTES.renta.url} rel="noopener" target="_blank">fuente</a>).
+      </li>
+      <li>
+        <strong>Euríbor:</strong> {EURIBOR.fuente} (<a href={EURIBOR.url} rel="noopener" target="_blank">fuente</a>).
+      </li>
+      <li>
+        <strong>Impuestos de compra:</strong> {IMPUESTOS.fuente.nombre}
+        (<a href={IMPUESTOS.fuente.url} rel="noopener" target="_blank">fuente</a>).
+      </li>
+      <li>
+        <strong>Ayudas:</strong> el Plan Estatal de Vivienda 2026-2030 (Real Decreto 326/2026, publicado en
+        el BOE) y la línea de avales del ICO.
+      </li>
+    </ul>
+    <p>
+      Los datos oficiales llegan con retraso: el alquiler de Hacienda se publica uno o dos años después y la
+      tasación, por trimestres. Por eso cada página dice de qué periodo es cada cifra.
+    </p>
+
+    <h2 id="calculos">Cómo hacemos los cálculos</h2>
+    <ul>
+      <li><strong>Metros que te da tu presupuesto:</strong> tu presupuesto dividido entre el precio medio por m² del municipio.</li>
+      <li><strong>Cuota de la hipoteca:</strong> sistema francés, el que usan casi todos los bancos en España.</li>
+      <li><strong>Impuestos:</strong> los tipos generales de cada comunidad, sin reducciones personales (jóvenes, familia numerosa, discapacidad…), que pueden bajarlos.</li>
+      <li><strong>Esfuerzo:</strong> años de renta media de un hogar para pagar un piso de 80 m², y parte de esa renta que se va en un alquiler medio.</li>
+      <li><strong>Lo que escribes no sale de tu navegador:</strong> los cálculos se hacen en tu dispositivo; no guardamos ni enviamos tus datos.</li>
+    </ul>
+
+    <h2 id="limites">Lo que la web no sabe</h2>
+    <p>
+      Las cifras oficiales son medias y medianas de toda una ciudad: un piso concreto puede costar bastante
+      más o menos según el barrio, el estado o la planta. Los precios de los anuncios suelen estar por encima
+      de lo que se firma al final. Las calculadoras sirven para orientarte, no sustituyen la oferta de tu
+      banco, la liquidación de Hacienda ni el consejo de un profesional.
+    </p>
+
+    <h2 id="quien">Quién está detrás</h2>
+    <p>
+      Soy <strong>{OWNER.name}</strong>, programador backend. {SITE.name} es un proyecto personal e
+      independiente, como mis otras webs:
+    </p>
+    <ul>
+      {otherSites.map((p) => (
+        <li>
+          <a href={p.url}>{p.name}</a>: {p.description.toLowerCase()}.
+        </li>
+      ))}
+    </ul>
+
+    <h2 id="ia">Hecha con inteligencia artificial</h2>
+    <p>
+      Esta web la he construido con <strong>Claude Code</strong>, una herramienta de inteligencia artificial que
+      escribe código, y cuento el proceso completo, errores incluidos, en mi canal de YouTube
+      <a href={CHANNEL.url} rel="noopener" target="_blank">{CHANNEL.name}</a>. Los precios no los
+      genera ninguna IA: son los datos oficiales, tal cual. Los textos los redacto con ayuda de IA y los
+      reviso yo antes de publicarlos.
+    </p>
+    <p>
+      <a href={CHANNEL.url} rel="noopener" target="_blank"><strong>{CHANNEL_NOTE} →</strong></a>
+    </p>
+
+    <h2 id="independencia">Independencia y financiación</h2>
+    <p>
+      {SITE.name} es gratuito y se financia con publicidad de Google AdSense, siempre identificada como
+      «Publicidad». No cobramos a inmobiliarias, bancos ni portales, y los enlaces a Idealista y Fotocasa
+      son enlaces normales por los que no recibimos nada.
+    </p>
+
+    <h2 id="errores">Correcciones y contacto</h2>
+    <p>
+      Si ves un error, escríbenos a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> o desde la página de
+      <a href="/contacto">contacto</a>.
+    </p>
+  </LegalArticle>
+</BaseLayout>

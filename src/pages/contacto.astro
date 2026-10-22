@@ -1,0 +1,243 @@
+---
+// Ruta: src/pages/contacto.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import { SITE, OWNER, CONTACT, LEGAL_UPDATED, pending } from '../config/site';
+
+const title = 'Contacto';
+const inputClass =
+  'mt-1 block w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-base text-slate-900 shadow-sm focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20';
+const labelClass = 'block text-sm font-medium text-slate-700';
+const asuntos = [
+  'Error en un dato o en una calculadora',
+  'Sugerencia o nueva función',
+  'Consulta sobre privacidad o mis datos',
+  'Otro motivo',
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Contacta con ${SITE.name} para avisar de un error en un dato o una calculadora, proponer una mejora o ejercer tus derechos de protección de datos.`}
+  schemaType="ContactPage"
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle
+    title={title}
+    lead="¿Has encontrado un error, tienes una sugerencia o quieres ejercer tus derechos sobre tus datos? Escríbenos."
+    updated={LEGAL_UPDATED}
+  >
+    <div class="not-prose grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+        <p class="text-sm font-semibold text-slate-900">Correo electrónico</p>
+        <a href={`mailto:${OWNER.email}`} class="mt-1 block break-all text-lg font-semibold text-teal-700 hover:underline">
+          {OWNER.email}
+        </a>
+        <p class="mt-2 text-sm text-slate-600">Respondemos en un plazo habitual de 2 a 5 días laborables.</p>
+      </div>
+      <div class="rounded-xl border border-slate-200 bg-slate-50 p-5">
+        <p class="text-sm font-semibold text-slate-900">Responsable</p>
+        <p class="mt-1 text-sm text-slate-700">{pending(OWNER.name, 'nombre o razón social')}</p>
+      </div>
+    </div>
+
+    <h2 id="antes-de-escribir">Antes de escribirnos</h2>
+    <ul>
+      <li>
+        <strong>Un dato no te cuadra</strong>: los precios son los oficiales del Ministerio de Vivienda y
+        del INE, que son medias y medianas, no el precio de un piso concreto. Si crees que hay un error,
+        dinos la página y el dato; lo comprobamos con la fuente original.
+      </li>
+      <li>
+        <strong>Protección de datos</strong>: puedes ejercer tus derechos de acceso, rectificación,
+        supresión, oposición, limitación y portabilidad. Más información en la
+        <a href="/politica-privacidad">política de privacidad</a>.
+      </li>
+      <li>
+        <strong>Un anuncio o un casero</strong>: {SITE.name} no anuncia pisos, no media en alquileres ni
+        compraventas y no tiene relación con Idealista ni con Fotocasa. Para un problema con un anuncio,
+        escribe al portal donde lo viste; si crees que es una estafa, denúncialo a la Policía Nacional o a
+        la Guardia Civil (mira <a href="/estafas-alquiler">cómo evitar estafas en el alquiler</a>).
+      </li>
+    </ul>
+
+    <h2 id="formulario">Formulario de contacto</h2>
+
+    <form
+      id="contact-form"
+      class="not-prose mt-4 grid gap-5"
+      novalidate
+      data-endpoint={CONTACT.formEndpoint}
+      data-email={OWNER.email}
+    >
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="nombre" class={labelClass}>Nombre <span class="text-rose-600" aria-hidden="true">*</span></label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required maxlength="100" class={inputClass} />
+          <p class="mt-1 hidden text-xs text-rose-700" data-error-for="nombre"></p>
+        </div>
+        <div>
+          <label for="email" class={labelClass}>Email <span class="text-rose-600" aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required maxlength="150" class={inputClass} />
+          <p class="mt-1 hidden text-xs text-rose-700" data-error-for="email"></p>
+        </div>
+      </div>
+      <div>
+        <label for="asunto" class={labelClass}>Asunto <span class="text-rose-600" aria-hidden="true">*</span></label>
+        <select id="asunto" name="asunto" required class={inputClass}>
+          <option value="" selected disabled>Elige un motivo</option>
+          {asuntos.map((asunto) => <option value={asunto}>{asunto}</option>)}
+        </select>
+        <p class="mt-1 hidden text-xs text-rose-700" data-error-for="asunto"></p>
+      </div>
+      <div>
+        <label for="mensaje" class={labelClass}>Mensaje <span class="text-rose-600" aria-hidden="true">*</span></label>
+        <textarea id="mensaje" name="mensaje" rows="6" required minlength="10" maxlength="3000" class={inputClass}></textarea>
+        <p class="mt-1 hidden text-xs text-rose-700" data-error-for="mensaje"></p>
+      </div>
+
+      <!-- Campo trampa contra spam: invisible para personas. -->
+      <div class="hidden" aria-hidden="true">
+        <label for="web">No rellenes este campo</label>
+        <input id="web" name="web" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div>
+        <label class="flex items-start gap-3 text-sm text-slate-700">
+          <input id="privacidad" name="privacidad" type="checkbox" required class="mt-0.5 h-4 w-4 shrink-0 accent-teal-600" />
+          <span>
+            He leído y acepto la <a href="/politica-privacidad" class="font-semibold text-teal-700 hover:underline">política de privacidad</a>.
+            Mis datos se usarán solo para responder a mi consulta.
+            <span class="text-rose-600" aria-hidden="true">*</span>
+          </span>
+        </label>
+        <p class="mt-1 hidden text-xs text-rose-700" data-error-for="privacidad"></p>
+      </div>
+
+      <div class="rounded-lg bg-slate-50 p-4 text-xs leading-relaxed text-slate-600">
+        <strong>Información básica sobre protección de datos.</strong> Responsable:
+        {pending(OWNER.name, 'nombre o razón social')}. Finalidad: responder a tu consulta. Legitimación:
+        tu consentimiento. Destinatarios: no se ceden datos a terceros salvo obligación legal. Derechos:
+        acceso, rectificación, supresión y otros, escribiendo a {OWNER.email}. Más información en la
+        <a href="/politica-privacidad" class="text-teal-700 hover:underline">política de privacidad</a>.
+      </div>
+
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <button
+          type="submit"
+          class="rounded-lg bg-teal-700 px-6 py-3 font-semibold text-white transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          Enviar mensaje
+        </button>
+        <p class="text-xs text-slate-500">Los campos marcados con * son obligatorios.</p>
+      </div>
+
+      <p id="contact-status" role="status" aria-live="polite" class="hidden rounded-lg p-4 text-sm"></p>
+    </form>
+  </LegalArticle>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#contact-form')!;
+  const status = document.querySelector<HTMLElement>('#contact-status')!;
+  const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const endpoint = form.dataset.endpoint ?? '';
+  const destino = form.dataset.email ?? '';
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  type Campo = 'nombre' | 'email' | 'asunto' | 'mensaje' | 'privacidad';
+
+  function setError(campo: Campo, mensaje: string) {
+    const input = form.elements.namedItem(campo) as HTMLInputElement;
+    const box = form.querySelector<HTMLElement>(`[data-error-for="${campo}"]`)!;
+    box.textContent = mensaje;
+    box.classList.toggle('hidden', mensaje === '');
+    input.setAttribute('aria-invalid', String(mensaje !== ''));
+    if (mensaje) input.setAttribute('aria-describedby', box.id || (box.id = `error-${campo}`));
+    else input.removeAttribute('aria-describedby');
+  }
+
+  function showStatus(tipo: 'ok' | 'error' | 'info', mensaje: string) {
+    status.textContent = mensaje;
+    status.className = `rounded-lg p-4 text-sm ${
+      tipo === 'ok' ? 'bg-teal-50 text-teal-900' : tipo === 'error' ? 'bg-rose-50 text-rose-900' : 'bg-slate-100 text-slate-800'
+    }`;
+  }
+
+  function validar() {
+    const data = new FormData(form);
+    const valores = {
+      nombre: String(data.get('nombre') ?? '').trim(),
+      email: String(data.get('email') ?? '').trim(),
+      asunto: String(data.get('asunto') ?? '').trim(),
+      mensaje: String(data.get('mensaje') ?? '').trim(),
+      privacidad: data.get('privacidad') === 'on',
+      web: String(data.get('web') ?? ''),
+    };
+    const errores: Partial<Record<Campo, string>> = {};
+    if (valores.nombre.length < 2) errores.nombre = 'Indica tu nombre.';
+    if (!EMAIL_RE.test(valores.email)) errores.email = 'Introduce un email válido.';
+    if (!valores.asunto) errores.asunto = 'Elige un asunto.';
+    if (valores.mensaje.length < 10) errores.mensaje = 'El mensaje debe tener al menos 10 caracteres.';
+    if (!valores.privacidad) errores.privacidad = 'Debes aceptar la política de privacidad para enviar el mensaje.';
+    (['nombre', 'email', 'asunto', 'mensaje', 'privacidad'] as Campo[]).forEach((campo) => setError(campo, errores[campo] ?? ''));
+    return { valores, errores };
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const { valores, errores } = validar();
+    const primero = Object.keys(errores)[0] as Campo | undefined;
+    if (primero) {
+      (form.elements.namedItem(primero) as HTMLElement).focus();
+      showStatus('error', 'Revisa los campos marcados.');
+      return;
+    }
+    // Campo trampa relleno: probablemente un bot. Fingimos éxito sin enviar nada.
+    if (valores.web) {
+      form.reset();
+      showStatus('ok', 'Gracias. Hemos recibido tu mensaje.');
+      return;
+    }
+
+    if (endpoint) {
+      submit.disabled = true;
+      showStatus('info', 'Enviando…');
+      try {
+        const respuesta = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: valores.nombre,
+            email: valores.email,
+            asunto: valores.asunto,
+            mensaje: valores.mensaje,
+          }),
+        });
+        if (!respuesta.ok) throw new Error(String(respuesta.status));
+        form.reset();
+        showStatus('ok', 'Gracias. Hemos recibido tu mensaje y te responderemos lo antes posible.');
+      } catch {
+        showStatus('error', `No se pudo enviar el mensaje. Inténtalo de nuevo o escríbenos a ${destino}.`);
+      } finally {
+        submit.disabled = false;
+      }
+      return;
+    }
+
+    // Sin servicio de formularios: abrimos el programa de correo con el mensaje redactado.
+    const cuerpo = `${valores.mensaje}\n\n—\nNombre: ${valores.nombre}\nEmail: ${valores.email}`;
+    const mailto = `mailto:${destino}?subject=${encodeURIComponent(`[Contacto] ${valores.asunto}`)}&body=${encodeURIComponent(cuerpo)}`;
+    window.location.href = mailto;
+    showStatus(
+      'info',
+      `Se ha abierto tu programa de correo con el mensaje preparado. Si no se abre, escríbenos directamente a ${destino}.`,
+    );
+  });
+
+  // Limpia el error de un campo en cuanto se corrige.
+  form.addEventListener('input', (event) => {
+    const target = event.target as HTMLInputElement;
+    if (target.getAttribute('aria-invalid') === 'true') setError(target.name as Campo, '');
+  });
+</script>

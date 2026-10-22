@@ -1,0 +1,113 @@
+---
+// Ruta: src/pages/precios.astro
+// Índice de precios: España, comunidades, provincias y todos los municipios con página.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import GraficaSerie from '../components/GraficaSerie.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Autor from '../components/Autor.astro';
+import { COMUNIDADES, PROVINCIAS, MUNICIPIOS, FUENTES, SUPERFICIE_REFERENCIA, municipiosDe } from '../lib/datos';
+import { euros, decimal2, porcentaje, miles } from '../lib/calculos';
+
+const titulo = 'Precio de la vivienda en España por comunidad, provincia y ciudad';
+const breadcrumbs = [{ name: 'Precios' }];
+const nacional = FUENTES.compra.nacional;
+const comunidades = [...COMUNIDADES].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+const provinciasDe = (ccaa: string) => PROVINCIAS.filter((p) => p.ccaa === ccaa).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+---
+
+<BaseLayout
+  title="Precio de la vivienda por comunidad, provincia y ciudad"
+  heading={titulo}
+  description={`Valor tasado del m² (${FUENTES.compra.periodo}) y alquiler mediano de cada comunidad, provincia y ${MUNICIPIOS.length} municipios de España. Datos oficiales.`}
+  breadcrumbs={breadcrumbs}
+  schemaType="CollectionPage"
+  modified={new Date(FUENTES.actualizado)}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Datos oficiales">
+    <p>
+      En España el metro cuadrado se tasa de media a {euros(nacional.m2)} ({FUENTES.compra.periodo}), un {porcentaje(nacional.variacionAnual)} más que hace un año. Busca tu comunidad, tu provincia o tu ciudad.
+    </p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <section class="tarjeta" aria-labelledby="titulo-espana">
+      <h2 id="titulo-espana" class="text-xl font-bold text-slate-900">España: valor tasado medio del m²</h2>
+      <p class="mt-1 text-sm text-slate-600">Un piso de {SUPERFICIE_REFERENCIA} m² sale de media por {euros(nacional.m2 * SUPERFICIE_REFERENCIA)}.</p>
+      <div class="mt-4"><GraficaSerie serie={nacional.serie} descripcion="Valor tasado medio por m² en España por trimestres" /></div>
+      <p class="fuente mt-2">Fuente: <a href={FUENTES.compra.url} rel="noopener" target="_blank">{FUENTES.compra.fuente}</a>.</p>
+    </section>
+
+    <section aria-labelledby="titulo-ccaa">
+      <h2 id="titulo-ccaa" class="text-2xl font-bold tracking-tight text-slate-900">Por comunidad autónoma</h2>
+      <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">Comunidad</th>
+              <th scope="col" class="text-right">Compra (€/m²)</th>
+              <th scope="col" class="text-right">En un año</th>
+              <th scope="col" class="text-right">Alquiler mediano</th>
+              <th scope="col" class="text-right">Alquiler (€/m²)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              comunidades.map((c) => (
+                <tr>
+                  <td><a href={`#ccaa-${c.codigo}`} class="font-semibold text-slate-900 hover:text-teal-700">{c.nombre}</a></td>
+                  <td class="text-right">{euros(c.compra?.m2)}</td>
+                  <td class="text-right">{c.compra?.variacionAnual != null ? `${c.compra.variacionAnual >= 0 ? '+' : ''}${porcentaje(c.compra.variacionAnual)}` : '—'}</td>
+                  <td class="text-right">{c.alquiler ? `${euros(c.alquiler.mes)}/mes` : '—'}</td>
+                  <td class="text-right">{c.alquiler ? decimal2(c.alquiler.m2) : '—'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente mt-3">Alquiler: mediana de los contratos de pisos de {FUENTES.alquiler.periodo} (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI</a>).</p>
+    </section>
+
+    <AdSlot format="horizontal" />
+
+    <section aria-labelledby="titulo-provincias" class="space-y-10">
+      <h2 id="titulo-provincias" class="text-2xl font-bold tracking-tight text-slate-900">Provincias y ciudades</h2>
+      {
+        comunidades.map((c) => (
+          <div id={`ccaa-${c.codigo}`} class="scroll-mt-24">
+            <h3 class="text-lg font-bold text-slate-900">{c.nombre}</h3>
+            <div class="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {provinciasDe(c.codigo).map((p) => {
+                const ms = municipiosDe(p.codigo).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+                return (
+                  <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                    <a href={`/provincia/${p.slug}`} class="font-semibold text-teal-800 hover:underline">Provincia de {p.nombre}</a>
+                    <p class="mt-1 text-sm text-slate-600">
+                      {euros(p.compra.m2)}/m² · {p.alquiler ? `${euros(p.alquiler.mes)}/mes` : '—'}
+                    </p>
+                    {ms.length > 0 && (
+                      <p class="mt-2 text-sm leading-relaxed">
+                        {ms.map((m, i) => (
+                          <>
+                            {i > 0 && <span class="text-slate-300"> · </span>}
+                            <a href={`/vivienda/${m.slug}`} class="text-slate-700 hover:text-teal-700 hover:underline">{m.nombre}</a>
+                          </>
+                        ))}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))
+      }
+      <p class="fuente">{miles(MUNICIPIOS.length)} municipios con datos oficiales de valor tasado y alquiler.</p>
+    </section>
+
+    <Herramientas titulo="Herramientas para tu búsqueda" />
+    <Autor />
+  </div>
+</BaseLayout>

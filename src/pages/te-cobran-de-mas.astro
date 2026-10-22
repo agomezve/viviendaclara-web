@@ -1,0 +1,185 @@
+---
+// Ruta: src/pages/te-cobran-de-mas.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { FUENTES, PROVINCIAS } from '../lib/datos';
+import alquileres from '../../public/datos/alquiler-municipios.json';
+
+const titulo = '¿Te cobran de más por el alquiler?';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: '¿Te cobran de más?' }];
+const provincias = Object.fromEntries(PROVINCIAS.map((p) => [p.codigo, p.nombre]));
+
+const preguntas = [
+  {
+    q: '¿De dónde salen los precios de referencia?',
+    a: `Del Sistema Estatal de Referencia del Precio del Alquiler (SERPAVI) del Ministerio de Vivienda. Recoge los contratos de alquiler de pisos declarados a Hacienda en ${FUENTES.alquiler.periodo}: para cada municipio da el precio por m² que paga el 25 % más barato, la mitad y el 25 % más caro.`,
+  },
+  {
+    q: 'Si pago más que la mayoría, ¿es ilegal?',
+    a: 'No necesariamente. En general el precio del alquiler es libre. Solo en las zonas declaradas de mercado residencial tensionado la Ley 12/2023 de vivienda puede limitar el precio de los contratos nuevos. Pregunta en tu comunidad autónoma o ayuntamiento si tu zona lo es.',
+  },
+  {
+    q: '¿Por qué mi piso puede ser más caro que la media y estar bien?',
+    a: 'Porque la cifra es la del municipio entero. Un piso reformado, con ascensor, terraza o en el centro cuesta más que la media. Úsalo para saber si un precio es normal, alto o muy alto, y para negociar con datos.',
+  },
+  {
+    q: '¿Y si el precio es mucho más bajo que lo normal?',
+    a: 'Desconfía. Un piso muy por debajo del 25 % más barato de la zona es una de las señales típicas de las estafas de alquiler. Mira nuestra lista para evitar estafas antes de pagar nada.',
+  },
+];
+---
+
+<BaseLayout
+  title="¿Te cobran de más? Compara tu alquiler con tu municipio"
+  heading={titulo}
+  description={`Compara lo que pagas de alquiler con lo que se paga de verdad en tu municipio según los contratos declarados a Hacienda. ${alquileres.length.toLocaleString('es-ES')} municipios.`}
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Herramienta">
+    <p>Pon tu municipio, lo que pagas y los metros del piso. Te decimos si estás en lo normal, por encima o muy por encima, con los contratos reales de tu municipio.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-cobran>
+    <div class="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
+      <form class="tarjeta space-y-5" novalidate>
+        <div class="relative">
+          <label for="municipio" class="etiqueta">Municipio</label>
+          <input id="municipio" type="text" class="entrada" placeholder="Cargando municipios…" disabled spellcheck="false" data-municipio />
+          <ul data-sugerencias hidden class="absolute inset-x-0 top-full z-30 mt-2 max-h-72 overflow-auto rounded-xl border border-slate-200 bg-white shadow-xl"></ul>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="renta" class="etiqueta">Lo que pagas (o te piden)</label>
+            <div class="con-sufijo"><input id="renta" name="renta" type="number" min="0" step="any" inputmode="numeric" class="entrada" placeholder="Ej.: 850" /><span class="sufijo">€/mes</span></div>
+          </div>
+          <div>
+            <label for="m2" class="etiqueta">Metros del piso</label>
+            <div class="con-sufijo"><input id="m2" name="m2" type="number" min="10" step="1" inputmode="numeric" class="entrada" placeholder="Ej.: 70" /><span class="sufijo">m²</span></div>
+            <span class="ayuda">Los del anuncio o el contrato.</span>
+          </div>
+        </div>
+      </form>
+
+      <div aria-live="polite">
+        <div data-vacio class="tarjeta text-slate-600">Elige tu municipio y pon lo que pagas y los metros.</div>
+        <section data-res hidden class="tarjeta">
+          <p data-veredicto class="rounded-2xl p-5 text-lg font-bold"></p>
+          <div class="mt-6">
+            <div class="relative h-3 rounded-full bg-gradient-to-r from-sky-200 via-teal-200 to-amber-200">
+              <div data-marca class="absolute -top-7 -translate-x-1/2 text-center">
+                <span class="block rounded bg-slate-900 px-1.5 py-0.5 text-[11px] font-bold text-white">Tú</span>
+                <span class="mx-auto block h-4 w-0.5 bg-slate-900"></span>
+              </div>
+            </div>
+          </div>
+          <dl class="mt-6 grid grid-cols-3 gap-3 text-center">
+            <div class="dato"><dt class="dato-nombre">25 % más barato</dt><dd data-p25 class="mt-1 font-bold tabular-nums"></dd></div>
+            <div class="dato"><dt class="dato-nombre">Mediana</dt><dd data-p50 class="mt-1 font-bold tabular-nums"></dd></div>
+            <div class="dato"><dt class="dato-nombre">25 % más caro</dt><dd data-p75 class="mt-1 font-bold tabular-nums"></dd></div>
+          </dl>
+          <p data-detalle class="mt-4 leading-relaxed text-slate-700"></p>
+          <p class="fuente mt-4">
+            Contratos de alquiler de pisos de {FUENTES.alquiler.periodo} declarados a Hacienda (<a href={FUENTES.alquiler.url} rel="noopener" target="_blank">SERPAVI, Ministerio de Vivienda</a>). Los alquileres han podido cambiar desde entonces.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+  <script type="application/json" id="datos-provincias" set:html={JSON.stringify(provincias)} />
+</BaseLayout>
+
+<script>
+  import { euros, decimal2, miles } from '../lib/calculos';
+  import { conectaLugar, leeDatos, numero } from '../scripts/lugar';
+
+  type Fila = [string, string, number, number | null, number | null, number | null, number | null, number | null];
+  const raiz = document.querySelector<HTMLElement>('[data-cobran]')!;
+  const form = raiz.querySelector('form')!;
+  const provincias = leeDatos<Record<string, string>>('datos-provincias');
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+  const input = $<HTMLInputElement>('[data-municipio]');
+  let filas: Fila[] = [];
+  let elegido: Fila | null = null;
+
+  fetch(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/datos/alquiler-municipios.json`)
+    .then((r) => r.json())
+    .then((datos: Fila[]) => {
+      filas = datos;
+      input.disabled = false;
+      input.placeholder = 'Escribe tu municipio';
+      conectaLugar(
+        input,
+        $<HTMLUListElement>('[data-sugerencias]'),
+        filas.map((f) => ({ clave: f[0], nombre: f[1], detalle: provincias[f[0].slice(0, 2)] ?? '' })),
+        (o) => {
+          elegido = o ? filas.find((f) => f[0] === o.clave) ?? null : null;
+          calcula();
+        },
+      );
+    })
+    .catch(() => {
+      input.placeholder = 'No se han podido cargar los datos. Recarga la página.';
+    });
+
+  function calcula() {
+    const renta = numero(form.querySelector('[name="renta"]'));
+    const m2 = numero(form.querySelector('[name="m2"]'));
+    const hay = !!elegido && renta > 0 && m2 > 0;
+    $('[data-vacio]').hidden = hay;
+    $('[data-res]').hidden = !hay;
+    if (!hay || !elegido) return;
+
+    const [, nombre, med, p25, p75, mes, sup, viviendas] = elegido;
+    const tuyo = renta / m2;
+    const bajo = p25 ?? med;
+    const alto = p75 ?? med;
+    $('[data-p25]').textContent = p25 ? `${decimal2(p25)} €/m²` : '—';
+    $('[data-p50]').textContent = `${decimal2(med)} €/m²`;
+    $('[data-p75]').textContent = p75 ? `${decimal2(p75)} €/m²` : '—';
+
+    let veredicto: string;
+    let color: string;
+    if (tuyo > alto * 1.2) {
+      veredicto = `Pagas mucho más que lo normal en ${nombre}.`;
+      color = 'bg-amber-50 text-amber-900';
+    } else if (tuyo > alto) {
+      veredicto = `Pagas más que 3 de cada 4 inquilinos de ${nombre}.`;
+      color = 'bg-amber-50 text-amber-900';
+    } else if (tuyo >= bajo) {
+      veredicto = `Tu alquiler está dentro de lo normal en ${nombre}.`;
+      color = 'bg-teal-50 text-teal-900';
+    } else if (tuyo >= bajo * 0.7) {
+      veredicto = `Pagas menos que 3 de cada 4 inquilinos de ${nombre}. Buen precio.`;
+      color = 'bg-sky-50 text-sky-900';
+    } else {
+      veredicto = `Es mucho más barato de lo normal en ${nombre}. Si aún no has firmado, revisa que no sea una estafa.`;
+      color = 'bg-rose-50 text-rose-900';
+    }
+    const ver = $('[data-veredicto]');
+    ver.className = `rounded-2xl p-5 text-lg font-bold ${color}`;
+    ver.textContent = veredicto;
+
+    const min = Math.min(bajo * 0.6, tuyo);
+    const max = Math.max(alto * 1.4, tuyo);
+    $('[data-marca]').style.left = `${(((tuyo - min) / (max - min)) * 100).toFixed(1)}%`;
+
+    const normal = med * m2;
+    $('[data-detalle]').textContent =
+      `Pagas ${decimal2(tuyo)} €/m² al mes. Al precio mediano, un piso de ${miles(m2)} m² en ${nombre} costaría ${euros(normal)} al mes` +
+      (renta > normal ? `: pagas ${euros(renta - normal)} más.` : `: pagas ${euros(normal - renta)} menos.`) +
+      (mes ? ` El alquiler mediano es de ${euros(mes)} al mes${sup ? ` por ${miles(sup)} m²` : ''}` : '') +
+      (viviendas ? `, con ${miles(viviendas)} pisos alquilados en los datos.` : '.');
+  }
+
+  form.addEventListener('input', calcula);
+  form.addEventListener('submit', (e) => e.preventDefault());
+</script>

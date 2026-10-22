@@ -1,0 +1,155 @@
+---
+// Ruta: src/pages/estafas-alquiler.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+
+const titulo = 'Cómo evitar estafas al alquilar piso';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: 'Evita estafas' }];
+
+const alarmas = [
+  ['Te piden dinero antes de ver el piso', 'Una «reserva», una «señal» o la fianza por adelantado para enseñártelo o «guardártelo». Es la estafa más común.'],
+  ['El precio es mucho más bajo que el de la zona', 'Si está muy por debajo de lo que paga la mayoría en ese municipio, desconfía. Compruébalo con «¿Te cobran de más?».'],
+  ['El dueño está fuera y no puede enseñarlo', 'Dice que vive en el extranjero, que te manda las llaves por mensajería o que una «agencia» gestiona el pago.'],
+  ['Prisa y presión', '«Hay muchos interesados», «si no pagas hoy se lo doy a otro». La prisa es para que no compruebes nada.'],
+  ['Pagos raros', 'Te piden Bizum a un particular, transferencias a cuentas extranjeras, tarjetas regalo, criptomonedas o servicios de envío de dinero.'],
+  ['Fotos de catálogo y anuncio copiado', 'Busca las fotos en Google Imágenes: si salen en otros anuncios o en otra ciudad, es falso.'],
+  ['No quiere contrato por escrito', 'O te manda uno sin datos del propietario ni de la vivienda. Sin contrato no tienes cómo reclamar.'],
+];
+
+const comprobaciones = [
+  'He visto el piso en persona (o por videollamada en directo moviéndose por la casa).',
+  'He comparado el precio con el de la zona y es razonable.',
+  'He pedido la nota simple al Registro de la Propiedad y el dueño que sale es quien me alquila.',
+  'He visto el DNI del propietario y coincide con la nota simple.',
+  'Tengo el contrato por escrito, con los datos de las dos partes y de la vivienda, antes de pagar.',
+  'La fianza es de 1 mes de renta y las garantías extra no pasan de 2 meses.',
+  'No me cobran los gastos de la agencia: por ley los paga el propietario.',
+  'Pago por transferencia a una cuenta española a nombre del propietario y guardo el justificante.',
+  'Me han dado las llaves y he comprobado que abren.',
+];
+
+const preguntas = [
+  {
+    q: '¿Cuánto me pueden pedir de fianza?',
+    a: 'La Ley de Arrendamientos Urbanos fija una fianza de 1 mes de renta en el alquiler de vivienda. Además, el casero puede pedir una garantía adicional (depósito o aval), que en los contratos de vivienda habitual de hasta 5 años (7 si el casero es una empresa) no puede pasar de 2 meses de renta.',
+  },
+  {
+    q: '¿Quién paga la comisión de la inmobiliaria?',
+    a: 'Desde la Ley de vivienda de 2023, los gastos de gestión inmobiliaria y de formalización del contrato los paga el propietario, no el inquilino.',
+  },
+  {
+    q: '¿Qué es la nota simple y cómo la pido?',
+    a: 'Es un resumen del Registro de la Propiedad que dice quién es el dueño de la vivienda y si tiene cargas. La puede pedir cualquiera por internet en la sede de los Registradores de España, con la dirección o la referencia catastral, pagando una pequeña tasa.',
+  },
+  {
+    q: 'Me han estafado, ¿qué hago?',
+    a: 'Llama a tu banco en el momento para intentar parar o recuperar la transferencia. Guarda todos los mensajes, el anuncio y los justificantes, y pon una denuncia en la Policía Nacional, la Guardia Civil o la policía de tu comunidad. Avisa también al portal donde viste el anuncio.',
+  },
+];
+---
+
+<BaseLayout
+  title="Estafas de alquiler: señales de alarma y qué revisar"
+  heading={titulo}
+  description="Las 7 señales de alarma de las estafas de alquiler y qué comprobar antes de pagar o firmar: nota simple, fianza legal, contrato y pagos seguros."
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Guía y lista">
+    <p>La regla de oro: no pagues nada sin haber visto el piso y sin saber quién es el dueño. Aquí tienes las señales de alarma y una lista para marcar antes de soltar un euro.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <section aria-labelledby="titulo-alarmas">
+      <h2 id="titulo-alarmas" class="text-2xl font-bold tracking-tight text-slate-900">7 señales de alarma</h2>
+      <ol class="mt-6 grid gap-4 md:grid-cols-2">
+        {
+          alarmas.map(([t, d], i) => (
+            <li class="flex gap-4 rounded-2xl border border-rose-100 bg-white p-5">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-rose-100 font-bold text-rose-700">{i + 1}</span>
+              <span>
+                <span class="block font-semibold text-slate-900">{t}</span>
+                <span class="mt-1 block text-sm leading-relaxed text-slate-600">{d}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section aria-labelledby="titulo-lista" class="tarjeta" data-lista>
+      <div class="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 id="titulo-lista" class="text-2xl font-bold tracking-tight text-slate-900">Antes de pagar o firmar</h2>
+          <p class="mt-1 text-sm text-slate-600">Ve marcando. Se guarda en tu navegador para que puedas volver.</p>
+        </div>
+        <p class="text-sm font-semibold text-teal-800"><span data-hechas>0</span> de {comprobaciones.length}</p>
+      </div>
+      <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-100"><div data-progreso class="h-full w-0 bg-teal-600 transition-all"></div></div>
+      <ul class="mt-6 space-y-3">
+        {
+          comprobaciones.map((c, i) => (
+            <li>
+              <label class="flex cursor-pointer items-start gap-3 rounded-xl p-2 hover:bg-slate-50">
+                <input type="checkbox" data-item={i} class="mt-0.5 h-5 w-5 shrink-0 accent-teal-700" />
+                <span class="text-slate-700">{c}</span>
+              </label>
+            </li>
+          ))
+        }
+      </ul>
+      <p data-listo hidden class="mt-4 rounded-xl bg-teal-50 px-4 py-3 font-semibold text-teal-900">Todo comprobado. Aun así, guarda el contrato y los justificantes de pago.</p>
+      <button type="button" data-borrar class="mt-4 text-sm font-semibold text-slate-500 hover:text-slate-800">Empezar de nuevo</button>
+    </section>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+</BaseLayout>
+
+<script>
+  const CLAVE = 'viviendaclara-lista-estafas';
+  const raiz = document.querySelector<HTMLElement>('[data-lista]')!;
+  const casillas = [...raiz.querySelectorAll<HTMLInputElement>('[data-item]')];
+
+  function lee(): number[] {
+    try {
+      return JSON.parse(localStorage.getItem(CLAVE) || '[]');
+    } catch {
+      return [];
+    }
+  }
+  function guarda() {
+    try {
+      localStorage.setItem(CLAVE, JSON.stringify(casillas.filter((c) => c.checked).map((c) => Number(c.dataset.item))));
+    } catch {
+      /* sin almacenamiento: la lista funciona igual, solo no se recuerda */
+    }
+  }
+  function pinta() {
+    const hechas = casillas.filter((c) => c.checked).length;
+    raiz.querySelector('[data-hechas]')!.textContent = String(hechas);
+    raiz.querySelector<HTMLElement>('[data-progreso]')!.style.width = `${(hechas / casillas.length) * 100}%`;
+    raiz.querySelector<HTMLElement>('[data-listo]')!.hidden = hechas !== casillas.length;
+  }
+
+  const guardadas = new Set(lee());
+  for (const c of casillas) {
+    c.checked = guardadas.has(Number(c.dataset.item));
+    c.addEventListener('change', () => {
+      guarda();
+      pinta();
+    });
+  }
+  raiz.querySelector('[data-borrar]')!.addEventListener('click', () => {
+    for (const c of casillas) c.checked = false;
+    guarda();
+    pinta();
+  });
+  pinta();
+</script>

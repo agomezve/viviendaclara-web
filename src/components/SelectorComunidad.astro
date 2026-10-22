@@ -1,0 +1,21 @@
+---
+// Ruta: src/components/SelectorComunidad.astro
+// <select> con las comunidades autónomas y Ceuta y Melilla, por orden alfabético.
+import { COMUNIDADES } from '../lib/datos';
+
+interface Props {
+  id?: string;
+  name?: string;
+  /** Código de la comunidad seleccionada al cargar (por defecto, Madrid). */
+  valor?: string;
+  /** Añade la opción «Toda España» (valor vacío) al principio. */
+  todas?: boolean;
+}
+const { id = 'ccaa', name = 'ccaa', valor = '13', todas = false } = Astro.props;
+const lista = [...COMUNIDADES].sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+---
+
+<select id={id} name={name} class="entrada">
+  {todas && <option value="" selected={valor === ''}>Toda España</option>}
+  {lista.map((c) => <option value={c.codigo} selected={c.codigo === valor}>{c.nombre}</option>)}
+</select>

@@ -1,0 +1,162 @@
+---
+// Ruta: src/components/SEO.astro
+// Etiquetas SEO del <head>: title, description, canonical, robots, Open Graph,
+// Twitter y JSON-LD de Schema.org (WebSite, página según schemaType, BreadcrumbList, Article y Person).
+// La imagen Open Graph de cada página (1200×630) la genera integrations/og-images.mjs tras el build.
+import { SITE, AUTHOR, absoluteUrl, stripBase } from '../config/site';
+import type { Crumb } from './Breadcrumbs.astro';
+
+export type SchemaType = 'WebPage' | 'Article' | 'CollectionPage' | 'AboutPage' | 'ContactPage';
+
+export interface ArticleMeta {
+  publishDate: Date;
+  updatedDate?: Date;
+  section: string;
+}
+
+export interface Props {
+  title: string;
+  /** Titular visible (H1). Se usa en el JSON-LD, en og:image:alt y en la imagen OG. Por defecto, `title`. */
+  heading?: string;
+  description: string;
+  canonicalURL: URL;
+  schemaType: SchemaType;
+  breadcrumbs?: Crumb[];
+  article?: ArticleMeta;
+  /** Fecha de los datos de la página (precios), para dateModified en el JSON-LD. */
+  modified?: Date;
+  noindex?: boolean;
+}
+
+const { title, heading = title, description, canonicalURL, schemaType, breadcrumbs = [], article, modified, noindex = false } =
+  Astro.props;
+
+const canonical = canonicalURL.toString();
+const isHome = canonical === absoluteUrl('/');
+// Máximo 60 caracteres: se añade « | Sitio» solo si cabe.
+const withSuffix = `${title} | ${SITE.name}`;
+const fullTitle = isHome ? SITE.homeTitle : withSuffix.length <= 60 ? withSuffix : title;
+const ogType = schemaType === 'Article' ? 'article' : 'website';
+
+// Imagen OG: /og/<ruta>.png (la portada, /og/index.png).
+const pagePath = stripBase(canonicalURL.pathname).replace(/\/+$/, '') || '/index';
+const ogImage = absoluteUrl(`/og${pagePath}.png`);
+const ogImageAlt = isHome ? `${SITE.name}: ${SITE.tagline}` : heading;
+const personId = `${SITE.url}/sobre-mi#persona`;
+const person = {
+  '@type': 'Person',
+  '@id': personId,
+  name: AUTHOR.name,
+  jobTitle: AUTHOR.jobTitle,
+  url: absoluteUrl(AUTHOR.href),
+  sameAs: AUTHOR.sameAs,
+};
+
+const websiteId = `${SITE.url}/#website`;
+const organizationId = `${SITE.url}/#organization`;
+const breadcrumbId = `${canonical}#breadcrumb`;
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: SITE.name,
+    url: SITE.url,
+  },
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: SITE.url,
+    name: SITE.name,
+    description: SITE.description,
+    inLanguage: 'es-ES',
+    publisher: { '@id': organizationId },
+  },
+];
+
+if (breadcrumbs.length > 0) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': breadcrumbId,
+    itemListElement: [{ name: 'Inicio', href: '/' }, ...breadcrumbs].map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      ...(crumb.href ? { item: absoluteUrl(crumb.href) } : {}),
+    })),
+  });
+}
+
+if (schemaType === 'Article' || schemaType === 'AboutPage') graph.push(person);
+
+if (schemaType === 'Article' && article) {
+  graph.push({
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: heading,
+    description,
+    image: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 },
+    inLanguage: 'es-ES',
+    mainEntityOfPage: canonical,
+    datePublished: article.publishDate.toISOString(),
+    dateModified: (article.updatedDate ?? article.publishDate).toISOString(),
+    articleSection: article.section,
+    author: { '@id': personId },
+    publisher: { '@id': organizationId },
+    isPartOf: { '@id': websiteId },
+    ...(breadcrumbs.length > 0 ? { breadcrumb: { '@id': breadcrumbId } } : {}),
+  });
+} else if (!isHome) {
+  graph.push({
+    '@type': schemaType,
+    '@id': canonical,
+    url: canonical,
+    name: heading,
+    description,
+    inLanguage: 'es-ES',
+    isPartOf: { '@id': websiteId },
+    ...(schemaType === 'AboutPage' ? { mainEntity: { '@id': personId } } : {}),
+    ...(modified ? { dateModified: modified.toISOString() } : {}),
+    ...(breadcrumbs.length > 0 ? { breadcrumb: { '@id': breadcrumbId } } : {}),
+  });
+}
+
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogImageAlt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={ogImageAlt} />
+{
+  article && (
+    <>
+      <meta property="article:published_time" content={article.publishDate.toISOString()} />
+      <meta
+        property="article:modified_time"
+        content={(article.updatedDate ?? article.publishDate).toISOString()}
+      />
+      <meta property="article:section" content={article.section} />
+      <meta property="article:author" content={AUTHOR.name} />
+    </>
+  )
+}
+
+<script type="application/ld+json" set:html={jsonLd} />

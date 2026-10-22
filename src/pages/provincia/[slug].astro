@@ -1,0 +1,135 @@
+---
+// Ruta: src/pages/provincia/[slug].astro
+// Una página por provincia: evolución del valor tasado, alquiler y sus municipios.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CabeceraPagina from '../../components/CabeceraPagina.astro';
+import BotonesPortales from '../../components/BotonesPortales.astro';
+import GraficaSerie from '../../components/GraficaSerie.astro';
+import Herramientas from '../../components/Herramientas.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import Faq from '../../components/Faq.astro';
+import Autor from '../../components/Autor.astro';
+import { PROVINCIAS, FUENTES, SUPERFICIE_REFERENCIA, comunidad, municipiosDe, ubicacionesPortales, trimestreLegible, type Provincia } from '../../lib/datos';
+import { euros, decimal1, decimal2, porcentaje, miles } from '../../lib/calculos';
+
+export function getStaticPaths() {
+  return PROVINCIAS.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props as { p: Provincia };
+const ccaa = comunidad(p.ccaa);
+const nacional = FUENTES.compra.nacional;
+const portales = ubicacionesPortales(undefined, p.codigo);
+const a = p.alquiler;
+const m2 = p.compra.m2!;
+const piso = m2 * SUPERFICIE_REFERENCIA;
+const serie = Object.entries(p.compra.serie).filter((e): e is [string, number] => e[1] != null);
+const [tIni, vIni] = serie[0];
+const subidaTotal = ((m2 - vIni) / vIni) * 100;
+const municipios = municipiosDe(p.codigo).sort((x, y) => (y.compra.m2 ?? 0) - (x.compra.m2 ?? 0));
+const ordenNacional = [...PROVINCIAS].filter((x) => x.compra.m2 != null).sort((x, y) => y.compra.m2! - x.compra.m2!);
+const puesto = ordenNacional.findIndex((x) => x.slug === p.slug) + 1;
+
+const titulo = `Precio de la vivienda en la provincia de ${p.nombre} (2026)`;
+const breadcrumbs = [{ name: 'Precios', href: '/precios' }, { name: `Provincia de ${p.nombre}` }];
+const descripcion = `En la provincia de ${p.nombre} el metro cuadrado se tasa a ${euros(m2)}${p.compra.variacionAnual != null ? ` (${p.compra.variacionAnual >= 0 ? '+' : ''}${porcentaje(p.compra.variacionAnual)} en un año)` : ''} y el alquiler mediano es de ${euros(a?.mes)} al mes. Evolución y municipios.`;
+
+const preguntas = [
+  {
+    q: `¿Cuánto ha subido la vivienda en la provincia de ${p.nombre}?`,
+    a: `El valor tasado medio pasó de ${euros(vIni)}/m² en el ${trimestreLegible(tIni)} a ${euros(m2)}/m² en el ${FUENTES.compra.periodo}: un ${porcentaje(subidaTotal)} ${subidaTotal >= 0 ? 'más' : 'menos'}.${p.compra.variacionAnual != null ? ` En el último año, un ${porcentaje(p.compra.variacionAnual)}.` : ''}`,
+  },
+  {
+    q: `¿Es cara la provincia de ${p.nombre}?`,
+    a: `Es la provincia número ${puesto} de ${ordenNacional.length} por valor tasado del metro cuadrado (1 = la más cara). Está ${m2 > nacional.m2 ? 'por encima' : 'por debajo'} de la media de España, que es de ${euros(nacional.m2)}/m².`,
+  },
+  ...(a
+    ? [
+        {
+          q: `¿Cuánto cuesta alquilar en la provincia de ${p.nombre}?`,
+          a: `El alquiler mediano de un piso fue de ${euros(a.mes)} al mes (${decimal2(a.m2)} €/m²) en los contratos de ${FUENTES.alquiler.periodo}${a.mesP25 && a.mesP75 ? `. La mitad de los contratos estuvo entre ${euros(a.mesP25)} y ${euros(a.mesP75)}` : ''}.`,
+        },
+      ]
+    : []),
+];
+---
+
+<BaseLayout
+  title={`Precio vivienda provincia de ${p.nombre} 2026`}
+  heading={titulo}
+  description={descripcion.length <= 155 ? descripcion : descripcion.replace(' Evolución y municipios.', '')}
+  breadcrumbs={breadcrumbs}
+  modified={new Date(FUENTES.actualizado)}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta={ccaa.nombre}>
+    <p>{descripcion}</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <p class="tarjeta"><span class="dato-nombre">Valor tasado medio</span><span class="dato-valor">{euros(m2)}/m²</span><span class="text-xs text-slate-500">{FUENTES.compra.periodo}</span></p>
+      <p class="tarjeta"><span class="dato-nombre">En un año</span><span class="dato-valor">{p.compra.variacionAnual != null ? `${p.compra.variacionAnual >= 0 ? '+' : ''}${porcentaje(p.compra.variacionAnual)}` : '—'}</span><span class="text-xs text-slate-500">España: +{porcentaje(nacional.variacionAnual)}</span></p>
+      <p class="tarjeta"><span class="dato-nombre">Piso de {SUPERFICIE_REFERENCIA} m²</span><span class="dato-valor">{euros(piso)}</span><span class="text-xs text-slate-500">al valor tasado medio</span></p>
+      <p class="tarjeta"><span class="dato-nombre">Alquiler mediano</span><span class="dato-valor">{a ? `${euros(a.mes)}/mes` : '—'}</span><span class="text-xs text-slate-500">{a ? `${decimal2(a.m2)} €/m² · contratos de ${FUENTES.alquiler.periodo}` : ''}</span></p>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-evolucion">
+      <h2 id="titulo-evolucion" class="text-xl font-bold text-slate-900">Evolución del precio del m² (valor tasado)</h2>
+      <p class="mt-1 text-sm text-slate-600">De {euros(vIni)} en el {trimestreLegible(tIni)} a {euros(m2)} en el {FUENTES.compra.periodo}: {subidaTotal >= 0 ? '+' : ''}{porcentaje(subidaTotal)}.</p>
+      <div class="mt-4"><GraficaSerie serie={p.compra.serie} descripcion={`Valor tasado medio por m² en la provincia de ${p.nombre} por trimestres`} /></div>
+      <p class="fuente mt-2">Fuente: <a href={FUENTES.compra.url} rel="noopener" target="_blank">{FUENTES.compra.fuente}</a>.</p>
+    </section>
+
+    <section class="grid gap-6 md:grid-cols-2">
+      <div class="tarjeta">
+        <h2 class="text-lg font-bold text-slate-900">Pisos en alquiler en la provincia</h2>
+        <p class="mt-1 mb-4 text-sm text-slate-600">Hasta {euros(a?.mes)} al mes, el alquiler mediano.</p>
+        <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="alquiler" max={a?.mes ?? undefined} />
+      </div>
+      <div class="tarjeta">
+        <h2 class="text-lg font-bold text-slate-900">Pisos en venta en la provincia</h2>
+        <p class="mt-1 mb-4 text-sm text-slate-600">Hasta {euros(Math.round(piso / 1000) * 1000)}, lo que cuesta de media uno de {SUPERFICIE_REFERENCIA} m².</p>
+        <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="compra" max={Math.round(piso / 1000) * 1000} />
+      </div>
+    </section>
+
+    <AdSlot format="horizontal" />
+
+    {
+      municipios.length > 0 && (
+        <section aria-labelledby="titulo-municipios">
+          <h2 id="titulo-municipios" class="text-2xl font-bold tracking-tight text-slate-900">Municipios de la provincia de {p.nombre}</h2>
+          <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th scope="col">Municipio</th>
+                  <th scope="col" class="text-right">Compra (€/m²)</th>
+                  <th scope="col" class="text-right">Piso de {SUPERFICIE_REFERENCIA} m²</th>
+                  <th scope="col" class="text-right">Alquiler mediano</th>
+                  <th scope="col" class="text-right">Años de renta</th>
+                </tr>
+              </thead>
+              <tbody>
+                {municipios.map((m) => (
+                  <tr>
+                    <td><a href={`/vivienda/${m.slug}`} class="font-semibold text-slate-900 hover:text-teal-700">{m.nombre}</a></td>
+                    <td class="text-right">{euros(m.compra.m2)}</td>
+                    <td class="text-right">{euros(m.compra.m2 ? m.compra.m2 * SUPERFICIE_REFERENCIA : null)}</td>
+                    <td class="text-right">{m.alquiler ? `${euros(m.alquiler.mes)}/mes` : '—'}</td>
+                    <td class="text-right">{decimal1(m.esfuerzoCompraAnios)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="fuente mt-3">Municipios con datos oficiales de valor tasado ({miles(municipios.length)} en esta provincia).</p>
+        </section>
+      )
+    }
+
+    <Faq preguntas={preguntas} titulo={`Preguntas sobre la provincia de ${p.nombre}`} />
+    <Herramientas titulo="Herramientas para tu búsqueda" />
+    <Autor />
+  </div>
+</BaseLayout>

@@ -1,0 +1,89 @@
+---
+// Ruta: src/pages/como-hacemos-este-contenido.astro
+// Transparencia: qué hace la IA, qué reviso yo, de dónde salen los datos y cada cuánto se actualizan.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalArticle from '../components/LegalArticle.astro';
+import { SITE, OWNER, AUTHOR, CHANNEL, CONTENT_PROCESS, LEGAL_UPDATED } from '../config/site';
+import { FUENTES, EURIBOR } from '../lib/datos';
+
+const title = CONTENT_PROCESS.title;
+
+const toc = [
+  { id: 'resumen', title: 'En pocas palabras' },
+  { id: 'ia', title: 'Qué hace la IA' },
+  { id: 'revision', title: 'Qué reviso yo' },
+  { id: 'datos', title: 'De dónde salen los datos' },
+  { id: 'actualizacion', title: 'Cada cuánto se actualiza' },
+  { id: 'errores', title: 'Si encuentras un error' },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={`Qué hace la IA en ${SITE.name}, qué revisa ${OWNER.name}, de dónde salen los precios oficiales de la vivienda y cada cuánto se actualizan.`}
+  schemaType="AboutPage"
+  breadcrumbs={[{ name: title }]}
+>
+  <LegalArticle
+    title={title}
+    lead={`${SITE.name} se hace con ayuda de inteligencia artificial y con revisión humana. Los precios, en cambio, no los toca ninguna IA: son los oficiales.`}
+    updated={LEGAL_UPDATED}
+    toc={toc}
+  >
+    <h2 id="resumen">En pocas palabras</h2>
+    <ul>
+      <li>La IA me ayuda a programar la web y a redactar las plantillas de texto.</li>
+      <li>Los precios vienen tal cual del Ministerio de Vivienda, de Hacienda y del INE; ninguna IA los escribe ni los modifica.</li>
+      <li>Los textos de cada municipio y provincia se calculan con esos datos: precios, metros, esfuerzo y comparaciones.</li>
+      <li>Cada página indica de qué periodo son las cifras que muestra.</li>
+    </ul>
+
+    <h2 id="ia">Qué hace la IA</h2>
+    <p>
+      La web la construí con un asistente de programación con IA, y el proceso completo, con los errores
+      que cometió por el camino, está en mi canal de YouTube
+      <a href={CHANNEL.url} rel="noopener" target="_blank">{CHANNEL.name}</a>. La IA escribió el código
+      que descarga los datos oficiales, hace los cálculos y genera las páginas, y me ayudó a redactar las
+      plantillas de los textos.
+    </p>
+    <p>
+      Esas plantillas cambian con los datos: si un municipio está más barato o más caro que su provincia,
+      el texto lo dice con la cifra oficial. No hay textos inventados, testimonios ni opiniones sobre
+      inmobiliarias o barrios concretos.
+    </p>
+
+    <h2 id="revision">Qué reviso yo</h2>
+    <ol>
+      <li><strong>Los datos</strong>: que lo que se descarga coincide con lo que publican las fuentes oficiales.</li>
+      <li><strong>Los cálculos</strong>: cuotas, impuestos y metros, con casos comprobados a mano.</li>
+      <li><strong>Las ayudas y los impuestos</strong>: copiados del BOE y de Hacienda, con el enlace a la norma.</li>
+      <li><strong>Los textos</strong>: que se entienden y que no dicen nada que los datos no respalden.</li>
+    </ol>
+    <p>
+      Lo que escribes en las calculadoras no sale de tu navegador. Más detalles sobre cómo se calcula cada
+      cifra en <a href={AUTHOR.href}>cómo funciona y sobre mí</a>.
+    </p>
+
+    <h2 id="datos">De dónde salen los datos</h2>
+    <ul>
+      <li><strong>Compra:</strong> <a href={FUENTES.compra.url} rel="noopener" target="_blank">{FUENTES.compra.fuente}</a>.</li>
+      <li><strong>Alquiler:</strong> <a href={FUENTES.alquiler.url} rel="noopener" target="_blank">{FUENTES.alquiler.fuente}</a>.</li>
+      <li><strong>Renta:</strong> <a href={FUENTES.renta.url} rel="noopener" target="_blank">{FUENTES.renta.fuente}</a>.</li>
+      <li><strong>Euríbor:</strong> <a href={EURIBOR.url} rel="noopener" target="_blank">{EURIBOR.fuente}</a>.</li>
+    </ul>
+
+    <h2 id="actualizacion">Cada cuánto se actualiza</h2>
+    <ul>
+      <li><strong>Euríbor</strong>: la web se regenera cada semana y recoge el último dato mensual publicado.</li>
+      <li><strong>Precios de compra</strong>: cada trimestre, cuando el Ministerio publica el nuevo valor tasado.</li>
+      <li><strong>Alquiler y renta</strong>: una vez al año, cuando se publican los nuevos datos oficiales.</li>
+      <li><strong>Impuestos y ayudas</strong>: se revisan cuando cambia la norma y, como mínimo, cada año.</li>
+    </ul>
+
+    <h2 id="errores">Si encuentras un error</h2>
+    <p>
+      Escríbeme a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> o desde la página de
+      <a href="/contacto">contacto</a>.
+    </p>
+  </LegalArticle>
+</BaseLayout>

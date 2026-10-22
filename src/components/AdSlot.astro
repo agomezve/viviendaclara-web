@@ -1,0 +1,61 @@
+---
+// Ruta: src/components/AdSlot.astro
+// Bloque de anuncio de Google AdSense con espacio reservado para evitar saltos de diseño (CLS).
+//
+// Comportamiento:
+// - Con client id válido y slot id (prop o ADSENSE.slots en src/config/site.ts): muestra la
+//   etiqueta "Publicidad" y el bloque <ins class="adsbygoogle"> listo para servir anuncios.
+// - Sin configurar, en producción: no renderiza nada (no se publican huecos vacíos).
+// - Sin configurar, en desarrollo (npm run dev): muestra un marcador discontinuo del mismo tamaño.
+import { ADSENSE, isAdSenseEnabled, type AdFormat } from '../config/site';
+
+interface Props {
+  slotId?: string;
+  format?: AdFormat;
+  class?: string;
+}
+
+const { slotId, format = 'horizontal', class: className } = Astro.props;
+
+const clientId = ADSENSE.clientId.trim();
+const slot = (slotId ?? ADSENSE.slots[format]).trim();
+const enabled = isAdSenseEnabled() && /^\d+$/.test(slot);
+const showPlaceholder = !enabled && import.meta.env.DEV;
+
+// Alto mínimo reservado por formato.
+const minHeight = format === 'horizontal' ? 'min-h-[100px]' : 'min-h-[250px]';
+
+// Atributos de AdSense según el formato.
+const adAttributes =
+  format === 'in-article'
+    ? { 'data-ad-layout': 'in-article', 'data-ad-format': 'fluid', style: 'display:block;text-align:center' }
+    : { 'data-ad-format': format, 'data-full-width-responsive': 'true', style: 'display:block' };
+---
+
+{
+  enabled && (
+    <aside aria-label="Publicidad" class:list={['my-8', className]}>
+      <p class="mb-1 text-center text-[11px] uppercase tracking-wider text-slate-400">Publicidad</p>
+      <div class:list={['w-full overflow-hidden', minHeight]}>
+        <ins class="adsbygoogle" data-ad-client={clientId} data-ad-slot={slot} {...adAttributes} />
+      </div>
+      <script is:inline>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
+  )
+}
+
+{
+  showPlaceholder && (
+    <aside aria-hidden="true" class:list={['my-8', className]}>
+      <p class="mb-1 text-center text-[11px] uppercase tracking-wider text-slate-400">Publicidad</p>
+      <div
+        class:list={[
+          'grid w-full place-items-center rounded-lg px-4 text-center border border-dashed border-slate-300 bg-slate-100 text-xs text-slate-400',
+          minHeight,
+        ]}
+      >
+        Espacio reservado · {format} · configura ADSENSE en src/config/site.ts
+      </div>
+    </aside>
+  )
+}

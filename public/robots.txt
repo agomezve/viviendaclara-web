@@ -1,0 +1,6 @@
+# Ruta: public/robots.txt
+# Si cambias de dominio, actualiza esta URL (ver astro.config.mjs).
+User-agent: *
+Allow: /
+
+Sitemap: https://viviendaclara.aarongomezvera.es/sitemap-index.xml

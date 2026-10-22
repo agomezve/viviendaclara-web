@@ -1,0 +1,236 @@
+---
+// Ruta: src/pages/cuanto-puedo-pagar.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import SelectorComunidad from '../components/SelectorComunidad.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { EURIBOR, IMPUESTOS, mesLegible } from '../lib/datos';
+import { porcentaje } from '../lib/calculos';
+
+const titulo = '¿Cuánto puedo pagar de alquiler o de piso?';
+const breadcrumbs = [{ name: 'Herramientas', href: '/herramientas' }, { name: '¿Cuánto puedo pagar?' }];
+const datos = { impuestos: IMPUESTOS.comunidades, iva: IMPUESTOS.ivaViviendaNueva, euribor: EURIBOR.valor };
+
+const preguntas = [
+  {
+    q: '¿Qué parte del sueldo debería ir a la vivienda?',
+    a: 'La recomendación habitual es que el alquiler o la cuota de la hipoteca no pasen del 30 % o el 35 % de los ingresos netos. Por encima, cualquier imprevisto te deja sin margen. En la calculadora puedes mover ese porcentaje.',
+  },
+  {
+    q: '¿Cuánto dinero ahorrado necesito para comprar?',
+    a: 'Normalmente el banco presta hasta el 80 % del precio (o del valor de tasación, el menor). El 20 % restante y todos los impuestos y gastos los pones tú. Con el aval del ICO para jóvenes y familias con hijos, el préstamo puede llegar al 100 % del precio.',
+  },
+  {
+    q: '¿Por qué mis deudas bajan lo que puedo pagar?',
+    a: 'Porque el banco suma todas tus cuotas (coche, préstamos personales, tarjetas aplazadas) para ver qué parte de tu sueldo ya está comprometida. Lo que pagas por otras deudas se resta de lo que te queda para la vivienda.',
+  },
+];
+---
+
+<BaseLayout
+  title="¿Cuánto puedo pagar de alquiler o hipoteca? Calculadora"
+  heading={titulo}
+  description="Con tu sueldo y tus ahorros, calcula el alquiler máximo y el precio de piso que te puedes permitir, con la hipoteca y los impuestos de tu comunidad."
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Calculadora">
+    <p>Pon lo que entra en casa cada mes y lo que tienes ahorrado. Te decimos el alquiler máximo razonable y el piso más caro que podrías comprar, y qué te frena: la cuota o los ahorros.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6" data-calc>
+    <div class="grid gap-6 lg:grid-cols-[1fr_1.15fr]">
+      <form class="tarjeta space-y-5" novalidate>
+        <div>
+          <label for="ingresos" class="etiqueta">Ingresos netos al mes del hogar</label>
+          <div class="con-sufijo">
+            <input id="ingresos" name="ingresos" type="number" min="0" step="any" inputmode="decimal" class="entrada" placeholder="Ej.: 2200" />
+            <span class="sufijo">€/mes</span>
+          </div>
+          <span class="ayuda">Lo que cobráis entre todos los que vais a pagar la casa, ya sin impuestos. Si tenéis pagas extra, repártelas entre 12.</span>
+        </div>
+        <div>
+          <label for="deudas" class="etiqueta">Otras deudas al mes</label>
+          <div class="con-sufijo">
+            <input id="deudas" name="deudas" type="number" min="0" step="any" inputmode="decimal" class="entrada" value="0" />
+            <span class="sufijo">€/mes</span>
+          </div>
+          <span class="ayuda">Préstamo del coche, préstamos personales, compras a plazos…</span>
+        </div>
+        <div>
+          <label for="pct" class="etiqueta">Parte del sueldo para la vivienda: <output data-pct-txt>30 %</output></label>
+          <input id="pct" name="pct" type="range" min="20" max="40" step="1" value="30" class="w-full accent-teal-700" />
+          <span class="ayuda">Lo prudente es no pasar del 30 %–35 %.</span>
+        </div>
+
+        <fieldset class="space-y-5 border-t border-slate-200 pt-5">
+          <legend class="text-base font-bold text-slate-900">Si quieres comprar</legend>
+          <div>
+            <label for="ahorros" class="etiqueta">Ahorros para la compra</label>
+            <div class="con-sufijo">
+              <input id="ahorros" name="ahorros" type="number" min="0" step="any" inputmode="decimal" class="entrada" placeholder="Ej.: 40000" />
+              <span class="sufijo">€</span>
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="ccaa" class="etiqueta">Comunidad autónoma</label>
+              <SelectorComunidad />
+            </div>
+            <div>
+              <span class="etiqueta">Vivienda</span>
+              <div class="grid grid-cols-2 gap-2">
+                <label class="pastilla"><input type="radio" name="tipo" value="usada" class="sr-only" checked />Usada</label>
+                <label class="pastilla"><input type="radio" name="tipo" value="nueva" class="sr-only" />Nueva</label>
+              </div>
+            </div>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="interes" class="etiqueta">Interés de la hipoteca</label>
+              <div class="con-sufijo">
+                <input id="interes" name="interes" type="number" min="0" max="15" step="0.01" inputmode="decimal" class="entrada" value={EURIBOR.valor} />
+                <span class="sufijo">% anual</span>
+              </div>
+              <span class="ayuda">Por defecto, el Euríbor de {mesLegible(EURIBOR.mes)} ({porcentaje(EURIBOR.valor, 2)}) sin diferencial. Pon el tipo que te ofrezca tu banco.</span>
+            </div>
+            <div>
+              <label for="plazo" class="etiqueta">Plazo</label>
+              <div class="con-sufijo">
+                <input id="plazo" name="plazo" type="number" min="5" max="40" step="1" inputmode="numeric" class="entrada" value="30" />
+                <span class="sufijo">años</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="otros" class="etiqueta">Notaría, registro, gestoría y tasación</label>
+            <div class="con-sufijo">
+              <input id="otros" name="otros" type="number" min="0" step="any" inputmode="decimal" class="entrada" placeholder="Pide presupuesto" />
+              <span class="sufijo">€</span>
+            </div>
+            <span class="ayuda">Dependen del precio y de cada profesional, así que no nos los inventamos: pide presupuesto y ponlo aquí.</span>
+          </div>
+          <label class="flex items-start gap-3 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
+            <input type="checkbox" name="ico" class="mt-0.5 h-4 w-4 accent-teal-700" />
+            <span>Pido el <a href="/ayudas#aval-ico" class="font-semibold text-teal-700 hover:underline">aval del ICO</a> (35 años o menos, o familia con menores a cargo): el banco puede prestar hasta el 100 % del precio.</span>
+          </label>
+        </fieldset>
+      </form>
+
+      <div class="space-y-6" aria-live="polite">
+        <div data-vacio class="tarjeta text-slate-600">Pon tus ingresos netos para ver el resultado.</div>
+        <section data-res hidden class="tarjeta">
+          <h2 class="text-lg font-bold text-slate-900">Alquiler</h2>
+          <p class="mt-3 rounded-2xl bg-teal-50 p-5">
+            <span class="block text-sm text-teal-900">Alquiler máximo recomendable</span>
+            <span data-alquiler class="block text-4xl font-extrabold tracking-tight text-teal-800 tabular-nums"></span>
+          </p>
+          <a data-buscar-alquiler href="/" class="boton mt-4 w-full sm:w-auto">Buscar alquileres con este presupuesto</a>
+        </section>
+        <section data-res hidden class="tarjeta">
+          <h2 class="text-lg font-bold text-slate-900">Compra</h2>
+          <div data-sin-ahorros class="mt-3 text-slate-600">Pon tus ahorros para calcular el precio máximo de compra.</div>
+          <div data-compra hidden>
+            <p class="mt-3 rounded-2xl bg-teal-50 p-5">
+              <span class="block text-sm text-teal-900">Precio máximo del piso</span>
+              <span data-precio class="block text-4xl font-extrabold tracking-tight text-teal-800 tabular-nums"></span>
+              <span data-limita class="mt-2 block text-sm text-teal-900"></span>
+            </p>
+            <dl class="mt-4 divide-y divide-slate-100 text-sm">
+              <div class="flex justify-between py-2"><dt class="text-slate-600">Hipoteca</dt><dd data-d-hipoteca class="font-semibold tabular-nums"></dd></div>
+              <div class="flex justify-between py-2"><dt class="text-slate-600">Cuota al mes</dt><dd data-d-cuota class="font-semibold tabular-nums"></dd></div>
+              <div class="flex justify-between py-2"><dt class="text-slate-600">Entrada que pones tú</dt><dd data-d-entrada class="font-semibold tabular-nums"></dd></div>
+              <div class="flex justify-between py-2"><dt data-d-imp-nombre class="text-slate-600">Impuestos</dt><dd data-d-impuestos class="font-semibold tabular-nums"></dd></div>
+              <div class="flex justify-between py-2"><dt class="text-slate-600">Notaría, registro y demás</dt><dd data-d-otros class="font-semibold tabular-nums"></dd></div>
+              <div class="flex justify-between py-2"><dt class="font-semibold text-slate-900">Ahorros que necesitas</dt><dd data-d-total class="font-bold tabular-nums"></dd></div>
+            </dl>
+            <p data-aviso-imp hidden class="nota mt-4"></p>
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+              <a data-buscar-compra href="/" class="boton">Buscar pisos a este precio</a>
+              <a data-donde href="/donde-me-llega" class="boton-secundario">¿Dónde me llega?</a>
+            </div>
+          </div>
+        </section>
+        <p class="fuente">
+          Impuestos: tipos generales de 2026 (<a href={IMPUESTOS.fuente.url} rel="noopener" target="_blank">Ministerio de Hacienda</a>), sin las rebajas para jóvenes, familias numerosas u otros casos que tiene cada comunidad. Es una estimación: el banco decide con sus propios criterios.
+        </p>
+      </div>
+    </div>
+
+    <AdSlot format="horizontal" />
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+  <script type="application/json" id="datos-calc" set:html={JSON.stringify(datos)} />
+</BaseLayout>
+
+<script>
+  import { euros, capitalConCuota, cuotaHipoteca, impuestosCompra, precioMaximoPorAhorros, type ImpuestosComunidad } from '../lib/calculos';
+  import { leeDatos, numero } from '../scripts/lugar';
+
+  const raiz = document.querySelector<HTMLElement>('[data-calc]')!;
+  const form = raiz.querySelector('form')!;
+  const d = leeDatos<{ impuestos: Record<string, ImpuestosComunidad>; iva: number }>('datos-calc');
+  const $ = <T extends HTMLElement>(s: string) => raiz.querySelector<T>(s)!;
+  const campo = (n: string) => form.querySelector<HTMLInputElement>(`[name="${n}"]`);
+
+  function calcula() {
+    const ingresos = numero(campo('ingresos'));
+    const deudas = numero(campo('deudas')) || 0;
+    const pct = Number(campo('pct')!.value);
+    $('[data-pct-txt]').textContent = `${pct} %`;
+    const hay = Number.isFinite(ingresos) && ingresos > 0;
+    $('[data-vacio]').hidden = hay;
+    raiz.querySelectorAll<HTMLElement>('[data-res]').forEach((el) => (el.hidden = !hay));
+    if (!hay) return;
+
+    const paraVivienda = Math.max(0, (ingresos * pct) / 100 - deudas);
+    $('[data-alquiler]').textContent = `${euros(paraVivienda)}/mes`;
+    $<HTMLAnchorElement>('[data-buscar-alquiler]').href = `/?op=alquiler&max=${Math.round(paraVivienda)}`;
+
+    const ahorros = numero(campo('ahorros'));
+    const conAhorros = Number.isFinite(ahorros) && ahorros > 0;
+    $('[data-sin-ahorros]').hidden = conAhorros;
+    $('[data-compra]').hidden = !conAhorros;
+    if (!conAhorros) return;
+
+    const interes = numero(campo('interes')) || 0;
+    const plazo = numero(campo('plazo')) || 30;
+    const otros = numero(campo('otros')) || 0;
+    const nueva = form.querySelector<HTMLInputElement>('[name="tipo"]:checked')?.value === 'nueva';
+    const financiacion = campo('ico')!.checked ? 1 : 0.8;
+    const ccaa = d.impuestos[(form.querySelector('[name="ccaa"]') as HTMLSelectElement).value];
+    const impuestos = (p: number) => impuestosCompra(p, ccaa, nueva, d.iva);
+
+    const porCuota = capitalConCuota(paraVivienda, interes, plazo) / financiacion;
+    const porAhorros = precioMaximoPorAhorros(ahorros, financiacion, otros, (p) => impuestos(p).total);
+    const precio = Math.max(0, Math.min(porCuota, porAhorros));
+    const hipoteca = precio * financiacion;
+    const imp = impuestos(precio);
+
+    $('[data-precio]').textContent = euros(precio);
+    $('[data-limita]').textContent =
+      porAhorros < porCuota
+        ? `Te frenan los ahorros: con la cuota podrías llegar a ${euros(porCuota)}.`
+        : `Te frena la cuota: con tus ahorros podrías llegar a ${euros(porAhorros)}.`;
+    $('[data-d-hipoteca]').textContent = euros(hipoteca);
+    $('[data-d-cuota]').textContent = `${euros(cuotaHipoteca(hipoteca, interes, plazo))}/mes`;
+    $('[data-d-entrada]').textContent = euros(precio - hipoteca);
+    $('[data-d-imp-nombre]').textContent = nueva ? 'IVA y actos jurídicos documentados' : 'Impuesto de transmisiones (ITP)';
+    $('[data-d-impuestos]').textContent = imp.desconocido ? 'Sin calcular' : euros(imp.total);
+    $('[data-d-otros]').textContent = otros ? euros(otros) : 'Sin incluir';
+    $('[data-d-total]').textContent = euros(precio - hipoteca + imp.total + otros);
+    const aviso = $('[data-aviso-imp]');
+    aviso.hidden = !imp.desconocido;
+    if (imp.desconocido) aviso.textContent = `${nueva && ccaa.nuevaSinIva ? ccaa.nuevaSinIva : ccaa.foral ?? ''} El resultado no incluye este impuesto, así que necesitarás más ahorros.`;
+    $<HTMLAnchorElement>('[data-buscar-compra]').href = `/?op=compra&max=${Math.round(precio)}`;
+    $<HTMLAnchorElement>('[data-donde]').href = `/donde-me-llega?op=compra&max=${Math.round(precio)}`;
+  }
+
+  form.addEventListener('input', calcula);
+  form.addEventListener('submit', (e) => e.preventDefault());
+  calcula();
+</script>

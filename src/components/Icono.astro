@@ -1,0 +1,27 @@
+---
+// Ruta: src/components/Icono.astro
+// Iconos de línea (24×24) de las herramientas.
+interface Props {
+  nombre: string;
+  class?: string;
+}
+const { nombre, class: clase = 'h-6 w-6' } = Astro.props;
+const RUTAS: Record<string, string> = {
+  buscar: 'M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z',
+  cartera: 'M3 7.5A2.5 2.5 0 0 1 5.5 5H18a1 1 0 0 1 1 1v2M3 7.5V17a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3M3 7.5h17v4.5M20 12h-4a1.5 1.5 0 0 0 0 3h4v-3Z',
+  mapa: 'M9 4 3 6.5v13L9 17m0-13 6 2.5M9 4v13m6-10.5L21 4v13l-6 2.5m0-13v13m0 0L9 17',
+  recibo: 'M6 3h12v18l-3-2-3 2-3-2-3 2V3Zm3 5h6m-6 4h6m-6 4h3',
+  banco: 'M3 10 12 4l9 6M5 10v8m4.5-8v8m5-8v8M19 10v8M3 20h18',
+  balanza: 'M12 4v16m-7 0h14M6 8h12M6 8l-3 7a3 3 0 0 0 6 0L6 8Zm12 0-3 7a3 3 0 0 0 6 0l-3-7Z',
+  lupa: 'M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15ZM10.5 7.5v6m-3-3h6',
+  mano: 'M7 11V6.5a1.5 1.5 0 0 1 3 0V11m0-5.5V4.5a1.5 1.5 0 0 1 3 0V11m0-5a1.5 1.5 0 0 1 3 0v5m0-3a1.5 1.5 0 0 1 3 0v6a7 7 0 0 1-7 7h-1.2a6 6 0 0 1-4.6-2.2L3.6 14a1.5 1.5 0 0 1 2.3-2L7 13.5V11',
+  grafica: 'M4 20V10m6 10V4m6 16v-7m4 7H2',
+  escudo: 'M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Zm-3 9 2 2 4-4',
+  casa: 'M3 11 12 4l9 7M5.5 9.5V20h13V9.5M10 20v-5h4v5',
+  externo: 'M14 4h6v6m0-6-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5',
+};
+---
+
+<svg class={clase} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <path d={RUTAS[nombre] ?? RUTAS.casa}></path>
+</svg>

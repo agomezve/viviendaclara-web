@@ -1,0 +1,20 @@
+---
+// Ruta: src/components/AdSenseScript.astro
+// Carga el script de Google AdSense solo si hay un client id válido en src/config/site.ts.
+// El consentimiento de usuarios del EEE/Reino Unido/Suiza lo gestiona la CMP
+// certificada de Google (AdSense > Privacidad y mensajes), que se sirve con este mismo script.
+import { ADSENSE, isAdSenseEnabled } from '../config/site';
+
+const clientId = ADSENSE.clientId.trim();
+---
+
+{
+  isAdSenseEnabled() && (
+    <script
+      is:inline
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
+      crossorigin="anonymous"
+    />
+  )
+}
