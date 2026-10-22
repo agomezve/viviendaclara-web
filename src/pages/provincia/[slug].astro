@@ -4,6 +4,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CabeceraPagina from '../../components/CabeceraPagina.astro';
 import BotonesPortales from '../../components/BotonesPortales.astro';
+import AYUDAS from '../../data/ayudas.json';
 import GraficaSerie from '../../components/GraficaSerie.astro';
 import Herramientas from '../../components/Herramientas.astro';
 import AdSlot from '../../components/AdSlot.astro';
@@ -91,6 +92,25 @@ const preguntas = [
         <p class="mt-1 mb-4 text-sm text-slate-600">Hasta {euros(Math.round(piso / 1000) * 1000)}, lo que cuesta de media uno de {SUPERFICIE_REFERENCIA} m².</p>
         <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="compra" max={Math.round(piso / 1000) * 1000} />
       </div>
+    </section>
+
+    <section class="tarjeta" aria-labelledby="titulo-habitaciones">
+      <h2 id="titulo-habitaciones" class="text-xl font-bold text-slate-900">Habitaciones en alquiler en la provincia de {p.nombre}</h2>
+      <p class="mt-2 text-slate-600">
+        ¿Buscas una habitación en un piso compartido? Ábrelas ya filtradas por precio en los portales. Elige tu tope:
+      </p>
+      <div class="mt-4 grid gap-5 sm:grid-cols-3">
+        {[300, 400, 500].map((tope) => (
+          <div>
+            <p class="mb-2 text-sm font-semibold text-slate-800">Hasta {euros(tope)} al mes</p>
+            <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="habitacion" max={tope} />
+          </div>
+        ))}
+      </div>
+      <p class="nota mt-4">
+        Si tienes 35 años o menos, la ayuda estatal al alquiler para jóvenes puede darte hasta {euros(AYUDAS.alquilerJoven.ayudaMax.habitacion)} al mes
+        por una habitación. <a href="/ayudas" class="font-semibold text-teal-700 hover:underline">Comprueba si te toca</a>.
+      </p>
     </section>
 
     <AdSlot format="horizontal" />

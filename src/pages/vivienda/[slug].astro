@@ -154,6 +154,25 @@ const preguntas = [
       </div>
     </section>
 
+    <section class="tarjeta" aria-labelledby="titulo-habitaciones">
+      <h2 id="titulo-habitaciones" class="text-xl font-bold text-slate-900">Habitaciones en alquiler en {m.nombre}</h2>
+      <p class="mt-2 text-slate-600">
+        ¿Buscas una habitación en un piso compartido? Ábrelas ya filtradas por precio en los portales. Elige tu tope:
+      </p>
+      <div class="mt-4 grid gap-5 sm:grid-cols-3">
+        {[300, 400, 500].map((tope) => (
+          <div>
+            <p class="mb-2 text-sm font-semibold text-slate-800">Hasta {euros(tope)} al mes</p>
+            <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="habitacion" max={tope} />
+          </div>
+        ))}
+      </div>
+      <p class="nota mt-4">
+        Si tienes 35 años o menos, la ayuda estatal al alquiler para jóvenes puede darte hasta {euros(AYUDAS.alquilerJoven.ayudaMax.habitacion)} al mes
+        por una habitación. <a href="/ayudas" class="font-semibold text-teal-700 hover:underline">Comprueba si te toca</a>.
+      </p>
+    </section>
+
     <section class="rounded-3xl bg-teal-800 p-6 text-white sm:p-8">
       <h2 class="text-2xl font-bold">¿Tienes otro presupuesto?</h2>
       <p class="mt-2 max-w-2xl text-teal-50">Pon lo que puedes pagar y te decimos para qué te da en {m.nombre}, con los pisos que encajan en Idealista y Fotocasa.</p>

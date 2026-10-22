@@ -93,9 +93,8 @@ function iniciar(raiz: HTMLElement) {
     if (f.operacion === 'habitacion') {
       titulo.textContent = `Habitaciones en ${nombre}`;
       cifra.parentElement!.hidden = true;
-      detalle.textContent =
-        'No hay estadística oficial del precio de las habitaciones por municipio, así que aquí no te damos una cifra. Abre la búsqueda con tu presupuesto en Idealista.';
-      fuente.textContent = '';
+      detalle.textContent = `No hay estadística oficial del precio de las habitaciones, así que aquí no te damos una cifra. Abre las habitaciones disponibles con tu presupuesto en Idealista y Fotocasa.${l.am ? ` Como referencia, un piso entero se alquila por una mediana de ${euros(l.am)} al mes.` : ''}`;
+      fuente.textContent = l.am ? 'Alquiler mediano de un piso: contratos de 2024 declarados a Hacienda (SERPAVI, Ministerio de Vivienda).' : '';
     } else if (f.operacion === 'alquiler') {
       titulo.textContent = `Alquilar en ${nombre}${max ? ` con ${euros(max)} al mes` : ''}`;
       if (max && l.am2) {

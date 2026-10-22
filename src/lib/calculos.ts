@@ -181,13 +181,12 @@ export function urlIdealista(ubicacion: string, f: FiltrosPortal): string {
   return `https://www.idealista.com/${ruta}/${ubicacion}/${filtros.length ? `${filtros.join(',')}/` : ''}`;
 }
 
-/** URL de búsqueda en Fotocasa. `ubicacion`: slug de Fotocasa («madrid-capital», «getafe»). */
+/** URL de búsqueda en Fotocasa. `ubicacion`: slug de Fotocasa («madrid-capital», «getafe»). Habitaciones: sección «compartir». */
 export function urlFotocasa(ubicacion: string, f: FiltrosPortal): string | null {
-  if (f.operacion === 'habitacion') return null;
-  const ruta = f.operacion === 'alquiler' ? 'alquiler' : 'comprar';
+  const ruta = f.operacion === 'habitacion' ? 'compartir' : f.operacion === 'alquiler' ? 'alquiler' : 'comprar';
   const params = new URLSearchParams();
   if (f.max && f.max > 0) params.set('maxPrice', String(Math.round(f.max)));
-  if (f.dormitorios && f.dormitorios > 0) params.set('minRooms', String(Math.min(f.dormitorios, 4)));
+  if (f.operacion !== 'habitacion' && f.dormitorios && f.dormitorios > 0) params.set('minRooms', String(Math.min(f.dormitorios, 4)));
   const q = params.toString();
   return `https://www.fotocasa.es/es/${ruta}/viviendas/${ubicacion}/todas-las-zonas/l${q ? `?${q}` : ''}`;
 }
