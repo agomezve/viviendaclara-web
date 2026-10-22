@@ -1,0 +1,66 @@
+---
+// Ruta: src/components/Guia.astro
+// Plantilla de las guías: cabecera, artículo, anuncio, FAQ, guías relacionadas, herramientas y autor.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from './CabeceraPagina.astro';
+import Herramientas from './Herramientas.astro';
+import AdSlot from './AdSlot.astro';
+import Faq from './Faq.astro';
+import Autor from './Autor.astro';
+import { GUIAS, guia } from '../data/guias';
+
+interface Props {
+  slug: string;
+  preguntas?: { q: string; a: string }[];
+}
+const { slug, preguntas = [] } = Astro.props;
+const g = guia(slug);
+const breadcrumbs = [{ name: 'Guías', href: '/guias' }, { name: g.titulo }];
+const fecha = new Date(g.fecha);
+const revisada = g.revisada ? new Date(g.revisada) : undefined;
+const fechaTexto = (revisada ?? fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+const otras = GUIAS.filter((o) => o.slug !== slug).slice(0, 3);
+---
+
+<BaseLayout
+  title={g.tituloSeo}
+  heading={g.titulo}
+  description={g.descripcion}
+  schemaType="Article"
+  article={{ publishDate: fecha, updatedDate: revisada, section: 'Guías' }}
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={g.titulo} breadcrumbs={breadcrumbs} etiqueta="Guía">
+    <p>{g.resumen}</p>
+    <p class="mt-2 text-sm text-slate-500">Actualizada el {fechaTexto}</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <article class="texto mx-auto max-w-3xl">
+      <slot />
+    </article>
+
+    <AdSlot format="horizontal" />
+
+    {preguntas.length > 0 && <Faq preguntas={preguntas} />}
+
+    <section aria-labelledby="titulo-otras-guias">
+      <h2 id="titulo-otras-guias" class="text-2xl font-bold tracking-tight text-slate-900">Otras guías</h2>
+      <ul class="mt-6 grid gap-4 md:grid-cols-3">
+        {
+          otras.map((o) => (
+            <li>
+              <a href={`/guias/${o.slug}`} class="tarjeta block h-full transition hover:border-teal-300 hover:shadow-md">
+                <span class="block font-semibold text-slate-900">{o.titulo}</span>
+                <span class="mt-2 block text-sm text-slate-600">{o.resumen}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <Herramientas />
+    <Autor />
+  </div>
+</BaseLayout>

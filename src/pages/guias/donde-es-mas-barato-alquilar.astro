@@ -1,0 +1,104 @@
+---
+// Ruta: src/pages/guias/donde-es-mas-barato-alquilar.astro
+// Ranking calculado en el build con los datos de SERPAVI de los municipios de más de 25.000 habitantes.
+import Guia from '../../components/Guia.astro';
+import { MUNICIPIOS, FUENTES, provincia } from '../../lib/datos';
+import { euros, decimal2, porcentaje, miles } from '../../lib/calculos';
+
+const conAlquiler = MUNICIPIOS.filter((m) => m.alquiler?.mes);
+const porPrecio = [...conAlquiler].sort((a, b) => a.alquiler!.mes! - b.alquiler!.mes!);
+const baratos = porPrecio.slice(0, 15);
+const caros = porPrecio.slice(-15).reverse();
+const conEsfuerzo = conAlquiler.filter((m) => m.esfuerzoAlquilerPct != null);
+const menosEsfuerzo = [...conEsfuerzo].sort((a, b) => a.esfuerzoAlquilerPct! - b.esfuerzoAlquilerPct!).slice(0, 10);
+const masEsfuerzo = [...conEsfuerzo].sort((a, b) => b.esfuerzoAlquilerPct! - a.esfuerzoAlquilerPct!).slice(0, 10);
+const masBarato = baratos[0];
+const masCaro = caros[0];
+
+const preguntas = [
+  {
+    q: '¿De dónde salen estos precios?',
+    a: `Del ${FUENTES.alquiler.fuente}. ${FUENTES.alquiler.nota} Son contratos de ${FUENTES.alquiler.periodo}, el último año publicado.`,
+  },
+  {
+    q: '¿Por qué los anuncios son más caros?',
+    a: 'Porque los datos de Hacienda incluyen todos los contratos en vigor, también los firmados hace años a precios más bajos, mientras que los anuncios son los precios de hoy. Además, el precio de un anuncio no siempre es el que se firma al final.',
+  },
+  {
+    q: '¿Qué es la mediana?',
+    a: 'Es el precio del contrato que queda justo en el medio: la mitad de los inquilinos paga menos y la otra mitad, más. Se usa en lugar de la media para que unos pocos pisos de lujo no inflen la cifra.',
+  },
+];
+---
+
+<Guia slug="donde-es-mas-barato-alquilar" preguntas={preguntas}>
+  <p>
+    Hemos ordenado los {conAlquiler.length} municipios de más de 25.000 habitantes por lo que se paga de verdad de alquiler,
+    según los contratos de {FUENTES.alquiler.periodo} declarados a Hacienda. El más barato es
+    <a href={`/vivienda/${masBarato.slug}`}>{masBarato.nombre}</a>, con una mediana de {euros(masBarato.alquiler!.mes)} al mes,
+    y el más caro, <a href={`/vivienda/${masCaro.slug}`}>{masCaro.nombre}</a>, con {euros(masCaro.alquiler!.mes)}.
+  </p>
+
+  <h2>Los 15 municipios más baratos para alquilar</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Municipio</th><th>Alquiler mediano</th><th>€/m²</th></tr>
+    </thead>
+    <tbody>
+      {
+        baratos.map((m, i) => (
+          <tr>
+            <td>{i + 1}</td>
+            <td><a href={`/vivienda/${m.slug}`}>{m.nombre}</a> <span class="text-slate-500">({provincia(m.provincia).nombre})</span></td>
+            <td>{euros(m.alquiler!.mes)}/mes</td>
+            <td>{decimal2(m.alquiler!.m2)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>Los 15 municipios más caros para alquilar</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Municipio</th><th>Alquiler mediano</th><th>€/m²</th></tr>
+    </thead>
+    <tbody>
+      {
+        caros.map((m, i) => (
+          <tr>
+            <td>{i + 1}</td>
+            <td><a href={`/vivienda/${m.slug}`}>{m.nombre}</a> <span class="text-slate-500">({provincia(m.provincia).nombre})</span></td>
+            <td>{euros(m.alquiler!.mes)}/mes</td>
+            <td>{decimal2(m.alquiler!.m2)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>Barato no siempre es asequible: el esfuerzo</h2>
+  <p>
+    Un alquiler bajo en un municipio con sueldos bajos puede costar tanto esfuerzo como uno caro en una ciudad rica. Por eso
+    también lo hemos comparado con la renta neta media de un hogar del municipio ({FUENTES.renta.fuente}, {FUENTES.renta.periodo}).
+  </p>
+  <h3>Donde el alquiler se lleva menos parte del sueldo</h3>
+  <ol>
+    {menosEsfuerzo.map((m) => <li><a href={`/vivienda/${m.slug}`}>{m.nombre}</a>: {porcentaje(m.esfuerzoAlquilerPct)} de la renta ({euros(m.alquiler!.mes)}/mes con {euros(m.rentaHogar)} al año).</li>)}
+  </ol>
+  <h3>Donde se lleva más</h3>
+  <ol>
+    {masEsfuerzo.map((m) => <li><a href={`/vivienda/${m.slug}`}>{m.nombre}</a>: {porcentaje(m.esfuerzoAlquilerPct)} de la renta ({euros(m.alquiler!.mes)}/mes con {euros(m.rentaHogar)} al año).</li>)}
+  </ol>
+  <p>
+    Tienes los {miles(MUNICIPIOS.length)} municipios ordenados por esfuerzo de compra y de alquiler en el
+    <a href="/esfuerzo">ranking de esfuerzo</a>.
+  </p>
+
+  <h2>Busca con tu presupuesto</h2>
+  <p>
+    Con el <a href="/donde-me-llega">¿Dónde me llega?</a> pones lo que puedes pagar y los metros que necesitas y te dice en qué
+    municipios encaja. Y en el <a href="/">buscador</a> abres los pisos o habitaciones disponibles de cada uno en Idealista y
+    Fotocasa con tu precio máximo.
+  </p>
+</Guia>

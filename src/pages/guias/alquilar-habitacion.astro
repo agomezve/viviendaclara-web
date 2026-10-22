@@ -1,0 +1,96 @@
+---
+// Ruta: src/pages/guias/alquilar-habitacion.astro
+import Guia from '../../components/Guia.astro';
+import AYUDAS from '../../data/ayudas.json';
+import { euros, miles } from '../../lib/calculos';
+
+const aj = AYUDAS.alquilerJoven;
+const ag = AYUDAS.alquilerGeneral;
+
+const preguntas = [
+  {
+    q: '¿El alquiler de una habitación se rige por la Ley de Arrendamientos Urbanos?',
+    a: 'No siempre. La LAU regula el alquiler de una vivienda completa. Cuando alquilas solo una habitación y compartes el resto del piso, muchos tribunales aplican el Código Civil y lo que diga el contrato. Por eso es tan importante que todo lo que acordéis (precio, duración, fianza, gastos, preaviso) esté por escrito.',
+  },
+  {
+    q: '¿Me puedo empadronar en una habitación alquilada?',
+    a: 'Sí. El empadronamiento refleja dónde vives de verdad, y el ayuntamiento debe inscribirte si demuestras que vives allí, normalmente con el contrato. Lo necesitarás para la tarjeta sanitaria y para pedir muchas ayudas, también las del alquiler.',
+  },
+  {
+    q: '¿Hay ayudas para pagar una habitación?',
+    a: `Sí. El Plan Estatal de Vivienda 2026-2030 incluye la habitación en sus ayudas al alquiler: hasta ${euros(aj.ayudaMax.habitacion)} al mes si tienes 35 años o menos y hasta ${euros(ag.ayudaMax.habitacion)} en la ayuda general, con un alquiler de la habitación de ${euros(aj.rentaMax.habitacion)} como máximo. Las convoca y paga cada comunidad autónoma.`,
+  },
+  {
+    q: '¿Cuánto cuesta una habitación en mi ciudad?',
+    a: 'No existe una estadística oficial del precio de las habitaciones por municipio. Lo más fiable es mirar los anuncios de tu zona con tu presupuesto en los portales; en el buscador de ViviendaClara puedes abrirlos ya filtrados.',
+  },
+];
+---
+
+<Guia slug="alquilar-habitacion" preguntas={preguntas}>
+  <p>
+    Alquilar una habitación es la forma más barata de vivir en muchas ciudades, pero también donde más contratos
+    informales y más estafas hay. Esto es lo que conviene comprobar antes de pagar nada.
+  </p>
+
+  <h2>1. Busca con tu presupuesto real</h2>
+  <p>
+    Decide primero cuánto puedes pagar al mes <strong>con los gastos incluidos</strong> (luz, agua, gas e internet) y
+    busca con ese tope. En el <a href="/?op=habitacion">buscador de ViviendaClara</a> eliges «Habitación», tu ciudad
+    y tu presupuesto, y te abre las habitaciones disponibles en Idealista y Fotocasa ya filtradas por precio.
+  </p>
+
+  <h2>2. Antes de pagar: visita y pregunta</h2>
+  <ul>
+    <li><strong>Visita la habitación</strong> en persona, o por videollamada en directo moviéndose por la casa. Nunca pagues una «reserva» por una habitación que no has visto.</li>
+    <li><strong>Pregunta quién vive en el piso</strong>, cuántas personas comparten baño y cocina y si alguien más está a punto de entrar.</li>
+    <li><strong>Pregunta quién te alquila</strong>: el propietario o un inquilino que subarrienda. Si es un inquilino, pide ver que el dueño le permite subarrendar; si no, te puedes quedar sin habitación de un día para otro.</li>
+    <li><strong>Aclara los gastos</strong>: si están incluidos en el precio, si se reparten a partes iguales o según consumo, y cómo se pagan.</li>
+  </ul>
+
+  <h2>3. Todo por escrito</h2>
+  <p>
+    Cuando alquilas solo una habitación, a menudo no se aplica la Ley de Arrendamientos Urbanos sino el Código Civil y
+    lo que firméis. Por eso el contrato es tu única protección. Debe recoger, como mínimo:
+  </p>
+  <ul>
+    <li>Los datos de las dos partes y la dirección, con la habitación concreta que alquilas.</li>
+    <li>El precio, qué incluye y cómo y cuándo se paga.</li>
+    <li>La duración y el preaviso para irte o para que te pidan que te vayas.</li>
+    <li>La fianza y cuándo se devuelve.</li>
+    <li>Las zonas comunes que puedes usar y las normas de la casa, si las hay.</li>
+  </ul>
+  <p>
+    Haz fotos de la habitación y de los muebles el día que entres y mándalas por escrito a quien te alquila: te
+    servirán para recuperar la fianza.
+  </p>
+
+  <h2>4. Paga de forma que quede rastro</h2>
+  <p>
+    Paga por transferencia a una cuenta española a nombre de quien firma el contrato y guarda los justificantes.
+    Desconfía de quien te pide dinero en efectivo sin recibo, tarjetas regalo, criptomonedas o envíos de dinero a otro país.
+    Tienes más señales de alarma en la guía de <a href="/estafas-alquiler">estafas en el alquiler</a>.
+  </p>
+
+  <h2>5. Empadrónate y pide las ayudas</h2>
+  <p>
+    Con el contrato te puedes empadronar, y lo necesitarás para pedir las ayudas al alquiler. El Plan Estatal de
+    Vivienda 2026-2030 incluye las habitaciones:
+  </p>
+  <ul>
+    <li>
+      <strong>Si tienes 35 años o menos:</strong> hasta {euros(aj.ayudaMax.habitacion)} al mes, sin pasar del
+      {aj.pctMax} % del alquiler, si la habitación cuesta {euros(aj.rentaMax.habitacion)} o menos
+      ({euros(aj.rentaMaxPequeno.habitacion)} en municipios de {miles(AYUDAS.compraJoven.habitantesMax)} habitantes o menos)
+      y tus ingresos no pasan de {aj.vecesIprem} veces el IPREM. Te lo explicamos en la
+      <a href="/guias/ayuda-alquiler-jovenes">guía de la ayuda al alquiler para jóvenes</a>.
+    </li>
+    <li>
+      <strong>A cualquier edad:</strong> la ayuda general da hasta {euros(ag.ayudaMax.habitacion)} al mes por una habitación
+      de hasta {euros(ag.rentaMax.habitacion)}.
+    </li>
+  </ul>
+  <p>
+    Comprueba en un minuto si cumples los requisitos con la herramienta de <a href="/ayudas">ayudas a la vivienda</a>.
+  </p>
+</Guia>

@@ -1,0 +1,74 @@
+---
+// Ruta: src/pages/guias/aval-ico-hipoteca-jovenes.astro
+import Guia from '../../components/Guia.astro';
+import AYUDAS from '../../data/ayudas.json';
+import { IMPUESTOS } from '../../lib/datos';
+import { euros, cuotaITP } from '../../lib/calculos';
+
+const ico = AYUDAS.ico;
+// Ejemplo: piso usado de 200.000 € en la Comunidad de Madrid, con los tipos generales.
+const precio = 200000;
+const madrid = IMPUESTOS.comunidades['13'];
+const itpMadrid = madrid.itp ? cuotaITP(precio, madrid.itp) : 0;
+
+const preguntas = [
+  {
+    q: '¿El aval ICO es una ayuda que te dan dinero?',
+    a: 'No. El Estado no te da dinero: avala una parte de tu hipoteca ante el banco. Así el banco puede prestarte más de lo habitual, hasta el 100 % del precio. La hipoteca la devuelves entera.',
+  },
+  {
+    q: '¿Dónde se pide?',
+    a: `En tu banco, siempre que esté adherido a la línea del ICO. No se pide en el ICO. Puedes consultar los bancos adheridos y los límites en la web del ICO o en el teléfono ${ico.telefono}.`,
+  },
+  {
+    q: '¿Necesito ahorros aunque me financien el 100 %?',
+    a: 'Sí. El aval cubre la parte del precio que normalmente pones de entrada, pero no los impuestos de la compra (ITP o IVA y AJD) ni la notaría, el registro y la gestoría. Esos gastos los tienes que pagar con tus ahorros.',
+  },
+];
+---
+
+<Guia slug="aval-ico-hipoteca-jovenes" preguntas={preguntas}>
+  <p>
+    Los bancos suelen prestar como mucho el 80 % del precio de una vivienda, así que necesitas ahorrar el 20 % de entrada
+    más los gastos. La línea de avales del ICO para la primera vivienda sirve para saltarse esa entrada: el Estado avala
+    una parte del préstamo y el banco puede financiar hasta el 100 %.
+  </p>
+
+  <h2>Quién puede pedirlo</h2>
+  <ul>
+    <li><strong>Jóvenes de {ico.edadMax} años o menos</strong>, o <strong>familias con menores a su cargo</strong>, sin límite de edad.</li>
+    <li>Que compren su <strong>primera vivienda</strong> para vivir en ella.</li>
+    <li>Con un <strong>patrimonio de hasta {euros(ico.patrimonioMax)}</strong> por persona.</li>
+    <li>Con unos <strong>ingresos por debajo del límite de su provincia</strong>: depende de dónde compres, así que consúltalo en la web del ICO.</li>
+    <li>La vivienda no puede pasar del <strong>precio máximo de tu comunidad</strong>.</li>
+  </ul>
+  <p>
+    Los límites exactos de ingresos y de precio están en la
+    <a href={ico.url} rel="noopener" target="_blank">página de la línea de avales del ICO</a>.
+  </p>
+
+  <h2>Qué cubre y qué no</h2>
+  <p>
+    El banco puede prestarte hasta el 100 % del precio o del valor de tasación, el que sea menor. Lo que <strong>no</strong>
+    cubre son los gastos de la compra. Por ejemplo, en un piso usado de {euros(precio)} en la Comunidad de Madrid, solo el
+    Impuesto de Transmisiones Patrimoniales con el tipo general son {euros(itpMadrid)}, y a eso se suman la notaría, el registro y
+    la gestoría. Calcula los de tu caso en <a href={`/gastos-compra?precio=${precio}&ccaa=13`}>gastos de comprar</a> y lee la
+    <a href="/guias/gastos-comprar-casa">guía de los gastos de comprar casa</a>.
+  </p>
+
+  <h2>Cuánto puedes comprar con el aval</h2>
+  <p>
+    Que te financien el 100 % no significa que el banco te preste lo que quieras: va a mirar que la cuota no se coma
+    demasiada parte de tus ingresos. En <a href="/cuanto-puedo-pagar">¿Cuánto puedo pagar?</a> marca la casilla del aval ICO
+    y te calculamos el precio máximo con tus ingresos y tus ahorros. Para ver la cuota mes a mes, usa la
+    <a href="/hipoteca">calculadora de hipoteca</a>.
+  </p>
+
+  <h2>Pasos para pedirlo</h2>
+  <ol>
+    <li>Comprueba en la web del ICO los límites de ingresos de tu provincia y el precio máximo de tu comunidad.</li>
+    <li>Ahorra para los impuestos y gastos de la compra.</li>
+    <li>Pregunta en varios bancos adheridos: cada uno pone sus condiciones de tipo de interés y vinculación.</li>
+    <li>Pide la hipoteca con el aval en el banco que elijas; ellos tramitan el aval con el ICO.</li>
+  </ol>
+</Guia>

@@ -1,0 +1,101 @@
+---
+// Ruta: src/pages/guias/gastos-comprar-casa.astro
+import Guia from '../../components/Guia.astro';
+import { COMUNIDADES, IMPUESTOS } from '../../lib/datos';
+import { euros, describeITP, pctCorto, impuestosCompra } from '../../lib/calculos';
+
+const PRECIO = 200000;
+const iva = IMPUESTOS.ivaViviendaNueva;
+const filas = [...COMUNIDADES]
+  .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
+  .map((c) => {
+    const imp = IMPUESTOS.comunidades[c.codigo];
+    return {
+      c,
+      imp,
+      usada: impuestosCompra(PRECIO, imp, false, iva),
+      nueva: impuestosCompra(PRECIO, imp, true, iva),
+    };
+  });
+
+const preguntas = [
+  {
+    q: '¿Los impuestos se pagan sobre el precio de compra?',
+    a: 'En la vivienda usada, el ITP se paga sobre el precio de la escritura o sobre el valor de referencia del Catastro, el que sea mayor. En la vivienda nueva, el IVA y el AJD se calculan sobre el precio.',
+  },
+  {
+    q: '¿Quién paga los gastos de la hipoteca?',
+    a: 'Desde la Ley de Crédito Inmobiliario de 2019, el banco paga la notaría, el registro y la gestoría de la hipoteca, y el impuesto de la escritura del préstamo. Tú pagas la tasación y los gastos de la compraventa.',
+  },
+  {
+    q: '¿Hay rebajas para jóvenes o familias?',
+    a: 'Sí, muchas comunidades tienen tipos reducidos de ITP o AJD para jóvenes, familias numerosas, personas con discapacidad o viviendas de precio bajo. No están en esta tabla porque cambian mucho de una comunidad a otra: consulta la web de Hacienda de tu comunidad.',
+  },
+];
+---
+
+<Guia slug="gastos-comprar-casa" preguntas={preguntas}>
+  <p>
+    Al precio de la casa hay que sumarle los impuestos y los gastos de la compra, que no los cubre la hipoteca. Es el dinero
+    que más gente olvida al calcular cuánto necesita ahorrar.
+  </p>
+
+  <h2>Los impuestos: dependen de si la casa es nueva o usada</h2>
+  <ul>
+    <li><strong>Vivienda usada (segunda mano):</strong> pagas el Impuesto de Transmisiones Patrimoniales (ITP), que fija cada comunidad.</li>
+    <li><strong>Vivienda nueva (primera venta del promotor):</strong> pagas el IVA del {iva} % y el Impuesto de Actos Jurídicos Documentados (AJD), que también fija cada comunidad.</li>
+  </ul>
+
+  <h2>Cuánto pagas en cada comunidad por una casa de {euros(PRECIO)}</h2>
+  <p>
+    Con los tipos generales de 2026 (<a href={IMPUESTOS.fuente.url} rel="noopener" target="_blank">{IMPUESTOS.fuente.nombre}</a>),
+    sin reducciones personales:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Comunidad</th><th>ITP</th><th>Usada</th><th>Nueva (IVA + AJD)</th></tr>
+    </thead>
+    <tbody>
+      {
+        filas.map(({ c, imp, usada, nueva }) => (
+          <tr>
+            <td>{c.nombre}</td>
+            {imp.itp ? (
+              <>
+                <td>{describeITP(imp.itp)}</td>
+                <td>{euros(usada.total)}</td>
+                <td>{nueva.desconocido ? 'IGIC, no IVA' : `${euros(nueva.total)} (AJD ${pctCorto(imp.ajd!)})`}</td>
+              </>
+            ) : (
+              <td colspan="3">Normativa propia: consulta su Hacienda</td>
+            )}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p>
+    En Canarias la vivienda nueva paga IGIC en lugar de IVA. Navarra, el País Vasco, Ceuta y Melilla tienen sus propios
+    tipos: en la <a href="/gastos-compra">calculadora de gastos</a> tienes el enlace a cada Hacienda.
+  </p>
+
+  <h2>El resto de gastos</h2>
+  <ul>
+    <li><strong>Notaría</strong> de la compraventa: sus honorarios están regulados por arancel y dependen del precio y de las páginas de la escritura.</li>
+    <li><strong>Registro de la Propiedad:</strong> también por arancel.</li>
+    <li><strong>Gestoría</strong>, si la contratas para tramitar los impuestos y la inscripción.</li>
+    <li><strong>Tasación</strong>, si pides hipoteca: la pagas tú.</li>
+  </ul>
+  <p>
+    Como estos importes dependen de cada caso, pide presupuesto a la notaría y a la gestoría antes de firmar. En la
+    <a href={`/gastos-compra?precio=${PRECIO}`}>calculadora de gastos de compra</a> puedes añadirlos para ver el total.
+  </p>
+
+  <h2>Cuánto dinero necesitas ahorrado</h2>
+  <p>
+    Si el banco te presta el 80 %, necesitas el 20 % de entrada más todos los impuestos y gastos. Con el
+    <a href="/guias/aval-ico-hipoteca-jovenes">aval del ICO</a> te pueden financiar el 100 %, pero los impuestos y gastos los
+    sigues pagando tú. Calcula el precio máximo que te puedes permitir con tus ahorros en
+    <a href="/cuanto-puedo-pagar">¿Cuánto puedo pagar?</a>.
+  </p>
+</Guia>

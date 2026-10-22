@@ -1,0 +1,58 @@
+---
+// Ruta: src/pages/guias/fianza-alquiler.astro
+import Guia from '../../components/Guia.astro';
+
+const preguntas = [
+  {
+    q: '¿La fianza puede ser de 2 meses?',
+    a: 'En el alquiler de vivienda, la fianza legal es de 1 mes de renta. Además, el casero puede pedir una garantía adicional (un depósito o un aval bancario) de hasta 2 meses de renta en los contratos de vivienda habitual de hasta 5 años, o 7 si el casero es una empresa. En total, como mucho 3 meses.',
+  },
+  {
+    q: '¿Puedo usar la fianza para pagar el último mes?',
+    a: 'La ley no lo prevé: la fianza sirve para cubrir lo que debas al irte (rentas, suministros o daños más allá del desgaste normal). Si no pagas el último mes y el casero se lo cobra de la fianza, hacedlo por escrito y de mutuo acuerdo para evitar problemas.',
+  },
+  {
+    q: '¿Y si alquilo una habitación?',
+    a: 'Cuando alquilas solo una habitación muchas veces no se aplica la Ley de Arrendamientos Urbanos, sino el Código Civil y lo que diga el contrato. Por eso es importante que la cantidad de la fianza y cuándo se devuelve estén por escrito.',
+  },
+];
+---
+
+<Guia slug="fianza-alquiler" preguntas={preguntas}>
+  <p>
+    La fianza es el dinero que entregas al firmar el contrato para cubrir lo que puedas deber al irte. Las reglas están en el
+    artículo 36 de la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1994-26003" rel="noopener" target="_blank">Ley de Arrendamientos Urbanos</a>.
+  </p>
+
+  <h2>Cuánto te pueden pedir</h2>
+  <ul>
+    <li><strong>Fianza:</strong> 1 mes de renta en el alquiler de vivienda (2 meses en un local o una oficina).</li>
+    <li><strong>Garantía adicional:</strong> el casero puede pedir además un depósito o un aval. En los contratos de vivienda habitual de hasta 5 años (7 si el casero es una empresa) no puede pasar de <strong>2 meses de renta</strong>.</li>
+    <li><strong>Gastos de agencia:</strong> desde la Ley de vivienda de 2023, los honorarios de la inmobiliaria y de formalizar el contrato los paga el propietario, no tú.</li>
+  </ul>
+
+  <h2>Dónde va tu fianza</h2>
+  <p>
+    En la mayoría de comunidades autónomas el casero tiene que depositar la fianza en un organismo público (el instituto de
+    vivienda o la consejería de tu comunidad). Puedes preguntarle por el justificante del depósito.
+  </p>
+
+  <h2>Cómo recuperarla</h2>
+  <ol>
+    <li><strong>Al entrar:</strong> haz fotos y vídeo de todo el piso con fecha y mándalas al casero por escrito. Si hay inventario, fírmalo con él.</li>
+    <li><strong>Al irte:</strong> avisa con el preaviso del contrato, deja el piso limpio, haz otra vez fotos y entrega las llaves con un documento firmado o un mensaje que deje constancia de la fecha.</li>
+    <li><strong>El plazo:</strong> si pasa un mes desde que devuelves las llaves y no te la han devuelto, la cantidad pendiente empieza a generar el interés legal del dinero a tu favor.</li>
+    <li><strong>Qué pueden descontar:</strong> rentas o suministros pendientes y daños que no sean el desgaste normal por el uso. Pide por escrito el detalle de cualquier descuento.</li>
+  </ol>
+
+  <h2>Si no te la devuelven</h2>
+  <p>
+    Reclámala primero por escrito con un burofax, indicando la cantidad y un plazo. Si no responde, puedes ir a la oficina
+    de consumo o a la oficina de vivienda de tu comunidad y, en último caso, reclamarla en el juzgado. Para cantidades de
+    hasta 2.000 € puedes usar el proceso monitorio, que no necesita abogado ni procurador.
+  </p>
+  <p>
+    Antes de firmar, revisa también la guía de <a href="/estafas-alquiler">estafas en el alquiler</a> y comprueba si el precio
+    es razonable con <a href="/te-cobran-de-mas">¿Te cobran de más?</a>.
+  </p>
+</Guia>

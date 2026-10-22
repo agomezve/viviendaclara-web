@@ -198,6 +198,7 @@ export const NAV_LINKS = [
   { href: '/cuanto-puedo-pagar', title: '¿Cuánto puedo pagar?' },
   { href: '/herramientas', title: 'Herramientas' },
   { href: '/precios', title: 'Precios por ciudad' },
+  { href: '/guias', title: 'Guías' },
 ] as const;
 
 /** Las 10 herramientas, en el orden en que aparecen en portada y en /herramientas. */

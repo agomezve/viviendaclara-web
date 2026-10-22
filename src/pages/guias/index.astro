@@ -1,0 +1,41 @@
+---
+// Ruta: src/pages/guias/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CabeceraPagina from '../../components/CabeceraPagina.astro';
+import Herramientas from '../../components/Herramientas.astro';
+import Autor from '../../components/Autor.astro';
+import { GUIAS } from '../../data/guias';
+
+const titulo = 'Guías para alquilar y comprar vivienda';
+const breadcrumbs = [{ name: 'Guías' }];
+---
+
+<BaseLayout
+  title="Guías de vivienda: alquilar, comprar y ayudas"
+  heading={titulo}
+  description="Guías claras para alquilar una habitación o un piso y para comprar casa: ayudas, aval ICO, impuestos, fianza y dónde es más barato, con datos oficiales."
+  schemaType="CollectionPage"
+  breadcrumbs={breadcrumbs}
+>
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Guías">
+    <p>Lo que necesitas saber antes de alquilar o comprar, explicado sin jerga y con los datos y las normas oficiales enlazados.</p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <ul class="grid gap-4 md:grid-cols-2">
+      {
+        GUIAS.map((g) => (
+          <li>
+            <a href={`/guias/${g.slug}`} class="tarjeta block h-full transition hover:border-teal-300 hover:shadow-md">
+              <span class="block text-lg font-semibold text-slate-900">{g.titulo}</span>
+              <span class="mt-2 block text-slate-600">{g.resumen}</span>
+              <span class="mt-3 inline-block text-sm font-semibold text-teal-700">Leer la guía →</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <Herramientas titulo="Herramientas" />
+    <Autor />
+  </div>
+</BaseLayout>

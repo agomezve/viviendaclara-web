@@ -1,0 +1,81 @@
+---
+// Ruta: src/pages/guias/ayuda-alquiler-jovenes.astro
+import Guia from '../../components/Guia.astro';
+import AYUDAS from '../../data/ayudas.json';
+import { euros, miles } from '../../lib/calculos';
+
+const aj = AYUDAS.alquilerJoven;
+const iprem = AYUDAS.iprem;
+const limite = iprem.anual14 * aj.vecesIprem;
+
+const preguntas = [
+  {
+    q: '¿Hasta qué edad se puede pedir?',
+    a: `Hasta los ${aj.edadMax} años incluidos, es decir, si todavía no has cumplido ${aj.edadMax + 1}.`,
+  },
+  {
+    q: '¿Cuánto puedo ganar como máximo?',
+    a: `Tus ingresos no pueden pasar de ${aj.vecesIprem} veces el IPREM. Con el IPREM de ${iprem.anio} (${euros(iprem.mensual)} al mes, ${euros(iprem.anual14)} al año en 14 pagas) son ${euros(limite)} al año.`,
+  },
+  {
+    q: '¿Dónde se pide?',
+    a: 'En tu comunidad autónoma (o en Ceuta y Melilla), que es quien publica la convocatoria, fija los plazos y paga la ayuda. Las comunidades pueden añadir requisitos y el dinero de cada convocatoria es limitado.',
+  },
+  {
+    q: '¿Puedo pedirla si alquilo una habitación?',
+    a: `Sí. El alquiler de la habitación no puede pasar de ${euros(aj.rentaMax.habitacion)} al mes y la ayuda llega a ${euros(aj.ayudaMax.habitacion)}.`,
+  },
+];
+---
+
+<Guia slug="ayuda-alquiler-jovenes" preguntas={preguntas}>
+  <p>
+    El Plan Estatal de Vivienda 2026-2030 (<a href={AYUDAS.plan.url} rel="noopener" target="_blank">Real Decreto 326/2026</a>)
+    mantiene una ayuda al alquiler solo para jóvenes. Te resumimos los requisitos y la cuantía tal como aparecen en el
+    Real Decreto. Antes de pedirla, lee la convocatoria de tu comunidad: puede tener requisitos extra y sus propios plazos.
+  </p>
+
+  <h2>Quién puede pedirla</h2>
+  <ul>
+    <li><strong>Edad:</strong> {aj.edadMax} años o menos.</li>
+    <li><strong>Ingresos:</strong> hasta {aj.vecesIprem} veces el IPREM, {euros(limite)} al año en {iprem.anio}.</li>
+    <li><strong>Vivienda:</strong> tiene que ser tu vivienda habitual, con contrato de alquiler a tu nombre.</li>
+    <li><strong>No puedes</strong> ser propietario de otra vivienda, ni alquilar a un familiar de primer o segundo grado (padres, hijos, hermanos, abuelos, nietos).</li>
+  </ul>
+
+  <h2>Alquiler máximo</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Piso</th><th>Habitación</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>En general</td><td>{euros(aj.rentaMax.vivienda)}/mes</td><td>{euros(aj.rentaMax.habitacion)}/mes</td></tr>
+      <tr><td>Municipios de {miles(AYUDAS.compraJoven.habitantesMax)} habitantes o menos</td><td>{euros(aj.rentaMaxPequeno.vivienda)}/mes</td><td>{euros(aj.rentaMaxPequeno.habitacion)}/mes</td></tr>
+    </tbody>
+  </table>
+  <p>Las comunidades autónomas pueden subir estos límites en su convocatoria.</p>
+
+  <h2>Cuánto dan</h2>
+  <ul>
+    <li><strong>Piso:</strong> hasta {euros(aj.ayudaMax.vivienda)} al mes.</li>
+    <li><strong>Habitación:</strong> hasta {euros(aj.ayudaMax.habitacion)} al mes.</li>
+    <li>En los dos casos, sin pasar del <strong>{aj.pctMax} % del alquiler</strong>.</li>
+    <li>Se concede para <strong>{aj.anios} años</strong> y se puede prorrogar.</li>
+  </ul>
+  <p>
+    Por ejemplo, con un alquiler de 400 € al mes, el {aj.pctMax} % son {euros(400 * aj.pctMax / 100)}, así que cobrarías
+    {euros(Math.min(aj.ayudaMax.vivienda, 400 * aj.pctMax / 100))}. Con 900 €, el tope de {euros(aj.ayudaMax.vivienda)} es lo que manda.
+  </p>
+
+  <h2>Cómo pedirla, paso a paso</h2>
+  <ol>
+    <li>Comprueba en un minuto si cumples los requisitos básicos con nuestra herramienta de <a href="/ayudas">ayudas a la vivienda</a>.</li>
+    <li>Busca la convocatoria en la web de vivienda de tu comunidad autónoma y apunta el plazo.</li>
+    <li>Ten preparado el contrato de alquiler, el empadronamiento, los justificantes de pago y tu declaración de la renta o certificado de ingresos.</li>
+    <li>Presenta la solicitud dentro de plazo, por internet o en el registro que indique la convocatoria.</li>
+  </ol>
+  <p>
+    Si tienes más de {aj.edadMax} años, mira la ayuda general al alquiler en la página de <a href="/ayudas">ayudas</a>. Y si estás
+    pensando en comprar, el <a href="/guias/aval-ico-hipoteca-jovenes">aval del ICO</a> te puede ahorrar la entrada.
+  </p>
+</Guia>
