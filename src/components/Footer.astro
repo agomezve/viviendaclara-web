@@ -1,6 +1,6 @@
 ---
 // Ruta: src/components/Footer.astro
-import { SITE, CURRENT_PROJECT, HERRAMIENTAS, LEGAL_LINKS, PROJECTS, SITE_LINKS } from '../config/site';
+import { SITE, CURRENT_PROJECT, HERRAMIENTAS, LEGAL_LINKS, PROJECTS, SITE_LINKS, CHANNEL } from '../config/site';
 import { MUNICIPIOS } from '../lib/datos';
 
 const year = new Date().getFullYear();
@@ -10,6 +10,15 @@ const top = CIUDADES.map((s) => MUNICIPIOS.find((m) => m.slug === s)).filter((m)
 ---
 
 <footer class="mt-16 bg-slate-900 text-slate-300">
+  <div class="border-b border-slate-800">
+    <p class="mx-auto max-w-6xl px-4 py-5 text-sm leading-relaxed sm:px-6">
+      <span aria-hidden="true">🎬</span> <strong class="text-slate-50">Cómo hice esta web:</strong>
+      la construí con IA (Claude Code) y enseño el proceso y los números reales en mi canal de YouTube.
+      <a href={CHANNEL.url} rel="noopener" target="_blank" class="font-semibold text-slate-50 underline hover:text-teal-400">
+        Ver {CHANNEL.name} <span aria-hidden="true">→</span>
+      </a>
+    </p>
+  </div>
   <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:grid-cols-2 lg:grid-cols-5">
     <div>
       <p class="text-lg font-bold text-slate-50">Vivienda<span class="text-teal-400">Clara</span></p>
