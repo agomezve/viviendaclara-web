@@ -46,7 +46,7 @@ export const CONTACT = {
 } as const;
 
 /** Fecha de la última revisión de los textos legales. */
-export const LEGAL_UPDATED = '21 de octubre de 2026';
+export const LEGAL_UPDATED = '23 de octubre de 2026';
 
 /**
  * Google AdSense. Mismo editor que el resto de webs; cada dominio nuevo hay que añadirlo
@@ -178,7 +178,7 @@ export function isNewsletterEnabled(): boolean {
  * Google Analytics 4 ("G-XXXXXXXXXX"). Vacío: no se carga nada.
  * Con Consent Mode v2 todo empieza denegado; la CMP de Google (AdSense) actualiza el consentimiento.
  */
-export const GA4_ID = '';
+export const GA4_ID = 'G-DZ84DX2JWB';
 
 export function isAnalyticsEnabled(): boolean {
   return /^G-[A-Z0-9]+$/.test(GA4_ID.trim());
