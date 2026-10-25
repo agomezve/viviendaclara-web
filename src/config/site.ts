@@ -127,6 +127,12 @@ export const PROJECTS = [
     description: 'Busca piso según tu presupuesto, con datos oficiales',
   },
   {
+    id: 'puentes',
+    name: 'Vacacionable',
+    url: 'https://vacacionable.aarongomezvera.es',
+    description: 'Festivos, puentes y vacaciones de 2027',
+  },
+  {
     id: 'canal',
     name: CHANNEL.name,
     url: CHANNEL.url,
