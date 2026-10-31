@@ -4,7 +4,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LegalArticle from '../components/LegalArticle.astro';
 import { SITE, OWNER, AUTHOR, CHANNEL, CONTENT_PROCESS, LEGAL_UPDATED } from '../config/site';
-import { FUENTES, EURIBOR } from '../lib/datos';
+import { FUENTES, EURIBOR, MUNICIPIOS, SUPERFICIE_REFERENCIA } from '../lib/datos';
 
 const title = CONTENT_PROCESS.title;
 
@@ -13,6 +13,8 @@ const toc = [
   { id: 'ia', title: 'Qué hace la IA' },
   { id: 'revision', title: 'Qué reviso yo' },
   { id: 'datos', title: 'De dónde salen los datos' },
+  { id: 'calculos', title: 'Cómo se calcula cada cifra' },
+  { id: 'limites', title: 'Lo que estos datos no dicen' },
   { id: 'actualizacion', title: 'Cada cuánto se actualiza' },
   { id: 'errores', title: 'Si encuentras un error' },
 ];
@@ -70,6 +72,29 @@ const toc = [
       <li><strong>Alquiler:</strong> <a href={FUENTES.alquiler.url} rel="noopener" target="_blank">{FUENTES.alquiler.fuente}</a>.</li>
       <li><strong>Renta:</strong> <a href={FUENTES.renta.url} rel="noopener" target="_blank">{FUENTES.renta.fuente}</a>.</li>
       <li><strong>Euríbor:</strong> <a href={EURIBOR.url} rel="noopener" target="_blank">{EURIBOR.fuente}</a>.</li>
+    </ul>
+
+    <h2 id="calculos">Cómo se calcula cada cifra</h2>
+    <ul>
+      <li>
+        <strong>Municipios</strong>: los {MUNICIPIOS.length} para los que el Ministerio publica valor tasado y que hemos podido
+        emparejar con su código del INE en SERPAVI.
+      </li>
+      <li><strong>Precio de un piso</strong>: valor tasado medio por m² × {SUPERFICIE_REFERENCIA} m², una superficie de referencia.</li>
+      <li><strong>Alquiler mediano</strong>: la mediana de los contratos de alquiler de pisos declarados a Hacienda (SERPAVI). El 25 % más barato y más caro son los percentiles 25 y 75.</li>
+      <li><strong>Años de renta para comprar</strong>: precio de un piso de {SUPERFICIE_REFERENCIA} m² ÷ renta neta media por hogar del INE.</li>
+      <li><strong>Esfuerzo del alquiler</strong>: alquiler mediano × 12 ÷ renta neta media por hogar.</li>
+      <li><strong>Años de alquiler que cuesta comprar</strong>: valor tasado por m² ÷ (alquiler por m² × 12). Lo comparamos con la mediana de todos los municipios.</li>
+      <li><strong>Subida de precios</strong>: variación del valor tasado de la provincia entre el primer y el último trimestre de la serie.</li>
+      <li><strong>Puestos</strong>: posición del municipio entre todos los de la web, ordenados de más caro a más barato.</li>
+    </ul>
+
+    <h2 id="limites">Lo que estos datos no dicen</h2>
+    <ul>
+      <li>El valor tasado es lo que dicen las tasaciones de las hipotecas, no el precio de los anuncios ni el de cada barrio.</li>
+      <li>Si un municipio tiene pocas tasaciones en el trimestre, su cifra puede moverse mucho: lo avisamos en su ficha.</li>
+      <li>El alquiler de SERPAVI es de contratos ya firmados de {FUENTES.alquiler.periodo}; los anuncios de hoy suelen pedir más.</li>
+      <li>La renta es la media del municipio: tu caso puede ser muy distinto. Para eso están las calculadoras.</li>
     </ul>
 
     <h2 id="actualizacion">Cada cuánto se actualiza</h2>

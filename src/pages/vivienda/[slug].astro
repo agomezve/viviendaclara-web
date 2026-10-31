@@ -43,6 +43,21 @@ const limiteJoven = AYUDAS.alquilerJoven.rentaMax.vivienda;
 const vecinos = municipiosDe(m.provincia).filter((x) => x.slug !== m.slug);
 const ranking = [...MUNICIPIOS].filter((x) => x.esfuerzoCompraAnios != null).sort((x, y) => y.esfuerzoCompraAnios! - x.esfuerzoCompraAnios!);
 const puesto = ranking.findIndex((x) => x.slug === m.slug) + 1;
+// Lo que dicen los datos: puestos entre los municipios, años de alquiler que cuesta comprar y evolución provincial.
+const porCompra = [...MUNICIPIOS].filter((x) => x.compra.m2 != null).sort((x, y) => y.compra.m2! - x.compra.m2!);
+const puestoCompra = porCompra.findIndex((x) => x.slug === m.slug) + 1;
+const porAlquiler = [...MUNICIPIOS].filter((x) => x.alquiler?.mes != null).sort((x, y) => y.alquiler!.mes! - x.alquiler!.mes!);
+const puestoAlquiler = a?.mes != null ? porAlquiler.findIndex((x) => x.slug === m.slug) + 1 : 0;
+const aniosAlquiler = (x: Municipio) => (x.compra.m2 != null && x.alquiler?.m2 ? x.compra.m2 / (x.alquiler.m2 * 12) : null);
+const misAnios = aniosAlquiler(m);
+const todosAnios = MUNICIPIOS.map(aniosAlquiler).filter((x): x is number => x != null).sort((x, y) => x - y);
+const medianaAnios = todosAnios[Math.floor(todosAnios.length / 2)];
+const serieProv = Object.entries(prov.compra.serie).filter(([, v]) => v != null) as [string, number][];
+const [inicioT, inicioV] = serieProv[0] ?? [];
+const [finT, finV] = serieProv[serieProv.length - 1] ?? [];
+const subidaProv = inicioV && finV ? ((finV - inicioV) / inicioV) * 100 : null;
+const trimestre = (t: string) => `${t.slice(-1)}.º trimestre de ${t.slice(0, 4)}`;
+const pocasTasaciones = m.compra.tasaciones != null && m.compra.tasaciones < 25;
 const comparacion = (pct: number) => (Math.abs(pct) < 0.5 ? 'casi igual que' : `un ${porcentaje(Math.abs(pct))} ${pct > 0 ? 'más caro que' : 'más barato que'}`);
 
 const titulo = `Precio de la vivienda en ${m.nombre}: comprar y alquilar en 2026`;
@@ -193,6 +208,47 @@ const preguntas = [
         <p class="tarjeta"><span class="dato-nombre">El alquiler mediano se lleva</span><span class="dato-valor">{porcentaje(m.esfuerzoAlquilerPct)}</span><span class="text-xs text-slate-500">de la renta media de un hogar</span></p>
       </div>
       <a href="/esfuerzo" class="mt-4 inline-block text-sm font-semibold text-teal-700 hover:underline">Ver el ranking completo →</a>
+    </section>
+
+    <section aria-labelledby="titulo-analisis" class="tarjeta">
+      <h2 id="titulo-analisis" class="text-2xl font-bold tracking-tight text-slate-900">Lo que dicen los datos de {m.nombre}</h2>
+      <ul class="mt-4 space-y-3 leading-relaxed text-slate-700">
+        <li>
+          <strong>Para comprar</strong>, {m.nombre} es el municipio n.º {puestoCompra} más caro de los {porCompra.length} que analizamos
+          ({euros(m2)}/m²).
+          {puestoAlquiler > 0 && <> <strong>Para alquilar</strong>, el n.º {puestoAlquiler} de {porAlquiler.length} ({euros(a!.mes)} al mes de alquiler mediano).</>}
+        </li>
+        {
+          misAnios != null && (
+            <li>
+              <strong>Comprar equivale a {decimal1(misAnios)} años de alquiler</strong>: es lo que tardarías en pagar en alquiler el
+              precio de un piso del mismo tamaño (con el valor tasado de {FUENTES.compra.periodo} y los alquileres de {FUENTES.alquiler.periodo}, así que con los alquileres de hoy serían algo menos). En el municipio típico de la lista son {decimal1(medianaAnios)} años, así que aquí comprar
+              sale {misAnios > medianaAnios + 0.5 ? 'relativamente más caro' : misAnios < medianaAnios - 0.5 ? 'relativamente más barato' : 'más o menos igual'} frente
+              a alquilar que en la mayoría de municipios.
+            </li>
+          )
+        }
+        {
+          subidaProv != null && (
+            <li>
+              <strong>En la provincia de {prov.nombre}</strong>, el valor tasado ha pasado de {euros(inicioV)}/m² ({trimestre(inicioT!)}) a
+              {' '}{euros(finV)}/m² ({trimestre(finT!)}): un {porcentaje(Math.abs(subidaProv))} {subidaProv >= 0 ? 'más' : 'menos'}.
+              {prov.compra.variacionAnual != null && <> En el último año, un {porcentaje(Math.abs(prov.compra.variacionAnual))} {prov.compra.variacionAnual >= 0 ? 'más' : 'menos'}.</>}
+            </li>
+          )
+        }
+        {
+          pocasTasaciones && (
+            <li>
+              <strong>Ojo, cifra con poca muestra:</strong> el valor tasado de {m.nombre} sale de solo {miles(m.compra.tasaciones)} tasaciones en
+              el trimestre, así que puede moverse bastante de un trimestre a otro. La media de la provincia es más estable.
+            </li>
+          )
+        }
+      </ul>
+      <p class="fuente mt-4">
+        Cálculos propios con datos del Ministerio de Vivienda (valor tasado y SERPAVI). <a href="/como-hacemos-este-contenido">Cómo los hacemos</a>.
+      </p>
     </section>
 
     <AdSlot format="horizontal" />
