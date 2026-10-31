@@ -24,7 +24,7 @@ export default defineConfig({
   // actualiza también public/CNAME y la línea "Sitemap:" de public/robots.txt.
   // Para volver a la URL de GitHub Pages: site 'https://agomezve.github.io' y base '/viviendaclara-web'.
   // El resto del código (canónicas, Open Graph, JSON-LD, sitemap y enlaces) se adapta solo.
-  site: 'https://viviendaclara.aarongomezvera.es',
+  site: 'https://viviendaclara.iaencrudo.es',
   base: '/',
 
   // Astro 7 usa por defecto 'jsx', que elimina el espacio de un salto de línea entre

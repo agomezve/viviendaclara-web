@@ -3,7 +3,7 @@
 // Cualquier cambio de marca o de ruta se hace aquí.
 
 // Dominio y ruta base: se configuran solo en astro.config.mjs (`site` y `base`).
-const SITE_ORIGIN = (import.meta.env.SITE ?? 'https://viviendaclara.aarongomezvera.es').replace(/\/+$/, '');
+const SITE_ORIGIN = (import.meta.env.SITE ?? 'https://viviendaclara.iaencrudo.es').replace(/\/+$/, '');
 /** Ruta base sin barra final: '' en un dominio propio, '/viviendaclara-web' en GitHub Pages. */
 export const BASE_PATH = (import.meta.env.BASE_URL ?? '/').replace(/\/+$/, '');
 
@@ -99,37 +99,37 @@ export const PROJECTS = [
   {
     id: 'finanzas',
     name: 'CapitalPráctico',
-    url: 'https://finanzas.aarongomezvera.es',
+    url: 'https://capitalpractico.iaencrudo.es',
     description: 'Calculadoras y guías de finanzas personales',
   },
   {
     id: 'ahorro',
     name: 'AhorroLuz',
-    url: 'https://ahorroluz.aarongomezvera.es',
+    url: 'https://ahorroluz.iaencrudo.es',
     description: 'Calculadoras y guías para pagar menos luz y gas',
   },
   {
     id: 'viajes',
     name: 'ViajaChollo',
-    url: 'https://viajesychollos.aarongomezvera.es',
+    url: 'https://viajachollo.iaencrudo.es',
     description: 'Herramientas y guías para viajar barato',
   },
   {
     id: 'repostabarato',
     name: 'RepostaBarato',
-    url: 'https://repostabarato.aarongomezvera.es',
+    url: 'https://repostabarato.iaencrudo.es',
     description: 'La gasolinera más barata cerca de ti',
   },
   {
     id: 'vivienda',
     name: 'ViviendaClara',
-    url: 'https://viviendaclara.aarongomezvera.es',
+    url: 'https://viviendaclara.iaencrudo.es',
     description: 'Busca piso según tu presupuesto, con datos oficiales',
   },
   {
     id: 'puentes',
     name: 'Vacacionable',
-    url: 'https://vacacionable.aarongomezvera.es',
+    url: 'https://vacacionable.iaencrudo.es',
     description: 'Festivos, puentes y vacaciones de 2027',
   },
   {

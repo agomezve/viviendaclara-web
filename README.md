@@ -1,7 +1,7 @@
 # ViviendaClara
 
 Qué casa te puedes permitir, dónde y cuánto cuesta de verdad, con datos oficiales.
-https://viviendaclara.aarongomezvera.es
+https://viviendaclara.iaencrudo.es
 
 - **Stack:** Astro 7 + Tailwind 4, salida estática en GitHub Pages (`.github/workflows/deploy.yml`).
 - **Datos oficiales** (`src/data/*.json`):

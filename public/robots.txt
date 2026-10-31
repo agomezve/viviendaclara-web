@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://viviendaclara.aarongomezvera.es/sitemap-index.xml
+Sitemap: https://viviendaclara.iaencrudo.es/sitemap-index.xml
