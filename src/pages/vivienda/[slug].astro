@@ -70,7 +70,7 @@ const descripcion = `En ${m.nombre}, el metro cuadrado se tasa a ${euros(m2)} y 
 // Meta description: la frase más completa que quepa en 155 caracteres.
 const baseMeta = `En ${m.nombre}, el m² se tasa a ${euros(m2)} y el alquiler mediano de un piso es de ${euros(a?.mes)} al mes.`;
 const metaDescripcion = [descripcion, ...[' Datos oficiales, esfuerzo y búsqueda con tu presupuesto.', ' Datos oficiales y pisos con tu presupuesto.', ' Datos oficiales.', ''].map((t) => baseMeta + t)].find((d) => d.length <= 155)!;
-const tituloSeo = [`Cuánto vale un piso en ${m.nombre} en 2026: precio por m²`, `Cuánto vale un piso en ${m.nombre}: precio por m²`, `Precio vivienda ${m.nombre} 2026: alquiler y compra`, `Precio vivienda ${m.nombre} 2026`].find((t) => t.length <= 60) ?? `Vivienda en ${m.nombre}`;
+const tituloSeo = [`Cuánto vale tu piso en ${m.nombre}: tasación por m² 2026`, `Cuánto vale un piso en ${m.nombre} en 2026: precio por m²`, `Cuánto vale un piso en ${m.nombre}: precio por m²`, `Precio vivienda ${m.nombre} 2026: alquiler y compra`, `Precio vivienda ${m.nombre} 2026`].find((t) => t.length <= 60) ?? `Vivienda en ${m.nombre}`;
 
 const preguntas = [
   {
@@ -124,6 +124,39 @@ const preguntas = [
           {vsProvincia != null && <li>Es {comparacion(vsProvincia)} la media de la provincia ({euros(prov.compra.m2)}/m²).</li>}
           {imp.itp && itp != null && <li>Impuesto de transmisiones de un piso usado de {euros(piso)}: {euros(itp)} ({describeITP(imp.itp)}).</li>}
         </ul>
+        <div class="mt-5 rounded-2xl bg-teal-50 p-4" data-valora={m2} data-nueva={m.compra.m2Nueva ?? ''} data-usada={m.compra.m2Usada ?? ''}>
+          <p class="text-sm font-semibold text-slate-800">Calcula el valor de tu piso en {m.nombre}</p>
+          <div class="mt-2 flex flex-wrap items-end gap-3">
+            <label class="text-sm text-slate-600">Metros cuadrados
+              <input type="number" min="15" max="1000" step="1" value={SUPERFICIE_REFERENCIA} class="mt-1 block w-28 rounded-lg border border-slate-300 px-3 py-2 text-slate-900" data-m2 />
+            </label>
+            {(m.compra.m2Nueva || m.compra.m2Usada) && (
+              <label class="text-sm text-slate-600">Tipo
+                <select class="mt-1 block rounded-lg border border-slate-300 px-3 py-2 text-slate-900" data-tipo>
+                  <option value="media">Media</option>
+                  {m.compra.m2Usada && <option value="usada">Usada</option>}
+                  {m.compra.m2Nueva && <option value="nueva">Nueva</option>}
+                </select>
+              </label>
+            )}
+          </div>
+          <p class="mt-3 text-2xl font-extrabold text-teal-800" aria-live="polite" data-resultado>{euros(piso)}</p>
+          <p class="text-xs text-slate-500">Estimación con el valor tasado medio oficial. Una tasación real mira el estado, la planta y la zona exacta.</p>
+        </div>
+        <script is:inline>
+          document.querySelectorAll('[data-valora]').forEach((c) => {
+            const m2 = c.querySelector('[data-m2]'), tipo = c.querySelector('[data-tipo]'), res = c.querySelector('[data-resultado]');
+            const fmt = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+            const calcula = () => {
+              const t = tipo ? tipo.value : 'media';
+              const precio = Number((t === 'nueva' && c.dataset.nueva) || (t === 'usada' && c.dataset.usada) || c.dataset.valora);
+              const sup = Number(m2.value);
+              res.textContent = sup > 0 ? fmt.format(Math.round((sup * precio) / 1000) * 1000) : '—';
+            };
+            m2.addEventListener('input', calcula);
+            tipo?.addEventListener('change', calcula);
+          });
+        </script>
         <div class="mt-5">
           <p class="mb-2 text-sm font-semibold text-slate-800">Pisos en venta hasta {euros(piso)}</p>
           <BotonesPortales idealista={portales.idealista} fotocasa={portales.fotocasa} operacion="compra" max={Math.round(piso / 1000) * 1000} />
