@@ -3,6 +3,8 @@
 // Google Analytics 4 con Consent Mode v2. Solo se carga si GA4_ID tiene un id válido ("G-…").
 // Todo empieza denegado; la CMP certificada de Google (AdSense > Privacidad y mensajes)
 // actualiza el consentimiento cuando el visitante elige. No hay banner propio.
+// GoatCounter (iaencrudo.goatcounter.com) cuenta visitas sin cookies ni datos personales,
+// así que va siempre. La ruta lleva el subdominio delante para separar las 6 webs.
 import { GA4_ID, isAnalyticsEnabled } from '../config/site';
 
 const id = GA4_ID.trim();
@@ -32,3 +34,6 @@ gtag('config', ${JSON.stringify(id)});
     </>
   )
 }
+
+<script is:inline>window.goatcounter = { path: function (p) { return location.host + p; } };</script>
+<script is:inline data-goatcounter="https://iaencrudo.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
