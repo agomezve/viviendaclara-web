@@ -34,7 +34,7 @@ export const SITE = {
  */
 export const OWNER = {
   name: 'Aarón Gómez Vera',
-  email: 'contacto@aarongomezvera.es',
+  email: 'contacto@iaencrudo.es',
 } as const;
 
 /**
