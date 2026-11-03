@@ -133,6 +133,12 @@ export const PROJECTS = [
     description: 'Festivos, puentes y vacaciones de 2027',
   },
   {
+    id: 'elecciones',
+    name: 'Elecciones al Día',
+    url: 'https://elecciones.iaencrudo.es',
+    description: 'Guía y datos oficiales de las elecciones del 29-N',
+  },
+  {
     id: 'canal',
     name: CHANNEL.name,
     url: CHANNEL.url,
