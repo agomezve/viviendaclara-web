@@ -1,10 +1,15 @@
 ---
 // Ruta: src/components/Footer.astro
-import { SITE, CURRENT_PROJECT, HERRAMIENTAS, LEGAL_LINKS, PROJECTS, SITE_LINKS, CHANNEL } from '../config/site';
+import { SITE, HERRAMIENTAS, LEGAL_LINKS, PROJECTS, SITE_LINKS, CHANNEL } from '../config/site';
 import { MUNICIPIOS } from '../lib/datos';
 
 const year = new Date().getFullYear();
-const otherProjects = PROJECTS.filter((p) => p.id !== CURRENT_PROJECT);
+// Solo la web hermana del mismo tema (hipoteca y ahorro) y la portada con todas: enlazar a las 6 en cada
+// página es un enlace de pie repetido que no ayuda a quien lee.
+const otherProjects = [
+  ...PROJECTS.filter((p) => p.id === 'finanzas'),
+  { id: 'iaencrudo', name: 'Todas las webs de IA en Crudo', url: 'https://iaencrudo.es/', description: 'Gasolina, luz, festivos, viajes y elecciones' },
+];
 const CIUDADES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'zaragoza', 'malaga', 'murcia', 'palma', 'bilbao', 'alicante'];
 const top = CIUDADES.map((s) => MUNICIPIOS.find((m) => m.slug === s)).filter((m) => m !== undefined);
 ---
