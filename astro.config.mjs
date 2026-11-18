@@ -9,6 +9,12 @@ import sitemap from '@astrojs/sitemap';
 import { existsSync, readFileSync } from 'node:fs';
 import basePathLinks from './integrations/base-path-links.mjs';
 import ogImages from './integrations/og-images.mjs';
+import { municipioIndexable } from './src/lib/indexables.mjs';
+
+// Fichas de municipio con noindex (pocas tasaciones): fuera del sitemap. Ver src/lib/indexables.mjs.
+/** @type {{ slug: string, compra: { tasaciones?: number | null } }[]} */
+const MUNICIPIOS = JSON.parse(readFileSync('./src/data/municipios.json', 'utf8'));
+const SIN_INDEXAR = new Set(MUNICIPIOS.filter((m) => !municipioIndexable(m)).map((m) => `/vivienda/${m.slug}`));
 
 // <lastmod> del sitemap: fecha de la última actualización de los datos oficiales
 // (la escribe scripts/datos/actualizar_datos.py) en las páginas que se generan con ellos.
@@ -46,7 +52,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith('/404'),
+      filter: (page) => !page.endsWith('/404') && !SIN_INDEXAR.has(new URL(page).pathname),
       serialize(item) {
         return fechaDatos && conDatos(new URL(item.url).pathname) ? { ...item, lastmod: fechaDatos } : item;
       },

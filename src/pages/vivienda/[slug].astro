@@ -21,6 +21,7 @@ import {
   type Municipio,
 } from '../../lib/datos';
 import AYUDAS from '../../data/ayudas.json';
+import { municipioIndexable } from '../../lib/indexables.mjs';
 import { euros, decimal1, decimal2, porcentaje, miles, cuotaITP, describeITP, pctCorto } from '../../lib/calculos';
 
 export function getStaticPaths() {
@@ -113,6 +114,7 @@ const preguntas = [
   description={metaDescripcion}
   breadcrumbs={breadcrumbs}
   modified={new Date(FUENTES.actualizado)}
+  noindex={!municipioIndexable(m)}
 >
   <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta={`${prov.nombre} · ${ccaa.nombre}`}>
     <p>{descripcion}</p>
