@@ -1,11 +1,7 @@
 {
- "valor": 3.247,
- "mes": "2026-09",
+ "valor": 3.239,
+ "mes": "2026-10",
  "serie": [
-  {
-   "mes": "2025-09",
-   "valor": 2.172
-  },
   {
    "mes": "2025-10",
    "valor": 2.187
@@ -53,9 +49,13 @@
   {
    "mes": "2026-09",
    "valor": 3.247
+  },
+  {
+   "mes": "2026-10",
+   "valor": 3.239
   }
  ],
  "fuente": "Banco Central Europeo · Euríbor a 1 año, media mensual",
  "url": "https://data.ecb.europa.eu/data/datasets/FM/FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
- "descargado": "2026-10-22T22:15:52.729Z"
+ "descargado": "2026-11-18T23:28:55.972Z"
 }
