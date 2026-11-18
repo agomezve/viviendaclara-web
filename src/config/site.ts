@@ -231,7 +231,7 @@ export const LEGAL_LINKS = [
   { href: '/aviso-legal', title: 'Aviso legal' },
   { href: '/politica-privacidad', title: 'Política de privacidad' },
   { href: '/politica-cookies', title: 'Política de cookies' },
-  { href: '/afiliados', title: 'Enlaces de afiliado' },
+  { href: '/afiliados', title: 'Publicidad y enlaces' },
 ] as const;
 
 export const SITE_LINKS = [
