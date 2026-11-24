@@ -36,7 +36,7 @@ const provinciasDe = (ccaa: string) => PROVINCIAS.filter((p) => p.ccaa === ccaa)
       <h2 id="titulo-espana" class="text-xl font-bold text-slate-900">España: valor tasado medio del m²</h2>
       <p class="mt-1 text-sm text-slate-600">Un piso de {SUPERFICIE_REFERENCIA} m² sale de media por {euros(nacional.m2 * SUPERFICIE_REFERENCIA)}.</p>
       <div class="mt-4"><GraficaSerie serie={nacional.serie} descripcion="Valor tasado medio por m² en España por trimestres" /></div>
-      <p class="fuente mt-2">Fuente: <a href={FUENTES.compra.url} rel="noopener" target="_blank">{FUENTES.compra.fuente}</a>.</p>
+      <p class="fuente mt-2">Fuente: <a href={FUENTES.compra.url} rel="noopener" target="_blank">{FUENTES.compra.fuente}</a>. ¿Cuánto ha subido la compraventa? Mira el <a href="/indice-precios-vivienda">Índice de Precios de Vivienda del INE</a> por comunidades.</p>
     </section>
 
     <section aria-labelledby="titulo-ccaa">

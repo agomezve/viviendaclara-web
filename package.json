@@ -8,7 +8,7 @@
   "scripts": {
     "datos": "node scripts/euribor.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/euribor.mjs",
+    "prebuild": "node scripts/euribor.mjs && node scripts/ipv.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

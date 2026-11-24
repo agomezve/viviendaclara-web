@@ -1,0 +1,421 @@
+---
+// Ruta: src/pages/indice-precios-vivienda.astro
+// Índice de Precios de Vivienda del INE (base 2025) por trimestres y comunidades, con calculadora de
+// cuánto ha cambiado el precio desde una fecha. Datos de src/data/ipv.json (scripts/ipv.mjs).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CabeceraPagina from '../components/CabeceraPagina.astro';
+import Herramientas from '../components/Herramientas.astro';
+import AdSlot from '../components/AdSlot.astro';
+import Faq from '../components/Faq.astro';
+import Autor from '../components/Autor.astro';
+import { COMUNIDADES, FUENTES } from '../lib/datos';
+import { decimal1, porcentaje } from '../lib/calculos';
+import ipv from '../data/ipv.json';
+
+type Serie = Record<string, number>;
+type Tipo = { indice?: Serie; anual?: Serie; trimestral?: Serie };
+type Territorio = { codigo: string; nombreINE: string; general: Tipo; nueva?: Tipo; segunda?: Tipo };
+
+const territorios = ipv.territorios as Territorio[];
+const U = ipv.ultimoTrimestre;
+const trimestres = Object.keys(territorios[0].general.indice!);
+const nombreDe = (codigo: string) => (codigo === '00' ? 'España' : COMUNIDADES.find((c) => c.codigo === codigo)?.nombre ?? codigo);
+const ORD = ['1.er', '2.º', '3.er', '4.º'];
+const largo = (t: string) => `${ORD[Number(t.slice(-1)) - 1]} trimestre de ${t.slice(0, 4)}`;
+const corto = (t: string) => `${t.slice(-2)} ${t.slice(0, 4)}`;
+const atras = (t: string, n: number) => trimestres[trimestres.indexOf(t) - n];
+const pct = (a: number, b: number) => (a / b - 1) * 100;
+const signo = (x: number) => `${x > 0 ? '+' : x < 0 ? '−' : ''}${porcentaje(Math.abs(x))}`;
+const masMenos = (x: number) => `un ${porcentaje(Math.abs(x))} ${x >= 0 ? 'por encima' : 'por debajo'}`;
+const hace5 = atras(U, 20);
+
+function resumen(t: Territorio) {
+  const idx = t.general.indice!;
+  const antes = Object.entries(idx).filter(([k]) => k < '2010');
+  const pico = antes.reduce((a, b) => (b[1] > a[1] ? b : a));
+  const crisis = Object.entries(idx).filter(([k]) => k >= '2010' && k < '2019');
+  const suelo = crisis.reduce((a, b) => (b[1] < a[1] ? b : a));
+  return {
+    codigo: t.codigo,
+    nombre: nombreDe(t.codigo),
+    anual: t.general.anual?.[U],
+    trimestral: t.general.trimestral?.[U],
+    nueva: t.nueva?.anual?.[U],
+    segunda: t.segunda?.anual?.[U],
+    cinco: pct(idx[U], idx[hace5]),
+    pico: { t: pico[0], frente: pct(idx[U], pico[1]) },
+    suelo: { t: suelo[0], desde: pct(idx[U], suelo[1]) },
+  };
+}
+
+const es = resumen(territorios[0]);
+const ccaa = territorios.slice(1).map(resumen).sort((a, b) => (b.anual ?? -99) - (a.anual ?? -99));
+const masSube = ccaa[0];
+const menosSube = ccaa.filter((c) => c.anual != null).at(-1)!;
+const bajoPico = ccaa.filter((c) => c.pico.frente < 0);
+const tasacion = FUENTES.compra.nacional.variacionAnual;
+
+// Gráfica: índice general de España desde 2007.
+const serieEs = trimestres.map((t) => [t, territorios[0].general.indice![t]] as const);
+const W = 640;
+const H = 240;
+const vals = serieEs.map((p) => p[1]);
+const minV = Math.floor(Math.min(...vals) / 10) * 10;
+const maxV = Math.ceil(Math.max(...vals) / 10) * 10;
+const gx = (i: number) => 40 + (i * (W - 60)) / (serieEs.length - 1);
+const gy = (v: number) => 12 + ((maxV - v) / (maxV - minV)) * (H - 44);
+const linea = serieEs.map((p, i) => `${i ? 'L' : 'M'}${gx(i).toFixed(1)},${gy(p[1]).toFixed(1)}`).join(' ');
+const guias = [minV, (minV + maxV) / 2, maxV];
+const marcas = [es.pico.t, es.suelo.t, U].map((t) => ({ t, i: trimestres.indexOf(t), v: territorios[0].general.indice![t] }));
+
+// Últimos 8 trimestres de España.
+const recientes = trimestres.slice(-8).reverse().map((t) => ({
+  t,
+  indice: territorios[0].general.indice![t],
+  trimestral: territorios[0].general.trimestral?.[t],
+  anual: territorios[0].general.anual?.[t],
+  nueva: territorios[0].nueva?.anual?.[t],
+  segunda: territorios[0].segunda?.anual?.[t],
+}));
+
+// Datos para la calculadora (solo el índice general).
+const calc = {
+  ultimo: U,
+  trimestres,
+  series: territorios.map((t) => ({ codigo: t.codigo, nombre: nombreDe(t.codigo), indice: t.general.indice })),
+};
+
+const titulo = `Cuánto ha subido la vivienda: índice del INE del ${largo(U)}`;
+const breadcrumbs = [{ name: 'Precios', href: '/precios' }, { name: 'Índice de Precios de Vivienda' }];
+const descripcion = `La vivienda sube un ${porcentaje(es.anual)} en un año (${largo(U)}, INE) y está ${masMenos(es.pico.frente)} del máximo de 2007. Por comunidades.`;
+
+const preguntas = [
+  {
+    q: '¿Cuánto ha subido la vivienda en el último año?',
+    a: `Según el Índice de Precios de Vivienda del INE, un ${porcentaje(es.anual)} en España entre el ${largo(atras(U, 4))} y el ${largo(U)}. La de segunda mano subió un ${porcentaje(es.segunda)} y la nueva un ${porcentaje(es.nueva)}.`,
+  },
+  {
+    q: '¿Está la vivienda más cara que en 2007?',
+    a: `Sí. El índice de España está ${masMenos(es.pico.frente)} de su máximo anterior a la crisis (${largo(es.pico.t)}) y ha subido un ${porcentaje(es.suelo.desde)} desde su mínimo (${largo(es.suelo.t)}). Son precios nominales, sin descontar la inflación.${bajoPico.length ? ` ${bajoPico.map((c) => c.nombre).join(', ')} ${bajoPico.length === 1 ? 'sigue' : 'siguen'} por debajo de su máximo de antes de 2010.` : ''}`,
+  },
+  {
+    q: '¿En qué comunidad sube más la vivienda?',
+    a: `En el ${largo(U)}, en ${masSube.nombre} (${porcentaje(masSube.anual)} en un año). Donde menos, en ${menosSube.nombre} (${porcentaje(menosSube.anual)}).`,
+  },
+  {
+    q: '¿Por qué el INE da una cifra distinta a la del valor tasado?',
+    a: `Porque miden cosas distintas. El IPV del INE sigue los precios de compraventa de vivienda libre y es un índice (no da euros por m²). El valor tasado del Ministerio de Vivienda es lo que dicen las tasaciones, que en el ${FUENTES.compra.periodo} subió un ${porcentaje(tasacion)} en un año. Las dos van en la misma dirección.`,
+  },
+  {
+    q: '¿Cada cuánto se actualiza esta página?',
+    a: 'El INE publica el índice una vez por trimestre. La página lo descarga sola de la API del INE cada vez que se reconstruye la web, como mínimo una vez por semana, y el dato de la calculadora cambia con él.',
+  },
+];
+
+const dataset = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'Índice de Precios de Vivienda por comunidades autónomas',
+  description: `Índice de Precios de Vivienda del INE (base 2025), general, vivienda nueva y de segunda mano, por trimestres desde 2007 hasta el ${largo(U)}.`,
+  url: 'https://viviendaclara.iaencrudo.es/indice-precios-vivienda',
+  isBasedOn: ipv.url,
+  creator: { '@type': 'Organization', name: 'Instituto Nacional de Estadística (INE)', url: 'https://www.ine.es' },
+  temporalCoverage: `2007/${U.slice(0, 4)}`,
+  spatialCoverage: 'España',
+  dateModified: ipv.descargado,
+};
+---
+
+<BaseLayout
+  title={`Índice de Precios de Vivienda del INE: ${ORD[Number(U.slice(-1)) - 1]} trim. ${U.slice(0, 4)}`}
+  heading={titulo}
+  description={descripcion}
+  breadcrumbs={breadcrumbs}
+  modified={new Date(ipv.descargado)}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(dataset)} />
+
+  <CabeceraPagina titulo={titulo} breadcrumbs={breadcrumbs} etiqueta="Datos oficiales · INE">
+    <p>
+      El precio de la vivienda en España subió un <strong>{porcentaje(es.anual)}</strong> en el último año ({largo(U)}),
+      según el Índice de Precios de Vivienda del INE. La de segunda mano, un {porcentaje(es.segunda)}; la nueva, un
+      {' '}{porcentaje(es.nueva)}. Hoy está {masMenos(es.pico.frente)} del máximo de 2007.
+    </p>
+  </CabeceraPagina>
+
+  <div class="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+    <section aria-label="Resumen" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="tarjeta">
+        <p class="text-sm text-slate-500">En un año</p>
+        <p class="mt-1 text-3xl font-extrabold text-slate-900">{signo(es.anual!)}</p>
+        <p class="mt-1 text-sm text-slate-500">{signo(es.trimestral!)} en el último trimestre</p>
+      </div>
+      <div class="tarjeta">
+        <p class="text-sm text-slate-500">Segunda mano / nueva</p>
+        <p class="mt-1 text-3xl font-extrabold text-slate-900">{signo(es.segunda!)}</p>
+        <p class="mt-1 text-sm text-slate-500">Nueva: {signo(es.nueva!)} en un año</p>
+      </div>
+      <div class="tarjeta">
+        <p class="text-sm text-slate-500">Frente al máximo de 2007</p>
+        <p class="mt-1 text-3xl font-extrabold text-slate-900">{signo(es.pico.frente)}</p>
+        <p class="mt-1 text-sm text-slate-500">Máximo: {largo(es.pico.t)}</p>
+      </div>
+      <div class="tarjeta">
+        <p class="text-sm text-slate-500">En 5 años</p>
+        <p class="mt-1 text-3xl font-extrabold text-slate-900">{signo(es.cinco)}</p>
+        <p class="mt-1 text-sm text-slate-500">Desde el {largo(hace5)}</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-grafica">
+      <h2 id="t-grafica" class="text-2xl font-bold tracking-tight text-slate-900">El precio de la vivienda desde 2007</h2>
+      <p class="mt-2 max-w-3xl text-slate-600">
+        Índice general de España, base 2025 = 100. Tocó techo en el {largo(es.pico.t)}, cayó hasta el {largo(es.suelo.t)}
+        y desde entonces ha subido un {porcentaje(es.suelo.desde)}.
+      </p>
+      <div class="tarjeta mt-4">
+        <svg viewBox={`0 0 ${W} ${H}`} class="w-full" role="img" aria-label={`Índice de Precios de Vivienda de España por trimestres, de 2007 al ${largo(U)}`}>
+          {
+            guias.map((v) => (
+              <g>
+                <line x1="40" x2={W - 20} y1={gy(v)} y2={gy(v)} stroke="#e2e8f0" />
+                <text x="0" y={gy(v) + 4} font-size="11" fill="#64748b">{decimal1(v)}</text>
+              </g>
+            ))
+          }
+          <path d={linea} fill="none" stroke="#0f766e" stroke-width="2.5" stroke-linejoin="round" />
+          {
+            serieEs.map(([t], i) =>
+              t.endsWith('T1') && Number(t.slice(0, 4)) % 3 === 1 ? (
+                <text x={gx(i)} y={H - 12} font-size="11" fill="#64748b" text-anchor="middle">{t.slice(0, 4)}</text>
+              ) : null,
+            )
+          }
+          {
+            marcas.map((m) => (
+              <g>
+                <circle cx={gx(m.i)} cy={gy(m.v)} r="4" fill="#0f766e">
+                  <title>{corto(m.t)}: {decimal1(m.v)}</title>
+                </circle>
+                <text x={Math.min(gx(m.i), W - 40)} y={gy(m.v) - 9} font-size="11" font-weight="600" fill="#0f172a" text-anchor="middle">{decimal1(m.v)}</text>
+              </g>
+            ))
+          }
+        </svg>
+      </div>
+      <p class="fuente mt-2">Fuente: <a href={ipv.url} rel="noopener" target="_blank">{ipv.fuente}, tabla {ipv.tabla}</a>.</p>
+    </section>
+
+    <section aria-labelledby="t-calc" class="tarjeta" data-calc>
+      <h2 id="t-calc" class="text-2xl font-bold tracking-tight text-slate-900">¿Cuánto ha cambiado el precio desde que compraste?</h2>
+      <p class="mt-2 max-w-3xl text-slate-600">
+        Aplica la evolución del índice de tu comunidad a un precio. Sirve para hacerse una idea, no para tasar tu casa:
+        es la media de la comunidad y no cuenta el estado, la zona ni la inflación.
+      </p>
+      <div class="mt-5 grid gap-4 sm:grid-cols-3">
+        <div>
+          <label for="calc-ccaa" class="etiqueta">Comunidad</label>
+          <select id="calc-ccaa" class="entrada" data-ccaa>
+            {calc.series.map((s) => <option value={s.codigo}>{s.nombre}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="calc-t" class="etiqueta">Cuándo compraste</label>
+          <select id="calc-t" class="entrada" data-t>
+            {
+              [...trimestres].reverse().slice(1).map((t) => (
+                <option value={t} selected={t === hace5}>{corto(t)}</option>
+              ))
+            }
+          </select>
+        </div>
+        <div>
+          <label for="calc-precio" class="etiqueta">Precio de compra (€)</label>
+          <input id="calc-precio" class="entrada" type="number" inputmode="numeric" min="1000" step="1000" value="200000" data-precio />
+        </div>
+      </div>
+      <p class="mt-5 text-lg text-slate-700" data-salida aria-live="polite"></p>
+      <script type="application/json" data-series set:html={JSON.stringify(calc)} />
+    </section>
+
+    <AdSlot format="horizontal" />
+
+    <section aria-labelledby="t-ccaa">
+      <h2 id="t-ccaa" class="text-2xl font-bold tracking-tight text-slate-900">Por comunidades: {largo(U)}</h2>
+      <p class="mt-2 max-w-3xl text-slate-600">
+        Ordenadas por la subida del último año. «Frente al máximo» compara con el trimestre más alto de cada comunidad antes de 2010.
+      </p>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">Comunidad</th>
+              <th scope="col" class="text-right">En un año</th>
+              <th scope="col" class="text-right">Segunda mano</th>
+              <th scope="col" class="text-right">Nueva</th>
+              <th scope="col" class="text-right">En 5 años</th>
+              <th scope="col" class="text-right">Frente al máximo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-teal-50 font-semibold">
+              <td>España</td>
+              <td class="text-right">{signo(es.anual!)}</td>
+              <td class="text-right">{signo(es.segunda!)}</td>
+              <td class="text-right">{signo(es.nueva!)}</td>
+              <td class="text-right">{signo(es.cinco)}</td>
+              <td class="text-right">{signo(es.pico.frente)}</td>
+            </tr>
+            {
+              ccaa.map((c) => (
+                <tr>
+                  <td class="font-semibold text-slate-900">{c.nombre}</td>
+                  <td class="text-right font-bold text-slate-900">{c.anual != null ? signo(c.anual) : '—'}</td>
+                  <td class="text-right">{c.segunda != null ? signo(c.segunda) : '—'}</td>
+                  <td class="text-right">{c.nueva != null ? signo(c.nueva) : '—'}</td>
+                  <td class="text-right">{signo(c.cinco)}</td>
+                  <td class:list={['text-right', c.pico.frente < 0 && 'font-semibold text-teal-700']}>{signo(c.pico.frente)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente mt-3">
+        Variaciones anuales de vivienda nueva y de segunda mano publicadas por el INE; «En 5 años» y «Frente al máximo»,
+        calculadas con el índice general. En Ceuta y Melilla el INE solo publica el índice general.
+      </p>
+    </section>
+
+    <section aria-labelledby="t-datos" class="max-w-3xl">
+      <h2 id="t-datos" class="text-2xl font-bold tracking-tight text-slate-900">Qué dicen los datos</h2>
+      <ul class="mt-4 list-disc space-y-3 pl-5 leading-relaxed text-slate-700">
+        <li>
+          Donde más sube es en <strong>{masSube.nombre}</strong> ({porcentaje(masSube.anual)} en un año) y donde menos, en
+          {' '}<strong>{menosSube.nombre}</strong> ({porcentaje(menosSube.anual)}).{ccaa.every((c) => (c.anual ?? 0) > 0) && ' Sube en todas las comunidades y ciudades autónomas.'}
+        </li>
+        <li>
+          La vivienda de segunda mano sube más que la nueva: {porcentaje(es.segunda)} frente a {porcentaje(es.nueva)} en España.
+          Es la que más se compra, así que es la que más pesa en el índice general.
+        </li>
+        {
+          bajoPico.length > 0 && (
+            <li>
+              {bajoPico.map((c) => `${c.nombre} (${signo(c.pico.frente)})`).join(', ')}{' '}
+              {bajoPico.length === 1 ? 'es la única comunidad que sigue' : 'son las únicas que siguen'} por debajo de su máximo de antes de 2010. En el resto, la vivienda ya cuesta más que entonces.
+            </li>
+          )
+        }
+        <li>
+          En cinco años (desde el {largo(hace5)}), el índice de España ha subido un {porcentaje(es.cinco)}. Son precios
+          nominales: no descuentan la inflación de esos años.
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="t-trim">
+      <h2 id="t-trim" class="text-2xl font-bold tracking-tight text-slate-900">España, trimestre a trimestre</h2>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th scope="col">Trimestre</th>
+              <th scope="col" class="text-right">Índice</th>
+              <th scope="col" class="text-right">Trimestral</th>
+              <th scope="col" class="text-right">Anual</th>
+              <th scope="col" class="text-right">Segunda mano</th>
+              <th scope="col" class="text-right">Nueva</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              recientes.map((r) => (
+                <tr>
+                  <td class="font-semibold text-slate-900">{corto(r.t)}</td>
+                  <td class="text-right">{decimal1(r.indice)}</td>
+                  <td class="text-right">{r.trimestral != null ? signo(r.trimestral) : '—'}</td>
+                  <td class="text-right font-bold text-slate-900">{r.anual != null ? signo(r.anual) : '—'}</td>
+                  <td class="text-right">{r.segunda != null ? signo(r.segunda) : '—'}</td>
+                  <td class="text-right">{r.nueva != null ? signo(r.nueva) : '—'}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-como" class="max-w-3xl">
+      <h2 id="t-como" class="text-2xl font-bold tracking-tight text-slate-900">Cómo está hecho</h2>
+      <div class="mt-4 space-y-3 leading-relaxed text-slate-700">
+        <p>
+          Los datos salen de la <a class="text-teal-700 hover:underline" href={ipv.url} rel="noopener" target="_blank">tabla {ipv.tabla} del INE</a>,
+          que se descarga de su API pública (Tempus) en cada reconstrucción de la web. El Índice de Precios de Vivienda mide
+          la evolución de los precios de compraventa de vivienda libre, nueva y de segunda mano. Desde 2026 tiene base 2025:
+          un valor de 111 significa que los precios están un 11 % por encima de la media de 2025.
+        </p>
+        <p>
+          Las variaciones anuales y trimestrales son las que publica el INE. «En 5 años», «Frente al máximo» y la calculadora
+          se calculan dividiendo el índice del último trimestre entre el del trimestre de referencia. Cada comunidad se compara
+          con su propio índice: un 111 en dos comunidades no quiere decir que la vivienda cueste lo mismo en las dos.
+        </p>
+        <p>
+          Si quieres el precio en euros por metro cuadrado de tu comunidad, provincia o municipio, mira el
+          {' '}<a class="text-teal-700 hover:underline" href="/precios">valor tasado por zonas</a> (Ministerio de Vivienda). Para saber
+          cuánto te puedes permitir, usa <a class="text-teal-700 hover:underline" href="/cuanto-puedo-pagar">cuánto puedo pagar</a>
+          {' '}o la <a class="text-teal-700 hover:underline" href="/hipoteca">calculadora de hipoteca</a>.
+        </p>
+      </div>
+      <p class="fuente mt-4">
+        Fuentes: <a href={ipv.url} rel="noopener" target="_blank">INE, Índice de Precios de Vivienda, tabla {ipv.tabla}</a> ·
+        {' '}<a href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736152838&menu=ultiDatos&idp=1254735976607" rel="noopener" target="_blank">INE, Índice de Precios de Vivienda: últimos datos y metodología</a>.
+        Dato del {largo(U)}{ipv.tipoDato ? ` (${ipv.tipoDato.toLowerCase()})` : ''}.
+      </p>
+    </section>
+
+    <Faq preguntas={preguntas} />
+    <Herramientas />
+    <Autor />
+  </div>
+</BaseLayout>
+
+<script>
+  const raiz = document.querySelector<HTMLElement>('[data-calc]')!;
+  const datos = JSON.parse(raiz.querySelector('[data-series]')!.textContent!) as {
+    ultimo: string;
+    series: { codigo: string; nombre: string; indice: Record<string, number> }[];
+  };
+  const selCcaa = raiz.querySelector<HTMLSelectElement>('[data-ccaa]')!;
+  const selT = raiz.querySelector<HTMLSelectElement>('[data-t]')!;
+  const precio = raiz.querySelector<HTMLInputElement>('[data-precio]')!;
+  const salida = raiz.querySelector<HTMLElement>('[data-salida]')!;
+  const eur = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 });
+  const pct = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const ORD = ['1.er', '2.º', '3.er', '4.º'];
+  const largo = (t: string) => `${ORD[Number(t.slice(-1)) - 1]} trimestre de ${t.slice(0, 4)}`;
+
+  function pinta() {
+    const serie = datos.series.find((s) => s.codigo === selCcaa.value)!;
+    const antes = serie.indice[selT.value];
+    const ahora = serie.indice[datos.ultimo];
+    const p = Number(precio.value);
+    if (!antes || !ahora || !(p > 0)) {
+      salida.textContent = 'Escribe un precio para ver el cálculo.';
+      return;
+    }
+    const f = ahora / antes;
+    const cambio = (f - 1) * 100;
+    salida.replaceChildren();
+    const b = document.createElement('strong');
+    b.textContent = `${eur.format(Math.round((p * f) / 100) * 100)} €`;
+    salida.append(
+      `Con la evolución media de ${serie.nombre === 'España' ? 'España' : serie.nombre}, una vivienda que costó ${eur.format(p)} € en el ${largo(selT.value)} costaría hoy unos `,
+      b,
+      ` (un ${pct.format(Math.abs(cambio))} % ${cambio >= 0 ? 'más' : 'menos'}, dato del ${largo(datos.ultimo)}).`,
+    );
+  }
+  selCcaa.addEventListener('change', pinta);
+  selT.addEventListener('change', pinta);
+  precio.addEventListener('input', pinta);
+  pinta();
+</script>
